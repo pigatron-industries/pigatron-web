@@ -1,4 +1,4 @@
-package com.pigatron.config;
+package com.pigatron.shop.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;

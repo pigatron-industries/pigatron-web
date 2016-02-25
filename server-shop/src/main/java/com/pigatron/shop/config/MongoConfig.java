@@ -1,4 +1,4 @@
-package com.pigatron.config;
+package com.pigatron.shop.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;

@@ -1,4 +1,4 @@
-package com.pigatron.config;
+package com.pigatron.shop.config;
 
 import com.pigatron.shop.service.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/admin/**")
             .authorizeRequests()
-                .anyRequest().hasAuthority("ADMIN")
+                .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
                 .and()
-            .httpBasic();
+            .formLogin()
+                .loginPage("/admin/login")
+                .permitAll()
+                .and()
+            .logout()
+                .permitAll();
     }
 
     @Autowired

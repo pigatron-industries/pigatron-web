@@ -15,6 +15,7 @@ public class AdminController {
 
 	private static final String VIEW_CONFIGURE = "pages/configure";
 	private static final String VIEW_ADMIN = "pages/admin";
+	private static final String VIEW_ADMINLOGIN = "pages/login";
 
 	@Value("${url.admin}")
 	private String adminUrl;
@@ -35,19 +36,23 @@ public class AdminController {
 		return VIEW_ADMIN;
 	}
 
-	@RequestMapping(value = "/${url.configure}", method = RequestMethod.GET)
-	public String configure() {
+	@RequestMapping(value = "/${url.admin}/login", method = RequestMethod.GET)
+	public String adminLogin() {
 		if(userRepository.count() == 0) {
 			return VIEW_CONFIGURE;
 		} else {
-			throw new ResourceNotFoundException();
+			return VIEW_ADMINLOGIN;
 		}
 	}
 
 	@RequestMapping(value = "/${url.configure}", method = RequestMethod.POST)
 	public String configure(@ModelAttribute InitialConfigurationForm configurationForm) {
-		initialConfigurationService.configure(configurationForm);
-		return "redirect:/" + adminUrl;
+		if(userRepository.count() == 0) {
+			initialConfigurationService.configure(configurationForm);
+			return "redirect:/" + adminUrl;
+		} else {
+			throw new ResourceNotFoundException();
+		}
 	}
 
 }

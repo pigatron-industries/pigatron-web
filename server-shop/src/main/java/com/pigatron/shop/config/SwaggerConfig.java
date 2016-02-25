@@ -1,4 +1,4 @@
-package com.pigatron.config;
+package com.pigatron.shop.config;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
