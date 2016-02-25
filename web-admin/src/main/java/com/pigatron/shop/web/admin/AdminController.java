@@ -31,6 +31,11 @@ public class AdminController {
 		return new InitialConfigurationForm();
 	}
 
+	@ModelAttribute("adminUrl")
+	public String getAdminUrl() {
+		return adminUrl;
+	}
+
 	@RequestMapping(value = "/${url.admin}", method = RequestMethod.GET)
 	public String admin() {
 		return VIEW_ADMIN;
