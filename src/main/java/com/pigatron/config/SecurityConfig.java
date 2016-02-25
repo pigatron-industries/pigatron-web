@@ -14,24 +14,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private SecUserDetailsService secUserDetailsService;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/admin/**")
             .authorizeRequests()
-                .anyRequest().hasRole("ADMIN")
+                .anyRequest().hasAuthority("ADMIN")
                 .and()
             .httpBasic();
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth, SecUserDetailsService secUserDetailsService) throws Exception {
         auth.userDetailsService(secUserDetailsService);
-//        auth.inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER").and()
-//                .withUser("admin").password("password").roles("USER", "ADMIN");
     }
 
 }

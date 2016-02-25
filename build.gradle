@@ -29,7 +29,6 @@ targetCompatibility = 1.8
 
 
 dependencies {
-	compile project(":server-shop")
 	compile project(":web-admin")
 	compile("org.springframework.boot:spring-boot-starter-security")
 

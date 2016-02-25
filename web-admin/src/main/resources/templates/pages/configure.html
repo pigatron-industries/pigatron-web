@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head :: head('Configure')"></head>
+<body>
+	<div th:include="fragments/header :: header"></div>
+
+	<div class="container">
+		<h1>Configure Shop</h1>
+		<form action="#" th:action="@{/configure}" th:object="${configureForm}" method="post">
+			<div class="form-group">
+				<label for="shopName">Shop Name:</label>
+				<input type="text" class="form-control" th:field="*{shopName}" />
+			</div>
+			<div class="form-group">
+				<label for="adminUsername">Admin Username:</label>
+				<input type="text" class="form-control" th:field="*{adminUsername}" />
+			</div>
+			<div class="form-group">
+				<label for="adminPassword">Admin Password:</label>
+				<input type="password" class="form-control" th:field="*{adminPassword}" />
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+
+	<div th:include="fragments/footer :: footer"></div>
+</body>
+</html>

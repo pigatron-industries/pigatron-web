@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecUserDetailsService implements UserDetailsService {
 
+    public static final String ROLE_ADMIN = "ADMIN";
+
     @Autowired
     private UserRepository userRepository;
 
@@ -23,6 +25,12 @@ public class SecUserDetailsService implements UserDetailsService {
         else {
             return user;
         }
+    }
+
+    public User createAdminUser(String username, String password) {
+        User user = new User(username, password, ROLE_ADMIN);
+        userRepository.save(user);
+        return user;
     }
 
 }
