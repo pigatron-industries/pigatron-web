@@ -1,22 +1,23 @@
 package com.pigatron.shop.web.rest;
 
 
-import com.google.common.collect.Lists;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.Valid;
 import java.io.Serializable;
-import java.util.List;
 
-public abstract class AbstractRestController<T, ID extends Serializable> extends AbstractGetOnlyController<T, ID> {
+public abstract class AbstractFullRestController<T, ID extends Serializable> extends AbstractGetOnlyController<T, ID> {
 
-    public AbstractRestController(PagingAndSortingRepository<T, ID> repository, String sortProperty) {
+    public AbstractFullRestController(PagingAndSortingRepository<T, ID> repository, String sortProperty) {
         super(repository, sortProperty);
     }
 
