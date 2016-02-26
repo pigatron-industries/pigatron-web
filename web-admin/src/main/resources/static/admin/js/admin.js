@@ -1,0 +1,19 @@
+
+var app = angular.module('admin', ['ngMaterial','ngRoute']);
+
+app.controller('admin', function($scope,  $route, $routeParams, $location) {
+    $scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;
+});
+
+app.config(function($routeProvider, $locationProvider) {
+    $routeProvider.when('/categories', {
+        templateUrl: '/admin/pages/categories.html',
+        controller: 'categories'
+    });
+    $routeProvider.when('/products', {
+        templateUrl: '/admin/pages/products.html',
+        controller: 'products'
+    });
+});

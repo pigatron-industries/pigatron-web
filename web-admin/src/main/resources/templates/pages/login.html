@@ -10,6 +10,7 @@
 			Invalid username or password.
 		</div>
 		<form th:action="@{/}+${adminUrl}+@{/login}" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="form-group">
 				<label for="username">Email:</label>
 				<input type="text" class="form-control" id="username" name="username" />
@@ -17,6 +18,10 @@
 			<div class="form-group">
 				<label for="password">Password:</label>
 				<input type="password" class="form-control" id="password" name="password" />
+			</div>
+			<div class="form-group">
+				<label for="remember-me">Remember me</label>
+				<input type="checkbox" class="form-control" name="remember-me" id="remember-me" />
 			</div>
 			<button type="submit" class="btn btn-default">Log In</button>
 		</form>

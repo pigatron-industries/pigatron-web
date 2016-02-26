@@ -8,4 +8,7 @@ dependencies {
     compile('org.webjars:angularjs:1.5.0-rc.2')
     compile('org.webjars:jquery:2.2.0')
     compile('org.webjars:angular-ui-bootstrap:1.1.1-1')
+    compile('org.webjars.bower:angular-animate:1.5.0')
+    compile('org.webjars.bower:angular-aria:1.5.0')
+    compile('org.webjars:angular-material:1.0.5')
 }

@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head('Admin')"></head>
-<body>
-	<div th:include="fragments/header :: header"></div>
+<body ng-app="admin">
+	<div ng-controller="admin">
+		<div th:include="fragments/header :: header"></div>
 
-	<div class="container">
-		Admin Page
+		<md-menu-bar>
+			<md-menu>
+				<button ng-click="$mdOpenMenu()">Catalogue</button>
+				<md-menu-content>
+					<md-menu-item>
+						<md-button href="#/categories" ng-click="$mdCloseMenu()">Categories</md-button>
+					</md-menu-item>
+
+					<md-menu-item>
+						<md-button href="#/products" ng-click="$mdCloseMenu()">Products</md-button>
+					</md-menu-item>
+				</md-menu-content>
+
+			</md-menu>
+		</md-menu-bar>
+
+		<div ng-view=""></div>
+
+		<div th:include="fragments/footer :: footer"></div>
 	</div>
-
-	<div th:include="fragments/footer :: footer"></div>
 </body>
 </html>

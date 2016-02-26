@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/" + adminUrl + "/**")
-            .authorizeRequests()
+                .authorizeRequests()
                 .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
                 .and()
             .formLogin()
@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
             .logout()
+                .logoutUrl("/logout")
                 .permitAll();
     }
 
