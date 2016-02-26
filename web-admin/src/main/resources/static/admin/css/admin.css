@@ -7,3 +7,20 @@
     border: 1px solid #a94442;
     border-radius: 5px;
 }
+
+md-menu-bar {
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+md-menu-bar md-menu.md-open > button {
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+md-menu-bar md-menu.md-open > button:focus {
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+
