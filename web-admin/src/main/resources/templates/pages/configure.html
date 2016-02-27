@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head('Configure')"></head>
-<body>
-	<div th:include="fragments/header :: header"></div>
+<body ng-app="setup">
+	<div id="page">
+		<header th:include="fragments/header :: header"></header>
 
-	<div class="container">
-		<h1>Configure Shop</h1>
-		<form action="#" th:action="@{/configure}" th:object="${configureForm}" method="post">
-			<div class="form-group">
-				<label for="shopName">Shop Name:</label>
-				<input type="text" class="form-control" th:field="*{shopName}" />
-			</div>
-			<div class="form-group">
-				<label for="adminUsername">Admin Username:</label>
-				<input type="text" class="form-control" th:field="*{adminUsername}" />
-			</div>
-			<div class="form-group">
-				<label for="adminPassword">Admin Password:</label>
-				<input type="password" class="form-control" th:field="*{adminPassword}" />
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
+		<div id="content" class="container" style="max-width:500px;" ng-controller="setup">
+			<form th:action="@{/configure}" th:object="${configureForm}" method="post">
+				<div layout="row">
+					<h1 style="padding-right:40px;margin-top:10px;">Setup</h1>
+					<div layout="column" style="border-left: 1px solid #ccc;padding-left: 20px;width:100%;">
+						<md-input-container class="md-block">
+							<label>Shop Name</label>
+							<input type="text" name="shopName" required="true" />
+						</md-input-container>
+						<md-input-container class="md-block">
+							<label>Admin Email</label>
+							<input type="text" name="adminUsername" required="true" />
+						</md-input-container>
+						<md-input-container class="md-block">
+							<label>Admin Password</label>
+							<input type="password" name="adminPassword" required="true" />
+						</md-input-container>
+						<div layout="row" layout-align="space-between center">
+							<md-button type="submit" style="background-color:#eeeeee;">Submit</md-button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<footer th:include="fragments/footer :: footer"></footer>
 	</div>
 
-	<div th:include="fragments/footer :: footer"></div>
+	<!-- Controllers -->
+	<script>
+		var app = angular.module('setup', ['ngMaterial']);
+		app.controller('setup', function($scope) {});
+	</script>
 </body>
 </html>

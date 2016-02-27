@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head('Admin Login')"></head>
-<body>
-	<div th:include="fragments/header :: header"></div>
+<body ng-app="login">
+	<div id="page">
+		<header th:include="fragments/header :: header"></header>
 
-	<div class="container">
-		<h1>Login</h1>
-		<div th:if="${param.error}" class="errorbox">
-			Invalid username or password.
+		<div id="content" class="container" style="max-width:500px;" ng-controller="login">
+			<form th:action="@{/}+${adminUrl}+@{/login}" method="post">
+				<div layout="row">
+					<h1 style="padding-right:40px;margin-top:10px;">Login</h1>
+					<div layout="column" style="border-left: 1px solid #ccc;padding-left: 20px;width:100%;">
+						<div th:if="${param.error}" class="errorbox">
+							Invalid username or password.
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						<md-input-container class="md-block">
+							<label>Email</label>
+							<input type="text" name="username" required="true" />
+						</md-input-container>
+						<md-input-container class="md-block">
+							<label>Password</label>
+							<input type="password" name="password" required="true" />
+						</md-input-container>
+						<div layout="row" layout-align="space-between center">
+							<md-checkbox class="md-primary" style="margin-bottom:0" ng-model="rememberme" name="remember-me" aria-label="Remember Me">Remember Me</md-checkbox>
+							<md-button type="submit" style="background-color:#eeeeee;">Log In</md-button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
-		<form th:action="@{/}+${adminUrl}+@{/login}" method="post">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			<div class="form-group">
-				<label for="username">Email:</label>
-				<input type="text" class="form-control" id="username" name="username" />
-			</div>
-			<div class="form-group">
-				<label for="password">Password:</label>
-				<input type="password" class="form-control" id="password" name="password" />
-			</div>
-			<div class="form-group">
-				<label for="remember-me">Remember me</label>
-				<input type="checkbox" class="form-control" name="remember-me" id="remember-me" />
-			</div>
-			<button type="submit" class="btn btn-default">Log In</button>
-		</form>
+
+		<footer th:include="fragments/footer :: footer"></footer>
 	</div>
 
-	<div th:include="fragments/footer :: footer"></div>
+	<!-- Controllers -->
+	<script>
+		var app = angular.module('login', ['ngMaterial']);
+		app.controller('login', function($scope) {});
+	</script>
 </body>
 </html>

@@ -1,0 +1,115 @@
+
+/* Page */
+
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+#page {
+    min-height:100%;
+    position:relative;
+}
+
+body {
+    min-height:100%;
+    position:relative;
+}
+
+
+/* Header */
+@font-face {
+    font-family: audiowide;
+    src: url('/fonts/Audiowide-Regular.ttf') format("truetype");
+}
+
+header {
+    background-color: #0C2238;
+    height:80px;
+    padding-left:10px;
+}
+
+.logo {
+    position:relative;
+    color: white;
+    font-family: audiowide;
+}
+
+.pigatron {
+    position: absolute;
+    font-size: 3em;
+    top: 0;
+    left: 0;
+}
+
+.industries {
+    position: absolute;
+    font-size: 1.3em;
+    left: 73px;
+    top: 46px;
+}
+
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 4em;
+    width: 100%;
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+footer div {
+    height:100%;
+}
+
+#content {
+    padding-bottom:5em;   /* Height of the footer + gap */
+}
+
+
+
+
+
+/* Menu Bar */
+
+md-menu-bar {
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+md-menu-bar md-menu.md-open > button {
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+md-menu-bar md-menu.md-open > button:focus {
+    background-color: #0C2238;
+    color: #FFFFFF;
+}
+
+
+/* Page */
+.container {
+    margin-top: 20px;
+}
+
+
+/* Forms */
+
+md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+.errorbox {
+    background-color: #f2dede;
+    color: #a94442;
+    font-weight: bold;
+    padding:3px;
+    border: 1px solid #a94442;
+    border-radius: 5px;
+}
+

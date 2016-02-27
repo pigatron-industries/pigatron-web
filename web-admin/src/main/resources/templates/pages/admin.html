@@ -2,28 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head('Admin')"></head>
 <body ng-app="admin">
-	<div ng-controller="admin">
-		<div th:include="fragments/header :: header"></div>
+	<div id="page">
+		<header th:include="fragments/header :: header"></header>
 
-		<md-menu-bar>
-			<md-menu>
-				<button ng-click="$mdOpenMenu()">Catalogue</button>
-				<md-menu-content>
-					<md-menu-item>
-						<md-button href="#/categories" ng-click="$mdCloseMenu()">Categories</md-button>
-					</md-menu-item>
+		<div ng-controller="admin">
 
-					<md-menu-item>
-						<md-button href="#/products" ng-click="$mdCloseMenu()">Products</md-button>
-					</md-menu-item>
-				</md-menu-content>
+			<md-menu-bar>
+				<md-menu>
+					<button ng-click="$mdOpenMenu()">Catalogue</button>
+					<md-menu-content>
+						<md-menu-item>
+							<md-button href="#/categories" ng-click="$mdCloseMenu()">Categories</md-button>
+						</md-menu-item>
 
-			</md-menu>
-		</md-menu-bar>
+						<md-menu-item>
+							<md-button href="#/products" ng-click="$mdCloseMenu()">Products</md-button>
+						</md-menu-item>
+					</md-menu-content>
 
-		<div ng-view=""></div>
+				</md-menu>
+			</md-menu-bar>
 
-		<div th:include="fragments/footer :: footer"></div>
+			<div id="content">
+				<div ng-view=""></div>
+			</div>
+
+		</div>
+
+		<footer th:include="fragments/footer :: footer"></footer>
 	</div>
+
+	<!-- Controllers -->
+	<script src="/admin/js/admin.js"></script>
+	<script src="/admin/js/categories.js"></script>
+	<script src="/admin/js/products.js"></script>
 </body>
 </html>
