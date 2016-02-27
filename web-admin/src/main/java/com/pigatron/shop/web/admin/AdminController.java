@@ -50,14 +50,4 @@ public class AdminController {
 		}
 	}
 
-	@RequestMapping(value = "/${url.configure}", method = RequestMethod.POST)
-	public String configure(@ModelAttribute InitialConfigurationForm configurationForm) {
-		if(userRepository.count() == 0) {
-			initialConfigurationService.configure(configurationForm);
-			return "redirect:/" + adminUrl;
-		} else {
-			throw new ResourceNotFoundException();
-		}
-	}
-
 }
