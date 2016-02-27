@@ -5,7 +5,7 @@
 	<div id="page">
 		<header th:include="fragments/header :: header"></header>
 
-		<div id="content" class="container" style="max-width:500px;" ng-controller="setup">
+		<div id="content" class="center" style="max-width:500px;" ng-controller="setup">
 			<form th:action="@{/configure}" th:object="${configureForm}" method="post">
 				<div layout="row">
 					<h1 style="padding-right:40px;margin-top:10px;">Setup</h1>

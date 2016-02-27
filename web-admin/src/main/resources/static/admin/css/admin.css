@@ -26,7 +26,7 @@ body {
 }
 
 header {
-    background-color: #0C2238;
+    background-color: #205264;
     height:80px;
     padding-left:10px;
 }
@@ -47,8 +47,8 @@ header {
 .industries {
     position: absolute;
     font-size: 1.3em;
-    left: 73px;
-    top: 46px;
+    left: 82px;
+    top: 48px;
 }
 
 /* Footer */
@@ -58,7 +58,7 @@ footer {
     bottom: 0;
     height: 4em;
     width: 100%;
-    background-color: #0C2238;
+    background-color: #205264;
     color: #FFFFFF;
 }
 
@@ -68,34 +68,45 @@ footer div {
 
 #content {
     padding-bottom:5em;   /* Height of the footer + gap */
+    margin-top: 20px;
 }
 
-
+.center {
+    margin-left:auto;
+    margin-right:auto;
+}
 
 
 
 /* Menu Bar */
 
 md-menu-bar {
-    background-color: #0C2238;
+    background-color: #266277;
+}
+
+md-menu-bar button {
+    height:30px;
     color: #FFFFFF;
+    font-weight: bold;
 }
 
-md-menu-bar md-menu.md-open > button {
-    background-color: #0C2238;
+md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus {
+    background-color: #2c728b;
     color: #FFFFFF;
+    font-weight: bold;
 }
 
-md-menu-bar md-menu.md-open > button:focus {
-    background-color: #0C2238;
-    color: #FFFFFF;
+md-menu-content {
+    background-color: #2c728b;
+    color: white;
+}
+
+md-menu-item>.md-button {
+    font-size:14px;
+    font-weight: bold;
 }
 
 
-/* Page */
-.container {
-    margin-top: 20px;
-}
 
 
 /* Forms */

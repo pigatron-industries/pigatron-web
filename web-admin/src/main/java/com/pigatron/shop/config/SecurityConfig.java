@@ -26,11 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/" + adminUrl + "/login")
+                .defaultSuccessUrl("/" + adminUrl)
                 .permitAll()
                 .and()
             .logout()
                 .logoutUrl("/logout")
-                .permitAll();
+                .deleteCookies("remember-me")
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
+            .rememberMe();
     }
 
     @Autowired
