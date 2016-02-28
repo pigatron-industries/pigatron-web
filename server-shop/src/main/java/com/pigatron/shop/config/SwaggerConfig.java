@@ -5,12 +5,16 @@ import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableSwagger
 public class SwaggerConfig {
+
+    @Value("${url.admin}")
+    private String adminUrl;
 
     private SpringSwaggerConfig springSwaggerConfig;
 
@@ -34,7 +38,7 @@ public class SwaggerConfig {
                 //Here we disable auto generating of responses for REST-endpoints
                 .useDefaultResponseMessages(false)
                 //Here we specify URI patterns which will be included in Swagger docs. Use regex for this purpose.
-                .includePatterns("/shop/api.*", "/admin/api.*");
+                .includePatterns("/shop/api.*", "/" + adminUrl + "/api.*");
     }
 
 }

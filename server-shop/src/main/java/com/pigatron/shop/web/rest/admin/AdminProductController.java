@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "${url.admin}/api/product", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "${url.admin}/api/catalogue/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminProductController extends AbstractFullRestController<Product, String> {
 
     @Autowired

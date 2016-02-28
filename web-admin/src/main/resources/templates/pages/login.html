@@ -9,7 +9,7 @@
 			<form th:action="@{/}+${adminUrl}+@{/login}" method="post">
 				<div layout="row">
 					<h1 style="padding-right:40px;margin-top:10px;">Login</h1>
-					<div layout="column" style="border-left: 1px solid #ccc;padding-left: 20px;width:100%;">
+					<div layout="column">
 						<div th:if="${param.error}" class="errorbox">
 							Invalid username or password.
 						</div>

@@ -1,6 +1,23 @@
 
 <div ng-controller="categories">
+	<md-content>
 
-	Categories
+		<div layout="column">
 
+			<div layout="row" layout-align="start center">
+				<md-subheader>Categories</md-subheader>
+				<md-button class="md-icon-button" aria-label="Add">
+					<ng-md-icon icon="note_add"/>
+				</md-button>
+			</div>
+			<md-list>
+				<md-list-item ng-repeat="category in categories">
+					{{category.name}}
+				</md-list-item>
+			</md-list>
+
+		</div>
+
+
+	</md-content>
 </div>

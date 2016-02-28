@@ -9,7 +9,7 @@
 			<form th:action="@{/}+${setupUrl}" th:object="${configureForm}" method="post">
 				<div layout="row">
 					<h1 style="padding-right:40px;margin-top:10px;">Setup</h1>
-					<div layout="column" style="border-left: 1px solid #ccc;padding-left: 20px;width:100%;">
+					<div layout="column">
 						<md-input-container class="md-block">
 							<label>Shop Name</label>
 							<input type="text" name="shopName" required="true" />

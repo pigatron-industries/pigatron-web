@@ -24,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/" + adminUrl + "/**")
+        http.csrf().disable()
+            .antMatcher("/" + adminUrl + "/**")
                 .authorizeRequests()
                 .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
                 .and()
