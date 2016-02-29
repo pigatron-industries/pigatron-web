@@ -8,8 +8,8 @@
 		<div id="content" class="center" style="max-width:500px;" ng-controller="login">
 			<form th:action="@{/}+${adminUrl}+@{/login}" method="post">
 				<div layout="row">
-					<h1 style="padding-right:40px;margin-top:10px;">Login</h1>
-					<div layout="column">
+					<h1>Login</h1>
+					<div layout="column" class="formarea">
 						<div th:if="${param.error}" class="errorbox">
 							Invalid username or password.
 						</div>

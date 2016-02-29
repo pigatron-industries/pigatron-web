@@ -5,8 +5,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // Web Jars
-    compile('org.webjars:angularjs:1.5.0-rc.2')
     compile('org.webjars:jquery:2.2.0')
+    compile('org.webjars:angularjs:1.5.0-rc.2')
+    compile('org.webjars:angular-tree-control:0.2.22')
     compile('org.webjars.bower:angular-animate:1.5.0')
     compile('org.webjars.bower:angular-aria:1.5.0')
     compile('org.webjars.bower:angular-material:1.0.5')
