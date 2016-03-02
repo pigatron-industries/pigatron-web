@@ -7,23 +7,26 @@
 			<treecontrol class="tree-light"
 						 tree-model="categories"
 						 options="treeOptions"
-						 on-selection="showSelected(node)">
+						 selected-node="selectedCategory"
+						 on-selection="onCategorySelect()">
 				{{node.name}}
 			</treecontrol>
 		</div>
 
 		<div flex class="formarea" layout="column">
-			<div class="formbuttons" layout="row" layout-align="start center">
-				<md-button class="md-primary md-raised">Save</md-button>
-				<md-button class="md-primary md-raised">Add Subcategory</md-button>
-				<md-button class="md-primary md-raised" ng-class="{'md-warn': hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">Delete</md-button>
-			</div>
-			<div class="formfields" layout="column">
-				<md-input-container class="md-block">
-					<label>Category Name</label>
-					<input ng-model="editCategory.name" type="text" required="true" />
-				</md-input-container>
-			</div>
+			<form id="categoryForm" name="categoryForm">
+				<div class="formbuttons" layout="row" layout-align="start center" ng-show="editingCategory!=null">
+					<md-button class="md-primary md-raised" ng-click="saveCategory()">Save</md-button>
+					<md-button class="md-primary md-raised" ng-click="addSubcategory()">Add Subcategory</md-button>
+					<md-button class="md-primary md-raised" ng-click="deleteCategory()">Delete</md-button>
+				</div>
+				<div class="formfields" layout="column" ng-show="editingCategory!=null">
+					<md-input-container class="md-block">
+						<label>Category Name</label>
+						<input ng-model="editingCategory.name" type="text" required="true" />
+					</md-input-container>
+				</div>
+			</form>
 		</div>
 
 	</md-content>

@@ -1,7 +1,9 @@
 
 var API_ADMIN_CATEGORIES = '/shopadmin/api/catalogue/category';
 
-app.controller('categories', function($scope, $routeParams, $http) {
+app.controller('categories', function($scope, $routeParams, $http, $timeout) {
+    window.$scope = $scope;
+    $scope.editingCategory = null;
     $scope.$routeParams = $routeParams;
     $scope.treeOptions = {
         nodeChildren: "subcategories",
@@ -21,5 +23,11 @@ app.controller('categories', function($scope, $routeParams, $http) {
     $http.get(API_ADMIN_CATEGORIES).success(function(data) {
         $scope.categories = data;
     });
+
+    $scope.onCategorySelect = function() {
+        $timeout(function() {
+            $scope.editingCategory = angular.copy($scope.selectedCategory);
+        }, 1);
+    }
 
 });
