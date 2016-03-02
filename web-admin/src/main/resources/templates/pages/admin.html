@@ -3,14 +3,14 @@
 <head th:include="fragments/head :: head('Admin')"></head>
 <body ng-app="admin">
 	<div id="page">
-		<header th:include="fragments/header :: header"></header>
+		<header th:replace="fragments/header :: header"></header>
 
-		<div ng-controller="admin">
+		<div ng-controller="admin" ng-cloak="1" class="ng-cloak">
 
-			<md-menu-bar>
+			<md-menu-bar class="md-default-theme md-hue-1 md-bg">
 				<md-menu>
-					<button ng-click="$mdOpenMenu()">Catalogue</button>
-					<md-menu-content>
+					<button class="md-default-theme md-hue-1 md-bg" ng-click="$mdOpenMenu()">Catalogue</button>
+					<md-menu-content class="md-default-theme md-hue-1 md-bg">
 						<md-menu-item>
 							<md-button href="#/categories" ng-click="$mdCloseMenu()">Categories</md-button>
 						</md-menu-item>
@@ -29,7 +29,7 @@
 
 		</div>
 
-		<footer th:include="fragments/footer :: footer"></footer>
+		<footer th:replace="fragments/footer :: footer"></footer>
 	</div>
 
 	<!-- Controllers -->

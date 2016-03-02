@@ -1,6 +1,6 @@
 
 var configTheme = function ($mdThemingProvider) {
-    var customPrimary = {
+    var arapawa = {
         '50': '#41a0c2',
         '100': '#3991b1',
         '200': '#33829e',
@@ -15,51 +15,75 @@ var configTheme = function ($mdThemingProvider) {
         'A200': '#68b3cf',
         'A400': '#7bbdd5',
         'A700': '#010303',
+        'default': '500',
+        'hue-1': '400',
         'contrastDefaultColor': 'light'
     };
-    $mdThemingProvider
-        .definePalette('customPrimary',
-            customPrimary);
-
-    var customAccent = {
-        '50': '#ffffff',
-        '100': '#ffffff',
-        '200': '#ffffff',
-        '300': '#fff3f5',
-        '400': '#ffd9e0',
-        '500': '#ffc0cb',
-        '600': '#ffa6b6',
-        '700': '#ff8da1',
-        '800': '#ff738c',
-        '900': '#ff5a77',
-        'A100': '#ffffff',
-        'A200': '#ffffff',
-        'A400': '#ffffff',
-        'A700': '#ff4062'
+    var midnight = {
+        '50': '#597ea2',
+        '100': '#507192',
+        '200': '#476481',
+        '300': '#3e5771',
+        '400': '#354b60',
+        '500': '#2c3e50',
+        '600': '#233140',
+        '700': '#1a242f',
+        '800': '#11181f',
+        '900': '#080b0e',
+        'A100': '#698aac',
+        'A200': '#7997b5',
+        'A400': '#8aa4be',
+        'A700': '#000000',
+        'default': '500',
+        'hue-1': '400',
+        'contrastDefaultColor': 'light'
     };
-    $mdThemingProvider
-        .definePalette('customAccent',
-            customAccent);
+    $mdThemingProvider.definePalette('arapawa', arapawa);
+    $mdThemingProvider.definePalette('midnight', midnight);
 
-    var customWarn = {
-        '50': '#ffb280',
-        '100': '#ffa266',
-        '200': '#ff934d',
-        '300': '#ff8333',
-        '400': '#ff741a',
-        '500': '#ff6400',
-        '600': '#e65a00',
-        '700': '#cc5000',
-        '800': '#b34600',
-        '900': '#993c00',
-        'A100': '#ffc199',
-        'A200': '#ffd1b3',
-        'A400': '#ffe0cc',
-        'A700': '#803200'
+    //205164 primary arapawa blue
+    //2c3e50 primary midnight blue
+    //9F472E paletton orange
+    //598E29 paletton green
+    //e91e63 material pink
+
+    var pink = {
+        '50': '#f492b3',
+        '100': '#f27ba3',
+        '200': '#f06493',
+        '300': '#ee4c83',
+        '400': '#eb3573',
+        '500': '#e91e63',
+        '600': '#d81557',
+        '700': '#c1134e',
+        '800': '#aa1145',
+        '900': '#930e3b',
+        'A100': '#f7a9c4',
+        'A200': '#f9c1d4',
+        'A400': '#fbd8e4',
+        'A700': '#7b0c32',
+        'contrastDefaultColor': 'light'
     };
-    $mdThemingProvider
-        .definePalette('customWarn',
-            customWarn);
+    $mdThemingProvider.definePalette('pink', pink);
+
+    var warn = {
+        '50': '#ff7b82',
+        '100': '#ff626a',
+        '200': '#ff4852',
+        '300': '#ff2f3a',
+        '400': '#ff1522',
+        '500': '#fb000d',
+        '600': '#e1000c',
+        '700': '#c8000a',
+        '800': '#ae0009',
+        '900': '#950008',
+        'A100': '#ff959a',
+        'A200': '#ffaeb3',
+        'A400': '#ffc8cb',
+        'A700': '#7b0006',
+        'contrastDefaultColor': 'light'
+    };
+    $mdThemingProvider.definePalette('warn', warn);
 
     var customBackground = {
         '50': '#c8c8c8',
@@ -82,8 +106,8 @@ var configTheme = function ($mdThemingProvider) {
             customBackground);
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('customPrimary')
-        .accentPalette('customAccent')
-        .warnPalette('customWarn');
+        .primaryPalette('midnight')
+        .accentPalette('pink')
+        .warnPalette('warn');
         //.backgroundPalette('customBackground')
 };

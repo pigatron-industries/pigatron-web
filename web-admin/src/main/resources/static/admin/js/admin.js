@@ -1,5 +1,5 @@
 
-var app = angular.module('admin', ['ngMaterial','ngRoute','ngMdIcons','treeControl']);
+var app = angular.module('admin', ['ngMaterial','ngRoute','mdColors','treeControl']);
 
 app.controller('admin', function($scope,  $route, $routeParams, $location) {
     $scope.$route = $route;

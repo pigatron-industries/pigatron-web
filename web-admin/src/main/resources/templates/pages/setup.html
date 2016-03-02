@@ -3,7 +3,7 @@
 <head th:include="fragments/head :: head('Setup')"></head>
 <body ng-app="setup">
 	<div id="page">
-		<header th:include="fragments/header :: header"></header>
+		<header th:replace="fragments/header :: header"></header>
 
 		<div id="content" class="center" style="max-width:500px;" ng-controller="setup">
 			<form th:action="@{/}+${setupUrl}" th:object="${configureForm}" method="post">
@@ -23,19 +23,19 @@
 							<input type="password" name="adminPassword" required="true" />
 						</md-input-container>
 						<div layout="row" layout-align="space-between center">
-							<md-button type="submit" style="background-color:#eeeeee;">Submit</md-button>
+							<md-button class="md-primary md-raised" type="submit">Submit</md-button>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
 
-		<footer th:include="fragments/footer :: footer"></footer>
+		<footer th:replace="fragments/footer :: footer"></footer>
 	</div>
 
 	<!-- Controllers -->
 	<script>
-		var app = angular.module('setup', ['ngMaterial']);
+		var app = angular.module('setup', ['ngMaterial', 'mdColor']);
 		app.controller('setup', function($scope) {});
 		app.config(function($mdThemingProvider) {
 			configTheme($mdThemingProvider);

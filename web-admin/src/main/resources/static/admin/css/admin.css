@@ -27,7 +27,6 @@ body {
 }
 
 header {
-    background-color: #205264;
     height:80px;
     padding-left:10px;
 }
@@ -48,8 +47,8 @@ header {
 .industries {
     position: absolute;
     font-size: 1.3em;
-    left: 82px;
-    top: 48px;
+    left: 4em;
+    top: 2.4em;
 }
 
 /* Footer */
@@ -59,7 +58,6 @@ footer {
     bottom: 0;
     height: 4em;
     width: 100%;
-    background-color: #205264;
     color: #FFFFFF;
 }
 
@@ -82,7 +80,6 @@ footer div {
 /* Menu Bar */
 
 md-menu-bar {
-    background-color: #266277;
 }
 
 md-menu-bar button {
@@ -90,16 +87,16 @@ md-menu-bar button {
     height:30px;
     color: #FFFFFF;
     font-weight: bold;
+    background: transparent !important;
 }
 
 md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus {
-    background-color: #2c728b;
     color: #FFFFFF;
     font-weight: bold;
+    background-color: rgba(255,255,255,0.1) !important;
 }
 
 md-menu-content {
-    background-color: #2c728b;
     color: white;
 }
 
@@ -131,6 +128,15 @@ h1, h2 {
 
 md-input-container .md-errors-spacer {
     min-height: 0;
+}
+
+md-input-container {
+    max-width: 600px;
+}
+
+md-button {
+    font-weight: bold;
+    color:white !important;
 }
 
 .errorbox {

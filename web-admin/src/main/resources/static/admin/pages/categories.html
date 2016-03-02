@@ -3,26 +3,28 @@
 	<md-content layout="row">
 
 		<div layout="column" class="leftsidebar">
-
 			<h2>Categories</h2>
-
-			<div layout="row" layout-align="start center">
-				<md-button class="md-icon-button" aria-label="Add">
-					<ng-md-icon icon="note_add"/>
-				</md-button>
-			</div>
-
-			<treecontrol class="tree-classic"
+			<treecontrol class="tree-light"
 						 tree-model="categories"
 						 options="treeOptions"
 						 on-selection="showSelected(node)">
 				{{node.name}}
 			</treecontrol>
-
 		</div>
 
-		<div flex class="formarea"></div>
-
+		<div flex class="formarea" layout="column">
+			<div class="formbuttons" layout="row" layout-align="start center">
+				<md-button class="md-primary md-raised">Save</md-button>
+				<md-button class="md-primary md-raised">Add Subcategory</md-button>
+				<md-button class="md-primary md-raised" ng-class="{'md-warn': hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">Delete</md-button>
+			</div>
+			<div class="formfields" layout="column">
+				<md-input-container class="md-block">
+					<label>Category Name</label>
+					<input ng-model="editCategory.name" type="text" required="true" />
+				</md-input-container>
+			</div>
+		</div>
 
 	</md-content>
 </div>
