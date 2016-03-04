@@ -5,7 +5,9 @@ import com.pigatron.shop.domain.entity.shipping.ShippingMethod;
 import com.pigatron.shop.domain.repository.ShippingMethodRepository;
 import com.pigatron.shop.service.AbstractRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShippingMethodService extends AbstractRepositoryService<ShippingMethod> {
 
 	@Autowired
