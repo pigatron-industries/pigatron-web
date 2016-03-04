@@ -4,10 +4,19 @@ var ROOT_ID = 'root';
 var PLACEHOLDER_ID = 'new';
 var PLACEHOLDER_NAME = "New Category";
 
+/**
+ * Scope variables:
+ *  ProductCategory categories: Full category tree starting at root.
+ *  ProductCategory selectedCategory: The selected category in the tree.
+ *  ProductCategory selectedCategoryParent: The parent of the selected category in the tree.
+ *  ProductCategory editingCategory: A copy of the selected category that is currently being edited.
+ */
+
 app.controller('categories', function($scope, $routeParams, $http, $timeout) {
     window.$scope = $scope;
     $scope.$routeParams = $routeParams;
     $scope.editingCategory = null;
+    $scope.editingCategoryParent = null;
     $scope.treeOptions = {
         nodeChildren: "subcategories",
         dirSelectable: true,
@@ -23,21 +32,39 @@ app.controller('categories', function($scope, $routeParams, $http, $timeout) {
         }
     };
 
-    $scope.loadCategories = function() {
+    $scope.loadCategories = function(selectCategoryId) {
         $http.get(API_ADMIN_CATEGORY + "/" + ROOT_ID).success(function(data) {
             $scope.categories = [data];
+            $scope.selectCategory(selectCategoryId);
         });
     };
 
     $scope.onCategorySelect = function() {
         $timeout(function() {
             $scope.editingCategory = angular.copy($scope.selectedCategory);
+            $("#categoryName").focus();
         }, 1);
     };
 
+    $scope.selectCategory = function(selectCategoryId) {
+        //TODO
+        delete $scope.selectedCategory;
+        $scope.editingCategory = null;
+        $scope.editingCategoryParent = null;
+    };
+
     $scope.saveCategory = function() {
-        $http.post(API_ADMIN_CATEGORY + '/' + $scope.editingCategoryParent.id, $scope.editingCategory)
-             .success($scope.loadCategories);
+        var url;
+        if($scope.editingCategory.id == null) {
+            url = API_ADMIN_CATEGORY + '/' + $scope.editingCategoryParent.id;
+        } else {
+            url = API_ADMIN_CATEGORY;
+        }
+
+        $http.post(url, $scope.editingCategory)
+            .success(function (data) {
+                $scope.loadCategories(data.id);
+            });
     };
 
     $scope.addSubcategory = function() {
@@ -48,17 +75,21 @@ app.controller('categories', function($scope, $routeParams, $http, $timeout) {
         $scope.editingCategoryParent = $scope.selectedCategory;
         $scope.editingCategoryParent.subcategories.push(categoryPlaceholder);
         $scope.selectedCategory = categoryPlaceholder;
-        $scope.editingCategory = { name:"" };
+        $scope.editingCategory = { id:null,name:"" };
 
-        //TODO expand parent category in tree
+        //expand parent category in tree
+        $scope.expandedCategories.push($scope.editingCategoryParent);
+        $("#categoryName").focus();
     };
 
     $scope.deleteCategory = function() {
         if($scope.selectedCategory.id != "new") {
             $http.delete(API_ADMIN_CATEGORY + "/" + $scope.editingCategory.id)
-                 .success($scope.loadCategories);
+                 .success(function() {
+                     $scope.loadCategories();
+                 });
         } else {
-            //TODO delete placeholder
+            $scope.loadCategories();
         }
     };
 

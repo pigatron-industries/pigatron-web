@@ -18,13 +18,13 @@
 			<form id="categoryForm" name="categoryForm">
 				<div class="formbuttons" layout="row" layout-align="start center" ng-show="editingCategory!=null">
 					<md-button class="md-primary md-raised" ng-click="saveCategory()">Save</md-button>
-					<md-button class="md-primary md-raised" ng-click="addSubcategory()">Add Subcategory</md-button>
+					<md-button class="md-primary md-raised" ng-disabled="editingCategory.id==null" ng-click="addSubcategory()">Add Subcategory</md-button>
 					<md-button class="md-primary md-raised" ng-disabled="editingCategory.id=='root'" ng-click="deleteCategory()">Delete</md-button>
 				</div>
 				<div class="formfields" layout="column" ng-show="editingCategory!=null">
 					<md-input-container class="md-block">
 						<label>Category Name</label>
-						<input ng-model="editingCategory.name" type="text" required="true" />
+						<input id="categoryName" ng-model="editingCategory.name" type="text" required="true" />
 					</md-input-container>
 				</div>
 			</form>
