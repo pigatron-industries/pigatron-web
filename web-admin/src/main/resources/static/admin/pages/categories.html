@@ -7,6 +7,7 @@
 			<treecontrol class="tree-light"
 						 tree-model="categories"
 						 options="treeOptions"
+						 expanded-nodes="expandedCategories"
 						 selected-node="selectedCategory"
 						 on-selection="onCategorySelect()">
 				{{node.name}}
@@ -18,7 +19,7 @@
 				<div class="formbuttons" layout="row" layout-align="start center" ng-show="editingCategory!=null">
 					<md-button class="md-primary md-raised" ng-click="saveCategory()">Save</md-button>
 					<md-button class="md-primary md-raised" ng-click="addSubcategory()">Add Subcategory</md-button>
-					<md-button class="md-primary md-raised" ng-click="deleteCategory()">Delete</md-button>
+					<md-button class="md-primary md-raised" ng-disabled="editingCategory.id=='root'" ng-click="deleteCategory()">Delete</md-button>
 				</div>
 				<div class="formfields" layout="column" ng-show="editingCategory!=null">
 					<md-input-container class="md-block">

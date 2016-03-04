@@ -1,8 +1,8 @@
 package com.pigatron.shop.web.rest.customer;
 
 import com.pigatron.shop.domain.entity.catalogue.ProductCategory;
-import com.pigatron.shop.domain.repository.ProductCategoryRepository;
-import com.pigatron.shop.web.rest.AbstractGetOnlyController;
+import com.pigatron.shop.service.catalogue.ProductCategoryService;
+import com.pigatron.shop.web.rest.AbstractReadRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "${url.shop}/api/catalogue/category", produces = MediaType.APPLICATION_JSON_VALUE)
-public class CustomerCategoryController extends AbstractGetOnlyController<ProductCategory, String> {
+public class CustomerProductCategoryController extends AbstractReadRestController<ProductCategory> {
 
     @Autowired
-    public CustomerCategoryController(ProductCategoryRepository productCategoryRepository) {
-        super(productCategoryRepository, "name");
+    public CustomerProductCategoryController(ProductCategoryService service) {
+        super(service, "name");
     }
 
 }

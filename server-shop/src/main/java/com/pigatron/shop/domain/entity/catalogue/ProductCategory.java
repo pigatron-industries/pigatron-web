@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCategory {
@@ -15,7 +16,8 @@ public class ProductCategory {
     @Indexed private String name;
     @DBRef private List<ProductCategory> subcategories;
 
-    public ProductCategory() {}
+    public ProductCategory() {
+    }
 
     public ProductCategory(String id, String name) {
         this.id = id;
@@ -39,6 +41,9 @@ public class ProductCategory {
     }
 
     public List<ProductCategory> getSubcategories() {
+        if(subcategories == null) {
+            subcategories = new ArrayList<ProductCategory>();
+        }
         return subcategories;
     }
 
