@@ -44,10 +44,6 @@ public class AdminController {
 		return setupUrl;
 	}
 
-	@RequestMapping(value = "/${url.admin}", method = RequestMethod.GET)
-	public String admin() {
-		return VIEW_ADMIN;
-	}
 
 	@RequestMapping(value = "/${url.admin}/login", method = RequestMethod.GET)
 	public String adminLogin() {
@@ -56,6 +52,11 @@ public class AdminController {
 		} else {
 			return VIEW_ADMINLOGIN;
 		}
+	}
+
+	@RequestMapping(value = "/${url.admin}/**", method = RequestMethod.GET)
+	public String admin() {
+		return VIEW_ADMIN;
 	}
 
 	@RequestMapping(value = "/${url.setup}", method = RequestMethod.POST)

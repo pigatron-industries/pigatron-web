@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head('Admin Login')"></head>
+<head th:include="fragments/head :: head('Admin Login', '${adminUrl}')"></head>
 <body ng-app="login">
 	<div id="page">
 		<header th:replace="fragments/header :: header"></header>

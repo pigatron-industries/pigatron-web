@@ -4,10 +4,12 @@ package com.pigatron.shop.domain.entity.catalogue;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Document
 public class ProductCategory {
 
     public static final String ROOT_ID = "root";
@@ -42,7 +44,7 @@ public class ProductCategory {
 
     public List<ProductCategory> getSubcategories() {
         if(subcategories == null) {
-            subcategories = new ArrayList<ProductCategory>();
+            subcategories = new ArrayList<>();
         }
         return subcategories;
     }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head('Admin')"></head>
+<head th:include="fragments/head :: head('Admin', ${adminUrl})"></head>
 <body ng-app="admin">
 	<div id="page">
 		<header th:replace="fragments/header :: header"></header>
@@ -12,11 +12,11 @@
 					<button class="md-default-theme md-hue-1 md-bg" ng-click="$mdOpenMenu()">Catalogue</button>
 					<md-menu-content class="md-default-theme md-hue-1 md-bg">
 						<md-menu-item>
-							<md-button href="#/categories" ng-click="$mdCloseMenu()">Categories</md-button>
+							<md-button href="categories" ng-click="$mdCloseMenu()">Categories</md-button>
 						</md-menu-item>
 
 						<md-menu-item>
-							<md-button href="#/products" ng-click="$mdCloseMenu()">Products</md-button>
+							<md-button href="products" ng-click="$mdCloseMenu()">Products</md-button>
 						</md-menu-item>
 					</md-menu-content>
 

@@ -12,7 +12,7 @@ var PLACEHOLDER_NAME = "New Category";
  *  ProductCategory editingCategory: A copy of the selected category that is currently being edited.
  */
 
-app.controller('categories', function($scope, $routeParams, $http, $timeout) {
+app.controller('categories', function($scope, $routeParams, $location, $http, $timeout) {
     window.$scope = $scope;
     $scope.$routeParams = $routeParams;
     $scope.editingCategory = null;
@@ -32,25 +32,52 @@ app.controller('categories', function($scope, $routeParams, $http, $timeout) {
         }
     };
 
-    $scope.loadCategories = function(selectCategoryId) {
+    $scope.loadPage = function() {
+        $scope.loadCategoriesInTree(function() {
+            if($routeParams.categoryId) {
+                $scope.loadCategoryInForm($routeParams.categoryId);
+            }
+        });
+    };
+
+    $scope.loadCategoriesInTree = function(callback) {
         $http.get(API_ADMIN_CATEGORY + "/" + ROOT_ID).success(function(data) {
             $scope.categories = [data];
-            $scope.selectCategory(selectCategoryId);
+            if(callback) { callback(); }
         });
     };
 
     $scope.onCategorySelect = function() {
         $timeout(function() {
-            $scope.editingCategory = angular.copy($scope.selectedCategory);
-            $("#categoryName").focus();
+            $scope.loadCategoryInForm($scope.selectedCategory.id);
         }, 1);
     };
 
-    $scope.selectCategory = function(selectCategoryId) {
-        //TODO
-        delete $scope.selectedCategory;
-        $scope.editingCategory = null;
-        $scope.editingCategoryParent = null;
+    $scope.selectCategoryInTree = function(categoryIdToSelect) {
+        function selectCategory(categories) {
+            for(var i=0; i<categories.length; i++) {
+                var currentCategory = categories[i];
+                if(currentCategory.id == categoryIdToSelect) {
+                    $scope.selectedCategory = currentCategory;
+                    return true;
+                }
+                if(selectCategory(currentCategory.subcategories)) {
+                    $scope.expandedCategories.push(currentCategory);
+                    return true;
+                }
+            }
+            return false;
+        }
+        selectCategory($scope.categories);
+    };
+
+    $scope.loadCategoryInForm = function(categoryId) {
+        $http.get(API_ADMIN_CATEGORY + "/" + categoryId).success(function(data) {
+            $scope.editingCategory = data;
+            $scope.selectCategoryInTree(categoryId);
+            $location.path('/categories/'+categoryId);
+            $("#categoryName").focus();
+        });
     };
 
     $scope.saveCategory = function() {
@@ -63,7 +90,7 @@ app.controller('categories', function($scope, $routeParams, $http, $timeout) {
 
         $http.post(url, $scope.editingCategory)
             .success(function (data) {
-                $scope.loadCategories(data.id);
+                $scope.loadPage();
             });
     };
 
@@ -71,27 +98,28 @@ app.controller('categories', function($scope, $routeParams, $http, $timeout) {
         if($scope.selectedCategory.subcategories == undefined) {
             $scope.selectedCategory.subcategories = [];
         }
-        var categoryPlaceholder = { id:PLACEHOLDER_ID, name:PLACEHOLDER_NAME };
-        $scope.editingCategoryParent = $scope.selectedCategory;
-        $scope.editingCategoryParent.subcategories.push(categoryPlaceholder);
-        $scope.selectedCategory = categoryPlaceholder;
-        $scope.editingCategory = { id:null,name:"" };
-
-        //expand parent category in tree
-        $scope.expandedCategories.push($scope.editingCategoryParent);
+        var categoryTreePlaceholder = { id:PLACEHOLDER_ID, name:PLACEHOLDER_NAME };
+        var categoryEditNew = { id:null, name:"" }
+        $scope.selectedCategory.subcategories.push(categoryTreePlaceholder);
+        $scope.editingCategoryParent = $scope.editingCategory;
+        $scope.editingCategory = categoryEditNew;
         $("#categoryName").focus();
+        $timeout(function() {
+            $scope.selectCategoryInTree(categoryTreePlaceholder.id);
+        }, 1);
     };
 
     $scope.deleteCategory = function() {
         if($scope.selectedCategory.id != "new") {
             $http.delete(API_ADMIN_CATEGORY + "/" + $scope.editingCategory.id)
                  .success(function() {
-                     $scope.loadCategories();
+                     $location.path('/categories');
+                     $scope.loadPage();
                  });
         } else {
-            $scope.loadCategories();
+            $scope.loadPage();
         }
     };
 
-    $scope.loadCategories();
+    $scope.loadPage();
 });
