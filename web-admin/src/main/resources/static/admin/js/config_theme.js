@@ -45,7 +45,7 @@ var configTheme = function ($mdThemingProvider) {
     //2c3e50 primary midnight blue
     //9F472E paletton orange
     //598E29 paletton green
-    //e91e63 material pink
+    //E91E63 material pink
 
     var pink = {
         '50': '#f492b3',
@@ -53,15 +53,17 @@ var configTheme = function ($mdThemingProvider) {
         '200': '#f06493',
         '300': '#ee4c83',
         '400': '#eb3573',
-        '500': '#e91e63',
+        '500': '#E91E63',
         '600': '#d81557',
         '700': '#c1134e',
         '800': '#aa1145',
         '900': '#930e3b',
         'A100': '#f7a9c4',
-        'A200': '#f9c1d4',
+        'A200': '#d81557',
         'A400': '#fbd8e4',
         'A700': '#7b0c32',
+        'default': '500',
+        'hue-1': '400',
         'contrastDefaultColor': 'light'
     };
     $mdThemingProvider.definePalette('pink', pink);

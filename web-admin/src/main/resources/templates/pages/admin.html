@@ -5,18 +5,17 @@
 	<div id="page">
 		<header th:replace="fragments/header :: header"></header>
 
-		<div ng-controller="admin" ng-cloak="1" class="ng-cloak">
+		<div ng-controller="admin" ng-cloak="ng-cloak" class="ng-cloak">
 
 			<md-menu-bar class="md-default-theme md-hue-1 md-bg">
 				<md-menu>
 					<button class="md-default-theme md-hue-1 md-bg" ng-click="$mdOpenMenu()">Catalogue</button>
 					<md-menu-content class="md-default-theme md-hue-1 md-bg">
 						<md-menu-item>
-							<md-button href="categories" ng-click="$mdCloseMenu()">Categories</md-button>
+							<md-button ui-sref="categories" ng-click="$mdCloseMenu()">Categories</md-button>
 						</md-menu-item>
-
 						<md-menu-item>
-							<md-button href="products" ng-click="$mdCloseMenu()">Products</md-button>
+							<md-button ui-sref="products" ng-click="$mdCloseMenu()">Products</md-button>
 						</md-menu-item>
 					</md-menu-content>
 
@@ -24,7 +23,7 @@
 			</md-menu-bar>
 
 			<div id="content">
-				<div ng-view=""></div>
+				<div ui-view=""></div>
 			</div>
 
 		</div>

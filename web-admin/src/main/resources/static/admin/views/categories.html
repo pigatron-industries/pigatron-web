@@ -1,0 +1,21 @@
+<div ng-controller="categories" ng-cloak="ng-cloak" class="ng-cloak">
+	<md-content layout="row">
+
+		<div layout="column" class="leftsidebar">
+			<h2>Categories</h2>
+			<treecontrol class="tree-light"
+						 tree-model="categories"
+						 options="treeOptions"
+						 expanded-nodes="expandedCategories"
+						 selected-node="selectedCategory"
+						 on-selection="onCategorySelect()">
+				{{node.name}}
+			</treecontrol>
+		</div>
+
+		<div flex class="formarea" layout="column">
+			<div ui-view=""></div>
+		</div>
+
+	</md-content>
+</div>

@@ -1,27 +1,27 @@
 
-var app = angular.module('admin', ['ngMaterial','ngRoute','mdColors','treeControl']);
+var app = angular.module('admin', ['ngMaterial','ui.router','mdColors','treeControl']);
 
-app.controller('admin', function($scope,  $route, $routeParams, $location) {
-    $scope.$route = $route;
-    $scope.$location = $location;
-    $scope.$routeParams = $routeParams;
+app.controller('admin', function($scope) {
+    //$scope.$route = $route;
+    //$scope.$location = $location;
+    //$scope.$routeParams = $routeParams;
 });
 
-app.config(function($mdThemingProvider, $routeProvider, $locationProvider) {
+app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
     configTheme($mdThemingProvider);
-    $routeProvider.when('/categories', {
-        templateUrl: '/admin/pages/categories.html',
-        controller: 'categories',
-        reloadOnSearch: false
+
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider.state('categories', {
+        url: "/categories",
+        templateUrl: "/admin/views/categories.html"
     });
-    $routeProvider.when('/categories/:categoryId', {
-        templateUrl: '/admin/pages/categories.html',
-        controller: 'categories',
-        reloadOnSearch: false
+    $stateProvider.state('categories.category', {
+        url: "/:categoryId",
+        templateUrl: "/admin/views/categories.category.html"
     });
-    $routeProvider.when('/products', {
-        templateUrl: '/admin/pages/products.html',
-        controller: 'products'
+    $stateProvider.state('products', {
+        url: "/products",
+        templateUrl: "/admin/views/products.html"
     });
-    $locationProvider.html5Mode(true);
 });
