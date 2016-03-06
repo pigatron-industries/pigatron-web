@@ -79,9 +79,7 @@ app.controller('categories', function($scope, $stateParams, $state, $http, $time
     $scope.loadCategoriesInTree();
 });
 
-
-
-app.controller('category', function($scope, $stateParams, $state, $http, $timeout) {
+app.controller('category', function($scope, $stateParams, $state, $http) {
     window.$category = $scope;
 
     $scope.loadCategoryInForm = function() {
@@ -110,6 +108,8 @@ app.controller('category', function($scope, $stateParams, $state, $http, $timeou
                 });
             });
     };
+
+    window.save = $scope.saveCategory;
 
     $scope.addSubcategory = function() {
         $categories.addSubcategory();

@@ -1,13 +1,26 @@
 
-var app = angular.module('admin', ['ngMaterial','ui.router','mdColors','treeControl']);
+var app = angular.module('admin', ['ngMaterial','ui.router','cfp.hotkeys','mdColors','treeControl']);
 
-app.controller('admin', function($scope) {
-    //$scope.$route = $route;
-    //$scope.$location = $location;
-    //$scope.$routeParams = $routeParams;
+app.controller('admin', function($scope, hotkeys) {
+
+    hotkeys.add({
+        combo: ['meta+s'],
+        description: 'Save',
+        allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+        callback: function(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            } else {
+                // internet explorer
+                e.returnValue = false;
+            }
+            window.save();
+        }
+    });
+
 });
 
-app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
+app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider, hotkeysProvider) {
     configTheme($mdThemingProvider);
 
     $urlRouterProvider.otherwise("/");
@@ -24,4 +37,6 @@ app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
         url: "/products",
         templateUrl: "/admin/views/products.html"
     });
+
+    hotkeysProvider.cheatSheetHotkey = 'meta+/';
 });
