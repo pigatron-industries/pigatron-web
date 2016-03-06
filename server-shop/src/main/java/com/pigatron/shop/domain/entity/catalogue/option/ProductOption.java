@@ -1,14 +1,8 @@
 package com.pigatron.shop.domain.entity.catalogue.option;
 
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(name = "SelectProduct", value = SelectProduct.class),
-        @JsonSubTypes.Type(name = "SelectValue", value = SelectValue.class)
-})
 public abstract class ProductOption {
 
     private String type;

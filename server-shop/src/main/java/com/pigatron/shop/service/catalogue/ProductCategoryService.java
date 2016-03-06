@@ -12,12 +12,9 @@ import java.util.List;
 @Service
 public class ProductCategoryService extends AbstractRepositoryService<ProductCategory> {
 
-	ProductCategoryRepository productCategoryRepository;
-
 	@Autowired
 	public ProductCategoryService(ProductCategoryRepository repository) {
 		super(repository);
-		this.productCategoryRepository = repository;
 	}
 
 	public ProductCategory addSubcategory(String parentId, ProductCategory newCategory) {
