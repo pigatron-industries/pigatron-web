@@ -20,7 +20,7 @@ app.controller('admin', function($scope, hotkeys) {
 
 });
 
-app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider, hotkeysProvider) {
+app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider, hotkeysProvider, $httpProvider) {
     configTheme($mdThemingProvider);
 
     $urlRouterProvider.otherwise("/");
@@ -39,4 +39,26 @@ app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider, hotk
     });
 
     hotkeysProvider.cheatSheetHotkey = 'meta+/';
+
+    $httpProvider.interceptors.push("httpInterceptor");
+});
+
+app.factory('httpInterceptor', function($q) {
+    return {
+        'request': function(config) {
+            return config;
+        },
+        'requestError': function(rejection) {
+            return $q.reject(rejection);
+        },
+        'response': function(response) {
+            return response;
+        },
+        'responseError': function(rejection) {
+            if(rejection.status == 401) {
+                location.reload();
+            }
+            return $q.reject(rejection);
+        }
+    };
 });

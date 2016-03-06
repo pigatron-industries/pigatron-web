@@ -4,6 +4,7 @@ import com.pigatron.shop.service.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,9 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
+@Order(1)
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${url.admin}")
     private String adminUrl;
@@ -22,25 +24,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecUserDetailsService secUserDetailsService;
 
+    @Autowired
+    private ApiAuthenticationEntryPoint apiAuthenticationEntryPoint;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-            .antMatcher("/" + adminUrl + "/**")
+                .antMatcher("/" + adminUrl + "/api/**")
                 .authorizeRequests()
                 .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
-                .and()
-            .formLogin()
-                .loginPage("/" + adminUrl + "/login")
-                .defaultSuccessUrl("/" + adminUrl)
-                .permitAll()
-                .and()
-            .logout()
-                .logoutUrl("/logout")
-                .deleteCookies("remember-me")
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .and()
-            .rememberMe();
+            .and()
+                .exceptionHandling().authenticationEntryPoint(apiAuthenticationEntryPoint);
+        ;
     }
 
     @Override
