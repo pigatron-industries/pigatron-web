@@ -20,9 +20,10 @@ app.controller('admin', function($scope, hotkeys) {
 
 });
 
-app.config(function($mdThemingProvider, $stateProvider, $urlRouterProvider, hotkeysProvider, $httpProvider) {
+app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider, $httpProvider) {
     configTheme($mdThemingProvider);
 
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
     $stateProvider.state('categories', {
