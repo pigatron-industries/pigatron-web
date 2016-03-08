@@ -1,7 +1,8 @@
 
 var app = angular.module('admin', ['ngMaterial','ui.router','cfp.hotkeys','mdColors','treeControl']);
 
-app.controller('admin', function($scope, hotkeys) {
+app.controller('admin', function($scope, $http, hotkeys) {
+    window.$http = $http;
 
     hotkeys.add({
         combo: ['meta+s'],
@@ -18,6 +19,12 @@ app.controller('admin', function($scope, hotkeys) {
         }
     });
 
+    $scope.logout = function() {
+        $http.post("/logout").success(function() {
+            location.reload();
+        });
+    }
+
 });
 
 app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider, $httpProvider) {
@@ -26,6 +33,10 @@ app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlR
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
+    $stateProvider.state('home', {
+        url: "/",
+        templateUrl: "/admin/views/home.html"
+    });
     $stateProvider.state('categories', {
         url: "/categories",
         templateUrl: "/admin/views/categories.html"
@@ -47,6 +58,9 @@ app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlR
 app.factory('httpInterceptor', function($q) {
     return {
         'request': function(config) {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            config.headers[header] = token;
             return config;
         },
         'requestError': function(rejection) {
