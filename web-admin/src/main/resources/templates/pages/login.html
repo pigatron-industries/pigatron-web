@@ -6,7 +6,7 @@
 		<header th:replace="fragments/header :: header"></header>
 
 		<div id="content" class="center" style="max-width:500px;" ng-controller="login">
-			<form th:action="@{/}+${adminUrl}+@{/login}" method="post">
+			<form th:action="@{/}+${adminUrl}+@{/login}" method="post" name="loginForm" novalidate="true">
 				<div layout="row">
 					<h1>Login</h1>
 					<div layout="column" class="formarea">
@@ -16,16 +16,22 @@
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<md-input-container class="md-block">
 							<label>Email</label>
-							<input type="text" name="username" required="true" />
+							<input type="text" name="username" id="username" ng-model="username" ng-required="true" />
+							<div ng-messages="loginForm.username.$error">
+								<div ng-message="required">Email is required.</div>
+							</div>
 						</md-input-container>
 						<md-input-container class="md-block">
 							<label>Password</label>
-							<input type="password" name="password" required="true" />
+							<input type="password" name="password" id="password" ng-model="password" required="true" />
+							<div ng-messages="loginForm.password.$error">
+								<div ng-message="required">Password is required.</div>
+							</div>
 						</md-input-container>
 						<div layout="row" layout-align="space-between center">
 							<md-checkbox ng-model="rememberme" class="md-primary" style="margin-bottom:0" name="remember-me" aria-label="Remember Me">Remember Me</md-checkbox>
 							<input ng-if="rememberme" type="hidden" name="remember-me" value="on"/>
-							<md-button class="md-primary md-raised" type="submit">Log In</md-button>
+							<md-button ng-disabled="loginForm.$invalid" class="md-primary md-raised" type="submit">Log In</md-button>
 						</div>
 					</div>
 				</div>
@@ -37,7 +43,7 @@
 
 	<!-- Controllers -->
 	<script>
-		var app = angular.module('login', ['ngMaterial', 'mdColors']);
+		var app = angular.module('login', ['ngMaterial', 'ngMessages', 'mdColors']);
 		app.controller('login', function($scope) {});
 		app.config(function($mdThemingProvider) {
 			configTheme($mdThemingProvider);

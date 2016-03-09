@@ -1,6 +1,6 @@
 <div ng-controller="category" ng-cloak="ng-cloak" class="ng-cloak">
 
-    <form id="categoryForm" name="categoryForm">
+    <form id="categoryForm" name="categoryForm" novalidate="true">
         <div class="formbuttons" layout="row" layout-align="start center">
             <md-button ng-class="{'md-accent':categoryForm.$dirty}" class="md-primary md-raised" ng-disabled="categoryForm.$invalid" ng-click="saveCategory()">Save</md-button>
             <md-button class="md-primary md-raised" ng-disabled="editingCategory.id==null" ng-click="addSubcategory()">Add Subcategory</md-button>
