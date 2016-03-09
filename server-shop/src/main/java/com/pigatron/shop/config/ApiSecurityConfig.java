@@ -1,6 +1,6 @@
 package com.pigatron.shop.config;
 
-import com.pigatron.shop.service.SecUserDetailsService;
+import com.pigatron.shop.service.security.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,6 @@
 package com.pigatron.shop.service;
 
+import com.pigatron.shop.service.security.SecUserDetailsService;
 import com.pigatron.shop.web.admin.InitialConfigurationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

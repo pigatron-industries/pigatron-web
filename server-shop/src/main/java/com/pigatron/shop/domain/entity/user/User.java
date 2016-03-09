@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public class User implements UserDetails {
@@ -22,6 +23,12 @@ public class User implements UserDetails {
     private List<Role> roles;
 
     private boolean locked;
+
+    // remember me token data
+    private String tokenSeries;
+    private String tokenValue;
+    private Date tokenDate;
+
 
     public User() {
     }
@@ -90,5 +97,29 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getTokenSeries() {
+        return tokenSeries;
+    }
+
+    public void setTokenSeries(String tokenSeries) {
+        this.tokenSeries = tokenSeries;
+    }
+
+    public String getTokenValue() {
+        return tokenValue;
+    }
+
+    public void setTokenValue(String tokenValue) {
+        this.tokenValue = tokenValue;
+    }
+
+    public Date getTokenDate() {
+        return tokenDate;
+    }
+
+    public void setTokenDate(Date tokenDate) {
+        this.tokenDate = tokenDate;
     }
 }

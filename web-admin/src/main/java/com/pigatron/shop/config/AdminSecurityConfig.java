@@ -1,6 +1,7 @@
 package com.pigatron.shop.config;
 
-import com.pigatron.shop.service.SecUserDetailsService;
+import com.pigatron.shop.service.security.SecUserDetailsService;
+import com.pigatron.shop.service.security.UserTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @Order(2)
@@ -22,8 +22,14 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${url.admin}")
     private String adminUrl;
 
+    @Value("${user.rememberMeValidityDays}")
+    private int rememberMeValidityDays;
+
     @Autowired
     private SecUserDetailsService secUserDetailsService;
+
+    @Autowired
+    private UserTokenRepository userTokenRepository;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -37,7 +43,10 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/" + adminUrl)
                 .permitAll()
                 .and()
-            .rememberMe();
+            .rememberMe()
+                .rememberMeParameter("remember-me")
+                .tokenRepository(userTokenRepository)
+                .tokenValiditySeconds(rememberMeValidityDays*24*60*60);
     }
 
     @Override

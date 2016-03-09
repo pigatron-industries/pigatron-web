@@ -1,4 +1,4 @@
-package com.pigatron.shop.service;
+package com.pigatron.shop.service.security;
 
 import com.pigatron.shop.domain.entity.user.User;
 import com.pigatron.shop.domain.repository.UserRepository;
