@@ -7,11 +7,11 @@ dependencies {
     // Web Jars
     compile('org.webjars:jquery:2.2.0')
     compile('org.webjars:angularjs:1.5.0-rc.2')
+    compile('org.webjars.bower:angular-messages:1.5.0')
     compile('org.webjars.npm:angular-ui-router:0.2.18')
     compile('org.webjars.npm:angular-hotkeys:1.7.0')
     compile('org.webjars:angular-tree-control:0.2.22')
     compile('org.webjars.bower:angular-animate:1.5.0')
     compile('org.webjars.bower:angular-aria:1.5.0')
     compile('org.webjars.bower:angular-material:1.0.5')
-    compile('org.webjars.bower:angular-material-icons:0.6.0')
 }

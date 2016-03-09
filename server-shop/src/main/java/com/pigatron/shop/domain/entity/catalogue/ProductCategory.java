@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ProductCategory {
     public static final String ROOT_ID = "root";
 
     @Id private String id;
-    @Indexed private String name;
+    @Indexed @NotNull private String name;
     @DBRef private List<ProductCategory> subcategories;
 
     public ProductCategory() {
