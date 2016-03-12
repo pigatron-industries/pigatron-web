@@ -79,15 +79,17 @@ app.controller('categories', function($scope, $stateParams, $state, $http, $time
     $scope.loadCategoriesInTree();
 });
 
-app.controller('category', function($scope, $stateParams, $state, $http) {
+app.controller('category', function($scope, $stateParams, $state, $http, $timeout) {
     window.$category = $scope;
 
     $scope.loadCategoryInForm = function() {
         $http.get(API_ADMIN_CATEGORY + "/" + $stateParams.categoryId).success(function(data) {
             $scope.editingCategory = data;
-            $categories.selectCategoryInTree($stateParams.categoryId);
             $scope.categoryForm.$setPristine();
             $("#categoryName").focus();
+            $timeout(function() {
+                $categories.selectCategoryInTree($stateParams.categoryId);
+            }, 1);
         });
     };
 
