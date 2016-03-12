@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro">
+
+	<group name="lib">
+		<js>/lib/jquery/jquery.min.js</js>
+		<!-- Angular -->
+		<js>/lib/angularjs/angular.js</js>
+		<js>/lib/angular-messages/angular-messages.js</js>
+		<js>/lib/angular-ui-router/release/angular-ui-router.min.js</js>
+		<!-- Angular Material -->
+		<js>/lib/angular-aria/angular-aria.min.js</js>
+		<js>/lib/angular-animate/angular-animate.min.js</js>
+		<js>/lib/angular-material/angular-material.min.js</js>
+		<css>/lib/angular-material/angular-material.min.css</css>
+		<!-- Other Angular Plugins -->
+		<js>/lib/angular-hotkeys/build/hotkeys.js</js>
+		<css>/lib/angular-hotkeys/build/hotkeys.css</css>
+		<js>/lib/angular-tree-control/angular-tree-control.js</js>
+		<css>/lib/angular-tree-control/css/tree-control.css</css>
+	</group>
+
+	<group name="test">
+		<js>/lib/jquery/jquery.min.js</js>
+	</group>
+
+	<group name="admin">
+		<js>classpath:static/admin/js/*.js</js>
+		<css>/admin/css/admin.css</css>
+	</group>
+
+</groups>

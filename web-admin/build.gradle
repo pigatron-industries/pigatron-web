@@ -3,6 +3,9 @@ dependencies {
     compile project(":server-shop")
     compile('org.springframework.boot:spring-boot-starter-web')
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile('ro.isdc.wro4j:wro4j-core:1.7.9')
+    compile('ro.isdc.wro4j:wro4j-extensions:1.7.9')
+    compile('org.webjars:webjars-locator:0.30')
 
     // Web Jars
     compile('org.webjars:jquery:2.2.0')
