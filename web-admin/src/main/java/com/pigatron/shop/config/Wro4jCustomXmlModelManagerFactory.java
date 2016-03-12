@@ -12,8 +12,6 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Wro4jCustomXmlModelManagerFactory extends ConfigurableWroManagerFactory {
-//	private static final Logger log = LoggerFactory
-//			.getLogger(Wro4jCustomXmlModelManagerFactory.class);
 
 	final private Properties props;
 
@@ -47,10 +45,4 @@ public class Wro4jCustomXmlModelManagerFactory extends ConfigurableWroManagerFac
 		};
 	}
 
-	@Override
-	protected ProcessorsFactory newProcessorsFactory() {
-		final SimpleProcessorsFactory rv = new SimpleProcessorsFactory();
-		rv.addPreProcessor(new CssUrlRewritingProcessor());
-		return rv;
-	}
 }
