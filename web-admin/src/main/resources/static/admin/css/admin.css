@@ -6,6 +6,11 @@ body {
     margin:0;
     padding:0;
     height:100%;
+    overflow-x: hidden;
+}
+
+md-content {
+    overflow-x: hidden;
 }
 
 #page {
@@ -148,3 +153,37 @@ md-button {
     border-radius: 5px;
 }
 
+
+/* View transitions */
+.view-container {
+    position: relative;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+    position: absolute;
+    -webkit-transition:all 0.2s ease-in-out;
+    -moz-transition:all 0.2s ease-in-out;
+    -o-transition:all 0.2s ease-in-out;
+    transition:all 0.2s ease-in-out;
+    left: 0;
+    right: 0;
+}
+
+[ui-view].ng-enter {
+    transition-delay: 0.1s;
+    -moz-transition-delay: 0.1s;
+    -webkit-transition-delay: 0.1s;
+    opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+    opacity: 1;
+}
+
+[ui-view].ng-leave {
+    opacity: 1;
+}
+
+[ui-view].ng-leave-active {
+    opacity: 0;
+}
