@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import ro.isdc.wro.config.jmx.ConfigConstants;
 import ro.isdc.wro.http.ConfigurableWroFilter;
@@ -15,6 +16,7 @@ import ro.isdc.wro.model.resource.processor.factory.ConfigurableProcessorsFactor
 import java.util.Properties;
 
 @Configuration
+@PropertySource("classpath:/application-admin.properties")
 public class WebResourceConfig {
 
 	@Bean
