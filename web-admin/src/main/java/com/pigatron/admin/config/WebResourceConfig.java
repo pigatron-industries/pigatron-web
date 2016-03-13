@@ -11,18 +11,29 @@ import org.springframework.core.env.Environment;
 import ro.isdc.wro.config.jmx.ConfigConstants;
 import ro.isdc.wro.http.ConfigurableWroFilter;
 import ro.isdc.wro.model.WroModel;
+import ro.isdc.wro.model.WroModelInspector;
+import ro.isdc.wro.model.group.Group;
+import ro.isdc.wro.model.resource.Resource;
+import ro.isdc.wro.model.resource.ResourceType;
 import ro.isdc.wro.model.resource.processor.factory.ConfigurableProcessorsFactory;
 
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:/application-admin.properties")
+@PropertySource("classpath:/web-admin.properties")
 public class WebResourceConfig {
+
+	private static final String ADMIN_GROUP = "admin";
+	private static final String URL_PATTERN = "/wro/*";
+	private static final String PROP_PREFIX = "wro.";
+
+	private WroModel wroModel;
 
 	@Bean
 	@Autowired
 	public WroModel wroModel() {
-		return new WebResourceXmlModelFactory().create();
+		wroModel = new WebResourceXmlModelFactory().create();
+		return wroModel;
 	}
 
 	@Bean
@@ -34,8 +45,14 @@ public class WebResourceConfig {
 		filter.setProperties(props);
 		filter.setWroManagerFactory(webResourceModelManagerFactory);
 		fr.setFilter(filter);
-		fr.addUrlPatterns("/wro/*");
+		fr.addUrlPatterns(URL_PATTERN);
 		return fr;
+	}
+
+	protected void addResource(String location, ResourceType type) {
+		Group admin = new WroModelInspector(wroModel).getGroupByName(ADMIN_GROUP);
+		admin.addResource(Resource.create(location, type));
+
 	}
 
 	private static final String[] OTHER_WRO_PROP = new String[] {
@@ -51,12 +68,11 @@ public class WebResourceConfig {
 		for (String name : OTHER_WRO_PROP) {
 			addProperty(env, prop, name);
 		}
-		//log.debug("Wro4J properties {}", prop);
 		return prop;
 	}
 
 	private void addProperty(Environment env, Properties properties, String name) {
-		String value = env.getProperty("wro." + name);
+		String value = env.getProperty(PROP_PREFIX + name);
 		if (value != null) {
 			properties.put(name, value);
 		}
