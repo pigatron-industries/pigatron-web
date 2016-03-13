@@ -11,6 +11,7 @@ public class ShopAdminResourceConfig extends WebResourceConfig {
 
     @Autowired
     public void addWebResources(WroModel wroModel) {
+        addResource("/admin/js/shop-config.js", ResourceType.JS);
         addResource("/admin/js/categories.js", ResourceType.JS);
         addResource("/admin/js/products.js", ResourceType.JS);
     }
