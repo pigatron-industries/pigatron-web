@@ -62,7 +62,7 @@
             function addRule(fgInterpolate, bgInterpolate, themeName, paletteName, colorArray, hueName){
                 // set up interpolation functions to build css rules.
                 if(!colorArray) return;
-                var colorValue = 'rgb(' + colorArray.value[0] + ',' + colorArray.value[1] + ',' + colorArray.value[2] + ')';
+                var colorValue = rgbColour(colorArray);
                 customSheet.insertRule(fgInterpolate({
                     theme: themeName,
                     palette: paletteName,
@@ -83,7 +83,7 @@
             function addBorderRule(bdrInterpolate, themeName, paletteName, colorArray, hueName){
                 // set up interpolation functions to build css rule for border color.
                 if(!colorArray) return;
-                var colorValue = 'rgb(' + colorArray.value[0] + ',' + colorArray.value[1] + ',' + colorArray.value[2] + ')';
+                var colorValue = rgbColour(colorArray);
                 customSheet.insertRule(bdrInterpolate({
                     theme: themeName,
                     palette: paletteName,
@@ -91,6 +91,10 @@
                     hue: hueName
                 }), index);
                 index += 1;
+            }
+
+            function rgbColour(colorArray) {
+                return 'rgb(' + colorArray.value[0] + ',' + colorArray.value[1] + ',' + colorArray.value[2] + ')';
             }
 
             function getStyleSheet() {
