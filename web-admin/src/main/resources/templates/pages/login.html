@@ -5,7 +5,7 @@
 	<div id="page">
 		<header th:replace="fragments/header :: header"></header>
 
-		<div id="content" class="center" style="max-width:500px;" ng-controller="login">
+		<div id="content" style="max-width:500px;" ng-controller="login" ng-cloak="ng-cloak" class="ng-cloak center">
 			<form th:action="@{/}+${adminUrl}+@{/login}" method="post" name="loginForm" novalidate="true">
 				<div layout="row">
 					<h1>Login</h1>

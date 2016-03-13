@@ -79,7 +79,7 @@ app.factory('httpInterceptor', function($q) {
 });
 
 app.factory('$exceptionHandler', function () {
-    return function errorHandler(exception, cause) {Added
+    return function errorHandler(exception, cause) {
         console.error(exception.stack);
     };
 });

@@ -1,6 +1,7 @@
 package com.pigatron.shop.web.admin;
 
 import com.pigatron.shop.domain.repository.UserRepository;
+import com.pigatron.shop.menu.MenuItem;
 import com.pigatron.shop.service.InitialConfigurationService;
 import com.pigatron.shop.web.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class AdminController {
 	@Autowired
 	private InitialConfigurationService initialConfigurationService;
 
+	@Autowired
+	private MenuItem adminMenu;
+
 	@ModelAttribute("configureForm")
 	public InitialConfigurationForm getConfigureForm(){
 		return new InitialConfigurationForm();
@@ -56,6 +60,11 @@ public class AdminController {
 	@ModelAttribute("setupUrl")
 	public String getSetupUrl() {
 		return setupUrl;
+	}
+
+	@ModelAttribute("adminMenu")
+	public MenuItem getAdminMenu() {
+		return adminMenu;
 	}
 
 

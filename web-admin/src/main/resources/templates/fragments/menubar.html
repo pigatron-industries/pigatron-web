@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <md-menu-bar th:fragment="menubar(adminMenu)" class="md-default-theme md-hue-1 md-bg">
+        <th:block th:each="submenu : ${adminMenu.submenus}">
+            <!-- Action -->
+            <button th:if="${submenu.action!=null}" th:text="${submenu.name}" th:attr="${submenu.action.type}=${submenu.action.action}"></button>
+            <!-- Submenu-->
+            <md-menu th:if="${submenu.action==null}" th:include="fragments/menu :: menu(${submenu}, 1)"></md-menu>
+        </th:block>
+    </md-menu-bar>
+</body>
+</html>
