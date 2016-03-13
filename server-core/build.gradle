@@ -1,7 +1,5 @@
 
-
 dependencies {
-    compile project(":server-core")
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.data:spring-data-mongodb')

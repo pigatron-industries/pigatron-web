@@ -19,10 +19,6 @@
 		<css>/lib/angular-tree-control/css/tree-control.css</css>
 	</group>
 
-	<group name="test">
-		<js>/lib/jquery/jquery.min.js</js>
-	</group>
-
 	<group name="admin">
 		<js>classpath:static/admin/js/*.js</js>
 		<css>/admin/css/admin.css</css>

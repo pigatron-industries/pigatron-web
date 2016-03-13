@@ -1,3 +1,5 @@
+include 'server-core'
 include 'server-shop'
 include 'web-admin'
+include 'web-admin-shop'
 
