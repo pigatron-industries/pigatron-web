@@ -20,7 +20,9 @@
 	</group>
 
 	<group name="admin">
-		<js>classpath:static/admin/js/*.js</js>
+		<js>/admin/js/admin.js</js>
+		<js>/admin/js/config_theme.js</js>
+		<js>/admin/js/md-colours.js</js>
 		<css>/admin/css/admin.css</css>
 	</group>
 

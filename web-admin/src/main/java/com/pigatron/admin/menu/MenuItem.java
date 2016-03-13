@@ -51,6 +51,11 @@ public class MenuItem {
         return this;
     }
 
+    public MenuItem addSubmenu(int index, MenuItem submenu) {
+        submenus.add(index, submenu);
+        return this;
+    }
+
     public MenuAction getAction() {
         return action;
     }

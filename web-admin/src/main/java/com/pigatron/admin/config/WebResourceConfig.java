@@ -23,9 +23,9 @@ import java.util.Properties;
 @PropertySource("classpath:/web-admin.properties")
 public class WebResourceConfig {
 
-	private static final String ADMIN_GROUP = "admin";
-	private static final String URL_PATTERN = "/wro/*";
-	private static final String PROP_PREFIX = "wro.";
+	public static final String ADMIN_GROUP = "admin";
+	public static final String URL_PATTERN = "/wro/*";
+	public static final String PROP_PREFIX = "wro.";
 
 	private WroModel wroModel;
 
@@ -49,7 +49,7 @@ public class WebResourceConfig {
 		return fr;
 	}
 
-	protected void addResource(String location, ResourceType type) {
+	public void addResource(String location, ResourceType type) {
 		Group admin = new WroModelInspector(wroModel).getGroupByName(ADMIN_GROUP);
 		admin.addResource(Resource.create(location, type));
 
