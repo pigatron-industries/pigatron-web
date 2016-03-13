@@ -1,18 +1,9 @@
 package com.pigatron.admin.web;
 
-public class InitialConfigurationForm {
+public class CreateUserForm {
 
-	private String shopName;
 	private String adminUsername;
 	private String adminPassword;
-
-	public String getShopName() {
-		return shopName;
-	}
-
-	public void setShopName(String shopName) {
-		this.shopName = shopName;
-	}
 
 	public String getAdminPassword() {
 		return adminPassword;

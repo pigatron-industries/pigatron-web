@@ -1,5 +1,6 @@
-package com.pigatron.admin.config;
+package com.pigatron.admin.shop.config;
 
+import com.pigatron.admin.config.WebResourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import ro.isdc.wro.model.WroModel;

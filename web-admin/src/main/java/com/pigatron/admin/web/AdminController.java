@@ -2,7 +2,7 @@ package com.pigatron.admin.web;
 
 import com.pigatron.admin.domain.repository.UserRepository;
 import com.pigatron.admin.menu.MenuItem;
-import com.pigatron.admin.service.InitialConfigurationService;
+import com.pigatron.admin.service.security.SecUserDetailsService;
 import com.pigatron.server.web.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,15 +42,10 @@ public class AdminController {
 	private UserRepository userRepository;
 
 	@Autowired
-	private InitialConfigurationService initialConfigurationService;
+	SecUserDetailsService secUserDetailsService;
 
 	@Autowired
 	private MenuItem adminMenu;
-
-	@ModelAttribute("configureForm")
-	public InitialConfigurationForm getConfigureForm(){
-		return new InitialConfigurationForm();
-	}
 
 	@ModelAttribute("adminUrl")
 	public String getAdminUrl() {
@@ -83,9 +78,9 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/${url.setup}", method = RequestMethod.POST)
-	public String setup(@ModelAttribute InitialConfigurationForm configurationForm) {
+	public String setup(@ModelAttribute CreateUserForm configurationForm) {
 		if(userRepository.count() == 0) {
-			initialConfigurationService.configure(configurationForm);
+			secUserDetailsService.createAdminUser(configurationForm.getAdminUsername(), configurationForm.getAdminPassword());
 			return "redirect:/" + adminUrl;
 		} else {
 			throw new ResourceNotFoundException();
