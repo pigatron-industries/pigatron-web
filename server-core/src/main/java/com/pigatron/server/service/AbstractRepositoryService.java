@@ -1,23 +1,21 @@
 package com.pigatron.server.service;
 
-import com.google.common.collect.Lists;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
 public abstract class AbstractRepositoryService<T> implements RepositoryService<T> {
 
-	protected PagingAndSortingRepository<T, String> repository;
+	protected MongoRepository<T, String> repository;
 
-	public AbstractRepositoryService(PagingAndSortingRepository<T, String> repository) {
+	public AbstractRepositoryService(MongoRepository<T, String> repository) {
 		this.repository = repository;
 	}
 
 	@Override
-	public List<T> findAll(Sort orders) {
-		Iterable<T> all = repository.findAll();
-		return Lists.newArrayList(all);
+	public List<T> findAll(Sort order) {
+		return repository.findAll(order);
 	}
 
 	@Override

@@ -21,8 +21,9 @@ public class ShippingMethodService extends AbstractRepositoryService<ShippingMet
 	}
 
 	public List<ShippingOption> getShippingOptionsForOrder(Order order) {
-		Iterable<ShippingMethod> shippingMethods = repository.findAll();
+		List<ShippingMethod> shippingMethods = repository.findAll();
 		List<ShippingOption> shippingOptions = new ArrayList<>();
+
 		for(ShippingMethod shippingMethod : shippingMethods) {
 			Optional<Float> price = shippingMethod.getPriceFor(order);
 			if(price.isPresent()) {
