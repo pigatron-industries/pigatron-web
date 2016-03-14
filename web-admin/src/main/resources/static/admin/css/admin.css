@@ -1,6 +1,14 @@
 
-/* Page */
+/* Extra colours */
+md-toast .success-text {
+    color: greenyellow;
+}
 
+md-toast .error-text {
+    font-weight: bold;
+}
+
+/* Page */
 html,
 body {
     margin:0;
@@ -72,7 +80,7 @@ footer div {
 
 #content {
     padding-bottom:5em;   /* Height of the footer + gap */
-    margin-top: 20px;
+    padding-top: 1.5em;
 }
 
 .center {

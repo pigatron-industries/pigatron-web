@@ -108,6 +108,7 @@ app.controller('category', function($scope, $stateParams, $state, $http, $timeou
                     $state.go("categories.category", {categoryId: data.id});
                     $categories.selectCategoryInTree(data.id);
                 });
+                $rootScope.notifySuccess('Category Saved');
             });
     };
 

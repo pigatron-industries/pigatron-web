@@ -9,8 +9,10 @@
 
 			<md-menu-bar th:replace="fragments/menubar :: menubar(${adminMenu})"></md-menu-bar>
 
-			<div id="content">
-				<div ui-view=""></div>
+			<div layout-fill="layout-fill" id="toast-container">
+				<div id="content">
+					<div ui-view=""></div>
+				</div>
 			</div>
 
 		</div>

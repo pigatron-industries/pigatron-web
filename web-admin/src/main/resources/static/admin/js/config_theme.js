@@ -83,6 +83,8 @@ var configTheme = function ($mdThemingProvider) {
         'A200': '#ffaeb3',
         'A400': '#ffc8cb',
         'A700': '#7b0006',
+        'hue-1': '100',
+        'hue-2': '900',
         'contrastDefaultColor': 'light'
     };
     $mdThemingProvider.definePalette('warn', warn);

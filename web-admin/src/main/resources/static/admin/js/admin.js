@@ -1,8 +1,9 @@
 
 var app = angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','cfp.hotkeys','mdColors','treeControl']);
 
-app.controller('admin', function($scope, $http, hotkeys) {
+app.controller('admin', function($scope, $http, hotkeys, $mdToast, $rootScope) {
     window.$http = $http;
+    window.$rootScope = $rootScope;
 
     hotkeys.add({
         combo: ['meta+s'],
@@ -23,11 +24,40 @@ app.controller('admin', function($scope, $http, hotkeys) {
         $http.post("/logout").success(function() {
             location.reload();
         });
-    }
+    };
+
+    $rootScope.notifyError = function(message) {
+        $rootScope.notify(message, 'md-default-theme md-warn md-hue-1 md-fg error-text');
+    };
+
+    $rootScope.notifyInfo = function(message) {
+        $rootScope.notify(message, '');
+    };
+
+    $rootScope.notifySuccess = function(message) {
+        $rootScope.notify(message, 'success-text');
+    };
+
+    $rootScope.notify = function(message, classes) {
+        $mdToast.show({
+            parent: angular.element(document.getElementById('content')),
+            controller: 'toastController',
+            template: "<md-toast><div class='md-toast-content " + classes + "'><span class='md-toast-text' flex>" + message + "</span><md-button ng-click='close()'>Close</md-button></div></md-toast>",
+            position: 'top right',
+            hideDelay: 10000
+        });
+    };
 
 });
 
-app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider, $httpProvider) {
+app.controller('toastController', function($scope, $mdToast) {
+    $scope.close = function() {
+        $mdToast.hide();
+    };
+});
+
+app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider,
+                    $httpProvider, $provide) {
     configTheme($mdThemingProvider);
 
     $locationProvider.html5Mode(true);
@@ -36,7 +66,15 @@ app.config(function($mdThemingProvider, $stateProvider, $locationProvider, $urlR
     hotkeysProvider.cheatSheetHotkey = 'meta+/';
 
     $httpProvider.interceptors.push("httpInterceptor");
+
+    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
+        return function(exception, cause) {
+            $delegate(exception, cause);
+            window.$rootScope.notifyError(exception);
+        };
+    }]);
 });
+
 
 app.factory('httpInterceptor', function($q) {
     return {
@@ -55,14 +93,10 @@ app.factory('httpInterceptor', function($q) {
         'responseError': function(rejection) {
             if(rejection.status == 401) {
                 location.reload();
+            } else {
+                window.$rootScope.notifyError('Connection Error');
             }
             return $q.reject(rejection);
         }
-    };
-});
-
-app.factory('$exceptionHandler', function () {
-    return function errorHandler(exception, cause) {
-        console.error(exception.stack);
     };
 });
