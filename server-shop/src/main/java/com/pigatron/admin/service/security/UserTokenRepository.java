@@ -36,7 +36,10 @@ public class UserTokenRepository implements PersistentTokenRepository {
     @Override
     public PersistentRememberMeToken getTokenForSeries(String tokenSeries) {
         User user = userRepository.findByTokenSeries(tokenSeries);
-        return new PersistentRememberMeToken(user.getUsername(), user.getTokenSeries(), user.getTokenValue(), user.getTokenDate());
+        if(user != null) {
+            return new PersistentRememberMeToken(user.getUsername(), user.getTokenSeries(), user.getTokenValue(), user.getTokenDate());
+        }
+        return null;
     }
 
     @Override
