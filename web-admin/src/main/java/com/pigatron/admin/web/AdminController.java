@@ -1,8 +1,8 @@
 package com.pigatron.admin.web;
 
-import com.pigatron.admin.domain.repository.UserRepository;
+import com.pigatron.shop.security.repository.UserRepository;
 import com.pigatron.admin.menu.MenuItem;
-import com.pigatron.admin.service.security.SecUserDetailsService;
+import com.pigatron.shop.security.SecUserDetailsService;
 import com.pigatron.server.web.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
