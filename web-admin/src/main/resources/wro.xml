@@ -15,8 +15,8 @@
 		<!-- Other Angular Plugins -->
 		<js>/lib/angular-hotkeys/build/hotkeys.js</js>
 		<css>/lib/angular-hotkeys/build/hotkeys.css</css>
-		<js>/lib/angular-tree-control/angular-tree-control.js</js>
-		<css>/lib/angular-tree-control/css/tree-control.css</css>
+		<js>/lib/angular-ui-tree/dist/angular-ui-tree.min.js</js>
+		<css>/lib/angular-ui-tree/dist/angular-ui-tree.min.css</css>
 	</group>
 
 	<group name="admin">

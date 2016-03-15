@@ -1,0 +1,18 @@
+<div class="tree-node tree-node-content" ng-class="">
+    <a ui-tree-handle class="btn btn-success btn-xs" ng-click="toggle(this)">
+        <span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}">drag</span>
+    </a>
+    <a ui-sref="categories.category({categoryId:category.id })">
+        <span>{{category.name}}</span>
+    </a>
+    <a class="pull-right btn btn-danger btn-xs" ng-click="remove(this)">
+        <span class="glyphicon glyphicon-remove">Delete</span>
+    </a>
+    <a class="pull-right btn btn-primary btn-xs" ng-click="newSubcategory(this)" style="margin-right: 8px;">
+        <span class="glyphicon glyphicon-plus">New</span>
+    </a>
+</div>
+<ol ui-tree-nodes="" ng-model="category.subcategories">
+    <li ng-repeat="category in category.subcategories" ui-tree-node ng-include="'/admin/views/categories.node.html'">
+    </li>
+</ol>

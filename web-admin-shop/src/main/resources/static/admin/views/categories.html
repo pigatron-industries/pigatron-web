@@ -3,14 +3,11 @@
 
 		<div layout="column" class="leftsidebar">
 			<h2>Categories</h2>
-			<treecontrol class="tree-light"
-						 tree-model="categories"
-						 options="treeOptions"
-						 expanded-nodes="expandedCategories"
-						 selected-node="selectedCategory"
-						 on-selection="onCategorySelect()">
-				{{node.name}}
-			</treecontrol>
+			<div ui-tree="treeOptions" id="tree-root">
+				<ol ui-tree-nodes ng-model="categories">
+					<li ng-repeat="category in categories" ui-tree-node ng-include="'/admin/views/categories.node.html'"></li>
+				</ol>
+			</div>
 		</div>
 
 		<div flex class="formarea" layout="column">

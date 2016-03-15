@@ -3,7 +3,6 @@
     <form id="categoryForm" name="categoryForm" novalidate="true">
         <div class="formbuttons" layout="row" layout-align="start center">
             <md-button ng-class="{'md-accent':categoryForm.$dirty}" class="md-primary md-raised" ng-disabled="categoryForm.$invalid" ng-click="saveCategory()">Save</md-button>
-            <md-button class="md-primary md-raised" ng-disabled="editingCategory.id==null" ng-click="addSubcategory()">Add Subcategory</md-button>
             <md-button class="md-primary md-raised" ng-disabled="editingCategory.id=='root'" ng-click="deleteCategory()">Delete</md-button>
         </div>
         <div class="formfields" layout="column">
