@@ -46,6 +46,46 @@ public class MenuItem {
         this.submenus = submenus;
     }
 
+    public MenuItem submenu(MenuItem newMenu) {
+        Optional<MenuItem> existing = submenus.stream().filter(s -> s.getId().equals(newMenu.getId())).findFirst();
+        if(existing.isPresent()) {
+            for(MenuItem newSubmenu : newMenu.getSubmenus()) {
+                existing.get().submenu(newSubmenu);
+            }
+        } else {
+            submenus.add(newMenu);
+        }
+        return this;
+    }
+
+    public MenuItem submenuBefore(String beforeId, MenuItem newMenu) {
+        int index = 0;
+        for(MenuItem submenu : submenus) {
+            if(submenu.getId().equals(beforeId)) {
+                break;
+            }
+            index++;
+        }
+        submenus.add(index, newMenu);
+        return this;
+    }
+
+    public MenuItem submenuAfter(String afterId, MenuItem newMenu) {
+        int index = 0;
+        for(MenuItem submenu : submenus) {
+            if(submenu.getId().equals(afterId)) {
+                break;
+            }
+            index++;
+        }
+        if(index + 1 > submenus.size()) {
+            submenus.add(0, newMenu);
+        } else {
+            submenus.add(index + 1, newMenu);
+        }
+        return this;
+    }
+
     public MenuItem addSubmenu(MenuItem submenu) {
         submenus.add(submenu);
         return this;
