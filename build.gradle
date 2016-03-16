@@ -15,6 +15,9 @@ allprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 	apply plugin: 'spring-boot'
+	apply plugin: 'maven'
+	group = 'com.pigatron.web'
+	version = '0.0.1-SNAPSHOT'
 	repositories {
 		mavenCentral()
 	}
