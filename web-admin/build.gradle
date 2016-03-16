@@ -34,4 +34,7 @@ grunt {
     bufferOutput = false
 }
 
+build.dependsOn installGrunt
+build.dependsOn npmInstall
 build.dependsOn grunt_build
+bootRun.dependsOn grunt_build

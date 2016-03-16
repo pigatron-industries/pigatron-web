@@ -1,3 +1,9 @@
+var srcDir = "src/main/resources/static/admin/js/";
+var buildDir = "build/resources/main/static/admin/js/";
+
+var files = {};
+files[buildDir+"admin.js"] = srcDir+"admin.jsx";
+
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
@@ -6,9 +12,7 @@ module.exports = function(grunt) {
                 sourceMap: true
             },
             dist: {
-                files: {
-                    "build/resources/main/static/admin/js/admin.js": "src/main/resources/static/admin/js/admin.js"
-                }
+                files: files
             }
         }
     });
