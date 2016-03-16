@@ -3,5 +3,5 @@ dependencies {
     compile project(":web-admin")
 
     // Web Jars
-    compile('org.webjars:angular-tree-control:0.2.22')
+    compile('org.webjars.bower:angular-ui-tree:2.15.0')
 }

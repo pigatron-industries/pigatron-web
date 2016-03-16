@@ -1,5 +1,5 @@
 
-var app = angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','cfp.hotkeys','mdColors','treeControl']);
+var app = angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','ui.tree','cfp.hotkeys','mdColors']);
 
 app.controller('admin', function($scope, $http, hotkeys, $mdToast, $rootScope) {
     window.$http = $http;
