@@ -24,7 +24,7 @@ dependencies {
 }
 
 node {
-    version = '0.10.22'
+    version = '4.4.0'
     download = true
 }
 
@@ -34,7 +34,6 @@ grunt {
     bufferOutput = false
 }
 
-build.dependsOn installGrunt
-build.dependsOn npmInstall
+grunt_build.dependsOn npmInstall
 build.dependsOn grunt_build
 bootRun.dependsOn grunt_build

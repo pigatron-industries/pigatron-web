@@ -18,7 +18,7 @@ public class AdminMenuConfig {
     }
 
     private MenuItem logoutMenu() {
-        MenuItem logoutMenu = new MenuItem("logout", "Logout", new MenuAction(MenuAction.TYPE_JSFUNC, "logout()"));
+        MenuItem logoutMenu = new MenuItem("logout", "Logout", new MenuAction(MenuAction.TYPE_JSFUNC, "admin.logout()"));
         return logoutMenu;
     }
 

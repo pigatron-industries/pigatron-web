@@ -46,15 +46,16 @@ class AdminController {
             });
         };
 
-        $scope.logout = function() {
-            $http.post("/logout").success(function() {
-                location.reload();
-            });
-        }
+    }
+
+    logout() {
+        this.$http.post("/logout").success(function() {
+            location.reload();
+        });
     }
 }
 
-app.controller('admin', AdminController);
+app.controller('AdminController', AdminController);
 
 app.controller('toastController', function($scope, $mdToast) {
     $scope.close = function() {

@@ -5,7 +5,7 @@
 	<div id="page">
 		<header th:replace="fragments/header :: header"></header>
 
-		<div ng-controller="admin" ng-cloak="ng-cloak" class="ng-cloak">
+		<div ng-controller="AdminController as admin" ng-cloak="ng-cloak" class="ng-cloak">
 
 			<md-menu-bar th:replace="fragments/menubar :: menubar(${adminMenu})"></md-menu-bar>
 
