@@ -19,12 +19,14 @@
   "admin":{
     "prefix":"/admin/",
     "js":[
-      "js/AdminController.js",
-      "js/MessageController.js",
-      "js/AdminConfig.js",
-      "js/HttpInterceptor.js",
-      "js/md-colours.js",
-      "js/admin.js"
+      "js/md-colours.js"
+    ],
+    "jsx":[
+      "js/AdminController",
+      "js/MessageController",
+      "js/AdminConfig",
+      "js/HttpInterceptor",
+      "js/admin"
     ],
     "css":[
       "css/admin.css"

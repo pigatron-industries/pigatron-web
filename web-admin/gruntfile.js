@@ -1,12 +1,22 @@
-var srcDir = "src/main/resources/static/admin/js/";
-var buildDir = "build/resources/main/static/admin/js/";
+var wroConfig = require("./src/main/resources/wro.json");
+var srcDir = "src/main/resources/static";
+var buildDir = "build/resources/main/static";
 
 var files = {};
-files[buildDir+"admin.js"] = srcDir+"admin.jsx";
-files[buildDir+"AdminController.js"] = srcDir+"AdminController.jsx";
-files[buildDir+"AdminConfig.js"] = srcDir+"AdminConfig.jsx";
-files[buildDir+"MessageController.js"] = srcDir+"MessageController.jsx";
-files[buildDir+"HttpInterceptor.js"] = srcDir+"HttpInterceptor.jsx";
+for (var group in wroConfig) {
+    if (wroConfig.hasOwnProperty(group)) {
+        var prefix = wroConfig[group].prefix;
+        if(wroConfig[group].jsx) {
+            for (var i = 0; i < wroConfig[group].jsx.length; i++) {
+                var src = srcDir + prefix + wroConfig[group].jsx[i] + ".jsx";
+                var dest = buildDir + prefix + wroConfig[group].jsx[i] + ".js";
+                files[dest] = src;
+            }
+        }
+    }
+}
+
+console.log(files);
 
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);

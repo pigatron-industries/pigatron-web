@@ -90,17 +90,30 @@ public class WebResourceConfig {
 			String prefix = group.getValue().get("prefix").asText();
 
 			//JS
-			Iterator<JsonNode> js = group.getValue().get("js").iterator();
-			while(js.hasNext()) {
-				String location = prefix + js.next().asText();
-				wroGroup.addResource(Resource.create(location, ResourceType.JS));
+			if(group.getValue().get("js") != null) {
+				Iterator<JsonNode> js = group.getValue().get("js").iterator();
+				while (js.hasNext()) {
+					String location = prefix + js.next().asText();
+					wroGroup.addResource(Resource.create(location, ResourceType.JS));
+				}
+			}
+
+			//JSX
+			if(group.getValue().get("jsx") != null) {
+				Iterator<JsonNode> jsx = group.getValue().get("jsx").iterator();
+				while (jsx.hasNext()) {
+					String location = prefix + jsx.next().asText() + ".js";
+					wroGroup.addResource(Resource.create(location, ResourceType.JS));
+				}
 			}
 
 			//CSS
-			Iterator<JsonNode> css = group.getValue().get("css").iterator();
-			while(css.hasNext()) {
-				String location = prefix + css.next().asText();
-				wroGroup.addResource(Resource.create(location, ResourceType.CSS));
+			if(group.getValue().get("css") != null) {
+				Iterator<JsonNode> css = group.getValue().get("css").iterator();
+				while (css.hasNext()) {
+					String location = prefix + css.next().asText();
+					wroGroup.addResource(Resource.create(location, ResourceType.CSS));
+				}
 			}
 		}
 	}
