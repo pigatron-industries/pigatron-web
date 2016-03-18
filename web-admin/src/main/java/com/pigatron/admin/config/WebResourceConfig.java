@@ -1,8 +1,10 @@
 package com.pigatron.admin.config;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import com.pigatron.admin.config.wro.WebResourceModelManagerFactory;
-import com.pigatron.admin.config.wro.WebResourceXmlModelFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,10 @@ import ro.isdc.wro.model.resource.Resource;
 import ro.isdc.wro.model.resource.ResourceType;
 import ro.isdc.wro.model.resource.processor.factory.ConfigurableProcessorsFactory;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 @Configuration
@@ -30,9 +36,9 @@ public class WebResourceConfig {
 	private WroModel wroModel;
 
 	@Bean
-	@Autowired
-	public WroModel wroModel() {
-		wroModel = new WebResourceXmlModelFactory().create();
+	public WroModel wroModel() throws IOException {
+		wroModel = new WroModel();
+		addResources("wro.json");
 		return wroModel;
 	}
 
@@ -52,7 +58,51 @@ public class WebResourceConfig {
 	public void addResource(String location, ResourceType type) {
 		Group admin = new WroModelInspector(wroModel).getGroupByName(ADMIN_GROUP);
 		admin.addResource(Resource.create(location, type));
+	}
 
+	public void addResources(String filename) throws IOException {
+		String wroConfig = readWroConfig(filename);
+		populateWroModel(wroModel, wroConfig);
+	}
+
+	private String readWroConfig(String filename) throws IOException {
+		URL url = Resources.getResource(filename);
+		String text = Resources.toString(url, Charsets.UTF_8);
+		return text;
+	}
+
+	private void populateWroModel(WroModel wroModel, String jsonConfig) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode rootNode = mapper.readTree(jsonConfig);
+		WroModelInspector wroModelInspector = new WroModelInspector(wroModel);
+
+		Iterator<Map.Entry<String, JsonNode>> groups = rootNode.fields();
+		while(groups.hasNext()) {
+			//Group
+			Map.Entry<String, JsonNode> group = groups.next();
+			Group wroGroup = wroModelInspector.getGroupByName(group.getKey());
+			if(wroGroup == null) {
+				wroGroup = new Group(group.getKey());
+				wroModel.addGroup(wroGroup);
+			}
+
+			//Prefix
+			String prefix = group.getValue().get("prefix").asText();
+
+			//JS
+			Iterator<JsonNode> js = group.getValue().get("js").iterator();
+			while(js.hasNext()) {
+				String location = prefix + js.next().asText();
+				wroGroup.addResource(Resource.create(location, ResourceType.JS));
+			}
+
+			//CSS
+			Iterator<JsonNode> css = group.getValue().get("css").iterator();
+			while(css.hasNext()) {
+				String location = prefix + css.next().asText();
+				wroGroup.addResource(Resource.create(location, ResourceType.CSS));
+			}
+		}
 	}
 
 	private static final String[] OTHER_WRO_PROP = new String[] {

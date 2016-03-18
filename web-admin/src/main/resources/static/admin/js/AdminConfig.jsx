@@ -1,4 +1,25 @@
 
+var AdminConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider,
+         $httpProvider, $provide) {
+    configTheme($mdThemingProvider);
+
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise("/");
+
+    hotkeysProvider.cheatSheetHotkey = 'meta+/';
+
+    $httpProvider.interceptors.push("httpInterceptor");
+
+    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
+        return function(exception, cause) {
+            $delegate(exception, cause);
+            window.$rootScope.notifyError(exception);
+        };
+    }]);
+};
+
+
+
 var configTheme = function ($mdThemingProvider) {
     var arapawa = {
         '50': '#41a0c2',

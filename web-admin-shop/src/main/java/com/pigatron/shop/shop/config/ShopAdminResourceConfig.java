@@ -3,7 +3,8 @@ package com.pigatron.shop.shop.config;
 import com.pigatron.admin.config.WebResourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import ro.isdc.wro.model.resource.ResourceType;
+
+import java.io.IOException;
 
 @Configuration
 public class ShopAdminResourceConfig {
@@ -12,10 +13,8 @@ public class ShopAdminResourceConfig {
     private WebResourceConfig webResourceConfig;
 
     @Autowired
-    public void addWebResources() {
-        webResourceConfig.addResource("/admin/js/shop-config.js", ResourceType.JS);
-        webResourceConfig.addResource("/admin/js/categories.js", ResourceType.JS);
-        webResourceConfig.addResource("/admin/js/products.js", ResourceType.JS);
+    public void addWebResources() throws IOException {
+        webResourceConfig.addResources("wro_shop.json");
     }
 
 }
