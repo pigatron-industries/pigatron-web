@@ -106,17 +106,4 @@ public class AdminController {
 		securityContextLogoutHandler.logout(request, response, null);
 	}
 
-	@RequestMapping("/lib/{webjar}/**")
-	public ResponseEntity locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {
-		try {
-			WebJarAssetLocator webJarAssetLocator = new WebJarAssetLocator();
-			String mvcPrefix = "/lib/" + webjar + "/"; // This prefix must match the mapping path!
-			String mvcPath = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
-			String fullPath = webJarAssetLocator.getFullPath(webjar, mvcPath.substring(mvcPrefix.length()));
-			return new ResponseEntity(new ClassPathResource(fullPath), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-
 }
