@@ -1,3 +1,8 @@
+plugins {
+    id "com.moowork.node" version "0.12"
+    id "com.moowork.grunt" version "0.12"
+}
+
 dependencies {
     compile project(":server-shop")
     compile project(":web-admin")
@@ -5,3 +10,22 @@ dependencies {
     // Web Jars
     compile('org.webjars.bower:angular-ui-tree:2.15.0')
 }
+
+
+// Web resource handling
+
+node {
+    version = '4.4.0'
+    download = true
+}
+
+grunt {
+    workDir = file("${project.projectDir}")
+    colors = true
+    bufferOutput = false
+}
+
+task webResourceBuild {
+    dependsOn npmInstall, grunt_build
+}
+grunt_build.mustRunAfter installGrunt

@@ -9,7 +9,7 @@ var PLACEHOLDER_NAME = "New Category";
  *  ProductCategory[] categories : Full category tree starting at root.
  */
 
-app.controller('categories', function($scope, $stateParams, $state, $http) {
+shop.controller('categories', function($scope, $stateParams, $state, $http) {
     window.$categories = $scope;
     $scope.editingCategory = null;
     $scope.editingCategoryParent = null;
@@ -56,7 +56,7 @@ app.controller('categories', function($scope, $stateParams, $state, $http) {
  * Scope variables:
  *  ProductCategory editingCategory : The category being edited
  */
-app.controller('category', function($scope, $stateParams, $state, $http, $timeout) {
+shop.controller('category', function($scope, $stateParams, $state, $http, $timeout) {
     window.$category = $scope;
 
     $scope.loadCategory = function() {

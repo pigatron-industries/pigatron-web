@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import com.pigatron.admin.config.wro.SubModules;
 import com.pigatron.admin.config.wro.WebResourceModelManagerFactory;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -21,13 +22,11 @@ import ro.isdc.wro.model.resource.processor.factory.ConfigurableProcessorsFactor
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 @Configuration
 @PropertySource("classpath:/web-admin.properties")
-public class WebResourceConfig {
+public class AdminResourceConfig {
 
 	public static final String ADMIN_GROUP = "admin";
 	public static final String URL_PATTERN = "/wro/*";
@@ -53,6 +52,11 @@ public class WebResourceConfig {
 		fr.setFilter(filter);
 		fr.addUrlPatterns(URL_PATTERN);
 		return fr;
+	}
+
+	@Bean
+	public SubModules submodules() {
+		return new SubModules();
 	}
 
 	public void addResource(String location, ResourceType type) {

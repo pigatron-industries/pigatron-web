@@ -1,5 +1,5 @@
 
-app.config(function($stateProvider) {
+shop.config(function($stateProvider) {
 
     $stateProvider.state('home', {
         url: "/",

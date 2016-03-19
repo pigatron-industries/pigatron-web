@@ -11,6 +11,7 @@
   "admin":{
     "prefix":"/admin/",
     "js":[
+      "js/shop.js",
       "js/categories.js",
       "js/products.js",
       "js/shop-config.js"

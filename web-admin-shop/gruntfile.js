@@ -1,5 +1,5 @@
 
-var wroConfig = "wro.json";
+var wroConfig = "wro_shop.json";
 
 var resourceDir = "src/main/resources/";
 var srcDir = "src/main/resources/static";

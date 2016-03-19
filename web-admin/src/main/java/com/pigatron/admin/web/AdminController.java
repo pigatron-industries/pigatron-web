@@ -1,5 +1,6 @@
 package com.pigatron.admin.web;
 
+import com.pigatron.admin.config.wro.SubModules;
 import com.pigatron.shop.security.repository.UserRepository;
 import com.pigatron.admin.menu.MenuItem;
 import com.pigatron.shop.security.SecUserDetailsService;
@@ -24,6 +25,7 @@ import org.webjars.WebJarAssetLocator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -47,6 +49,9 @@ public class AdminController {
 	@Autowired
 	private MenuItem adminMenu;
 
+	@Autowired
+	private SubModules submodules;
+
 	@ModelAttribute("adminUrl")
 	public String getAdminUrl() {
 		return adminUrl;
@@ -60,6 +65,12 @@ public class AdminController {
 	@ModelAttribute("adminMenu")
 	public MenuItem getAdminMenu() {
 		return adminMenu;
+	}
+
+	@ModelAttribute("submodules")
+	public String getSubmodules() {
+		String s = submodules.getSubmodules().toString();
+		return s.substring(1, s.length()-1);
 	}
 
 

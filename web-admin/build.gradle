@@ -23,6 +23,8 @@ dependencies {
     compile('org.webjars.bower:angular-material:1.0.5')
 }
 
+// Web resource handling
+
 node {
     version = '4.4.0'
     download = true
@@ -34,4 +36,8 @@ grunt {
     bufferOutput = false
 }
 
-build.dependsOn grunt_build
+task webResourceBuild {
+    dependsOn npmInstall, grunt_build
+}
+grunt_build.mustRunAfter installGrunt
+
