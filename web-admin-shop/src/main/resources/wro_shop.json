@@ -13,6 +13,7 @@
     "jsx":[
       "catalogue/js/CategoriesController",
       "catalogue/js/CategoryController",
+      "catalogue/js/CategoryService",
       "catalogue/js/CatalogueConfig",
       "catalogue/js/ProductsController",
       "catalogue/js/index"

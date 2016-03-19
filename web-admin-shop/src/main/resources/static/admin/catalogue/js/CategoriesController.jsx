@@ -6,28 +6,28 @@ var PLACEHOLDER_NAME = "New Category";
 
 class CategoriesController {
 
-    constructor($stateParams, $state, $http) {
+    constructor($stateParams, $state, categoryService) {
         window.$categories = this;
-        this.$http = $http;
+        this.categoryService = categoryService;
         this.$stateParams = $stateParams;
         this.$state = $state;
         this.treeOptions = {
-            removed: function(scope) { this.deleteCategory(scope.$modelValue.id); },
-            dropped: function(event) { this.moveCategory(event); }
+            removed: (scope) => { this.deleteCategory(scope.$modelValue.id); },
+            dropped: (event) => { this.moveCategory(event); }
         };
         this.load();
     }
 
     //TODO should use promise instead of callback
     load(callback) {
-        this.$http.get(API_ADMIN_CATEGORY + "/" + ROOT_ID)
+        this.categoryService.getRoot()
             .success((data) => {
                 this.categories = data.subcategories;
                 if(callback) { callback(); }
             });
     }
 
-    newSubcategory() {
+    newSubcategory(scope) {
         var category = scope.$modelValue;
         category.subcategories.push({
             id: PLACEHOLDER_ID,
@@ -38,7 +38,7 @@ class CategoriesController {
     }
 
     deleteSubcategory(categoryId) {
-        this.$http.delete(API_ADMIN_CATEGORY + "/" + categoryId)
+        this.categoryService.delete(categoryId)
             .success(() => {
                 if(window.$category.editingCategory.id == categoryId) {
                     this.$state.go('categories');

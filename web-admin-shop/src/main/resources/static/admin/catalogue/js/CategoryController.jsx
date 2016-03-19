@@ -2,19 +2,20 @@
 
 class CategoryController {
 
-    constructor($scope, $rootScope, $http, $state, $stateParams) {
+    constructor($scope, $rootScope, $http, $state, $stateParams, categoryService) {
         window.$category = this;
         this.$scope = $scope;
         this.$http = $http;
         this.$state = $state;
         this.$stateParams = $stateParams;
         this.$rootScope = $rootScope;
+        this.categoryService = categoryService;
         this.load($stateParams.categoryId);
         window.save = () => this.saveCategory;
     }
 
     load() {
-        this.$http.get(API_ADMIN_CATEGORY + "/" + this.$stateParams.categoryId)
+        this.categoryService.get(this.$stateParams.categoryId)
             .success((data) => {
                 this.editingCategory = data;
                 this.setPristine();
@@ -33,14 +34,7 @@ class CategoryController {
     }
 
     saveCategory() {
-        var url;
-        if(this.editingCategory.id == null) {
-            url = API_ADMIN_CATEGORY + '/' + this.editingParentId;
-        } else {
-            url = API_ADMIN_CATEGORY;
-        }
-
-        this.$http.post(url, this.editingCategory)
+        this.categoryService.save(this.editingCategory, this.editingParentId)
             .success((data) => {
                 this.setPristine();
                 // TODO should not call controller directly
