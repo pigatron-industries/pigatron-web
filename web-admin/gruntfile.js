@@ -20,8 +20,6 @@ for (var group in wroConfig) {
     }
 }
 
-console.log(files);
-
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({

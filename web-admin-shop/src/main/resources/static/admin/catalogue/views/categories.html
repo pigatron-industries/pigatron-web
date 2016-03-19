@@ -1,11 +1,11 @@
-<div ng-controller="categories" ng-cloak="ng-cloak" class="ng-cloak">
+<div ng-controller="CategoriesController as categories" ng-cloak="ng-cloak" class="ng-cloak">
 	<md-content layout="row">
 
 		<div layout="column" class="leftsidebar">
 			<h2>Categories</h2>
 			<div ui-tree="treeOptions" id="tree-root">
-				<ol ui-tree-nodes ng-model="categories">
-					<li ng-repeat="category in categories" ui-tree-node ng-include="'/admin/views/categories.node.html'"></li>
+				<ol ui-tree-nodes ng-model="categories.categories">
+					<li ng-repeat="category in categories.categories" ui-tree-node ng-include="'/admin/catalogue/views/categories.node.html'"></li>
 				</ol>
 			</div>
 		</div>

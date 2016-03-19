@@ -26,7 +26,7 @@ dependencies {
 // Web resource handling
 
 node {
-    version = '4.4.0'
+    version = '5.9.0'
     download = true
 }
 
@@ -40,4 +40,4 @@ task webResourceBuild {
     dependsOn npmInstall, grunt_build
 }
 grunt_build.mustRunAfter installGrunt
-
+processResources.dependsOn grunt_build

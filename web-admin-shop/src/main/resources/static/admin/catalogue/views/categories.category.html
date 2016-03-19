@@ -1,0 +1,19 @@
+<div ng-controller="CategoryController as category" ng-cloak="ng-cloak" class="ng-cloak">
+
+    <form id="categoryForm" name="categoryForm" novalidate="true">
+        <div class="formbuttons" layout="row" layout-align="start center">
+            <md-button ng-class="{'md-accent':categoryForm.$dirty}" class="md-primary md-raised" ng-disabled="categoryForm.$invalid" ng-click="category.saveCategory()">Save</md-button>
+            <md-button class="md-primary md-raised" ng-disabled="category.editingCategory.id=='root'" ng-click="category.deleteCategory()">Delete</md-button>
+        </div>
+        <div class="formfields" layout="column">
+            <md-input-container>
+                <label>Category Name</label>
+                <input id="name" name="name" ng-model="category.editingCategory.name" type="text" required="true" />
+                <div ng-messages="categoryForm.name.$error">
+                    <div ng-message="required">Name is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+
+</div>

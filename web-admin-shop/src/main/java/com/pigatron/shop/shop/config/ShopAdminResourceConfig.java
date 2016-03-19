@@ -16,7 +16,7 @@ public class ShopAdminResourceConfig {
 
     @Autowired
     public void addSubmodule(SubModules submodules) {
-        submodules.addSubmodule("shop");
+        submodules.addSubmodule("admin.shop.catalogue");
     }
 
     @Autowired

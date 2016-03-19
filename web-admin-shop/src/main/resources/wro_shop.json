@@ -10,11 +10,12 @@
   },
   "admin":{
     "prefix":"/admin/",
-    "js":[
-      "js/shop.js",
-      "js/categories.js",
-      "js/products.js",
-      "js/shop-config.js"
+    "jsx":[
+      "catalogue/js/CategoriesController",
+      "catalogue/js/CategoryController",
+      "catalogue/js/CatalogueConfig",
+      "catalogue/js/ProductsController",
+      "catalogue/js/index"
     ],
     "css":[
     ]
