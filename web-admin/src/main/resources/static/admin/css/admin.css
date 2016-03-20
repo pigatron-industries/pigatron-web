@@ -79,8 +79,8 @@ footer div {
 }
 
 #content {
-    padding-bottom:5em;   /* Height of the footer + gap */
-    padding-top: 1.5em;
+    padding-bottom:4em;   /* Height of the footer */
+    padding-top: 0;
 }
 
 .center {
@@ -127,19 +127,22 @@ md-menu-divider {
 
 h1, h2 {
     text-align: right;
-    padding-right: 40px;
+    padding-right: 10px;
     padding-left: 20px;
     margin-top: 10px;
 }
 
 .leftsidebar {
-    width:350px;
+    margin-top: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 
 /* Forms */
 
 .formarea {
+    margin-top:1em;
     padding-left: 20px;
     border-left: 1px solid #dddddd;
 }

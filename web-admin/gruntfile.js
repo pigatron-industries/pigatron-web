@@ -22,6 +22,8 @@ for (var group in wroConfig) {
 
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
     grunt.initConfig({
         "babel": {
             options: {
@@ -30,8 +32,18 @@ module.exports = function(grunt) {
             dist: {
                 files: files
             }
+        },
+        copy: {
+            "angular-data-table": {
+                files: [{
+                    cwd: "node_modules/angular-data-table/release/",
+                    src: ["**"],
+                    dest: "build/resources/main/static/lib/angular-data-table/",
+                    expand: true
+                }]
+            }
         }
     });
 
-    grunt.registerTask('build', ['babel']);
+    grunt.registerTask('build', ['babel','copy:angular-data-table']);
 };
