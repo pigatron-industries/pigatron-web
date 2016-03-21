@@ -1,5 +1,5 @@
 
-abstract form controllerclass AbstractFormController {
+class AbstractFormController {
 
     constructor($scope, $state, $stateParams, dataService) {
         this.$scope = $scope;
