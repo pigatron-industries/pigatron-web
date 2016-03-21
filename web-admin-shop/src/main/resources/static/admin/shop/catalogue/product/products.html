@@ -1,0 +1,19 @@
+<div ng-controller="ProductsController as products" ng-cloak="ng-cloak" class="ng-cloak">
+	<md-content layout="row">
+
+		<div layout="column" class="leftsidebar">
+			<h2>Products</h2>
+			<div class="toolbar" layout="row" layout-align="end center">
+				<md-button class="md-fab md-mini md-primary" aria-label="New Product" ui-sref="product({id:'new'})">
+					<md-tooltip md-direction="bottom">New Product</md-tooltip>
+					<span class="fa fa-lg fa-plus"></span>
+				</md-button>
+			</div>
+		</div>
+
+		<div flex class="tablearea" layout="column">
+			<dtable options="products.tableOptions" rows="products.tableData" class="material" selected="selected" on-row-click="onRowClick(row)" on-select="onSelect(rows)"></dtable>
+		</div>
+
+	</md-content>
+</div>

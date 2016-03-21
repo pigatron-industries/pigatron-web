@@ -12,7 +12,7 @@ class CategoriesController {
         this.$stateParams = $stateParams;
         this.$state = $state;
         this.treeOptions = {
-            removed: (scope) => { this.deleteCategory(scope.$modelValue.id); },
+            removed: (scope) => { this.remove(scope.$modelValue.id); },
             dropped: (event) => { this.moveCategory(event); }
         };
         this.load();
@@ -21,8 +21,8 @@ class CategoriesController {
     //TODO should use promise instead of callback
     load(callback) {
         this.categoryService.getRoot()
-            .success((data) => {
-                this.categories = data.subcategories;
+            .then((success) => {
+                this.categories = success.data.subcategories;
                 if(callback) { callback(); }
             });
     }
@@ -34,13 +34,14 @@ class CategoriesController {
             name: PLACEHOLDER_NAME,
             subcategories: []
         });
-        window.$category.newCategory(category.id);
+        window.$category.newSubcategory(category.id);
     }
 
-    deleteSubcategory(categoryId) {
-        this.categoryService.delete(categoryId)
-            .success(() => {
-                if(window.$category.editingCategory.id == categoryId) {
+    remove(categoryId) {
+        this.categoryService.remove(categoryId)
+            .then((success) => {
+                // If the deleted category was open the close the form
+                if(window.$category.formData.id == categoryId) {
                     this.$state.go('categories');
                 }
             });

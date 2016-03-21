@@ -2,7 +2,7 @@
     <a ui-tree-handle class="btn btn-success btn-xs" ng-click="toggle(this)">
         <span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}">drag</span>
     </a>
-    <a ui-sref="categories.category({categoryId:category.id })">
+    <a ui-sref="categories.category({id:category.id})">
         <span>{{category.name}}</span>
     </a>
     <a class="pull-right btn btn-danger btn-xs" ng-click="remove(this)">
@@ -13,6 +13,6 @@
     </a>
 </div>
 <ol ui-tree-nodes="" ng-model="category.subcategories">
-    <li ng-repeat="category in category.subcategories" ui-tree-node ng-include="'/admin/catalogue/views/categories.node.html'">
+    <li ng-repeat="category in category.subcategories" ui-tree-node ng-include="'/admin/shop/catalogue/category/categories.node.html'">
     </li>
 </ol>

@@ -9,14 +9,16 @@
     ]
   },
   "admin":{
-    "prefix":"/admin/",
+    "prefix":"/admin/shop/",
     "jsx":[
-      "catalogue/js/CategoriesController",
-      "catalogue/js/CategoryController",
-      "catalogue/js/CategoryService",
-      "catalogue/js/CatalogueConfig",
-      "catalogue/js/ProductsController",
-      "catalogue/js/index"
+      "catalogue/category/CategoriesController",
+      "catalogue/category/CategoryController",
+      "catalogue/category/CategoryService",
+      "catalogue/product/ProductsController",
+      "catalogue/product/ProductController",
+      "catalogue/product/ProductService",
+      "catalogue/CatalogueConfig",
+      "catalogue/index"
     ],
     "css":[
     ]

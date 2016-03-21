@@ -1,0 +1,21 @@
+<div ng-controller="CategoryController as category" ng-cloak="ng-cloak" class="ng-cloak">
+
+    <form id="form" name="form" novalidate="true">
+        <div class="formbuttons" layout="row" layout-align="start center">
+            <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="New Product" ng-click="category.save()">
+                <md-tooltip md-direction="bottom">Save</md-tooltip>
+                <span class="fa fa-lg fa-save"></span>
+            </md-button>
+        </div>
+        <div class="formfields" layout="column">
+            <md-input-container>
+                <label>Category Name</label>
+                <input id="name" name="name" ng-model="category.formData.name" type="text" required="true" />
+                <div ng-messages="form.name.$error">
+                    <div ng-message="required">Name is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+
+</div>

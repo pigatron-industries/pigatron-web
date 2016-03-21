@@ -29,4 +29,6 @@ task webResourceBuild {
     dependsOn npmInstall, grunt_build
 }
 grunt_build.mustRunAfter installGrunt
+grunt_build.mustRunAfter npmInstall
 processResources.dependsOn grunt_build
+build.dependsOn webResourceBuild
