@@ -22,8 +22,8 @@ class AbstractRestService {
         return this.$http.post(this.getUrl(), data);
     }
 
-    delete(id) {
-        this.$http.delete(this.getUrl(id));
+    remove(id) {
+        return this.$http.delete(this.getUrl(id));
     }
 
 }
