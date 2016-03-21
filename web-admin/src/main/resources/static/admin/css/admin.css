@@ -130,12 +130,13 @@ h1, h2 {
     padding-right: 10px;
     padding-left: 20px;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .leftsidebar {
     margin-top: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 
@@ -158,6 +159,16 @@ md-input-container {
 md-button {
     font-weight: bold;
     color:white !important;
+}
+
+.md-button.md-fab.md-mini {
+    line-height: 36px;
+    width: 36px;
+    height: 36px;
+}
+
+.fa-lg {
+    font-size: 1.6em;
 }
 
 .errorbox {

@@ -16,7 +16,8 @@
       "angular-material/angular-material.min.css",
       "angular-hotkeys/build/hotkeys.css",
       "angular-data-table/dataTable.css",
-      "angular-data-table/material.css"
+      "angular-data-table/material.css",
+      "font-awesome/css/font-awesome.min.css"
     ]
   },
   "admin":{
@@ -25,6 +26,7 @@
       "js/md-colours.js"
     ],
     "jsx":[
+      "js/AbstractFormController",
       "js/AbstractRestService",
       "js/AdminController",
       "js/MessageController",
