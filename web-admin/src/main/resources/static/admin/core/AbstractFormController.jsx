@@ -1,15 +1,13 @@
 
-class AbstractFormController {
+class AbstractFormController extends AbstractController {
 
-    constructor($scope, $state, $stateParams, dataService) {
-        this.$scope = $scope;
-        this.$state = $state;
-        this.$stateParams = $stateParams;
+    constructor($scope, $services, dataService) {
+        super($scope, $services);
         this.dataService = dataService;
-        if($stateParams.id == 'new') {
-            this.formData = {};
+        if(this.$stateParams.id == 'new') {
+            this.create();
         } else {
-            this.load($stateParams.id);
+            this.load(this.$stateParams.id);
         }
     }
 
@@ -19,6 +17,10 @@ class AbstractFormController {
                 this.formData = success.data;
                 this.setPristine();
             });
+    }
+
+    create() {
+        this.formData = {};
     }
 
     save() {

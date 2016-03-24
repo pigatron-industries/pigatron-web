@@ -4,13 +4,12 @@ var ROOT_ID = 'root';
 var PLACEHOLDER_ID = 'new';
 var PLACEHOLDER_NAME = "New Category";
 
-class CategoriesController {
+class CategoriesController extends AbstractController {
 
-    constructor($stateParams, $state, categoryService) {
+    constructor($scope, $services, categoryService) {
+        super($scope, $services);
         window.$categories = this;
         this.categoryService = categoryService;
-        this.$stateParams = $stateParams;
-        this.$state = $state;
         this.treeOptions = {
             removed: (scope) => { this.remove(scope.$modelValue.id); },
             dropped: (event) => { this.moveCategory(event); }

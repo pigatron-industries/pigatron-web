@@ -1,11 +1,11 @@
 
-class ProductsController {
+class ProductsController extends AbstractTableController {
 
-    constructor(productService) {
+    constructor($scope, $services, productService) {
+        super($scope, $services);
         window.$products = this;
         this.productService = productService;
         this.loadTableOptions();
-        this.tableData = undefined;
         productService.getAll().then((success) => {
             this.tableData = success.data;
         });
@@ -13,12 +13,12 @@ class ProductsController {
 
     loadTableOptions() {
         this.tableOptions = {
+            rowHeight: 40,
             headerHeight: 40,
             footerHeight: false,
-            scrollbarV: false,
-            checkboxSelection: true,
             selectable: true,
             multiSelect: true,
+            scrollbarV: true,
             columns: this.createColumns()
         };
     }
@@ -42,7 +42,7 @@ class ProductsController {
     }
 
     getHeaderTemplate(prop) {
-        return "<div>{{$header}}</div>"; //+
+        return "<span>{{$header}}</span>"; //+
             //"<input type='text' ng-model-options='{ debounce: 100 }' placeholder='Filter names' ng-click='prev($event)' ng-model='$parent.filterKeywords' />";
     }
 

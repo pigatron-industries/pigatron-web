@@ -4,4 +4,5 @@ angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','ui.t
     .config(AdminConfig)
     .controller('AdminController', AdminController)
     .controller('MessageController', MessageController)
+    .service('$services', ServiceBundle)
     .service('httpInterceptor', HttpInterceptor);

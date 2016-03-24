@@ -2,8 +2,8 @@
 
 class CategoryController extends AbstractFormController {
 
-    constructor($scope, $rootScope, $state, $stateParams, categoryService) {
-        super($scope, $state, $stateParams, categoryService);
+    constructor($scope, $services, $rootScope, categoryService) {
+        super($scope, $services, categoryService);
         this.$rootScope = $rootScope;
         window.$category = this;
     }

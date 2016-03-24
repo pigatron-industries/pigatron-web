@@ -1,8 +1,8 @@
 
 class ProductController extends AbstractFormController {
 
-    constructor($scope, $state, $stateParams, productService) {
-        super($scope, $state, $stateParams, productService);
+    constructor($scope, $services, productService) {
+        super($scope, $services, productService);
         window.$product = this;
     }
 
