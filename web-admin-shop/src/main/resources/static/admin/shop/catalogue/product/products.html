@@ -12,7 +12,7 @@
 		</div>
 
 		<div flex class="tablearea" layout="column">
-			<dtable options="products.tableOptions" rows="products.tableData" class="material" selected="selected" on-row-click="onRowClick(row)" on-select="onSelect(rows)"></dtable>
+			<div ui-grid="products.table" ng-if="products.table.loaded" class="fullTable"></div>
 		</div>
 
 	</md-content>

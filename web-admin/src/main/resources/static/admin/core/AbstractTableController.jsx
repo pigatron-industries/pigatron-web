@@ -11,8 +11,7 @@ class AbstractTableController extends AbstractController {
         this.footerHeight = $("footer").height();
         this.menubarHeight = $("md-menu-bar").height();
         let tableHeight = $(window).height() - this.headerHeight - this.footerHeight - this.menubarHeight;
-        $("div.dt").height(tableHeight);
-        $("div.dt-body").height(tableHeight - $("div.dt-header").height());
+        $("div.fullTable").height(tableHeight);
     }
 
 }

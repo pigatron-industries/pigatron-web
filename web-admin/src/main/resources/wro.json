@@ -10,14 +10,13 @@
       "angular-animate/angular-animate.min.js",
       "angular-material/angular-material.min.js",
       "angular-hotkeys/build/hotkeys.js",
-      "angular-data-table/dataTable.helpers.min.js"
+      "angular-ui-grid/ui-grid.min.js"
     ],
     "css":[
       "angular-material/angular-material.min.css",
       "angular-hotkeys/build/hotkeys.css",
-      "angular-data-table/dataTable.css",
-      "angular-data-table/material.css",
-      "font-awesome/css/font-awesome.min.css"
+      "font-awesome/css/font-awesome.min.css",
+      "angular-ui-grid/ui-grid.min.css"
     ]
   },
   "admin":{

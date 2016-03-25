@@ -1,5 +1,5 @@
 
-angular.module('admin.shop.catalogue', ['ngMaterial','ngMessages','ui.tree','data-table'])
+angular.module('admin.shop.catalogue', ['ngMaterial','ngMessages','ui.tree','ui.grid'])
     .config(CatalogueConfig)
     .controller('CategoriesController', CategoriesController)
     .controller('CategoryController', CategoryController)

@@ -181,6 +181,28 @@ md-button {
 }
 
 
+/* Tables */
+
+.tablearea {
+    border-left: 1px solid #dddddd;
+}
+
+div.fullTable {
+    border: none;
+}
+
+   .ui-grid-top-panel {
+       background-color: #FFFFFF;
+   }
+div.ui-grid-top-panel {
+    background-color: #FFFFFF;
+}
+
+div.ui-grid-cell-contents {
+    padding: 5px 10px;
+}
+
+
 /* View transitions */
 .view-container {
     position: relative;
