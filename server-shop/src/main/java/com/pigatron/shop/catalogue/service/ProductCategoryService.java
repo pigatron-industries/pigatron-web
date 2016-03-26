@@ -1,4 +1,4 @@
-package com.pigatron.shop.catalogue;
+package com.pigatron.shop.catalogue.service;
 
 import com.google.common.collect.Lists;
 import com.pigatron.shop.catalogue.entity.ProductCategory;

@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue.web.customer;
 
 import com.pigatron.shop.catalogue.entity.Product;
-import com.pigatron.shop.catalogue.ProductService;
+import com.pigatron.shop.catalogue.service.ProductService;
 import com.pigatron.server.web.rest.AbstractReadRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,5 +16,7 @@ public class CustomerProductController extends AbstractReadRestController<Produc
     public CustomerProductController(ProductService service) {
         super(service, "name");
     }
+
+
 
 }

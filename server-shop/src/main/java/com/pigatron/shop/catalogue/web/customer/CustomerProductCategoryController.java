@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue.web.customer;
 
 import com.pigatron.shop.catalogue.entity.ProductCategory;
-import com.pigatron.shop.catalogue.ProductCategoryService;
+import com.pigatron.shop.catalogue.service.ProductCategoryService;
 import com.pigatron.server.web.rest.AbstractReadRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -74,4 +74,18 @@ class AbstractTableController extends AbstractController {
         this.gridApi.rowEdit.setSavePromise(rowData, promise);
     }
 
+    deleteSelected() {
+        let selectedRows = this.gridApi.selection.getSelectedRows();
+        selectedRows.forEach((selectedRow) => {
+            this.dataService.remove(selectedRow.id).then(() => {
+                for(var i = 0; i < this.table.data.length ; i++) {
+                    if(this.table.data[i] === selectedRow) {
+                        this.gridApi.selection.unSelectRow(selectedRow);
+                        this.table.data.splice(i, 1);
+                    }
+                }
+            });
+        });
+    }
+
 }

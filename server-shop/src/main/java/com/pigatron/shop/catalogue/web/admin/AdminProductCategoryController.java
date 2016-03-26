@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue.web.admin;
 
 import com.pigatron.shop.catalogue.entity.ProductCategory;
-import com.pigatron.shop.catalogue.ProductCategoryService;
+import com.pigatron.shop.catalogue.service.ProductCategoryService;
 import com.pigatron.server.web.rest.AbstractWriteRestController;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;

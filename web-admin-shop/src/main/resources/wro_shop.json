@@ -17,6 +17,7 @@
       "catalogue/product/ProductsController",
       "catalogue/product/ProductController",
       "catalogue/product/ProductService",
+      "catalogue/product/ProductValidators",
       "catalogue/CatalogueConfig",
       "catalogue/index"
     ],

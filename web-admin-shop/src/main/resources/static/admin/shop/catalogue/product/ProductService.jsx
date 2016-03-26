@@ -7,4 +7,8 @@ class ProductService extends AbstractRestService {
         super($http, API_ADMIN_PRODUCT);
     }
 
+    countBySku(sku) {
+        return this.$http.get(this.baseUrl + "/count?sku=" + sku);
+    }
+
 }

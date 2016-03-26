@@ -16,4 +16,5 @@ angular.module('admin.shop.catalogue', [
     .controller('ProductsController', ProductsController)
     .controller('ProductController', ProductController)
     .service('categoryService', CategoryService)
-    .service('productService', ProductService);
+    .service('productService', ProductService)
+    .directive("skuUnique", skuUniqueValidator);

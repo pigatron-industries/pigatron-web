@@ -6,10 +6,11 @@ import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
+@Document
 public class Product {
 
     // General

@@ -15,22 +15,23 @@
             <div flex class="formarea" layout="column">
                 <md-input-container>
                     <label>Product Name</label>
-                    <input id="name" name="name" ng-model="product.formData.name" type="text" required="true" />
+                    <input id="name" name="name" ng-model="product.formData.name" type="text" required />
                     <div ng-messages="form.name.$error">
                         <div ng-message="required">Name is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container>
                     <label>SKU</label>
-                    <input id="sku" name="sku" ng-model="product.formData.sku" type="text" required="true" />
+                    <input id="sku" name="sku" ng-model="product.formData.sku" ng-model-options="{ debounce: 250 }" type="text" required sku-unique />
                     <div ng-messages="form.sku.$error">
                         <div ng-message="required">SKU is required.</div>
+                        <div ng-message="skuUnique">There is already a product with this SKU.</div>
                     </div>
                 </md-input-container>
                 <md-input-container>
                     <label>Short Description</label>
                     <textarea id="shortDescription" name="shortDescription" ng-model="product.formData.shortDescription" rows="50"></textarea>
-                    <div ng-messages="form.sku.$error">
+                    <div ng-messages="form.shortDescription.$error">
                     </div>
                 </md-input-container>
             </div>

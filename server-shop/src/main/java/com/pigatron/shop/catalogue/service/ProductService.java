@@ -1,4 +1,4 @@
-package com.pigatron.shop.catalogue;
+package com.pigatron.shop.catalogue.service;
 
 import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.server.service.AbstractRepositoryService;
@@ -9,9 +9,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService extends AbstractRepositoryService<Product> {
 
+	ProductRepository productRepository;
+
 	@Autowired
 	public ProductService(ProductRepository repository) {
 		super(repository);
+		this.productRepository = repository;
+	}
+
+	public Long countBySku(String sku) {
+		return productRepository.countBySku(sku);
 	}
 
 }
