@@ -191,16 +191,58 @@ div.fullTable {
     border: none;
 }
 
-   .ui-grid-top-panel {
-       background-color: #FFFFFF;
-   }
 div.ui-grid-top-panel {
-    background-color: #FFFFFF;
+    background: none;
 }
 
-div.ui-grid-cell-contents {
-    padding: 5px 10px;
+div.ui-grid-menu-button {
+    border:none;
+    background:none;
 }
+
+.ui-grid-menu-items {
+    background-color: rgb(44,62,80);
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul li button.ui-grid-menu-item-active {
+    background-color: rgb(62, 87, 113);
+}
+
+button.ui-grid-menu-item {
+    color: white;
+}
+
+div.ui-grid-cell-checkbox {
+    text-align: center;
+}
+
+div.ui-grid-cell-checkbox md-checkbox {
+    width:20px;
+}
+
+div.ui-grid-cell-input {
+    height:28px;
+}
+
+div.ui-grid-cell input {
+    height:100%;
+    padding-left: 5px;
+    background-color: transparent;
+}
+
+div.ui-grid-cell input.ng-valid {
+    border:none;
+    border-bottom: 2px solid rgb(44, 62, 80);
+}
+
+div.ui-grid-cell-focus {
+   background-color: transparent;
+}
+
+.ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
+    background-color: #bdccdb;
+}
+
 
 
 /* View transitions */

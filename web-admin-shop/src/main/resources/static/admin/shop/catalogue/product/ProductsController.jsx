@@ -2,31 +2,29 @@
 class ProductsController extends AbstractTableController {
 
     constructor($scope, $services, productService) {
-        super($scope, $services);
-        window.$products = this;
-        this.productService = productService;
-
-        this.table = {
-            loaded: false,
-            enableSorting: true,
-            enableFiltering: true,
-            columnDefs: this.defineColumns(),
-            onRegisterApi: (gridApi) => {
-                this.gridApi = gridApi;
-            }
-        };
-
-        productService.getAll().then((success) => {
-            this.table.data = success.data;
-            this.table.loaded = true;
-        });
+        super($scope, $services, productService);
     }
 
     defineColumns() {
         return [
-            { field: 'id' },
-            { field: 'name' },
-            { field: 'sku' }
+            this.column({ field: 'id',               visible:false, enableCellEdit: false }),
+            this.column({ field: 'id',               visible:false, enableCellEdit: false }),
+            this.column({ field: 'sku',              visible:true,  enableCellEdit: true  }),
+            this.column({ field: 'name',             visible:true,  enableCellEdit: true  }),
+            this.column({ field: 'shortDescription', visible:false, enableCellEdit: true  }),
+            this.column({ field: 'description',      visible:false, enableCellEdit: true  }),
+            this.column({ field: 'location',         visible:false, enableCellEdit: true  }),
+            this.column({ field: 'enabled',          visible:true,  enableCellEdit: true, type:'boolean' }),
+            this.column({ field: 'visibleInCategory',displayName:"Visible", visible:true,  enableCellEdit: true, type:'boolean' }),
+            this.column({ field: 'price',            visible:true,  enableCellEdit: true  }),
+            this.column({ field: 'taxClass',         visible:false, enableCellEdit: false }),
+            this.column({ field: 'metaTitle',        visible:false, enableCellEdit: true  }),
+            this.column({ field: 'metaKeywords',     visible:false, enableCellEdit: true  }),
+            this.column({ field: 'metaDescription',  visible:false, enableCellEdit: true  }),
+            this.column({ field: 'quantity',         visible:true,  enableCellEdit: true  }),
+            this.column({ field: 'allowBackorders',  visible:false, enableCellEdit: true  }),
+            this.column({ field: 'maxInCart',        visible:false, enableCellEdit: true  }),
+            this.column({ field: 'categories',       visible:true,  enableCellEdit: false })
         ];
     }
 

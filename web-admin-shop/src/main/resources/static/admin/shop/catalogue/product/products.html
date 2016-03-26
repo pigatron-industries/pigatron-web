@@ -4,6 +4,10 @@
 		<div layout="column" class="leftsidebar">
 			<h2>Products</h2>
 			<div class="toolbar" layout="row" layout-align="end center">
+				<md-button class="md-fab md-mini md-primary" aria-label="Delete Selected Products" ng-disabled="products.gridApi.selection.getSelectedCount()==0" ng-click="products.deleteSelected()">
+					<md-tooltip md-direction="bottom">Delete</md-tooltip>
+					<span class="fa fa-lg fa-trash"></span>
+				</md-button>
 				<md-button class="md-fab md-mini md-primary" aria-label="New Product" ui-sref="product({id:'new'})">
 					<md-tooltip md-direction="bottom">New Product</md-tooltip>
 					<span class="fa fa-lg fa-plus"></span>
@@ -12,7 +16,8 @@
 		</div>
 
 		<div flex class="tablearea" layout="column">
-			<div ui-grid="products.table" ng-if="products.table.loaded" class="fullTable"></div>
+			<div ui-grid="products.table" ng-if="products.table.loaded" class="fullTable"
+				 ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pinning ui-grid-resize-columns ui-grid-selection></div>
 		</div>
 
 	</md-content>

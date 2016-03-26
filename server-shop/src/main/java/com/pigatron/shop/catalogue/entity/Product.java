@@ -20,7 +20,7 @@ public class Product {
     private String description;
     private String location;
     private boolean enabled;
-    private boolean visible;
+    private boolean visibleInCategory;
     private String urlKey;
 
     // Price
@@ -111,12 +111,12 @@ public class Product {
         this.enabled = enabled;
     }
 
-    public boolean isVisible() {
-        return visible;
+    public boolean isVisibleInCategory() {
+        return visibleInCategory;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    public void setVisibleInCategory(boolean visibleInCategory) {
+        this.visibleInCategory = visibleInCategory;
     }
 
     public String getUrlKey() {

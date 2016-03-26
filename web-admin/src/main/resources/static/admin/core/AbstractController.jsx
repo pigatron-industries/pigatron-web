@@ -7,6 +7,7 @@ class AbstractController {
         this.$state = $services.$state;
         this.$stateParams = $services.$stateParams;
         this.$timeout = $services.$timeout;
+        this.$animate = $services.$animate;
     }
 
     eventOnOff(element, event, func) {
