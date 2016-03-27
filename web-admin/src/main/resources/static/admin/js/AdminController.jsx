@@ -2,11 +2,12 @@
 class AdminController {
 
     /*@ngInject*/
-    constructor($scope, $http, hotkeys, $mdToast, $rootScope) {
+    constructor($scope, $http, hotkeys, $mdToast, $rootScope, $window) {
         this.$http = $http;
         this.hotkeys = hotkeys;
         this.$mdToast = $mdToast;
         this.$rootScope = $rootScope;
+        this.$window = $window;
         window.$rootScope = $rootScope;
         hotkeys.add({
             combo: ['meta+s'],
@@ -51,5 +52,9 @@ class AdminController {
         this.$http.post("/logout").success(function() {
             location.reload();
         });
+    }
+
+    open(url) {
+        this.$window.open(url);
     }
 }

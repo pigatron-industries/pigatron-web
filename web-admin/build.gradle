@@ -13,6 +13,7 @@ dependencies {
     compile('org.webjars:webjars-locator:0.30')
 
     // Web Jars
+    compile('org.webjars:swagger-ui:2.1.8-M1')
     compile('org.webjars:jquery:2.2.0')
     compile('org.webjars:angularjs:1.5.0-rc.2')
     compile('org.webjars.bower:angular-messages:1.5.0')

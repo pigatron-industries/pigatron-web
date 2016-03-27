@@ -14,5 +14,3 @@ ratings:
   paths:
   - "**.css"
   - "**.js"
-exclude_paths:
-- web-admin/src/main/resources/static/docs/**/*

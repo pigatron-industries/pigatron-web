@@ -13,8 +13,16 @@ public class AdminMenuConfig {
     @Bean
     public MenuItem adminMenu() {
         MenuItem adminMenu = new MenuItem("root", "Menu")
-            .addSubmenu(logoutMenu());
+                .addSubmenu(developerMenu())
+                .addSubmenu(logoutMenu());
         return adminMenu;
+    }
+
+    private MenuItem developerMenu() {
+        MenuItem logoutMenu = new MenuItem("developer", "Developer")
+                .addSubmenu(new MenuItem("apidocs", "Api Docs", new MenuAction(MenuAction.TYPE_JSFUNC,
+                                         "admin.open('/lib/swagger-ui/index.html?url=/api-docs')")));
+        return logoutMenu;
     }
 
     private MenuItem logoutMenu() {
