@@ -8,6 +8,7 @@ class ProductsController extends AbstractTableController {
 
     defineColumns() {
         return [
+            this.columnAction({ name:'edit', icon:"fa-pencil-square-o", sref:"product({id:row.entity.id})" }),
             this.column({ field: 'id',               visible:false, enableCellEdit: false }),
             this.column({ field: 'sku',              visible:true,  enableCellEdit: true  }),
             this.column({ field: 'name',             visible:true,  enableCellEdit: true  }),

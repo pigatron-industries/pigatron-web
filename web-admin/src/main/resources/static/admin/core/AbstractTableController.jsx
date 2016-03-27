@@ -43,23 +43,46 @@ class AbstractTableController extends AbstractController {
 
     column(columnDef) {
         if(columnDef.type === 'boolean') {
-            columnDef.cellTemplate = this.checkboxTemplate();
-            columnDef.editableCellTemplate = this.checkboxTemplate();
+            columnDef.cellTemplate = AbstractTableController.checkboxTemplate();
+            columnDef.editableCellTemplate = AbstractTableController.checkboxTemplate();
             columnDef.maxWidth = 120;
         } else {
-            columnDef.editableCellTemplate = this.inputTemplate();
+            columnDef.editableCellTemplate = AbstractTableController.inputTemplate();
         }
         return columnDef;
     }
 
-    checkboxTemplate() {
+    columnAction(column) {
+        column.enableCellEdit = false;
+        column.enableSorting = false;
+        column.enableHiding = false;
+        column.enableColumnMenu = false;
+        column.enableFiltering = false;
+        column.enableColumnResizing = false;
+        column.pinnedLeft = true;
+        column.displayName = "";
+        column.width = 30;
+        column.cellTemplate = AbstractTableController.actionColumnTemplate(column);
+        return column;
+    }
+
+    static checkboxTemplate() {
         return '<div class="ui-grid-cell-contents ui-grid-cell-checkbox">' +
             '<md-checkbox class="md-primary" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" aria-label="Checkbox"/></div>';
     }
 
-    inputTemplate() {
+    static inputTemplate() {
         return '<div class="ui-grid-cell-input">' +
             '<input type="INPUT_TYPE" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" /></div>';
+    }
+
+    static actionColumnTemplate(column) {
+        let template = "<a class='ui-grid-cell-contents' ";
+        if(column.sref !== undefined) {
+            template += "ui-sref='" + column.sref + "'>";
+        }
+        template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
+        return template;
     }
 
     load() {

@@ -171,8 +171,10 @@ md-button {
     height: 36px;
 }
 
-.fa-lg {
-    font-size: 1.6em;
+.fa-lg2 {
+    font-size: 1.5em;
+    line-height: .75em;
+    vertical-align: -15%;
 }
 
 .errorbox {
@@ -186,6 +188,10 @@ md-button {
 
 
 /* Tables */
+
+.ui-grid-cell {
+    transition: all .3s cubic-bezier(.55,0,.55,.2);
+}
 
 .tablearea {
     border-left: 1px solid #dddddd;
@@ -245,6 +251,13 @@ div.ui-grid-cell-focus {
 
 .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
     background-color: #bdccdb;
+    transition: all .3s cubic-bezier(.55,0,.55,.2);
+}
+
+a.ui-grid-cell-contents {
+    display: block;
+    cursor: pointer;
+    color: #444444;
 }
 
 
