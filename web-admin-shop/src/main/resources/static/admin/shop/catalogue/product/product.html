@@ -13,27 +13,52 @@
             </div>
 
             <div flex class="formarea" layout="column">
-                <md-input-container>
-                    <label>Product Name</label>
-                    <input id="name" name="name" ng-model="product.formData.name" type="text" required />
-                    <div ng-messages="form.name.$error">
-                        <div ng-message="required">Name is required.</div>
+                <div id="general" class="formsection" layout="row" layout-sm="column">
+
+                    <div class="formcolumn" flex="40" layout="column">
+                        <md-input-container>
+                            <label for="name">Product Name</label>
+                            <input id="name" name="name" ng-model="product.formData.name" type="text" required />
+                            <div ng-messages="form.name.$error">
+                                <div ng-message="required">Name is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="sku">SKU</label>
+                            <input id="sku" name="sku" ng-model="product.formData.sku" ng-model-options="{ debounce: 250 }" type="text"
+                                   required sku-unique="{{product.formData.id}}" />
+                            <div ng-messages="form.sku.$error">
+                                <div ng-message="required">SKU is required.</div>
+                                <div ng-message="skuUnique">There is already a product with this SKU.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="urlKey">URL Key</label>
+                            <input id="urlKey" name="urlKey" ng-model="product.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
+                                   required url-unique="{{product.formData.id}}" />
+                            <div ng-messages="form.urlKey.$error">
+                                <div ng-message="required">URL Key is required.</div>
+                                <div ng-message="urlUnique">There is already a product with this URL Key.</div>
+                            </div>
+                        </md-input-container>
                     </div>
-                </md-input-container>
-                <md-input-container>
-                    <label>SKU</label>
-                    <input id="sku" name="sku" ng-model="product.formData.sku" ng-model-options="{ debounce: 250 }" type="text" required sku-unique />
-                    <div ng-messages="form.sku.$error">
-                        <div ng-message="required">SKU is required.</div>
-                        <div ng-message="skuUnique">There is already a product with this SKU.</div>
+
+                    <div class="formcolumn" flex="60" layout="column">
+                        <md-input-container>
+                            <label for="shortDescription">Short Description</label>
+                            <textarea id="shortDescription" name="shortDescription" ng-model="product.formData.shortDescription" rows="50"></textarea>
+                            <div ng-messages="form.shortDescription.$error">
+                            </div>
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="description">Full Description</label>
+                            <textarea id="description" name="description" ng-model="product.formData.description" rows="50"></textarea>
+                            <div ng-messages="form.shortDescription.$error">
+                            </div>
+                        </md-input-container>
                     </div>
-                </md-input-container>
-                <md-input-container>
-                    <label>Short Description</label>
-                    <textarea id="shortDescription" name="shortDescription" ng-model="product.formData.shortDescription" rows="50"></textarea>
-                    <div ng-messages="form.shortDescription.$error">
-                    </div>
-                </md-input-container>
+
+                </div>
             </div>
 
         </form>

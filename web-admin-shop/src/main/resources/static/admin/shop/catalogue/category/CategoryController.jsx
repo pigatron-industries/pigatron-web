@@ -2,6 +2,7 @@
 
 class CategoryController extends AbstractFormController {
 
+    /*@ngInject*/
     constructor($scope, $services, $rootScope, categoryService) {
         super($scope, $services, categoryService);
         this.$rootScope = $rootScope;

@@ -6,6 +6,7 @@
     "grunt-cli":"0.1.13",
     "load-grunt-tasks":"3.4.1",
     "grunt-contrib-copy":"1.0.0",
+    "grunt-ng-annotate":"2.0.1",
     "grunt-babel":"6.0.0",
     "babel-preset-es2015":"*"
   }

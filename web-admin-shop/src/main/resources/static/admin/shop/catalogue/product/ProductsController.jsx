@@ -1,6 +1,7 @@
 
 class ProductsController extends AbstractTableController {
 
+    /*@ngInject*/
     constructor($scope, $services, productService) {
         super($scope, $services, productService);
     }

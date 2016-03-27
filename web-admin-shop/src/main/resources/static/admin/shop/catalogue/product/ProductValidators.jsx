@@ -1,25 +1,40 @@
 
-let skuUniqueValidator = function($q, productService) {
-    return {
-        restrict: "A",
+class SkuUniqueValidator extends AbstractAsyncValidator {
 
-        require: "ngModel",
+    /*@ngInject*/
+    constructor($services, productService) {
+        super("skuUnique", $services);
+        this.productService = productService;
+    }
 
-        link: function(scope, element, attributes, ngModel) {
+    validate(deferred, value) {
+        this.productService.getBySku(value).then((success) => {
+            if(success.data.id == undefined || success.data.id == this.attributes.skuUnique) {
+                deferred.resolve();
+            } else {
+                deferred.reject();
+            }
+        });
+    }
 
-            ngModel.$asyncValidators.skuUnique = function(modelValue, viewValue) {
-                var deferred = $q.defer();
-                productService.countBySku(viewValue).then((success) => {
-                    if(success.data === 1) {
-                        deferred.reject();
-                    } else {
-                        deferred.resolve();
-                    }
-                });
-                return deferred.promise;
-            };
+}
 
-        }
-    };
-};
+class UrlUniqueValidator extends AbstractAsyncValidator {
 
+    /*@ngInject*/
+    constructor($services, productService) {
+        super("urlUnique", $services);
+        this.productService = productService;
+    }
+
+    validate(deferred, value) {
+        this.productService.getByUrlKey(value).then((success) => {
+            if(success.data.id == undefined || success.data.id == this.attributes.urlUnique) {
+                deferred.resolve();
+            } else {
+                deferred.reject();
+            }
+        });
+    }
+
+}

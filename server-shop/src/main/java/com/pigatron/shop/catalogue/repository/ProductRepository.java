@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
 
-    Long countBySku(String sku);
+    Product findBySku(String sku);
+
+    Product findByUrlKey(String urlKey);
 
 }

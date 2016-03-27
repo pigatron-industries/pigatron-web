@@ -5,6 +5,7 @@ const ROOT_ID = "root";
 
 class CategoryService extends AbstractRestService {
 
+    /*@ngInject*/
     constructor($http) {
         super($http, API_ADMIN_CATEGORY);
     }

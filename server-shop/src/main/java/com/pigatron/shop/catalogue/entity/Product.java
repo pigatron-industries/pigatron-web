@@ -17,12 +17,12 @@ public class Product {
     @Id private String id;
     @NotNull private String name;
     @NotNull @Indexed(unique = true) private String sku;
+    @NotNull @Indexed(unique = true) private String urlKey;
     private String shortDescription;
     private String description;
     private String location;
     private boolean enabled;
     private boolean visibleInCategory;
-    private String urlKey;
 
     // Price
     private int price;

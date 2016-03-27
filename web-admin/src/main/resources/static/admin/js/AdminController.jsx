@@ -1,6 +1,7 @@
 
 class AdminController {
 
+    /*@ngInject*/
     constructor($scope, $http, hotkeys, $mdToast, $rootScope) {
         this.$http = $http;
         this.hotkeys = hotkeys;

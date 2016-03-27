@@ -6,6 +6,7 @@ var PLACEHOLDER_NAME = "New Category";
 
 class CategoriesController extends AbstractController {
 
+    /*@ngInject*/
     constructor($scope, $services, categoryService) {
         super($scope, $services);
         window.$categories = this;

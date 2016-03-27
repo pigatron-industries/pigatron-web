@@ -1,13 +1,9 @@
 
-class AbstractController {
+class AbstractController extends AbstractServiceBundleConsumer {
 
     constructor($scope, $services) {
+        super($services);
         this.$scope = $scope;
-        this.$services = $services;
-        this.$state = $services.$state;
-        this.$stateParams = $services.$stateParams;
-        this.$timeout = $services.$timeout;
-        this.$animate = $services.$animate;
     }
 
     eventOnOff(element, event, func) {

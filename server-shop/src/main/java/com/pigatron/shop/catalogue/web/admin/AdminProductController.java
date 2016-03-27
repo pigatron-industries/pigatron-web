@@ -24,11 +24,18 @@ public class AdminProductController extends AbstractWriteRestController<Product>
         this.productService = service;
     }
 
-    @RequestMapping(value = "/count", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET, params = {"sku"})
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Get by sku")
-    public Long countBySku(@RequestParam("sku") String sku) {
-        return productService.countBySku(sku);
+    @ApiOperation(value = "Get by SKU")
+    public Product getBySku(@RequestParam("sku") String sku) {
+        return productService.getBySku(sku);
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET, params = {"urlKey"})
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get by URL Key")
+    public Product getByUrlKey(@RequestParam("urlKey") String urlKey) {
+        return productService.getByUrlKey(urlKey);
     }
 
 }

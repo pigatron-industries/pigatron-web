@@ -6,7 +6,9 @@ var srcDir = "src/main/resources/static";
 var buildDir = "build/resources/main/static";
 var wroConfig = require("./" + resourceDir + "/" + wroConfig);
 
-var files = {};
+// Build list of files for babel conversion
+var babelFiles = {};
+var annotateFiles = [];
 for (var group in wroConfig) {
     if (wroConfig.hasOwnProperty(group)) {
         var prefix = wroConfig[group].prefix;
@@ -14,7 +16,8 @@ for (var group in wroConfig) {
             for (var i = 0; i < wroConfig[group].jsx.length; i++) {
                 var src = srcDir + prefix + wroConfig[group].jsx[i] + ".jsx";
                 var dest = buildDir + prefix + wroConfig[group].jsx[i] + ".js";
-                files[dest] = src;
+                babelFiles[dest] = src;
+                annotateFiles.push(dest);
             }
         }
     }
@@ -23,6 +26,7 @@ for (var group in wroConfig) {
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-ng-annotate');
 
     grunt.initConfig({
         "babel": {
@@ -30,20 +34,23 @@ module.exports = function(grunt) {
                 sourceMap: true
             },
             dist: {
-                files: files
+                files: babelFiles
             }
         },
-        copy: {
-            "angular-data-table": {
+        ngAnnotate: {
+            options: {
+                // Task-specific options go here.
+            },
+            dist: {
                 files: [{
-                    cwd: "node_modules/angular-data-table/release/",
-                    src: ["**"],
-                    dest: "build/resources/main/static/lib/angular-data-table/",
-                    expand: true
+                    expand: true,
+                    src: annotateFiles,
+                    ext: '.js', // Dest filepaths will have this extension.
+                    extDot: 'last'       // Extensions in filenames begin after the last dot
                 }]
             }
         }
     });
 
-    grunt.registerTask('build', ['babel','copy:angular-data-table']);
+    grunt.registerTask('build', ['babel:dist','ngAnnotate:dist']);
 };

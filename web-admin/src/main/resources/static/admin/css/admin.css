@@ -148,12 +148,16 @@ h1, h2 {
     border-left: 1px solid #dddddd;
 }
 
+.formcolumn {
+    padding-right:40px;
+}
+
 md-input-container .md-errors-spacer {
     min-height: 0;
 }
 
 md-input-container {
-    max-width: 600px;
+    /*max-width: 600px;*/
 }
 
 md-button {

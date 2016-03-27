@@ -17,8 +17,12 @@ public class ProductService extends AbstractRepositoryService<Product> {
 		this.productRepository = repository;
 	}
 
-	public Long countBySku(String sku) {
-		return productRepository.countBySku(sku);
+	public Product getBySku(String sku) {
+		return productRepository.findBySku(sku);
+	}
+
+	public Product getByUrlKey(String urlKey) {
+		return productRepository.findByUrlKey(urlKey);
 	}
 
 }

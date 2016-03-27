@@ -25,11 +25,13 @@
       "js/md-colours.js"
     ],
     "jsx":[
+      "core/register",
       "core/ServiceBundle",
       "core/AbstractController",
       "core/AbstractFormController",
       "core/AbstractTableController",
       "core/AbstractRestService",
+      "core/AbstractValidator",
       "js/AdminController",
       "js/MessageController",
       "js/AdminConfig",
