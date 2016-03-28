@@ -76,7 +76,10 @@
                 <div id="inventorySection" class="formsection" layout="row" layout-sm="row">
                     <md-input-container>
                         <label for="quantity">Quantity</label>
-                        <input id="quantity" name="quantity" ng-model="product.formData.quantity" ng-disabled="product.formData.useQuantityOnOptions" type="number" />
+                        <input id="quantity" name="quantity" ng-model="product.formData.quantity" ng-disabled="product.formData.useQuantityOnOptions" type="number" ng-pattern="/^[0-9]+$/" />
+                        <div ng-messages="form.quantity.$error">
+                            <div ng-message="pattern">Must be a whole number.</div>
+                        </div>
                     </md-input-container>
                     <md-input-container layout="row">
                         <md-checkbox aria-label="Manage on Options" ng-model="product.formData.useQuantityOnOptions" class="md-primary">Use Quantity on Options</md-checkbox>
@@ -137,7 +140,10 @@
                         </md-input-container>
                         <md-input-container>
                             <label for="quantityOnOrder">Quantity On Order</label>
-                            <input id="quantityOnOrder" name="quantityOnOrder" ng-model="product.formData.quantityOnOrder" type="number" />
+                            <input id="quantityOnOrder" name="quantityOnOrder" ng-model="product.formData.quantityOnOrder" type="number" ng-pattern="/^[0-9]+$/" />
+                            <div ng-messages="form.quantityOnOrder.$error">
+                                <div ng-message="pattern">Must be a whole number.</div>
+                            </div>
                         </md-input-container>
                     </div>
                     <div class="formcolumn" flex="60" layout="column">
