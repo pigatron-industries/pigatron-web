@@ -29,7 +29,7 @@ public class Product {
 
     // Price
     private Float price;
-    private Float usePriceOnOptions;
+    private Boolean usePriceOnOptions;
     private ProductTaxClass taxClass; //determines how much VAT to add
 
     // Meta Info
@@ -40,9 +40,6 @@ public class Product {
     // Images
     @DBRef private ProductImage thumbnailImage;
     @DBRef private List<ProductImage> productImages;
-
-    // Supply
-
 
     // Inventory
     private Integer quantity;
@@ -59,6 +56,13 @@ public class Product {
     // Options
     private List<ProductOption> options;
 
+    // Supply
+    private String supplierName;
+    private String supplierItemCode;
+    private String supplierItemLink;
+    private String supplierPrice;
+    private String supplierNotes;
+    private String quantityOnOrder;
 
 
     public String getId() {
@@ -246,5 +250,53 @@ public class Product {
 
     public void setOptions(List<ProductOption> options) {
         this.options = options;
+    }
+
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
+    public String getSupplierItemCode() {
+        return supplierItemCode;
+    }
+
+    public void setSupplierItemCode(String supplierItemCode) {
+        this.supplierItemCode = supplierItemCode;
+    }
+
+    public String getSupplierItemLink() {
+        return supplierItemLink;
+    }
+
+    public void setSupplierItemLink(String supplierItemLink) {
+        this.supplierItemLink = supplierItemLink;
+    }
+
+    public String getSupplierPrice() {
+        return supplierPrice;
+    }
+
+    public void setSupplierPrice(String supplierPrice) {
+        this.supplierPrice = supplierPrice;
+    }
+
+    public String getSupplierNotes() {
+        return supplierNotes;
+    }
+
+    public void setSupplierNotes(String supplierNotes) {
+        this.supplierNotes = supplierNotes;
+    }
+
+    public String getQuantityOnOrder() {
+        return quantityOnOrder;
+    }
+
+    public void setQuantityOnOrder(String quantityOnOrder) {
+        this.quantityOnOrder = quantityOnOrder;
     }
 }

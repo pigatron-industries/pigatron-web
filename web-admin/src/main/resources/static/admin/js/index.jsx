@@ -7,6 +7,6 @@ angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','ui.t
     .service('$services', ServiceBundle)
     .service('httpInterceptor', HttpInterceptor);
 
-angular.module('admin.directives', []);
+angular.module('admin.components', []);
 register('admin.components')
     .directive("stickToTop", StickToTop);

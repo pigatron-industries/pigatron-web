@@ -93,10 +93,60 @@
 
 
                 <h3>Images</h3>
-                <h3>Supply</h3>
                 <h3>Categories</h3>
                 <h3>Options</h3>
+
                 <h3>Meta Info</h3>
+                <div id="metaSection" class="formsection" layout="row" layout-sm="row">
+                    <div class="formcolumn" flex="40" layout="column">
+                        <md-input-container>
+                            <label for="metaTitle">Meta Title</label>
+                            <input id="metaTitle" name="metaTitle" ng-model="product.formData.metaTitle" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="metaKeywords">Meta Keywords</label>
+                            <textarea id="metaKeywords" name="metaKeywords" ng-model="product.formData.metaKeywords" rows="50"></textarea>
+                        </md-input-container>
+                    </div>
+                    <div class="formcolumn" flex="60" layout="column">
+                        <md-input-container>
+                            <label for="metaDescription">Meta Description</label>
+                            <textarea id="metaDescription" name="metaDescription" ng-model="product.formData.metaDescription" rows="50"></textarea>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <h3>Supply</h3>
+                <div id="supplySection" class="formsection" layout="row" layout-sm="row">
+                    <div class="formcolumn" flex="40" layout="column">
+                        <md-input-container>
+                            <label for="supplierName">Supplier</label>
+                            <input id="supplierName" name="supplierName" ng-model="product.formData.supplierName" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="supplierItemCodeName">Item Code</label>
+                            <input id="supplierItemCodeName" name="supplierItemCodeName" ng-model="product.formData.supplierItemCodeName" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="supplierItemLink">Item Link</label>
+                            <input id="supplierItemLink" name="supplierItemLink" ng-model="product.formData.supplierItemLink" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="supplierPrice">Price</label>
+                            <input id="supplierPrice" name="supplierPrice" ng-model="product.formData.supplierPrice" type="number" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label for="quantityOnOrder">Quantity On Order</label>
+                            <input id="quantityOnOrder" name="quantityOnOrder" ng-model="product.formData.quantityOnOrder" type="number" />
+                        </md-input-container>
+                    </div>
+                    <div class="formcolumn" flex="60" layout="column">
+                        <md-input-container>
+                            <label for="supplierNotes">Notes</label>
+                            <textarea id="supplierNotes" name="supplierNotes" ng-model="product.formData.supplierNotes" rows="50"></textarea>
+                        </md-input-container>
+                    </div>
+                </div>
 
             </div>
         </form>
