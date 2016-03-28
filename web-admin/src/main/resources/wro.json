@@ -2,7 +2,7 @@
   "lib":{
     "prefix":"/lib/",
     "js":[
-      "jquery/jquery.min.js",
+      "jquery/dist/jquery.min.js",
       "angularjs/angular.js",
       "angular-messages/angular-messages.js",
       "angular-ui-router/release/angular-ui-router.min.js",

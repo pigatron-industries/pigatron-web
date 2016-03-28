@@ -109,7 +109,8 @@ md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus
     background-color: rgba(255,255,255,0.1) !important;
 }
 
-md-menu-content {
+/* Menu items white text */
+md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item {
     color: white;
 }
 
@@ -160,6 +161,18 @@ md-input-container {
     /*max-width: 600px;*/
 }
 
+.errorbox {
+    background-color: #f2dede;
+    color: #a94442;
+    font-weight: bold;
+    padding:3px;
+    border: 1px solid #a94442;
+    border-radius: 5px;
+}
+
+
+/* Buttons */
+
 md-button {
     font-weight: bold;
     color:white !important;
@@ -177,20 +190,21 @@ md-button {
     vertical-align: -15%;
 }
 
-.errorbox {
-    background-color: #f2dede;
-    color: #a94442;
-    font-weight: bold;
-    padding:3px;
-    border: 1px solid #a94442;
-    border-radius: 5px;
+.fa-lg {
+    vertical-align: -20%;
+}
+
+/* Font Awesome - icon position adjustments to look better in the buttons */
+.fa-lg2.fa-chevron-left {
+    position: relative;
+    left: -1px;
 }
 
 
 /* Tables */
 
-.ui-grid-cell {
-    transition: all .3s cubic-bezier(.55,0,.55,.2);
+div.fullTable.loaded .ui-grid-cell {
+    /*transition: all .3s cubic-bezier(.55,0,.55,.2);*/
 }
 
 .tablearea {
@@ -199,6 +213,11 @@ md-button {
 
 div.fullTable {
     border: none;
+    transition: opacity .3s cubic-bezier(.55,0,.55,.2);
+}
+
+div.fullTable.loading {
+    opacity: 0;
 }
 
 div.ui-grid-top-panel {
@@ -251,7 +270,11 @@ div.ui-grid-cell-focus {
 
 .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
     background-color: #bdccdb;
-    transition: all .3s cubic-bezier(.55,0,.55,.2);
+}
+
+.ui-grid-selection-row-header-buttons:hover {
+    color: rgb(216,21,87);
+    opacity: 1;
 }
 
 a.ui-grid-cell-contents {

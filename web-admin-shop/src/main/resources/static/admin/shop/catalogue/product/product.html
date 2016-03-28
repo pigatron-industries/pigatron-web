@@ -5,6 +5,10 @@
             <div layout="column" class="leftsidebar">
                 <h2>Product</h2>
                 <div class="toolbar" layout="row" layout-align="end center">
+                    <md-button class="md-fab md-mini md-primary" aria-label="Back to Products" ui-sref="products">
+                        <md-tooltip md-direction="bottom">Back</md-tooltip>
+                        <span class="fa fa-lg2 fa-chevron-left"></span>
+                    </md-button>
                     <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="New Product" ng-click="product.save()">
                         <md-tooltip md-direction="bottom">Save</md-tooltip>
                         <span class="fa fa-lg2 fa-save"></span>

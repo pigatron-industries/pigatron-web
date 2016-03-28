@@ -14,14 +14,15 @@ dependencies {
 
     // Web Jars
     compile('org.webjars:swagger-ui:2.1.8-M1')
-    compile('org.webjars:jquery:2.2.0')
-    compile('org.webjars:angularjs:1.5.0-rc.2')
-    compile('org.webjars.bower:angular-messages:1.5.0')
-    compile('org.webjars.npm:angular-ui-router:0.2.18')
+    compile('org.webjars.bower:jquery:3.0.0-beta1')
+    def angularVersion = "1.5.1"
+    compile("org.webjars.bower:angularjs:${angularVersion}")
+    compile("org.webjars.bower:angular-messages:${angularVersion}")
+    compile("org.webjars.bower:angular-animate:${angularVersion}")
+    compile("org.webjars.bower:angular-aria:${angularVersion}")
+    compile('org.webjars.bower:angular-ui-router:0.2.18')
     compile('org.webjars.npm:angular-hotkeys:1.7.0')
-    compile('org.webjars.bower:angular-animate:1.5.0')
-    compile('org.webjars.bower:angular-aria:1.5.0')
-    compile('org.webjars.bower:angular-material:1.0.5')
+    compile('org.webjars.bower:angular-material:1.1.0-rc1')
     compile('org.webjars.bower:angular-ui-grid:3.1.1')
     compile('org.webjars:font-awesome:4.5.0')
 }

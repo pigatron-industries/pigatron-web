@@ -5,8 +5,6 @@ class AbstractTableController extends AbstractController {
         super($scope, $services);
         this.dataService = dataService;
 
-        this.eventOnOffNow($(window), 'resize', () => {this.setTableHeight();});
-
         this.table = {
             loaded: false,
             enableSorting: true,
@@ -88,7 +86,8 @@ class AbstractTableController extends AbstractController {
     load() {
         this.dataService.getAll().then((success) => {
             this.table.data = success.data;
-            this.table.loaded = true;
+            this.eventOnOffNow($(window), 'resize', () => {this.setTableHeight();});
+            this.$timeout(() => {this.table.loaded = true}, 100);
         });
     }
 
