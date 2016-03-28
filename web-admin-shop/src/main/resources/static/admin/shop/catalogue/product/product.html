@@ -2,7 +2,7 @@
     <md-content layout="row">
         <form flex id="form" name="form" novalidate="true" layout="row">
 
-            <div layout="column" class="leftsidebar">
+            <div layout="column" class="leftsidebar" stick-to-top>
                 <h2>Product</h2>
                 <div class="toolbar" layout="row" layout-align="end center">
                     <md-button class="md-fab md-mini md-primary" aria-label="Back to Products" ui-sref="products">
@@ -17,9 +17,18 @@
             </div>
 
             <div flex class="formarea" layout="column">
-                <div id="general" class="formsection" layout="row" layout-sm="column">
 
+                <h3>Item</h3>
+                <div id="generalSection" class="formsection" layout="row" layout-sm="column">
+                    <!-- Item column 1 -->
                     <div class="formcolumn" flex="40" layout="column">
+                        <md-input-container layout="row">
+                            <md-checkbox aria-label="Enabled" ng-model="product.formData.enabled" class="md-primary">Enabled</md-checkbox>
+                            <md-checkbox aria-label="Option" ng-model="product.formData.option" class="md-primary">
+                                Option
+                                <md-tooltip md-direction="bottom">This product is an option for another product</md-tooltip>
+                            </md-checkbox>
+                        </md-input-container>
                         <md-input-container>
                             <label for="name">Product Name</label>
                             <input id="name" name="name" ng-model="product.formData.name" type="text" required />
@@ -45,26 +54,51 @@
                                 <div ng-message="urlUnique">There is already a product with this URL Key.</div>
                             </div>
                         </md-input-container>
+                        <md-input-container>
+                            <label for="location">Location</label>
+                            <input id="location" name="location" ng-model="product.formData.location" type="text"/>
+                        </md-input-container>
                     </div>
-
+                    <!-- Item column 2 -->
                     <div class="formcolumn" flex="60" layout="column">
                         <md-input-container>
                             <label for="shortDescription">Short Description</label>
                             <textarea id="shortDescription" name="shortDescription" ng-model="product.formData.shortDescription" rows="50"></textarea>
-                            <div ng-messages="form.shortDescription.$error">
-                            </div>
                         </md-input-container>
                         <md-input-container>
                             <label for="description">Full Description</label>
                             <textarea id="description" name="description" ng-model="product.formData.description" rows="50"></textarea>
-                            <div ng-messages="form.shortDescription.$error">
-                            </div>
                         </md-input-container>
                     </div>
-
                 </div>
-            </div>
 
+                <h3>Inventory</h3>
+                <div id="inventorySection" class="formsection" layout="row" layout-sm="row">
+                    <md-input-container>
+                        <label for="quantity">Quantity</label>
+                        <input id="quantity" name="quantity" ng-model="product.formData.quantity" ng-disabled="product.formData.useQuantityOnOptions" type="number" />
+                    </md-input-container>
+                    <md-input-container layout="row">
+                        <md-checkbox aria-label="Manage on Options" ng-model="product.formData.useQuantityOnOptions" class="md-primary">Use Quantity on Options</md-checkbox>
+                    </md-input-container>
+                </div>
+
+                <h3>Price</h3>
+                <div id="priceSection" class="formsection" layout="row" layout-sm="row">
+                    <md-input-container>
+                        <label for="price">Price</label>
+                        <input id="price" name="price" ng-model="product.formData.price" type="number" />
+                    </md-input-container>
+                </div>
+
+
+                <h3>Images</h3>
+                <h3>Supply</h3>
+                <h3>Categories</h3>
+                <h3>Options</h3>
+                <h3>Meta Info</h3>
+
+            </div>
         </form>
     </md-content>
 </div>

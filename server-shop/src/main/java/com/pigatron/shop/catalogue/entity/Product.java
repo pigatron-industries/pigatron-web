@@ -15,18 +15,22 @@ public class Product {
 
     // General
     @Id private String id;
+    private boolean enabled;
+    private boolean option;
     @NotNull private String name;
     @NotNull @Indexed(unique = true) private String sku;
     @NotNull @Indexed(unique = true) private String urlKey;
     private String shortDescription;
     private String description;
     private String location;
-    private boolean enabled;
-    private boolean visibleInCategory;
+
+    // Shipping
+    //private float weight;
 
     // Price
-    private int price;
-    private String taxClass; //determines how much VAT to add
+    private Float price;
+    private Float usePriceOnOptions;
+    private ProductTaxClass taxClass; //determines how much VAT to add
 
     // Meta Info
     private String metaTitle;
@@ -41,9 +45,10 @@ public class Product {
 
 
     // Inventory
-    private int quantity;
-    private boolean allowBackorders;
-    private int maxInCart;
+    private Integer quantity;
+    private Boolean useQuantityOnOptions;
+    private Boolean allowBackorders;
+    private Integer maxInCart;
 
     // Categories
     @DBRef private List<ProductCategory> categories;
@@ -112,12 +117,12 @@ public class Product {
         this.enabled = enabled;
     }
 
-    public boolean isVisibleInCategory() {
-        return visibleInCategory;
+    public boolean isOption() {
+        return option;
     }
 
-    public void setVisibleInCategory(boolean visibleInCategory) {
-        this.visibleInCategory = visibleInCategory;
+    public void setOption(boolean option) {
+        this.option = option;
     }
 
     public String getUrlKey() {
@@ -128,19 +133,19 @@ public class Product {
         this.urlKey = urlKey;
     }
 
-    public int getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public String getTaxClass() {
+    public ProductTaxClass getTaxClass() {
         return taxClass;
     }
 
-    public void setTaxClass(String taxClass) {
+    public void setTaxClass(ProductTaxClass taxClass) {
         this.taxClass = taxClass;
     }
 
@@ -184,27 +189,38 @@ public class Product {
         this.productImages = productImages;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public boolean isAllowBackorders() {
+    public Boolean getUseQuantityOnOptions() {
+        return useQuantityOnOptions;
+    }
+
+    public void setUseQuantityOnOptions(Boolean useQuantityOnOptions) {
+        this.useQuantityOnOptions = useQuantityOnOptions;
+        if(useQuantityOnOptions) {
+            quantity = null;
+        }
+    }
+
+    public Boolean getAllowBackorders() {
         return allowBackorders;
     }
 
-    public void setAllowBackorders(boolean allowBackorders) {
+    public void setAllowBackorders(Boolean allowBackorders) {
         this.allowBackorders = allowBackorders;
     }
 
-    public int getMaxInCart() {
+    public Integer getMaxInCart() {
         return maxInCart;
     }
 
-    public void setMaxInCart(int maxInCart) {
+    public void setMaxInCart(Integer maxInCart) {
         this.maxInCart = maxInCart;
     }
 

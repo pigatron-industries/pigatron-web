@@ -32,6 +32,7 @@
       "core/AbstractTableController",
       "core/AbstractRestService",
       "core/AbstractValidator",
+      "components/StickToTop",
       "js/AdminController",
       "js/MessageController",
       "js/AdminConfig",

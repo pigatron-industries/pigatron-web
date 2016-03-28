@@ -1,5 +1,6 @@
 
 angular.module('admin.shop.catalogue', [
+        'admin.components',
         'ngMaterial',
         'ngMessages',
         'ui.tree',

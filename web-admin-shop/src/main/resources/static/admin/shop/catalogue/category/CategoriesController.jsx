@@ -4,7 +4,7 @@ var ROOT_ID = 'root';
 var PLACEHOLDER_ID = 'new';
 var PLACEHOLDER_NAME = "New Category";
 
-class CategoriesController extends AbstractController {
+class CategoriesController extends AbstractServiceBundleConsumer {
 
     /*@ngInject*/
     constructor($scope, $services, categoryService) {
