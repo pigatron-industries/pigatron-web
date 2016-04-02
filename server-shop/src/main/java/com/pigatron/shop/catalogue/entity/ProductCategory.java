@@ -17,6 +17,7 @@ public class ProductCategory {
 
     @Id private String id;
     @Indexed @NotNull private String name;
+    @DBRef(lazy=true) private Image image;
     @DBRef private List<ProductCategory> subcategories;
 
     public ProductCategory() {
@@ -41,6 +42,14 @@ public class ProductCategory {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     public List<ProductCategory> getSubcategories() {

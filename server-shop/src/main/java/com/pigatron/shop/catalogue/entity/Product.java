@@ -1,13 +1,12 @@
 package com.pigatron.shop.catalogue.entity;
 
-import javax.validation.constraints.NotNull;
-
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document
@@ -38,8 +37,8 @@ public class Product {
     private String metaDescription;
 
     // Images
-    @DBRef private ProductImage thumbnailImage;
-    @DBRef private List<ProductImage> productImages;
+    @DBRef(lazy=true) private Image thumbnailImage;
+    @DBRef(lazy=true) private List<Image> images;
 
     // Inventory
     private Integer quantity;
@@ -177,20 +176,20 @@ public class Product {
         this.metaDescription = metaDescription;
     }
 
-    public ProductImage getThumbnailImage() {
+    public Image getThumbnailImage() {
         return thumbnailImage;
     }
 
-    public void setThumbnailImage(ProductImage thumbnailImage) {
+    public void setThumbnailImage(Image thumbnailImage) {
         this.thumbnailImage = thumbnailImage;
     }
 
-    public List<ProductImage> getProductImages() {
-        return productImages;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setProductImages(List<ProductImage> productImages) {
-        this.productImages = productImages;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     public Integer getQuantity() {

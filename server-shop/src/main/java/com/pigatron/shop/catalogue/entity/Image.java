@@ -5,13 +5,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class ProductImage {
+public class Image {
 
-    @Id
-    private String id;
+    @Id private String id;
     private byte[] fileData;
     private String text;
-
 
 
     public String getId() {
