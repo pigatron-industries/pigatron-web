@@ -1,23 +1,32 @@
 
+const EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED = 'shop.catalogue.categoriesChanged';
+
+const ROUTE_SHOP_CATALOGUE_CATEGORIES = 'categories';
+const ROUTE_SHOP_CATALOGUE_CATEGORY = 'categories.category';
+const ROUTE_SHOP_CATALOGUE_PRODUCTS = 'products';
+const ROUTE_SHOP_CATALOGUE_PRODUCT = 'product';
+
+
 var CatalogueConfig = function($stateProvider) {
 
     $stateProvider.state('home', {
         url: "/",
         templateUrl: "/admin/shop/home.html"
     });
-    $stateProvider.state('categories', {
+    $stateProvider.state(ROUTE_SHOP_CATALOGUE_CATEGORIES, {
         url: "/categories",
         templateUrl: "/admin/shop/catalogue/category/categories.html"
     });
-    $stateProvider.state('categories.category', {
+    $stateProvider.state(ROUTE_SHOP_CATALOGUE_CATEGORY, {
         url: "/:id",
+        params: {parentId:null},
         templateUrl: "/admin/shop/catalogue/category/categories.category.html"
     });
-    $stateProvider.state('products', {
+    $stateProvider.state(ROUTE_SHOP_CATALOGUE_PRODUCTS, {
         url: "/products",
         templateUrl: "/admin/shop/catalogue/product/products.html"
     });
-    $stateProvider.state('product', {
+    $stateProvider.state(ROUTE_SHOP_CATALOGUE_PRODUCT, {
         url: "/products/:id",
         templateUrl: "/admin/shop/catalogue/product/product.html"
     });

@@ -1,18 +1,18 @@
-<div class="tree-node tree-node-content" ng-class="">
-    <a ui-tree-handle class="btn btn-success btn-xs" ng-click="toggle(this)">
-        <span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}">drag</span>
+<div class="tree-node tree-node-content" ng-class="{selected:category.id==categories.selectedCategoryId}">
+    <a class="btn btn-success btn-xs" ng-click="toggle(this)">
+        <span class="tree-collapse fa fa-lg" ng-class="{'fa-caret-right':collapsed, 'fa-caret-down':!collapsed}"></span>
     </a>
-    <a ui-sref="categories.category({id:category.id})">
+    <a ng-click="categories.selectCategory(category.id)">
         <span>{{category.name}}</span>
     </a>
-    <a class="pull-right btn btn-danger btn-xs" ng-click="remove(this)">
-        <span class="glyphicon glyphicon-remove">Delete</span>
+    <a class="pull-right btn btn-primary btn-xs tree-action" ng-click="categories.newSubcategory(this)">
+        <span class="fa fa-lg fa-plus"></span>
     </a>
-    <a class="pull-right btn btn-primary btn-xs" ng-click="categories.newSubcategory(this)" style="margin-right: 8px;">
-        <span class="glyphicon glyphicon-plus">New</span>
+    <a ui-tree-handle class="tree-action">
+        <span class="fa fa-lg fa-bars"></span>
     </a>
 </div>
-<ol ui-tree-nodes="" ng-model="category.subcategories">
+<ol ui-tree-nodes="" ng-model="category.subcategories" ng-show="!collapsed">
     <li ng-repeat="category in category.subcategories" ui-tree-node ng-include="'/admin/shop/catalogue/category/categories.node.html'">
     </li>
 </ol>

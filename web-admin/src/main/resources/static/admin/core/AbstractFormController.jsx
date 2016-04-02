@@ -9,6 +9,7 @@ class AbstractFormController extends AbstractController {
         } else {
             this.load(this.$stateParams.id);
         }
+        this.$scope.$on(EVENT_ADMIN_SAVE, () => {this.save();});
     }
 
     load(id) {

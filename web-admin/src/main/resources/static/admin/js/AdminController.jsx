@@ -3,6 +3,7 @@ class AdminController {
 
     /*@ngInject*/
     constructor($scope, $http, hotkeys, $mdToast, $rootScope, $window) {
+        this.$scope = $scope;
         this.$http = $http;
         this.hotkeys = hotkeys;
         this.$mdToast = $mdToast;
@@ -10,17 +11,17 @@ class AdminController {
         this.$window = $window;
         window.$rootScope = $rootScope;
         hotkeys.add({
-            combo: ['meta+s'],
+            combo: ['ctrl+s','command+s'],
             description: 'Save',
             allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-            callback: function(e) {
+            callback: (e) => {
                 if (e.preventDefault) {
                     e.preventDefault();
                 } else {
                     // internet explorer
                     e.returnValue = false;
                 }
-                window.save();
+                this.$scope.$broadcast(EVENT_ADMIN_SAVE);
             }
         });
         $rootScope.notifyError = function(message) {
