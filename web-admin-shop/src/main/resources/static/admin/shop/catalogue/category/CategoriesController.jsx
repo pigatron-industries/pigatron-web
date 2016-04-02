@@ -4,7 +4,7 @@ var ROOT_ID = 'root';
 var PLACEHOLDER_ID = 'new';
 var PLACEHOLDER_NAME = "New Category";
 
-class CategoriesController extends AbstractServiceBundleConsumer {
+class CategoriesController extends AbstractController {
 
     /*@ngInject*/
     constructor($scope, $services, categoryService) {
@@ -12,9 +12,9 @@ class CategoriesController extends AbstractServiceBundleConsumer {
         window.$categories = this;
         this.categoryService = categoryService;
         this.treeOptions = {
-            removed: (scope) => { this.remove(scope.$modelValue.id); },
             dropped: (event) => { this.moveCategory(event); }
         };
+        this.$scope.$on(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED, () => {this.load();});
         this.load();
     }
 
@@ -22,29 +22,24 @@ class CategoriesController extends AbstractServiceBundleConsumer {
     load(callback) {
         this.categoryService.getRoot()
             .then((success) => {
-                this.categories = success.data.subcategories;
+                this.categories = [ success.data ];
                 if(callback) { callback(); }
             });
     }
 
     newSubcategory(scope) {
-        var category = scope.$modelValue;
+        let category = scope.$modelValue;
         category.subcategories.push({
             id: PLACEHOLDER_ID,
             name: PLACEHOLDER_NAME,
             subcategories: []
         });
-        window.$category.newSubcategory(category.id);
+        this.selectCategory("new", category.id);
     }
 
-    remove(categoryId) {
-        this.categoryService.remove(categoryId)
-            .then((success) => {
-                // If the deleted category was open the close the form
-                if(window.$category.formData.id == categoryId) {
-                    this.$state.go('categories');
-                }
-            });
+    selectCategory(id, parentId) {
+        this.selectedCategoryId = id;
+        this.$state.go('categories.category', {id:id, parentId:parentId});
     }
 
     moveCategory(event) {

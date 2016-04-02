@@ -32,7 +32,7 @@ public class RepositorySetupService {
         ProductCategory root = productCategoryRepository.findOne(ProductCategory.ROOT_ID);
         if(root == null) {
             logger.info("Creating root product category.");
-            ProductCategory rootCategory = new ProductCategory(ProductCategory.ROOT_ID, "Root");
+            ProductCategory rootCategory = new ProductCategory(ProductCategory.ROOT_ID, ProductCategory.ROOT_NAME);
             productCategoryRepository.save(rootCategory);
         }
     }

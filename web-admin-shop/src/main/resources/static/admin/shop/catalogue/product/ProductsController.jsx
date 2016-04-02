@@ -21,11 +21,16 @@ class ProductsController extends AbstractTableController {
             this.column({ field: 'metaTitle',        visible:false, enableCellEdit: true  }),
             this.column({ field: 'metaKeywords',     visible:false, enableCellEdit: true  }),
             this.column({ field: 'metaDescription',  visible:false, enableCellEdit: true  }),
-            this.column({ field: 'quantity',         visible:true,  enableCellEdit: true  }),
+            this.column({ field: 'quantity',         visible:true,  cellEditableCondition: ProductsController.quantityEditable  }),
             this.column({ field: 'allowBackorders',  visible:false, enableCellEdit: true  }),
             this.column({ field: 'maxInCart',        visible:false, enableCellEdit: true  }),
             this.column({ field: 'categories',       visible:true,  enableCellEdit: false })
         ];
     }
+
+    static quantityEditable(scope) {
+        return !scope.row.entity.useQuantityOnOptions;
+    }
+
 
 }

@@ -7,28 +7,33 @@ class CategoryController extends AbstractFormController {
         super($scope, $services, categoryService);
         this.$rootScope = $rootScope;
         window.$category = this;
-    }
-
-    newSubcategory(parentCategoryId) {
-        this.formData = {id:null, name:'', subcategories:[]};
-        this.parentId = parentCategoryId;
-        this.setPristine();
-        $("#name").focus();
+        this.parentId = this.$stateParams.parentId;
     }
 
     save() {
         this.dataService.save(this.formData, this.parentId)
             .success((data) => {
                 this.setPristine();
-                // TODO should not call controller directly
-                window.$categories.load(() => {
-                    this.$state.go("categories.category", {id: data.id});
-                    //$categories.selectCategory(data.id);
-                });
                 this.$rootScope.notifySuccess('Category Saved');
+                this.$scope.$emit(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED);
+                this.$state.go("categories.category", {id: data.id});
             });
     }
 
-}
+    remove() {
+        if(this.formData.id) {
+            this.dataService.remove(this.formData.id).then(() => {
+                this.afterRemove();
+            });
+        } else {
+            this.afterRemove();
+        }
+    }
 
+    afterRemove() {
+        this.$state.go(ROUTE_SHOP_CATALOGUE_CATEGORIES);
+        this.$scope.$emit(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED);
+    }
+
+}
 

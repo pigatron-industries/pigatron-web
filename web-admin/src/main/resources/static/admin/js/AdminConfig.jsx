@@ -1,4 +1,6 @@
 
+const EVENT_ADMIN_SAVE = 'save';
+
 var AdminConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider,
          $httpProvider, $provide) {
     configTheme($mdThemingProvider);
@@ -61,12 +63,6 @@ var configTheme = function ($mdThemingProvider) {
     };
     $mdThemingProvider.definePalette('arapawa', arapawa);
     $mdThemingProvider.definePalette('midnight', midnight);
-
-    //205164 primary arapawa blue
-    //2c3e50 primary midnight blue
-    //9F472E paletton orange
-    //598E29 paletton green
-    //E91E63 material pink
 
     var pink = {
         '50': '#f492b3',

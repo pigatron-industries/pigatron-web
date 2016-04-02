@@ -14,17 +14,20 @@ import java.util.List;
 public class ProductCategory {
 
     public static final String ROOT_ID = "root";
+    public static final String ROOT_NAME = "Shop";
 
     @Id private String id;
     @Indexed @NotNull private String name;
     @DBRef private List<ProductCategory> subcategories;
 
     public ProductCategory() {
+        this.subcategories = new ArrayList<>();
     }
 
     public ProductCategory(String id, String name) {
         this.id = id;
         this.name = name;
+        this.subcategories = new ArrayList<>();
     }
 
     public String getId() {
@@ -44,9 +47,6 @@ public class ProductCategory {
     }
 
     public List<ProductCategory> getSubcategories() {
-        if(subcategories == null) {
-            subcategories = new ArrayList<>();
-        }
         return subcategories;
     }
 
