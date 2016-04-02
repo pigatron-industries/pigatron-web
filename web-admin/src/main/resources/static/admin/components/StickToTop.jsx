@@ -14,7 +14,6 @@ class StickToTop extends AbstractController {
         element.css("top", "0");
 
         this.eventOnOff(angular.element(this.$window), "scroll", () => {
-            console.log("scroll");
             if(angular.element(this.$window).scrollTop() > spacer.offset().top) {
                 spacer.width(element.outerWidth());
                 element.css("position", "fixed");
