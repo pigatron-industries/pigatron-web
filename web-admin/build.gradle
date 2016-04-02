@@ -15,7 +15,7 @@ dependencies {
     // Web Jars
     compile('org.webjars:swagger-ui:2.1.8-M1')
     compile('org.webjars.bower:jquery:3.0.0-beta1')
-    def angularVersion = "1.5.1"
+    def angularVersion = "1.5.3"
     compile("org.webjars.bower:angularjs:${angularVersion}")
     compile("org.webjars.bower:angular-messages:${angularVersion}")
     compile("org.webjars.bower:angular-animate:${angularVersion}")
