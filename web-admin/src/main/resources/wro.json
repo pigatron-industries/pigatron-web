@@ -10,7 +10,8 @@
       "angular-animate/angular-animate.min.js",
       "angular-material/angular-material.min.js",
       "angular-hotkeys/build/hotkeys.js",
-      "angular-ui-grid/ui-grid.min.js"
+      "angular-ui-grid/ui-grid.min.js",
+      "ngSmoothScroll/lib/angular-smooth-scroll.js"
     ],
     "css":[
       "angular-material/angular-material.min.css",

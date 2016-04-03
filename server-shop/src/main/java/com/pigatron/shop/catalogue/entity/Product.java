@@ -1,5 +1,6 @@
 package com.pigatron.shop.catalogue.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -7,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -37,8 +39,7 @@ public class Product {
     private String metaDescription;
 
     // Images
-    @DBRef(lazy=true) private Image thumbnailImage;
-    @DBRef(lazy=true) private List<Image> images;
+    private List<ProductImage> images;
 
     // Inventory
     private Integer quantity;
@@ -63,6 +64,9 @@ public class Product {
     private String supplierNotes;
     private String quantityOnOrder;
 
+    public Product() {
+        this.images = new ArrayList<>();
+    }
 
     public String getId() {
         return id;
@@ -176,19 +180,11 @@ public class Product {
         this.metaDescription = metaDescription;
     }
 
-    public Image getThumbnailImage() {
-        return thumbnailImage;
-    }
-
-    public void setThumbnailImage(Image thumbnailImage) {
-        this.thumbnailImage = thumbnailImage;
-    }
-
-    public List<Image> getImages() {
+    public List<ProductImage> getImages() {
         return images;
     }
 
-    public void setImages(List<Image> images) {
+    public void setImages(List<ProductImage> images) {
         this.images = images;
     }
 

@@ -2,15 +2,18 @@
   "lib":{
     "prefix":"/lib/",
     "js":[
-      "angular-ui-tree/dist/angular-ui-tree.min.js"
+      "angular-ui-tree/dist/angular-ui-tree.min.js",
+      "lf-ng-md-file-input/dist/lf-ng-md-file-input.min.js"
     ],
     "css":[
-      "angular-ui-tree/dist/angular-ui-tree.min.css"
+      "angular-ui-tree/dist/angular-ui-tree.min.css",
+      "lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css"
     ]
   },
   "admin":{
     "prefix":"/admin/shop/",
     "jsx":[
+      "catalogue/image/ImageService",
       "catalogue/category/CategoriesController",
       "catalogue/category/CategoryController",
       "catalogue/category/CategoryService",

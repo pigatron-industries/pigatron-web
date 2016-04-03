@@ -10,7 +10,9 @@ angular.module('admin.shop.catalogue', [
         'ui.grid.cellNav',
         'ui.grid.pinning',
         'ui.grid.resizeColumns',
-        'ui.grid.selection'])
+        'ui.grid.selection',
+        'lfNgMdFileInput',
+        'smoothScroll'])
     .config(CatalogueConfig);
 
 register('admin.shop.catalogue')
@@ -18,6 +20,7 @@ register('admin.shop.catalogue')
     .controller('CategoryController', CategoryController)
     .controller('ProductsController', ProductsController)
     .controller('ProductController', ProductController)
+    .service('imageService', ImageService)
     .service('categoryService', CategoryService)
     .service('productService', ProductService)
     .directive("skuUnique", SkuUniqueValidator)

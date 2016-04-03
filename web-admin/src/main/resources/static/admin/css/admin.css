@@ -155,6 +155,10 @@ h1, h2 {
     margin-right: 40px;
 }
 
+.formsection {
+    padding-right: 40px;
+}
+
 .formcolumn {
     padding-right:40px;
 }
@@ -304,18 +308,19 @@ span.tree-collapse {
 a:not(.md-button) {
     color: #555555;
 }
-a:not(.md-button)[ng-click] {
+a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     cursor: pointer;
 }
 
-.tree-node {
+.tree-node, .selectable-item {
     background-color: #eeeeee;
     padding: 5px;
     margin-top: 2px;
     border-right: 3px solid transparent;
+    line-height: 20px;
 }
 
-.tree-node.selected {
+.tree-node.selected, .selectable-item.selected {
     border-right: 3px solid #E91E63;
 }
 
@@ -324,6 +329,63 @@ a:not(.md-button)[ng-click] {
     padding-right: 4px;
     padding-left: 4px;
 }
+
+
+/* File uploads */
+
+.lf-ng-md-file-input {
+    border: 2px dashed #DDD;
+    border-radius: 7px;
+}
+
+.lf-ng-md-file-input-x {
+    display: none;
+}
+
+.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag {
+    border: none;
+}
+
+.lf-ng-md-file-input .lf-ng-md-file-input-preview-container {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container {
+    height: 40px;
+}
+
+.lf-ng-md-file-input .lf-ng-md-file-input-container {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text {
+    font-size: 1.8em;
+}
+
+.image-preview-frame {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+    display: table;
+    margin: 8px;
+    height: 160px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.image-preview-frame img {
+    height: 160px;
+    width: auto;
+    max-width: 100%;
+}
+
 
 /* View transitions */
 .view-container {

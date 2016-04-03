@@ -14,17 +14,26 @@
                         <span class="fa fa-lg2 fa-save"></span>
                     </md-button>
                 </div>
+                <a scroll-to="item" class="selectable-item" ng-class="{selected:product.isScrolledVisible('item')}">Item</a>
+                <a scroll-to="inventory" class="selectable-item" ng-class="{selected:product.isScrolledVisible('inventory')}">Inventory</a>
+                <a scroll-to="priceAnchor" class="selectable-item" ng-class="{selected:product.isScrolledVisible('priceAnchor')}">Price</a>
+                <a scroll-to="images" class="selectable-item" ng-class="{selected:product.isScrolledVisible('images')}">Images</a>
+                <a scroll-to="categories" class="selectable-item" ng-class="{selected:product.isScrolledVisible('categories')}">Categories</a>
+                <a scroll-to="options" class="selectable-item" ng-class="{selected:product.isScrolledVisible('options')}">Options</a>
+                <a scroll-to="meta" class="selectable-item" ng-class="{selected:product.isScrolledVisible('meta')}">Meta Info</a>
+                <a scroll-to="supply" class="selectable-item" ng-class="{selected:product.isScrolledVisible('supply')}">Supply</a>
             </div>
 
             <div flex class="formarea" layout="column">
 
+                <a id="item"></a>
                 <h3>Item</h3>
                 <div id="generalSection" class="formsection" layout="row" layout-sm="column">
                     <!-- Item column 1 -->
                     <div class="formcolumn" flex="40" layout="column">
                         <md-input-container layout="row">
-                            <md-checkbox aria-label="Enabled" ng-model="product.formData.enabled" class="md-primary">Enabled</md-checkbox>
-                            <md-checkbox aria-label="Option" ng-model="product.formData.option" class="md-primary">
+                            <md-checkbox id="enabled" aria-label="Enabled" ng-model="product.formData.enabled" class="md-primary">Enabled</md-checkbox>
+                            <md-checkbox id="option" aria-label="Option" ng-model="product.formData.option" class="md-primary">
                                 Option
                                 <md-tooltip md-direction="bottom">This product is an option for another product</md-tooltip>
                             </md-checkbox>
@@ -72,6 +81,7 @@
                     </div>
                 </div>
 
+                <a id="inventory"></a>
                 <h3>Inventory</h3>
                 <div id="inventorySection" class="formsection" layout="row" layout-sm="row">
                     <md-input-container>
@@ -81,11 +91,12 @@
                             <div ng-message="pattern">Must be a whole number.</div>
                         </div>
                     </md-input-container>
-                    <md-input-container layout="row">
+                    <md-input-container ng-if="!product.formData.option" layout="row">
                         <md-checkbox aria-label="Manage on Options" ng-model="product.formData.useQuantityOnOptions" class="md-primary">Use Quantity on Options</md-checkbox>
                     </md-input-container>
                 </div>
 
+                <a id="priceAnchor"></a>
                 <h3>Price</h3>
                 <div id="priceSection" class="formsection" layout="row" layout-sm="row">
                     <md-input-container>
@@ -94,11 +105,32 @@
                     </md-input-container>
                 </div>
 
-
+                <a id="images"></a>
                 <h3>Images</h3>
+                <div id="imagesSection" class="formsection" layout="column" layout-sm="row">
+                    <div>
+                        <md-radio-group ng-model="product.imageThumbnail" class="md-primary">
+                            <div ng-repeat="productImage in product.formData.images" class="image-preview-frame">
+                                <img ng-src="/shopadmin/api/catalogue/image/{{productImage.image.id}}"/>
+                                <div layout="column" layout-align="start center">
+                                    <md-radio-button ng-value="productImage.image.id">Thumbnail</md-radio-button>
+                                </div>
+                            </div>
+                        </md-radio-group>
+                    </div>
+
+                    <lf-ng-md-file-input lf-files="product.imagesToUpload" lf-option="product.uploadOptions" lf-api="product.uploadApi"
+                                         lf-placeholder="Pick Image" lf-browse-label="Search" lf-remove-label="Remove" multiple drag preview>
+                    </lf-ng-md-file-input>
+                </div>
+
+                <a id="categories"></a>
                 <h3>Categories</h3>
+
+                <a id="options"></a>
                 <h3>Options</h3>
 
+                <a id="meta"></a>
                 <h3>Meta Info</h3>
                 <div id="metaSection" class="formsection" layout="row" layout-sm="row">
                     <div class="formcolumn" flex="40" layout="column">
@@ -119,6 +151,7 @@
                     </div>
                 </div>
 
+                <a id="supply"></a>
                 <h3>Supply</h3>
                 <div id="supplySection" class="formsection" layout="row" layout-sm="row">
                     <div class="formcolumn" flex="40" layout="column">

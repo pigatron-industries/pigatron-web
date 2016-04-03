@@ -17,4 +17,13 @@ class AbstractController extends AbstractServiceBundleConsumer {
         this.$timeout(func, 1);
         this.eventOnOff(element, event, func);
     }
+
+    isScrolledVisible(elementId) {
+        const anchorOffset = 20;
+        let element = $("#"+elementId);
+        let scrollTop = $(this.$window).scrollTop() - anchorOffset;
+        let scrollBottom = scrollTop + $(this.$window).height() - anchorOffset;
+        let elementPos = element.offset().top;
+        return elementPos > scrollTop && elementPos < scrollBottom;
+    }
 }

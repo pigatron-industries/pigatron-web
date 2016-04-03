@@ -25,6 +25,7 @@ dependencies {
     compile('org.webjars.bower:angular-material:1.1.0-rc1')
     compile('org.webjars.bower:angular-ui-grid:3.1.1')
     compile('org.webjars:font-awesome:4.5.0')
+    compile('org.webjars.bower:ngSmoothScroll:2.0.0')
 }
 
 // Web resource handling

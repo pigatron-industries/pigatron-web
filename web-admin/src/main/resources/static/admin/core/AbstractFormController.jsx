@@ -7,11 +7,12 @@ class AbstractFormController extends AbstractController {
         if(this.$stateParams.id == 'new') {
             this.create();
         } else {
-            this.load(this.$stateParams.id);
+            this.load(this.$stateParams.id); //TODO load after timeout
         }
         this.$scope.$on(EVENT_ADMIN_SAVE, () => {this.save();});
     }
 
+    //TODO return promise from load
     load(id) {
         this.dataService.get(id)
             .then((success) => {
@@ -24,6 +25,7 @@ class AbstractFormController extends AbstractController {
         this.formData = {};
     }
 
+    //TODO return promise from save
     save() {
         this.dataService.save(this.formData)
             .then((success) => {
