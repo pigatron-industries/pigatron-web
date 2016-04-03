@@ -9,11 +9,22 @@ public class ProductImage {
     @JsonIgnoreProperties({"mimeType"})
     private Image image;
 
+    private boolean thumbnail;
+
+
     public Image getImage() {
         return image;
     }
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public boolean isThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(boolean thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

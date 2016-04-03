@@ -5,10 +5,18 @@ class ProductController extends AbstractFormController {
     constructor($scope, $services, productService, imageService) {
         super($scope, $services, productService);
         this.imageService = imageService;
+        this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
     }
 
     load(id) {
-        super.load(id);
+        super.load(id).then((success) => {
+            // Set selected thumbnail
+            this.formData.images.forEach((productImage) => {
+                if(productImage.thumbnail) {
+                    this.$scope.thumbnailImageId = productImage.image.id;
+                }
+            });
+        });
     }
 
     save() {
@@ -21,6 +29,28 @@ class ProductController extends AbstractFormController {
             super.save();
         }, (fail) => {
         });
+    }
+
+    onThumbnailChange() {
+        if(!this.formData) { return; }
+
+        // Move selected thumbnail to front of array
+        let thumbnailImageId = this.$scope.thumbnailImageId;
+        let thumbnailImageIndex = null;
+        let thumbnailImage = null;
+
+        this.formData.images.forEach((productImage, i) => {
+            if(productImage.image && productImage.image.id == thumbnailImageId) {
+                productImage.thumbnail = true;
+                thumbnailImage = productImage;
+                thumbnailImageIndex = i;
+            } else {
+                productImage.thumbnail = false;
+            }
+        });
+
+        this.formData.images.splice(thumbnailImageIndex, 1);
+        this.formData.images.unshift(thumbnailImage);
     }
 
 }

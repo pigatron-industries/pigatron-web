@@ -109,11 +109,11 @@
                 <h3>Images</h3>
                 <div id="imagesSection" class="formsection" layout="column" layout-sm="row">
                     <div>
-                        <md-radio-group ng-model="product.imageThumbnail" class="md-primary">
+                        <md-radio-group ng-model="thumbnailImageId" class="md-primary">
                             <div ng-repeat="productImage in product.formData.images" class="image-preview-frame">
                                 <img ng-src="/shopadmin/api/catalogue/image/{{productImage.image.id}}"/>
-                                <div layout="column" layout-align="start center">
-                                    <md-radio-button ng-value="productImage.image.id">Thumbnail</md-radio-button>
+                                <div layout="column" layout-align="start start">
+                                    <md-radio-button style="margin-bottom:0;" ng-value="productImage.image.id">Thumbnail</md-radio-button>
                                 </div>
                             </div>
                         </md-radio-group>
