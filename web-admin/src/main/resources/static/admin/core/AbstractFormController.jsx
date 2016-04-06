@@ -41,4 +41,8 @@ class AbstractFormController extends AbstractController {
         this.$scope.form.$setPristine();
     }
 
+    setDirty() {
+        this.$scope.form.$setDirty();
+    }
+
 }

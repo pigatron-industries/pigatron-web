@@ -108,16 +108,18 @@
                 <a id="images"></a>
                 <h3>Images</h3>
                 <div id="imagesSection" class="formsection" layout="column" layout-sm="row">
-                    <div>
-                        <md-radio-group ng-model="thumbnailImageId" class="md-primary">
-                            <div ng-repeat="productImage in product.formData.images" class="image-preview-frame">
-                                <img ng-src="/shopadmin/api/catalogue/image/{{productImage.image.id}}"/>
-                                <div layout="column" layout-align="start start">
-                                    <md-radio-button style="margin-bottom:0;" ng-value="productImage.image.id">Thumbnail</md-radio-button>
+                    <md-radio-group ng-model="thumbnailImageId" class="md-primary">
+                        <div id="sortableImages" class="sortableContainer">
+                            <div data-as-sortable="product.sortableOptions" data-ng-model="product.formData.images" class="sortableImages">
+                                <div data-ng-repeat="productImage in product.formData.images" data-as-sortable-item class="image-preview-frame">
+                                    <img ng-src="/shopadmin/api/catalogue/image/{{productImage.image.id}}" data-as-sortable-item-handle/>
+                                    <div layout="column" layout-align="start start">
+                                        <md-radio-button style="margin-bottom:0;" ng-value="productImage.image.id">Thumbnail</md-radio-button>
+                                    </div>
                                 </div>
                             </div>
-                        </md-radio-group>
-                    </div>
+                        </div>
+                    </md-radio-group>
 
                     <lf-ng-md-file-input lf-files="product.imagesToUpload" lf-option="product.uploadOptions" lf-api="product.uploadApi"
                                          lf-placeholder="Pick Image" lf-browse-label="Search" lf-remove-label="Remove" multiple drag preview>

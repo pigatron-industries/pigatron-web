@@ -5,6 +5,10 @@ class ProductController extends AbstractFormController {
     constructor($scope, $services, productService, imageService) {
         super($scope, $services, productService);
         this.imageService = imageService;
+        this.sortableOptions = {
+            containment: '#sortableImages',
+            orderChanged: (event) => { this.onImageOrderChanged(); }
+        };
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
     }
 
@@ -51,6 +55,10 @@ class ProductController extends AbstractFormController {
 
         this.formData.images.splice(thumbnailImageIndex, 1);
         this.formData.images.unshift(thumbnailImage);
+    }
+
+    onImageOrderChanged() {
+        this.setDirty();
     }
 
 }

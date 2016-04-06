@@ -11,6 +11,7 @@ angular.module('admin.shop.catalogue', [
         'ui.grid.pinning',
         'ui.grid.resizeColumns',
         'ui.grid.selection',
+        'as.sortable',
         'lfNgMdFileInput',
         'smoothScroll'])
     .config(CatalogueConfig);

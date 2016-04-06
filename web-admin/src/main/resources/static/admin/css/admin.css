@@ -368,12 +368,15 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     font-size: 1.8em;
 }
 
+
+/* Image previews */
 .image-preview-frame {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    display: table;
     margin: 8px;
+    display: table;
     height: 160px;
     border: 1px solid #ddd;
+    border-radius: 0;
     padding: 6px;
     float: left;
     text-align: center;
@@ -384,6 +387,20 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     height: 160px;
     width: auto;
     max-width: 100%;
+}
+
+.sortableContainer {
+    display: inline-block;
+}
+
+.sortableImages .as-sortable-item,
+.sortableImages .as-sortable-placeholder {
+    display: table;
+    height: 160px;
+    float: left;
+    border-radius: 0;
+    padding: 6px;
+    margin: 8px;
 }
 
 

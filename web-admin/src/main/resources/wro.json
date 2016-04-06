@@ -11,13 +11,16 @@
       "angular-material/angular-material.min.js",
       "angular-hotkeys/build/hotkeys.js",
       "angular-ui-grid/ui-grid.min.js",
+      "ng-sortable/dist/ng-sortable.js",
       "ngSmoothScroll/lib/angular-smooth-scroll.js"
     ],
     "css":[
       "angular-material/angular-material.min.css",
       "angular-hotkeys/build/hotkeys.css",
       "font-awesome/css/font-awesome.min.css",
-      "angular-ui-grid/ui-grid.min.css"
+      "angular-ui-grid/ui-grid.min.css",
+      "ng-sortable/dist/ng-sortable.min.css",
+      "ng-sortable/dist/ng-sortable.style.min.css"
     ]
   },
   "admin":{
