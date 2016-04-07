@@ -113,8 +113,9 @@
                             <div data-as-sortable="product.sortableOptions" data-ng-model="product.formData.images" class="sortableImages">
                                 <div data-ng-repeat="productImage in product.formData.images" data-as-sortable-item class="image-preview-frame">
                                     <img ng-src="/shopadmin/api/catalogue/image/{{productImage.image.id}}" data-as-sortable-item-handle/>
-                                    <div layout="column" layout-align="start start">
+                                    <div layout="row" layout-align="space-between start">
                                         <md-radio-button style="margin-bottom:0;" ng-value="productImage.image.id">Thumbnail</md-radio-button>
+                                        <a ng-click="product.removeImage($index)"><span class="fa fa-lg2 fa-trash"></span></a>
                                     </div>
                                 </div>
                             </div>

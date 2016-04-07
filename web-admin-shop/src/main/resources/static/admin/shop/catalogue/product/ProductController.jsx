@@ -9,6 +9,7 @@ class ProductController extends AbstractFormController {
             containment: '#sortableImages',
             orderChanged: (event) => { this.onImageOrderChanged(); }
         };
+        this.imagesToDelete = [];
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
     }
 
@@ -58,6 +59,12 @@ class ProductController extends AbstractFormController {
     }
 
     onImageOrderChanged() {
+        this.setDirty();
+    }
+
+    removeImage(index) {
+        this.imagesToDelete.push(this.formData.images[index]);
+        this.formData.images.splice(index, 1);
         this.setDirty();
     }
 
