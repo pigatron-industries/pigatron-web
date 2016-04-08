@@ -2,11 +2,13 @@
 class HttpInterceptor {
 
     /*@ngInject*/
-    constructor($q) {
+    constructor($q, $rootScope) {
         this.$q = $q;
+        this.$rootScope = $rootScope;
     }
 
     request(config) {
+        this.$rootScope.loading = true;
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
         config.headers[header] = token;
@@ -14,14 +16,17 @@ class HttpInterceptor {
     }
 
     requestError(rejection) {
+        this.$rootScope.loading = false;
         return this.$q.reject(rejection);
     }
 
     response(response) {
+        this.$rootScope.loading = false;
         return response;
     }
 
     responseError(rejection) {
+        this.$rootScope.loading = false;
         if(rejection.status == 401) {
             location.reload();
         } else {

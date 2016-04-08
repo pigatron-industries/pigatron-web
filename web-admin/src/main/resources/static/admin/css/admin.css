@@ -110,8 +110,8 @@ md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus
 }
 
 /* Menu items white text */
-md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item {
-    color: white;
+md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item a {
+    color: white !important;
 }
 
 md-menu-item>.md-button, md-menu>.md-button {
@@ -436,4 +436,10 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
 
 [ui-view].ng-leave-active {
     opacity: 0;
+}
+
+md-progress-linear {
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }

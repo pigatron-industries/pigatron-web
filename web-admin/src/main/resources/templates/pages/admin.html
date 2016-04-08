@@ -9,6 +9,8 @@
 
 			<md-menu-bar th:replace="fragments/menubar :: menubar(${adminMenu})"></md-menu-bar>
 
+			<md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="loading"></md-progress-linear>
+
 			<div layout-fill="layout-fill" id="toast-container">
 				<div id="content">
 					<div ui-view=""></div>
