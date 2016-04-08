@@ -3,7 +3,7 @@ class AbstractRestService {
 
     constructor($http, baseUrl) {
         this.$http = $http;
-        this.baseUrl = baseUrl;
+        this.baseUrl = URL_BASE + baseUrl;
     }
 
     getUrl(id) {

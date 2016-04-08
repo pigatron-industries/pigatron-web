@@ -1,5 +1,5 @@
 
-const API_ADMIN_PRODUCT = "/shopadmin/api/catalogue/product";
+const API_ADMIN_PRODUCT = "api/catalogue/product";
 
 class ProductService extends AbstractRestService {
 

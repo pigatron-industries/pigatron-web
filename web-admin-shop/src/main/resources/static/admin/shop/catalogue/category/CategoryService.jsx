@@ -1,5 +1,5 @@
 
-const API_ADMIN_CATEGORY = "/shopadmin/api/catalogue/category";
+const API_ADMIN_CATEGORY = "api/catalogue/category";
 const ROOT_ID = "root";
 
 
