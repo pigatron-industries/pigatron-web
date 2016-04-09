@@ -8,6 +8,7 @@ class AdminController {
         this.hotkeys = hotkeys;
         this.$mdToast = $mdToast;
         this.$rootScope = $rootScope;
+        this.$rootScope.urlBase = URL_BASE;
         this.$window = $window;
         window.$rootScope = $rootScope;
         hotkeys.add({

@@ -101,7 +101,8 @@
                 <div id="priceSection" class="formsection" layout="row" layout-sm="row">
                     <md-input-container>
                         <label for="price">Price</label>
-                        <input id="price" name="price" ng-model="product.formData.price" type="number" />
+                        <input id="price" name="price" ng-model="product.formData.price" type="text"
+                               pattern="^[0-9]*\.?[0-9]*$" ng-pattern-restrict pg-format-currency />
                     </md-input-container>
                 </div>
 
@@ -112,7 +113,7 @@
                         <div id="sortableImages" class="sortableContainer">
                             <div data-as-sortable="product.sortableOptions" data-ng-model="product.formData.images" class="sortableImages">
                                 <div data-ng-repeat="productImage in product.formData.images" data-as-sortable-item class="image-preview-frame">
-                                    <img ng-src="/shopadmin/api/catalogue/image/{{productImage.image.id}}" data-as-sortable-item-handle/>
+                                    <img ng-src="{{urlBase}}api/catalogue/image/{{productImage.image.id}}" data-as-sortable-item-handle/>
                                     <div layout="row" layout-align="space-between start">
                                         <md-radio-button style="margin-bottom:0;" ng-value="productImage.image.id">Thumbnail</md-radio-button>
                                         <a ng-click="product.removeImage($index)"><span class="fa fa-lg2 fa-trash"></span></a>
@@ -172,7 +173,8 @@
                         </md-input-container>
                         <md-input-container>
                             <label for="supplierPrice">Price</label>
-                            <input id="supplierPrice" name="supplierPrice" ng-model="product.formData.supplierPrice" type="number" />
+                            <input id="supplierPrice" name="supplierPrice" ng-model="product.formData.supplierPrice" type="text"
+                                   pattern="^[0-9]*\.?[0-9]*$" ng-pattern-restrict pg-format-currency />
                         </md-input-container>
                         <md-input-container>
                             <label for="quantityOnOrder">Quantity On Order</label>

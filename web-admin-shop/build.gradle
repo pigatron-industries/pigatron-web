@@ -10,6 +10,7 @@ dependencies {
     // Web Jars
     compile('org.webjars.bower:angular-ui-tree:2.15.0')
     compile('org.webjars.bower:lf-ng-md-file-input:1.4.3')
+    compile('org.webjars.bower:ng-pattern-restrict:0.2.1')
 }
 
 

@@ -1,6 +1,7 @@
 
 angular.module('admin.shop.catalogue', [
         'admin.components',
+        'admin.shop.components',
         'ngMaterial',
         'ngMessages',
         'ui.tree',
@@ -13,7 +14,8 @@ angular.module('admin.shop.catalogue', [
         'ui.grid.selection',
         'as.sortable',
         'lfNgMdFileInput',
-        'smoothScroll'])
+        'smoothScroll',
+        'ngPatternRestrict'])
     .config(CatalogueConfig);
 
 register('admin.shop.catalogue')

@@ -3,7 +3,8 @@
     "prefix":"/lib/",
     "js":[
       "angular-ui-tree/dist/angular-ui-tree.min.js",
-      "lf-ng-md-file-input/dist/lf-ng-md-file-input.min.js"
+      "lf-ng-md-file-input/dist/lf-ng-md-file-input.min.js",
+      "ng-pattern-restrict/src/ng-pattern-restrict.min.js"
     ],
     "css":[
       "angular-ui-tree/dist/angular-ui-tree.min.css",
@@ -13,6 +14,7 @@
   "admin":{
     "prefix":"/admin/shop/",
     "jsx":[
+      "components/components",
       "catalogue/image/ImageService",
       "catalogue/category/CategoriesController",
       "catalogue/category/CategoryController",
