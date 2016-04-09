@@ -27,4 +27,5 @@ register('admin.shop.catalogue')
     .service('categoryService', CategoryService)
     .service('productService', ProductService)
     .directive("skuUnique", SkuUniqueValidator)
-    .directive("urlUnique", UrlUniqueValidator);
+    .directive("urlUnique", UrlUniqueValidator)
+    .filter("listCategories", ProductsController.listCategories);

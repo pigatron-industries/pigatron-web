@@ -10,7 +10,8 @@ function register(appName) {
         controller: controller,
         service: service,
         provider: provider,
-        factory: factory
+        factory: factory,
+        filter: filter
     };
 
     function directive(name, constructorFn) {
@@ -44,13 +45,13 @@ function register(appName) {
         return this;
     }
 
-    function controller(name, contructorFn) {
-        app.controller(name, contructorFn);
+    function controller(name, constructorFn) {
+        app.controller(name, constructorFn);
         return this;
     }
 
-    function service(name, contructorFn) {
-        app.service(name, contructorFn);
+    function service(name, constructorFn) {
+        app.service(name, constructorFn);
         return this;
     }
 
@@ -63,6 +64,11 @@ function register(appName) {
         constructorFn = _normalizeConstructor(constructorFn);
         var factoryArray = _createFactoryArray(constructorFn);
         app.factory(name, factoryArray);
+        return this;
+    }
+
+    function filter(name, filterFn) {
+        app.filter(name, () => {return filterFn;});
         return this;
     }
 
