@@ -48,6 +48,7 @@ public class Product {
     private Integer maxInCart;
 
     // Categories
+    @JsonIgnoreProperties({"subcategories"})
     @DBRef private List<ProductCategory> categories;
 
     // Reviews
@@ -66,6 +67,7 @@ public class Product {
 
     public Product() {
         this.images = new ArrayList<>();
+        this.categories = new ArrayList<>();
     }
 
     public String getId() {

@@ -1,5 +1,5 @@
 
-const API_ADMIN_IMAGE = "/shopadmin/api/catalogue/image";
+const API_ADMIN_IMAGE = "api/catalogue/image";
 
 class ImageService extends AbstractRestService {
 
