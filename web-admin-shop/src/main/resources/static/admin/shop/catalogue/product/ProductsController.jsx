@@ -25,9 +25,10 @@ class ProductsController extends AbstractTableController {
             this.column({ field: 'allowBackorders',  visible:false, enableCellEdit: true  }),
             this.column({ field: 'maxInCart',        visible:false, enableCellEdit: true  }),
             this.column({ field: 'categories',       visible:true,  enableCellEdit: false, cellFilter: "listCategories" }),
+            this.column({ field: 'supplierInfo',     visible:true,  enableCellEdit: false, cellTemplate: ProductsController.supplierLinkTemplate() }),
             this.column({ field: 'supplierName',     visible:false, enableCellEdit: true  }),
             this.column({ field: 'supplierItemCode', visible:false, enableCellEdit: true  }),
-            this.column({ field: 'supplierItemLink', visible:false, enableCellEdit: false }), //TODO make hyperlink
+            this.column({ field: 'supplierItemLink', visible:false, enableCellEdit: true  }),
             this.column({ field: 'supplierPrice',    visible:false, enableCellEdit: true,  cellFilter: "currency"}),
             this.column({ field: 'supplierNotes',    visible:false, enableCellEdit: false }),
             this.column({ field: 'quantityOnOrder',  visible:false, enableCellEdit: true  })
@@ -47,6 +48,12 @@ class ProductsController extends AbstractTableController {
             list += categories[i].name;
         }
         return list;
+    }
+
+    static supplierLinkTemplate() {
+        return '<div class="ui-grid-cell-input">' +
+            '<a ng-class="\'colt\' + col.uid" class="ui-grid-cell-contents" ng-href="{{row.entity.supplierItemLink}}" target="_new">' +
+            '{{row.entity.supplierName}} {{row.entity.supplierItemCode}}</a></div>';
     }
 
 }
