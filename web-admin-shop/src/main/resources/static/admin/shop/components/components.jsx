@@ -7,18 +7,22 @@ class FormatCurrency extends AbstractViewFormatter {
     }
 
     modelToView(modelValue) {
-        if(modelValue) {
-            let dps = this.countDPs(modelValue);
-            if (dps < 2) dps = 2;
-            return parseFloat(modelValue).toFixed(dps);
-        }
+        return FormatCurrency.formatCurrency(modelValue);
     }
 
     viewToModel(viewValue) {
         return parseFloat(viewValue);
     }
 
-    countDPs(value) {
+    static formatCurrency(value) {
+        if(value) {
+            let dps = FormatCurrency.countDPs(value);
+            if (dps < 2) dps = 2;
+            return parseFloat(value).toFixed(dps);
+        }
+    }
+
+    static countDPs(value) {
         let parts = value.toString().split('.');
         if(parts.length > 1) {
             return parts[1].length;
@@ -31,4 +35,5 @@ class FormatCurrency extends AbstractViewFormatter {
 
 angular.module('admin.shop.components', []);
 register('admin.shop.components')
-    .directive("pgFormatCurrency", FormatCurrency);
+    .directive("pgFormatCurrency", FormatCurrency)
+    .filter("currency", FormatCurrency.formatCurrency);
