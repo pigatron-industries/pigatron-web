@@ -110,7 +110,8 @@ md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus
 }
 
 /* Menu items white text */
-md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item a {
+md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item a,
+md-menu-item button {
     color: white !important;
 }
 
@@ -294,7 +295,7 @@ div.ui-grid-cell-focus {
 a.ui-grid-cell-contents {
     display: block;
     cursor: pointer;
-    color: #444444;
+    color: rgb(44, 62, 80);
 }
 
 
@@ -306,7 +307,7 @@ span.tree-collapse {
 }
 
 a:not(.md-button) {
-    color: #555555;
+    color: rgb(44, 62, 80);
 }
 a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     cursor: pointer;
