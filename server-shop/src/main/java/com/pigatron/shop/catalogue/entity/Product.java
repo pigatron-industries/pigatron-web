@@ -68,6 +68,7 @@ public class Product {
     public Product() {
         this.images = new ArrayList<>();
         this.categories = new ArrayList<>();
+        this.options = new ArrayList<>();
     }
 
     public String getId() {

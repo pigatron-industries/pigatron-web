@@ -2,6 +2,7 @@
 angular.module('admin.shop.catalogue', [
         'admin.components',
         'admin.shop.components',
+        'ngAnimate',
         'ngMaterial',
         'ngMessages',
         'ui.tree',

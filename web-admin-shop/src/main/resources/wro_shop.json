@@ -24,7 +24,10 @@
       "catalogue/product/ProductService",
       "catalogue/product/ProductValidators",
       "catalogue/CatalogueConfig",
-      "catalogue/index"
+      "catalogue/index",
+      "catalogue/product/options/SelectValueController",
+      "catalogue/product/options/SelectProductController",
+      "catalogue/product/options/GroupProductController"
     ],
     "css":[
     ]

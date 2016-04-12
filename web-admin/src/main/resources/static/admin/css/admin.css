@@ -89,6 +89,11 @@ footer div {
 }
 
 
+md-progress-linear {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
 
 /* Menu Bar */
 
@@ -170,6 +175,7 @@ md-input-container .md-errors-spacer {
 
 md-input-container {
     padding-right: 40px;
+    margin-bottom: 10px;
 }
 
 md-checkbox {
@@ -183,6 +189,14 @@ md-checkbox {
     padding:3px;
     border: 1px solid #a94442;
     border-radius: 5px;
+}
+
+md-option ._md-text {
+    font-size: 1em;
+}
+
+md-option {
+    height:32px;
 }
 
 
@@ -202,7 +216,7 @@ md-button {
 .fa-lg2 {
     font-size: 1.5em;
     line-height: .75em;
-    vertical-align: -15%;
+    vertical-align: -20%;
 }
 
 .fa-lg {
@@ -369,13 +383,20 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     font-size: 1.8em;
 }
 
+.shadow-box {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+    margin: 8px;
+    display: table;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    padding: 6px;
+}
 
 /* Image previews */
 .image-preview-frame {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
     margin: 8px;
     display: table;
-    height: 160px;
     border: 1px solid #ddd;
     border-radius: 0;
     padding: 6px;
@@ -406,24 +427,20 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
 
 
 /* View transitions */
-.view-container {
+.view-container,
+.animation-container {
     position: relative;
 }
 
 [ui-view].ng-enter, [ui-view].ng-leave {
     position: absolute;
-    -webkit-transition:all 0.2s ease-in-out;
-    -moz-transition:all 0.2s ease-in-out;
-    -o-transition:all 0.2s ease-in-out;
     transition:all 0.2s ease-in-out;
     left: 0;
     right: 0;
 }
 
 [ui-view].ng-enter {
-    transition-delay: 0.1s;
-    -moz-transition-delay: 0.1s;
-    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s; /*Half of transition time*/
     opacity: 0;
 }
 
@@ -439,8 +456,30 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     opacity: 0;
 }
 
-md-progress-linear {
-    position: fixed;
-    top: 0;
-    z-index: 100;
-}
+
+
+
+
+/*[ng-include].ng-enter, [ng-include].ng-leave {*/
+    /*position: absolute;*/
+    /*transition:all 0.2s ease-in-out;*/
+    /*left: 0;*/
+    /*right: 0;*/
+/*}*/
+
+/*[ng-include].ng-enter {*/
+    /*transition-delay: 0.1s;*/
+    /*opacity: 0;*/
+/*}*/
+
+/*[ng-include].ng-enter-active {*/
+    /*opacity: 1;*/
+/*}*/
+
+/*[ng-include].ng-leave {*/
+    /*opacity: 1;*/
+/*}*/
+
+/*[ng-include].ng-leave-active {*/
+    /*opacity: 0;*/
+/*}*/

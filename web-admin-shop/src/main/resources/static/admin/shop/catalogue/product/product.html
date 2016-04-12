@@ -83,7 +83,7 @@
 
                 <a id="inventory"></a>
                 <h3>Inventory</h3>
-                <div id="inventorySection" class="formsection" layout="row" layout-sm="row">
+                <div id="inventorySection" class="formsection" layout="row">
                     <md-input-container>
                         <label for="quantity">Quantity</label>
                         <input id="quantity" name="quantity" ng-model="product.formData.quantity" ng-disabled="product.formData.useQuantityOnOptions" type="number" ng-pattern="/^[0-9]+$/" />
@@ -98,7 +98,7 @@
 
                 <a id="priceAnchor"></a>
                 <h3>Price</h3>
-                <div id="priceSection" class="formsection" layout="row" layout-sm="row">
+                <div id="priceSection" class="formsection" layout="row">
                     <md-input-container>
                         <label for="price">Price</label>
                         <input id="price" name="price" ng-model="product.formData.price" type="text"
@@ -108,7 +108,7 @@
 
                 <a id="images"></a>
                 <h3>Images</h3>
-                <div id="imagesSection" class="formsection" layout="column" layout-sm="row">
+                <div id="imagesSection" class="formsection" layout="column">
                     <md-radio-group ng-model="thumbnailImageId" class="md-primary">
                         <div id="sortableImages" class="sortableContainer">
                             <div data-as-sortable="product.sortableOptions" data-ng-model="product.formData.images" class="sortableImages">
@@ -130,7 +130,7 @@
 
                 <a id="categories"></a>
                 <h3>Categories</h3>
-                <div id="categoriesSection" class="formsection" layout="row" layout-sm="row">
+                <div id="categoriesSection" class="formsection" layout="row">
                     <div ui-tree="product.treeOptions" id="tree-root">
                         <ol ui-tree-nodes ng-model="product.categories">
                             <li ng-repeat="category in product.categories" ui-tree-node ng-include="'/admin/shop/catalogue/product/categories.node.html'"></li>
@@ -140,10 +140,37 @@
 
                 <a id="options"></a>
                 <h3>Options</h3>
+                <div id="optionsSection" class="formsection" layout="column">
+                    <md-button class="md-fab md-mini md-primary" aria-label="Add Option" ng-click="product.addOption()">
+                        <md-tooltip md-direction="bottom">Add Option</md-tooltip>
+                        <span class="fa fa-lg2 fa-plus"></span>
+                    </md-button>
+                    <div ng-repeat="option in product.formData.options" class="product-option shadow-box" layout="column">
+                        <div layout="row">
+                            <md-input-container>
+                                <label for="optionName{{$index}}">Name</label>
+                                <input id="optionName{{$index}}" name="optionName{{$index}}" ng-model="option.name" type="text" required />
+                                <div ng-messages="form['optionName'+$index].$error">
+                                    <div ng-message="required">Option name is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Type</label>
+                                <md-select ng-model="option.type">
+                                    <md-option ng-repeat="(typeName, type) in product.optionTypes" value="{{typeName}}">{{type.display}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <a ng-click="product.removeOption($index)"><span class="fa fa-lg2 fa-trash"></span></a>
+                        </div>
+                        <div class="animation-container">
+                            <div ng-include="product.optionTypes[option.type].template"></div>
+                        </div>
+                    </div>
+                </div>
 
                 <a id="meta"></a>
                 <h3>Meta Info</h3>
-                <div id="metaSection" class="formsection" layout="row" layout-sm="row">
+                <div id="metaSection" class="formsection" layout="row">
                     <div class="formcolumn" flex="40" layout="column">
                         <md-input-container>
                             <label for="metaTitle">Meta Title</label>
@@ -164,7 +191,7 @@
 
                 <a id="supply"></a>
                 <h3>Supply</h3>
-                <div id="supplySection" class="formsection" layout="row" layout-sm="row">
+                <div id="supplySection" class="formsection" layout="row">
                     <div class="formcolumn" flex="40" layout="column">
                         <md-input-container>
                             <label for="supplierName">Supplier</label>

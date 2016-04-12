@@ -11,6 +11,13 @@ class ProductController extends AbstractFormController {
             orderChanged: (event) => { this.onImageOrderChanged(); }
         };
         this.imagesToDelete = [];
+
+        this.optionTypes = {}; //TODO populate dynamically
+        this.optionTypes['SelectValue'] =   {display:'Simple Select',  template: '/admin/shop/catalogue/product/options/SelectValue.html'};
+        this.optionTypes['SelectProduct'] = {display:'Product Select', template: '/admin/shop/catalogue/product/options/SelectProduct.html'};
+        this.optionTypes['GroupProduct'] =  {display:'Product Group',  template: '/admin/shop/catalogue/product/options/GroupProduct.html'};
+
+
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
     }
 
@@ -103,6 +110,15 @@ class ProductController extends AbstractFormController {
                 this.formData.categories.splice(i, 1);
             }
         }, 1);
+    }
+
+    addOption() {
+        this.formData.options.push({});
+    }
+
+    removeOption(index) {
+        this.formData.options.splice(index, 1);
+        this.setDirty();
     }
 
 }

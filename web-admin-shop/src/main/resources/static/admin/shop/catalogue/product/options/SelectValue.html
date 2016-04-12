@@ -1,0 +1,13 @@
+<div ng-controller="selectValueController as selectValue" ng-model="option" ng-cloak="ng-cloak" class="ng-cloak">
+    <div ng-repeat="value in option.values track by $index" layout="row">
+        <md-input-container flex="grow">
+            <label for="value{{$index}}">Value</label>
+            <input id="value{{$index}}" name="value{{$index}}" ng-model="option.values[$index]" type="text" required />
+            <div ng-messages="form['value'+$index].$error">
+                <div ng-message="required">Value is required.</div>
+            </div>
+        </md-input-container>
+        <a ng-click="selectValue.removeOptionItem($index)" style="float:right;margin-top:18px;"><span class="fa fa-lg2 fa-trash"></span></a>
+    </div>
+    <a ng-click="selectValue.addOptionItem()" style="float:right;"><span class="fa fa-lg2 fa-plus"></span></a>
+</div>
