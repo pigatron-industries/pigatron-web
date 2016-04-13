@@ -2,10 +2,12 @@
 class ProductController extends AbstractFormController {
 
     /*@ngInject*/
-    constructor($scope, $services, productService, imageService, categoryService) {
+    constructor($scope, $services, $mdSidenav, productService, imageService, categoryService) {
         super($scope, $services, productService);
+        this.$mdSidenav = $mdSidenav;
         this.imageService = imageService;
         this.categoryService = categoryService;
+        this.sidebarOpen = false;
         this.sortableOptions = {
             containment: '#sortableImages',
             orderChanged: (event) => { this.onImageOrderChanged(); }
@@ -39,6 +41,14 @@ class ProductController extends AbstractFormController {
                 });
             });
         });
+    }
+
+    create() {
+        this.formData = {
+            images: [],
+            categories: [],
+            options: []
+        };
     }
 
     findCategoryById(id) {
@@ -119,6 +129,14 @@ class ProductController extends AbstractFormController {
     removeOption(index) {
         this.formData.options.splice(index, 1);
         this.setDirty();
+    }
+
+    linkProduct() {
+        this.$mdSidenav("sidenav-right")
+            .open()
+            .then(() => {
+                this.sidebarOpen = true;
+            });
     }
 
 }

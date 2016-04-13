@@ -1,9 +1,10 @@
 
 class AbstractTableController extends AbstractController {
 
-    constructor($scope, $services, dataService) {
+    constructor($scope, $services, dataService, config) {
         super($scope, $services);
         this.dataService = dataService;
+        this.config = config;
 
         this.table = {
             loaded: false,
@@ -15,6 +16,7 @@ class AbstractTableController extends AbstractController {
             modifierKeysToMultiSelect: true
         };
 
+        this.tableConfig = this.loadConfig();
         this.table.columnDefs = this.defineColumns();
 
         this.table.onRegisterApi = (gridApi) => {
@@ -34,23 +36,30 @@ class AbstractTableController extends AbstractController {
         $("div.fullTable").height(tableHeight);
     }
 
+    loadConfig() {
+        console.error("No table config defined, override loadConfig() function to load table config.");
+        return {};
+    }
+
     defineColumns() {
         console.error("No columns defined, override defineColumns() function to define columns.");
         return [];
     }
 
-    column(columnDef) {
-        if(columnDef.type === 'boolean') {
-            columnDef.cellTemplate = AbstractTableController.checkboxTemplate();
-            columnDef.editableCellTemplate = AbstractTableController.checkboxTemplate();
-            columnDef.maxWidth = 120;
+    column(column) {
+        column.visible = this.tableConfig.visibleFields.indexOf(column.field) > -1;
+        if(column.type === 'boolean') {
+            column.cellTemplate = AbstractTableController.checkboxTemplate();
+            column.editableCellTemplate = AbstractTableController.checkboxTemplate();
+            column.maxWidth = 120;
         } else {
-            columnDef.editableCellTemplate = AbstractTableController.inputTemplate();
+            column.editableCellTemplate = AbstractTableController.inputTemplate();
         }
-        return columnDef;
+        return column;
     }
 
     columnAction(column) {
+        column.visible = this.tableConfig.visibleFields.indexOf(column.name) > -1;
         column.enableCellEdit = false;
         column.enableSorting = false;
         column.enableHiding = false;

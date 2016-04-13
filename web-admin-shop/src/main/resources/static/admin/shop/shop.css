@@ -1,0 +1,7 @@
+
+.md-sidenav-right {
+    position:fixed;
+    width:50%;
+    min-width:300px;
+    max-width:100%;
+}

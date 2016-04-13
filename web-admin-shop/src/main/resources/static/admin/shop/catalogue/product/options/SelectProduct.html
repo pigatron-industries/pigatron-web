@@ -1,3 +1,8 @@
 <div ng-controller="selectProductController as selectProduct" ng-cloak="ng-cloak" class="ng-cloak">
-    <a ng-click="selectProduct.addProduct()" style="float:right;"><span class="fa fa-lg2 fa-plus"></span></a>
+    <div>
+        <a ng-click="product.linkProduct()" class="tool-icon" style="float:right;">
+            <md-tooltip md-direction="bottom">Link Product</md-tooltip>
+            <span class="fa fa-lg2 fa-link"></span>
+        </a>
+    </div>
 </div>

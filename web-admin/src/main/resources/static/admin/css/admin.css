@@ -229,6 +229,10 @@ md-button {
     left: -1px;
 }
 
+.tool-icon {
+    padding:6px;
+}
+
 
 /* Tables */
 
@@ -384,6 +388,7 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
 }
 
 .shadow-box {
+    background-color: white;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
     margin: 8px;
     display: table;

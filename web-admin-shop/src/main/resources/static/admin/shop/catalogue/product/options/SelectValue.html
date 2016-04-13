@@ -7,7 +7,13 @@
                 <div ng-message="required">Value is required.</div>
             </div>
         </md-input-container>
-        <a ng-click="selectValue.removeOptionItem($index)" style="float:right;margin-top:18px;"><span class="fa fa-lg2 fa-trash"></span></a>
+        <a ng-click="selectValue.removeOptionItem($index)" class="tool-icon" style="float:right;margin-top:18px;">
+            <md-tooltip md-direction="bottom">Remove Item</md-tooltip>
+            <span class="fa fa-lg2 fa-trash"></span>
+        </a>
     </div>
-    <a ng-click="selectValue.addOptionItem()" style="float:right;"><span class="fa fa-lg2 fa-plus"></span></a>
+    <a ng-click="selectValue.addOptionItem()" class="tool-icon" style="float:right;">
+        <md-tooltip md-direction="bottom">Add Item</md-tooltip>
+        <span class="fa fa-lg2 fa-plus"></span>
+    </a>
 </div>

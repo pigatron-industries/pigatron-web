@@ -160,7 +160,10 @@
                                     <md-option ng-repeat="(typeName, type) in product.optionTypes" value="{{typeName}}">{{type.display}}</md-option>
                                 </md-select>
                             </md-input-container>
-                            <a ng-click="product.removeOption($index)"><span class="fa fa-lg2 fa-trash"></span></a>
+                            <a ng-click="product.removeOption($index)" class="tool-icon">
+                                <md-tooltip md-direction="bottom">Remove Option</md-tooltip>
+                                <span class="fa fa-lg2 fa-trash"></span>
+                            </a>
                         </div>
                         <div class="animation-container">
                             <div ng-include="product.optionTypes[option.type].template"></div>
@@ -231,5 +234,10 @@
 
             </div>
         </form>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="sidenav-right" style="position:fixed;">
+            <div ng-if="product.sidebarOpen" ng-include="'/admin/shop/catalogue/product/products.selector.html'"></div>
+        </md-sidenav>
+
     </md-content>
 </div>
