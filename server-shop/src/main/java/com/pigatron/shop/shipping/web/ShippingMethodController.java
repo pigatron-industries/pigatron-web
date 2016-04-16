@@ -14,7 +14,7 @@ public class ShippingMethodController extends AbstractWriteRestController<Shippi
 
 	@Autowired
 	public ShippingMethodController(ShippingMethodService service) {
-		super(service, "name");
+		super(service);
 	}
 
 }

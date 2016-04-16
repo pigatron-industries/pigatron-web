@@ -26,7 +26,7 @@ public class AdminProductCategoryController extends AbstractWriteRestController<
 
     @Autowired
     public AdminProductCategoryController(ProductCategoryService service) {
-        super(service, "name");
+        super(service);
         this.productCategoryService = service;
     }
 

@@ -16,8 +16,8 @@ import javax.validation.Valid;
 
 public abstract class AbstractWriteRestController<T> extends AbstractReadRestController<T> {
 
-    public AbstractWriteRestController(RepositoryService<T> service, String sortProperty) {
-        super(service, sortProperty);
+    public AbstractWriteRestController(RepositoryService<T> service) {
+        super(service);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

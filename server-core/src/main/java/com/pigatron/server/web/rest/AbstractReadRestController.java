@@ -16,18 +16,8 @@ public class AbstractReadRestController<T> {
 
     protected RepositoryService<T> service;
 
-    private String sortProperty;
-
-    public AbstractReadRestController(RepositoryService<T> service, String sortProperty) {
+    public AbstractReadRestController(RepositoryService<T> service) {
         this.service = service;
-        this.sortProperty = sortProperty;
-    }
-
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Get all")
-    public List<T> get() {
-        return service.findAll(new Sort(Sort.Direction.ASC, sortProperty));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

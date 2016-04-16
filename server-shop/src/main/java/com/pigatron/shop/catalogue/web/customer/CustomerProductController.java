@@ -14,7 +14,7 @@ public class CustomerProductController extends AbstractReadRestController<Produc
 
     @Autowired
     public CustomerProductController(ProductService service) {
-        super(service, "name");
+        super(service);
     }
 
 
