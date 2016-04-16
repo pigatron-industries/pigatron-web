@@ -1,10 +1,9 @@
 
 class AbstractTableController extends AbstractController {
 
-    constructor($scope, $services, dataService, config) {
+    constructor($scope, $services, dataService) {
         super($scope, $services);
         this.dataService = dataService;
-        this.config = config;
 
         this.table = {
             loaded: false,
@@ -13,7 +12,9 @@ class AbstractTableController extends AbstractController {
             enableGridMenu: true,
             enableCellEditOnFocus: true,
             enableRowSelection: true,
-            modifierKeysToMultiSelect: true
+            modifierKeysToMultiSelect: true,
+            enableHorizontalScrollbar: 0,
+            enableVerticalScrollbar: 0
         };
 
         this.tableConfig = this.loadConfig();
@@ -34,6 +35,20 @@ class AbstractTableController extends AbstractController {
         this.menubarHeight = $("md-menu-bar").height();
         let tableHeight = $(window).height() - this.headerHeight - this.footerHeight - this.menubarHeight;
         $("div.fullTable").height(tableHeight);
+    }
+
+    /**
+     * Get preferred height of table to fit all rows in.
+     * @return Object height as css style
+     */
+    getTableHeight() {
+        var rowHeight = 30;
+        var headerHeight = 55;
+        var scrollbarHeight = 30;
+        var tableHeight = this.table.data.length * rowHeight + headerHeight;
+        return {
+            height: tableHeight+"px"
+        };
     }
 
     loadConfig() {
@@ -93,7 +108,7 @@ class AbstractTableController extends AbstractController {
     }
 
     load() {
-        this.dataService.getAll().then((success) => {
+        return this.dataService.getAll().then((success) => {
             this.table.data = success.data;
             this.eventOnOffNow($(window), 'resize', () => {this.setTableHeight();});
             this.$timeout(() => {this.table.loaded = true}, 100);

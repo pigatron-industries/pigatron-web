@@ -2,7 +2,8 @@
 class ServiceBundle {
 
     /*@ngInject*/
-    constructor($state, $stateParams, $q, $timeout, $animate, $window) {
+    constructor($rootScope, $state, $stateParams, $q, $timeout, $animate, $window) {
+        this.$rootScope = $rootScope;
         this.$state = $state;
         this.$stateParams = $stateParams;
         this.$q = $q;
@@ -18,6 +19,7 @@ class AbstractServiceBundleConsumer {
 
     constructor($services) {
         this.$services = $services;
+        this.$rootScope = $rootScope;
         this.$state = $services.$state;
         this.$stateParams = $services.$stateParams;
         this.$q = $services.$q;

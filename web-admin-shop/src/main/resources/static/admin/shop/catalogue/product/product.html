@@ -145,25 +145,28 @@
                         <md-tooltip md-direction="bottom">Add Option</md-tooltip>
                         <span class="fa fa-lg2 fa-plus"></span>
                     </md-button>
-                    <div ng-repeat="option in product.formData.options" class="product-option shadow-box" layout="column">
+                    <div ng-repeat="option in product.formData.options" class="product-option shadow-box" ng-class="{above:option.waitingSelection}"
+                         layout="column" style="max-width:100%;width:700px;">
                         <div layout="row">
-                            <md-input-container>
+                            <md-input-container flex="45">
                                 <label for="optionName{{$index}}">Name</label>
                                 <input id="optionName{{$index}}" name="optionName{{$index}}" ng-model="option.name" type="text" required />
                                 <div ng-messages="form['optionName'+$index].$error">
                                     <div ng-message="required">Option name is required.</div>
                                 </div>
                             </md-input-container>
-                            <md-input-container>
+                            <md-input-container flex="45">
                                 <label>Type</label>
                                 <md-select ng-model="option.type">
                                     <md-option ng-repeat="(typeName, type) in product.optionTypes" value="{{typeName}}">{{type.display}}</md-option>
                                 </md-select>
                             </md-input-container>
-                            <a ng-click="product.removeOption($index)" class="tool-icon">
-                                <md-tooltip md-direction="bottom">Remove Option</md-tooltip>
-                                <span class="fa fa-lg2 fa-trash"></span>
-                            </a>
+                            <div flex="10">
+                                <a ng-click="product.removeOption($index)" class="tool-icon" style="float:right;">
+                                    <md-tooltip md-direction="bottom">Remove Option</md-tooltip>
+                                    <span class="fa fa-lg2 fa-trash"></span>
+                                </a>
+                            </div>
                         </div>
                         <div class="animation-container">
                             <div ng-include="product.optionTypes[option.type].template"></div>
@@ -235,8 +238,8 @@
             </div>
         </form>
 
-        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="sidenav-right" style="position:fixed;">
-            <div ng-if="product.sidebarOpen" ng-include="'/admin/shop/catalogue/product/products.selector.html'"></div>
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="sidenav-right" md-is-open="sidebarOpen" style="position:fixed;">
+            <div ng-if="sidebarOpen" ng-include="'/admin/shop/catalogue/product/selector/products.selector.html'"></div>
         </md-sidenav>
 
     </md-content>

@@ -23,6 +23,7 @@
       "catalogue/product/ProductController",
       "catalogue/product/ProductService",
       "catalogue/product/ProductValidators",
+      "catalogue/product/selector/ProductsSelectorController",
       "catalogue/CatalogueConfig",
       "catalogue/index",
       "catalogue/product/options/SelectValueController",

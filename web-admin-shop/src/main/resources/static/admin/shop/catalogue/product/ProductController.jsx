@@ -7,7 +7,7 @@ class ProductController extends AbstractFormController {
         this.$mdSidenav = $mdSidenav;
         this.imageService = imageService;
         this.categoryService = categoryService;
-        this.sidebarOpen = false;
+        this.$scope.sidebarOpen = false;
         this.sortableOptions = {
             containment: '#sortableImages',
             orderChanged: (event) => { this.onImageOrderChanged(); }
@@ -23,6 +23,10 @@ class ProductController extends AbstractFormController {
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
     }
 
+    /**
+     * Load product by id
+     * @param id Product id
+     */
     load(id) {
         super.load(id).then((success) => {
             // Set selected thumbnail
@@ -43,6 +47,9 @@ class ProductController extends AbstractFormController {
         });
     }
 
+    /**
+     * Create a new product
+     */
     create() {
         this.formData = {
             images: [],
@@ -67,6 +74,9 @@ class ProductController extends AbstractFormController {
         return findCategory(this.categories);
     }
 
+    /**
+     * Save product
+     */
     save() {
         // Upload images
         this.imageService.uploadAll(this.imagesToUpload).then((successes) => {
@@ -129,14 +139,6 @@ class ProductController extends AbstractFormController {
     removeOption(index) {
         this.formData.options.splice(index, 1);
         this.setDirty();
-    }
-
-    linkProduct() {
-        this.$mdSidenav("sidenav-right")
-            .open()
-            .then(() => {
-                this.sidebarOpen = true;
-            });
     }
 
 }

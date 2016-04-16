@@ -1,18 +1,18 @@
-<div ng-controller="ProductsController as selector" config="selector" ng-cloak="ng-cloak" class="ng-cloak">
+<div ng-controller="ProductsSelectorController as selector" ng-cloak="ng-cloak" class="ng-cloak">
 	<md-content layout="row">
 
 		<div layout="column" class="leftsidebar">
-			<md-button class="md-fab md-mini md-primary" aria-label="Select Products" ng-click="selector.selectProducts()">
+			<md-button class="md-fab md-mini md-primary" aria-label="Select Products" ng-click="selector.selectProducts()" ng-disabled="selector.gridApi.selection.getSelectedCount()==0">
 				<md-tooltip md-direction="bottom">Select Products</md-tooltip>
 				<span class="fa fa-lg2 fa-chevron-left"></span>
+			</md-button>
+			<md-button class="md-fab md-mini md-primary" aria-label="Copy Product" ng-click="selector.copyProduct()" ng-disabled="selector.gridApi.selection.getSelectedCount()!=1">
+				<md-tooltip md-direction="bottom">Copy Product</md-tooltip>
+				<span class="fa fa-lg2 fa-clone"></span>
 			</md-button>
 			<md-button class="md-fab md-mini md-primary" aria-label="New Product" ng-click="selector.newProduct()">
 				<md-tooltip md-direction="bottom">New Product</md-tooltip>
 				<span class="fa fa-lg2 fa-plus"></span>
-			</md-button>
-			<md-button class="md-fab md-mini md-primary" aria-label="Copy Product" ng-click="selector.copyProduct()">
-				<md-tooltip md-direction="bottom">Copy Product</md-tooltip>
-				<span class="fa fa-lg2 fa-clone"></span>
 			</md-button>
 		</div>
 

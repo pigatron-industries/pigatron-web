@@ -35,7 +35,6 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
         .and()
             .exceptionHandling().authenticationEntryPoint(apiAuthenticationEntryPoint);
-        ;
     }
 
     @Override

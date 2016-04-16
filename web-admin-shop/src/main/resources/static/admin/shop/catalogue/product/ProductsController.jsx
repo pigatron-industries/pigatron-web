@@ -2,17 +2,13 @@
 class ProductsController extends AbstractTableController {
 
     /*@ngInject*/
-    constructor($scope, $services, productService, $attrs) {
-        super($scope, $services, productService, $attrs.config);
+    constructor($scope, $services, productService) {
+        super($scope, $services, productService);
     }
 
     loadConfig() {
         var tableConfig = {};
-        if(this.config == 'selector') {
-            tableConfig.visibleFields = ['sku','name','enabled','price','quantity'];
-        } else {
-            tableConfig.visibleFields = ['edit','sku','name','location','enabled','price','quantity','categories','supplierInfo'];
-        }
+        tableConfig.visibleFields = ['edit','sku','name','location','enabled','price','quantity','categories','supplierInfo'];
         return tableConfig;
     }
 
@@ -64,6 +60,20 @@ class ProductsController extends AbstractTableController {
         return '<div class="ui-grid-cell-input">' +
             '<a ng-class="\'colt\' + col.uid" class="ui-grid-cell-contents" ng-href="{{row.entity.supplierItemLink}}" target="_new">' +
             '{{row.entity.supplierName}} {{row.entity.supplierItemCode}}</a></div>';
+    }
+
+    /**
+     * Create new product directly in the table
+     */
+    newProduct() {
+        //TODO
+    }
+
+    /**
+     * Copy a product directly in the table
+     */
+    copyProduct() {
+        //TODO
     }
 
 }
