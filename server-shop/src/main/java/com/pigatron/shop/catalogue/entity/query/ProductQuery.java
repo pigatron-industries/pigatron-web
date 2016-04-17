@@ -1,8 +1,5 @@
 package com.pigatron.shop.catalogue.entity.query;
 
-/**
- * Created by roberte on 16/04/2016.
- */
 public class ProductQuery {
 
     private Boolean option;

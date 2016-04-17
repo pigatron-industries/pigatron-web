@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.Valid;
 
-public abstract class AbstractWriteRestController<T> extends AbstractReadRestController<T> {
+public abstract class AbstractWriteRestController<T> {
+
+    protected RepositoryService<T> service;
 
     public AbstractWriteRestController(RepositoryService<T> service) {
-        super(service);
+        this.service = service;
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
