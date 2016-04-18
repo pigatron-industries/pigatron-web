@@ -1,6 +1,7 @@
 package com.pigatron.shop.catalogue.entity;
 
 
+import com.pigatron.shop.image.entity.Image;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;

@@ -20,8 +20,8 @@ class ImageService extends AbstractRestService {
 
     upload(uploadFile) {
         let fileData = uploadFile.lfFile;
-        let fileName = uploadFile.lfFileName;
-        let mimeType = "text/plain";
+        let fileName = uploadFile.lfFileName.toLowerCase();
+        let mimeType = null;
         if(fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
             mimeType = "image/jpg";
         } else if(fileName.endsWith(".gif")) {
@@ -30,7 +30,12 @@ class ImageService extends AbstractRestService {
             mimeType = "image/png";
         }
 
-        return this.$http.post(this.getUrl(), fileData, {headers: {"Content-Type": mimeType}});
+        if(mimeType != null) {
+            return this.$http.post(this.getUrl(), fileData, {headers: {"Content-Type": mimeType}});
+        } else {
+            console.error("Invalid image extension.");
+            return null;
+        }
     }
 
 }
