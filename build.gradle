@@ -36,6 +36,8 @@ allprojects {
 	idea {
 		module {
 			excludeDirs += file('node_modules')
+			testSourceDirs += file('src/test/integration')
+			testSourceDirs += file('src/test/unit')
 		}
 	}
 }
