@@ -31,7 +31,7 @@ public class AdminImageController extends CustomerImageController {
         return imageService.save(fileData, mimeType);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/clearCache", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public void clearCache() {
         imageService.clearCache();
