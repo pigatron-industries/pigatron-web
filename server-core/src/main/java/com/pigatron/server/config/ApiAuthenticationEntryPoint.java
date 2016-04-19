@@ -1,4 +1,4 @@
-package com.pigatron.shop.config;
+package com.pigatron.server.config;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

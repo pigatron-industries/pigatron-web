@@ -1,4 +1,4 @@
-package com.pigatron.shop.security.entity;
+package com.pigatron.server.security.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 

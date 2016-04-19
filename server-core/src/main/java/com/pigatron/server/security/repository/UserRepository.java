@@ -1,6 +1,6 @@
-package com.pigatron.shop.security.repository;
+package com.pigatron.server.security.repository;
 
-import com.pigatron.shop.security.entity.User;
+import com.pigatron.server.security.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

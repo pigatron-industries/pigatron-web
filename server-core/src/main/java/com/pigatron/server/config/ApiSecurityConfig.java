@@ -1,6 +1,6 @@
-package com.pigatron.shop.config;
+package com.pigatron.server.config;
 
-import com.pigatron.shop.security.SecUserDetailsService;
+import com.pigatron.server.security.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +21,9 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${url.admin}")
     private String adminUrl;
 
+    @Value("${admin.api.basicAuth}")
+    private boolean basicAuth;
+
     @Autowired
     private SecUserDetailsService secUserDetailsService;
 
@@ -29,12 +32,16 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .antMatcher("/" + adminUrl + "/api/**")
-            .authorizeRequests()
-            .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
-        .and()
-            .exceptionHandling().authenticationEntryPoint(apiAuthenticationEntryPoint);
+        HttpSecurity and = http
+                .antMatcher("/" + adminUrl + "/api/**")
+                .authorizeRequests()
+                .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
+                .and();
+        if(basicAuth) {
+            and.httpBasic();
+        } else {
+            and.exceptionHandling().authenticationEntryPoint(apiAuthenticationEntryPoint);
+        }
     }
 
     @Override

@@ -28,8 +28,6 @@ allprojects {
 	dependencies {
 		compile('org.apache.commons:commons-lang3:3.4')
 
-		testCompile("junit:junit:4.12")
-		testCompile("org.mockito:mockito-core:1.10.19")
 		testCompile("org.easytesting:fest-assert-core:2.0M10")
 		testCompile('org.springframework.boot:spring-boot-starter-test')
 	}

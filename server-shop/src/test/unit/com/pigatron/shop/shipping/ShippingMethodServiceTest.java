@@ -1,4 +1,4 @@
-package shop.shipping;
+package com.pigatron.shop.shipping;
 
 
 import org.junit.Test;
