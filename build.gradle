@@ -24,6 +24,7 @@ allprojects {
 	version = '0.0.1-SNAPSHOT'
 	repositories {
 		mavenCentral()
+		jcenter()
 	}
 	dependencies {
 		compile('org.apache.commons:commons-lang3:3.4')
@@ -34,8 +35,9 @@ allprojects {
 	idea {
 		module {
 			excludeDirs += file('node_modules')
-			testSourceDirs += file('src/test/integration')
 			testSourceDirs += file('src/test/unit')
+			testSourceDirs += file('src/test/integration')
+			testSourceDirs += file('src/test/functional')
 		}
 	}
 }

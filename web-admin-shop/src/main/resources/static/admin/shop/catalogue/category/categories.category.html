@@ -2,11 +2,11 @@
 
     <form id="form" name="form" novalidate="true">
         <div class="formbuttons" layout="row" layout-align="start center">
-            <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="Save" ng-click="category.save()">
+            <md-button id="btn-save" ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="Save" ng-click="category.save()">
                 <md-tooltip md-direction="bottom">Save</md-tooltip>
                 <span class="fa fa-lg2 fa-save"></span>
             </md-button>
-            <md-button ng-diabled="category.formData.id=='root'" class="md-fab md-mini md-primary" aria-label="Delete" ng-click="category.remove()">
+            <md-button id="btn-delete" ng-diabled="category.formData.id=='root'" class="md-fab md-mini md-primary" aria-label="Delete" ng-click="category.remove()">
                 <md-tooltip md-direction="bottom">Delete</md-tooltip>
                 <span class="fa fa-lg2 fa-trash"></span>
             </md-button>

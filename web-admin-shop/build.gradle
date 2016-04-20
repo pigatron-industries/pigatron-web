@@ -11,6 +11,8 @@ dependencies {
     compile('org.webjars.bower:angular-ui-tree:2.15.0')
     compile('org.webjars.bower:lf-ng-md-file-input:1.4.3')
     compile('org.webjars.bower:ng-pattern-restrict:0.2.1')
+
+    testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
 }
 
 
@@ -34,3 +36,15 @@ grunt_build.mustRunAfter installGrunt
 grunt_build.mustRunAfter npmInstall
 processResources.dependsOn grunt_build
 build.dependsOn webResourceBuild
+
+
+// Functional test running
+
+task startSelenium(type: NodeTask) {
+    script = file('node_modules/protractor/bin/webdriver-manager')
+    args = ['start']
+}
+task protractorTests(type: NodeTask) {
+    script = file('node_modules/protractor/bin/protractor')
+    args = ['src/test/resources/protractor.conf.js']
+}

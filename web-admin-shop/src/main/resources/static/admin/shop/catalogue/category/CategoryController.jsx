@@ -14,7 +14,7 @@ class CategoryController extends AbstractFormController {
         this.dataService.save(this.formData, this.parentId)
             .success((data) => {
                 this.setPristine();
-                this.$rootScope.notifySuccess('Category Saved');
+//                this.$rootScope.notifySuccess('Category Saved');
                 this.$scope.$emit(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED);
                 this.$state.go("categories.category", {id: data.id});
             });

@@ -1,14 +1,14 @@
-<div class="tree-node tree-node-content" ng-class="{selected:category.id==categories.selectedCategoryId}">
-    <a class="btn btn-success btn-xs" ng-click="toggle(this)">
+<div id="category-{{category.id}}" class="tree-node tree-node-content" ng-class="{selected:category.id==categories.selectedCategoryId}">
+    <a class="btn-expand btn btn-success btn-xs" ng-click="toggle(this)">
         <span class="tree-collapse fa fa-lg" ng-class="{'fa-caret-right':collapsed, 'fa-caret-down':!collapsed}"></span>
     </a>
-    <a ng-click="categories.selectCategory(category.id)">
+    <a class="btn-select" ng-click="categories.selectCategory(category.id)">
         <span>{{category.name}}</span>
     </a>
-    <a class="pull-right btn btn-primary btn-xs tree-action" ng-click="categories.newSubcategory(this)">
+    <a class="btn-add pull-right btn btn-primary btn-xs tree-action" ng-click="categories.newSubcategory(this)">
         <span class="fa fa-lg fa-plus"></span>
     </a>
-    <a ui-tree-handle class="tree-action">
+    <a ui-tree-handle class="btn-drag tree-action">
         <span class="fa fa-lg fa-bars"></span>
     </a>
 </div>
