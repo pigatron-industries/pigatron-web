@@ -89,6 +89,8 @@ class ProductController extends AbstractFormController {
         });
     }
 
+    /* Images */
+
     onThumbnailChange() {
         if(!this.formData) { return; }
 
@@ -121,6 +123,8 @@ class ProductController extends AbstractFormController {
         this.setDirty();
     }
 
+    /* Categories */
+
     selectCategory(category) {
         this.$timeout(() => {
             if(category.selected) {
@@ -131,6 +135,8 @@ class ProductController extends AbstractFormController {
             }
         }, 1);
     }
+
+    /* Options */
 
     addOption() {
         this.formData.options.push({});

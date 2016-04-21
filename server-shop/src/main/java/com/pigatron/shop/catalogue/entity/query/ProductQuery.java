@@ -2,13 +2,22 @@ package com.pigatron.shop.catalogue.entity.query;
 
 public class ProductQuery {
 
-    private Boolean option;
+    private Boolean hasOptions;
+    private Boolean isOption;
 
-    public Boolean getOption() {
-        return option;
+    public Boolean getHasOptions() {
+        return hasOptions;
     }
 
-    public void setOption(Boolean option) {
-        this.option = option;
+    public void setHasOptions(Boolean hasOptions) {
+        this.hasOptions = hasOptions;
+    }
+
+    public Boolean getIsOption() {
+        return isOption;
+    }
+
+    public void setIsOption(Boolean isOption) {
+        this.isOption = isOption;
     }
 }

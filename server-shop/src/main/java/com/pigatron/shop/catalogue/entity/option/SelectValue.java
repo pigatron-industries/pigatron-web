@@ -5,6 +5,10 @@ import java.util.List;
 
 public class SelectValue extends ProductOption {
 
+    public SelectValue() {
+        setName("SelectValue");
+    }
+
     private List<String> values;
 
     public List<String> getValues() {

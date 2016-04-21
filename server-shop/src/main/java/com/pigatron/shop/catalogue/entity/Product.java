@@ -17,7 +17,6 @@ public class Product {
     // General
     @Id private String id;
     private boolean enabled;
-    private boolean option;
     @NotNull private String name;
     @NotNull @Indexed(unique = true) private String sku;
     @NotNull @Indexed(unique = true) private String urlKey;
@@ -55,6 +54,7 @@ public class Product {
     private List<ProductReview> reviews;
 
     // Options
+    private boolean isOption;
     private List<ProductOption> options;
 
     // Supply
@@ -68,7 +68,6 @@ public class Product {
     public Product() {
         this.images = new ArrayList<>();
         this.categories = new ArrayList<>();
-        this.options = new ArrayList<>();
     }
 
     public String getId() {
@@ -127,12 +126,12 @@ public class Product {
         this.enabled = enabled;
     }
 
-    public boolean isOption() {
-        return option;
+    public boolean getIsOption() {
+        return isOption;
     }
 
-    public void setOption(boolean option) {
-        this.option = option;
+    public void setIsOption(boolean isOption) {
+        this.isOption = isOption;
     }
 
     public String getUrlKey() {
@@ -205,7 +204,7 @@ public class Product {
 
     public void setUseQuantityOnOptions(Boolean useQuantityOnOptions) {
         this.useQuantityOnOptions = useQuantityOnOptions;
-        if(useQuantityOnOptions) {
+        if(useQuantityOnOptions != null && useQuantityOnOptions) {
             quantity = null;
         }
     }
@@ -248,6 +247,9 @@ public class Product {
 
     public void setOptions(List<ProductOption> options) {
         this.options = options;
+        if(options != null && options.size() == 0) {
+            this.options = null;
+        }
     }
 
     public String getSupplierName() {
@@ -296,5 +298,250 @@ public class Product {
 
     public void setQuantityOnOrder(String quantityOnOrder) {
         this.quantityOnOrder = quantityOnOrder;
+    }
+
+
+    public static final class ProductBuilder {
+        // General
+        private String id;
+        private boolean enabled;
+        private String name;
+        private String sku;
+        private String urlKey;
+        private String shortDescription;
+        private String description;
+        private String location;
+        // Price
+        private Float price;
+        private ProductTaxClass taxClass; //determines how much VAT to add
+        // Meta Info
+        private String metaTitle;
+        private String metaKeywords;
+        private String metaDescription;
+        // Images
+        private List<ProductImage> images;
+        // Inventory
+        private Integer quantity;
+        private Boolean useQuantityOnOptions;
+        private Boolean allowBackorders;
+        private Integer maxInCart;
+        // Categories
+        private List<ProductCategory> categories;
+        // Reviews
+        private List<ProductReview> reviews;
+        // Options
+        private boolean isOption;
+        private List<ProductOption> options;
+        // Supply
+        private String supplierName;
+        private String supplierItemCode;
+        private String supplierItemLink;
+        private String supplierPrice;
+        private String supplierNotes;
+        private String quantityOnOrder;
+
+        private ProductBuilder() {
+        }
+
+        public static ProductBuilder aProduct() {
+            return new ProductBuilder();
+        }
+
+        public ProductBuilder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public ProductBuilder enabled(boolean enabled) {
+            this.enabled = enabled;
+            return this;
+        }
+
+        public ProductBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ProductBuilder sku(String sku) {
+            this.sku = sku;
+            return this;
+        }
+
+        public ProductBuilder urlKey(String urlKey) {
+            this.urlKey = urlKey;
+            return this;
+        }
+
+        public ProductBuilder shortDescription(String shortDescription) {
+            this.shortDescription = shortDescription;
+            return this;
+        }
+
+        public ProductBuilder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public ProductBuilder location(String location) {
+            this.location = location;
+            return this;
+        }
+
+        public ProductBuilder price(Float price) {
+            this.price = price;
+            return this;
+        }
+
+        public ProductBuilder taxClass(ProductTaxClass taxClass) {
+            this.taxClass = taxClass;
+            return this;
+        }
+
+        public ProductBuilder metaTitle(String metaTitle) {
+            this.metaTitle = metaTitle;
+            return this;
+        }
+
+        public ProductBuilder metaKeywords(String metaKeywords) {
+            this.metaKeywords = metaKeywords;
+            return this;
+        }
+
+        public ProductBuilder metaDescription(String metaDescription) {
+            this.metaDescription = metaDescription;
+            return this;
+        }
+
+        public ProductBuilder images(List<ProductImage> images) {
+            this.images = images;
+            return this;
+        }
+
+        public ProductBuilder category(ProductImage image) {
+            if(this.images == null) {
+                this.images = new ArrayList<>();
+            }
+            this.images.add(image);
+            return this;
+        }
+
+        public ProductBuilder quantity(Integer quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public ProductBuilder useQuantityOnOptions(Boolean useQuantityOnOptions) {
+            this.useQuantityOnOptions = useQuantityOnOptions;
+            return this;
+        }
+
+        public ProductBuilder allowBackorders(Boolean allowBackorders) {
+            this.allowBackorders = allowBackorders;
+            return this;
+        }
+
+        public ProductBuilder maxInCart(Integer maxInCart) {
+            this.maxInCart = maxInCart;
+            return this;
+        }
+
+        public ProductBuilder categories(List<ProductCategory> categories) {
+            this.categories = categories;
+            return this;
+        }
+
+        public ProductBuilder category(ProductCategory category) {
+            if(this.categories == null) {
+                this.categories = new ArrayList<>();
+            }
+            this.categories.add(category);
+            return this;
+        }
+
+        public ProductBuilder reviews(List<ProductReview> reviews) {
+            this.reviews = reviews;
+            return this;
+        }
+
+        public ProductBuilder isOption(boolean isOption) {
+            this.isOption = isOption;
+            return this;
+        }
+
+        public ProductBuilder options(List<ProductOption> options) {
+            this.options = options;
+            return this;
+        }
+
+        public ProductBuilder option(ProductOption option) {
+            if(this.options == null) {
+                this.options = new ArrayList<>();
+            }
+            this.options.add(option);
+            return this;
+        }
+
+        public ProductBuilder supplierName(String supplierName) {
+            this.supplierName = supplierName;
+            return this;
+        }
+
+        public ProductBuilder supplierItemCode(String supplierItemCode) {
+            this.supplierItemCode = supplierItemCode;
+            return this;
+        }
+
+        public ProductBuilder supplierItemLink(String supplierItemLink) {
+            this.supplierItemLink = supplierItemLink;
+            return this;
+        }
+
+        public ProductBuilder supplierPrice(String supplierPrice) {
+            this.supplierPrice = supplierPrice;
+            return this;
+        }
+
+        public ProductBuilder supplierNotes(String supplierNotes) {
+            this.supplierNotes = supplierNotes;
+            return this;
+        }
+
+        public ProductBuilder quantityOnOrder(String quantityOnOrder) {
+            this.quantityOnOrder = quantityOnOrder;
+            return this;
+        }
+
+        public Product build() {
+            Product product = new Product();
+            product.setId(id);
+            product.setEnabled(enabled);
+            product.setName(name);
+            product.setSku(sku);
+            product.setUrlKey(urlKey);
+            product.setShortDescription(shortDescription);
+            product.setDescription(description);
+            product.setLocation(location);
+            product.setPrice(price);
+            product.setTaxClass(taxClass);
+            product.setMetaTitle(metaTitle);
+            product.setMetaKeywords(metaKeywords);
+            product.setMetaDescription(metaDescription);
+            product.setImages(images);
+            product.setQuantity(quantity);
+            product.setUseQuantityOnOptions(useQuantityOnOptions);
+            product.setAllowBackorders(allowBackorders);
+            product.setMaxInCart(maxInCart);
+            product.setCategories(categories);
+            product.setReviews(reviews);
+            product.setIsOption(isOption);
+            product.setOptions(options);
+            product.setSupplierName(supplierName);
+            product.setSupplierItemCode(supplierItemCode);
+            product.setSupplierItemLink(supplierItemLink);
+            product.setSupplierPrice(supplierPrice);
+            product.setSupplierNotes(supplierNotes);
+            product.setQuantityOnOrder(quantityOnOrder);
+            return product;
+        }
     }
 }

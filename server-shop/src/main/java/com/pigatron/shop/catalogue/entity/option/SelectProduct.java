@@ -5,12 +5,17 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.pigatron.shop.catalogue.entity.Product;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonSubTypes.Type(name = "SelectProduct", value = SelectProduct.class)
 public class SelectProduct extends ProductOption {
 
     @DBRef private List<Product> products;
+
+    public SelectProduct() {
+        setName("SelectProduct");
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -20,4 +25,41 @@ public class SelectProduct extends ProductOption {
         this.products = products;
     }
 
+
+    public static final class SelectProductBuilder {
+        private List<Product> products;
+        private String name;
+
+        private SelectProductBuilder() {
+        }
+
+        public static SelectProductBuilder aSelectProduct() {
+            return new SelectProductBuilder();
+        }
+
+        public SelectProductBuilder products(List<Product> products) {
+            this.products = products;
+            return this;
+        }
+
+        public SelectProductBuilder product(Product product) {
+            if(this.products == null) {
+                this.products = new ArrayList<>();
+            }
+            this.products.add(product);
+            return this;
+        }
+
+        public SelectProductBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public SelectProduct build() {
+            SelectProduct selectProduct = new SelectProduct();
+            selectProduct.setProducts(products);
+            selectProduct.setName(name);
+            return selectProduct;
+        }
+    }
 }

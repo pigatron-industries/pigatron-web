@@ -14,6 +14,7 @@ class SelectProductController extends ProductsController {
         }
         this.option.waitingSelection = false;
         this.table.data = this.option.products;
+        this.table.enableRowSelection = false;
     }
 
     loadConfig() {

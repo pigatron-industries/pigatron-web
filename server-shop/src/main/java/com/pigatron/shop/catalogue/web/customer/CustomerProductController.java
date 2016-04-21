@@ -41,9 +41,11 @@ public class CustomerProductController extends AbstractReadRestController<Produc
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get with query")
-    public List<Product> query(@RequestParam(value="option", required=false) Boolean option) {
+    public List<Product> query(@RequestParam(value="hasOptions", required=false) Boolean hasOptions,
+                               @RequestParam(value="isOption", required=false) Boolean isOption) {
         ProductQuery productQuery = new ProductQuery();
-        productQuery.setOption(option);
+        productQuery.setHasOptions(hasOptions);
+        productQuery.setIsOption(isOption);
         return productService.find(productQuery);
     }
 

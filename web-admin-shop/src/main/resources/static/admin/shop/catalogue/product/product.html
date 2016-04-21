@@ -33,7 +33,7 @@
                     <div class="formcolumn" flex="40" layout="column">
                         <md-input-container layout="row">
                             <md-checkbox id="enabled" aria-label="Enabled" ng-model="product.formData.enabled" class="md-primary">Enabled</md-checkbox>
-                            <md-checkbox id="option" aria-label="Option" ng-model="product.formData.option" class="md-primary">
+                            <md-checkbox id="isOption" aria-label="Option" ng-model="product.formData.isOption" class="md-primary" ng-disabled="true">
                                 Option
                                 <md-tooltip md-direction="bottom">This product is an option for another product</md-tooltip>
                             </md-checkbox>
@@ -91,7 +91,7 @@
                             <div ng-message="pattern">Must be a whole number</div>
                         </div>
                     </md-input-container>
-                    <md-input-container ng-if="!product.formData.option" layout="row">
+                    <md-input-container ng-if="!product.formData.isOption" layout="row">
                         <md-checkbox aria-label="Manage on Options" ng-model="product.formData.useQuantityOnOptions" class="md-primary">Use Quantity on Options</md-checkbox>
                     </md-input-container>
                 </div>

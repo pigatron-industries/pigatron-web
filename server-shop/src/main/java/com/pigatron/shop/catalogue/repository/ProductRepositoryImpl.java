@@ -19,8 +19,11 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
     @Override
     public List<Product> find(ProductQuery productQuery) {
         Query query = new Query();
-        if(productQuery.getOption() != null) {
-            query.addCriteria(Criteria.where("option").is(productQuery.getOption()));
+        if(productQuery.getIsOption() != null) {
+            query.addCriteria(Criteria.where("isOption").is(productQuery.getIsOption()));
+        }
+        if(productQuery.getHasOptions() != null) {
+            query.addCriteria(Criteria.where("options").exists(productQuery.getHasOptions()));
         }
         return mongoOperations.find(query, Product.class);
     }
