@@ -8,13 +8,13 @@ class AbstractTableController extends AbstractController {
         this.table = {
             loaded: false,
             enableSorting: true,
-            enableFiltering: true,
             enableGridMenu: true,
             enableCellEditOnFocus: true,
             modifierKeysToMultiSelect: true,
             enableHorizontalScrollbar: 0,
             enableVerticalScrollbar: 0
         };
+        this.enableFiltering(true);
         this.enableRowSelection(true);
 
         this.loadConfig();
@@ -34,6 +34,10 @@ class AbstractTableController extends AbstractController {
         this.table.enableRowHeaderSelection = enable;
     }
 
+    enableFiltering(enable) {
+        this.table.enableFiltering = enable;
+    }
+
     setTableHeight() {
         this.headerHeight = $("header").height();
         this.footerHeight = $("footer").height();
@@ -48,8 +52,12 @@ class AbstractTableController extends AbstractController {
      */
     getTableHeight() {
         var rowHeight = 30;
-        var headerHeight = 55;
-        var scrollbarHeight = 30;
+        var headerHeight;
+        if(this.table.enableFiltering) {
+            headerHeight = 55;
+        } else {
+            headerHeight = 30;
+        }
         var tableHeight = this.table.data.length * rowHeight + headerHeight;
         return {
             height: tableHeight+"px"

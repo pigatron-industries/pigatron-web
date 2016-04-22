@@ -5,6 +5,7 @@ class SelectProductController extends ProductsController {
     constructor($scope, $services, $mdSidenav, productService) {
         super($scope, $services, productService);
         this.enableRowSelection(false);
+        this.enableFiltering(false);
         this.$mdSidenav = $mdSidenav;
     }
 
@@ -19,7 +20,7 @@ class SelectProductController extends ProductsController {
 
     loadConfig() {
         this.tableConfig = {
-            visibleFields: ['unlink','sku','name','enabled','price','quantity']
+            visibleFields: ['unlink','sku','name','price','quantity','enabled']
         };
     }
 
