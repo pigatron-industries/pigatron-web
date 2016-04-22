@@ -92,7 +92,7 @@ class ProductController extends AbstractFormController {
     /* Images */
 
     onThumbnailChange() {
-        if(!this.formData) { return; }
+        if(!this.formData || this.formData.images.length==0) { return; }
 
         // Move selected thumbnail to front of array
         let thumbnailImageId = this.$scope.thumbnailImageId;
