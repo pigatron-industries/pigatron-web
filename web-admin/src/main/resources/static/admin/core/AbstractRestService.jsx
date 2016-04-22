@@ -18,6 +18,10 @@ class AbstractRestService {
         return this.$http.get(this.getUrl());
     }
 
+    getQuery(query) {
+        return this.$http.get(this.getUrl() + query);
+    }
+
     save(data) {
         return this.$http.post(this.getUrl(), data);
     }

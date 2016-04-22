@@ -17,7 +17,7 @@ class AbstractTableController extends AbstractController {
             enableVerticalScrollbar: 0
         };
 
-        this.tableConfig = this.loadConfig();
+        this.loadConfig();
         this.table.columnDefs = this.defineColumns();
 
         this.table.onRegisterApi = (gridApi) => {
@@ -108,7 +108,7 @@ class AbstractTableController extends AbstractController {
     }
 
     load() {
-        return this.dataService.getAll().then((success) => {
+        return this.dataService.getQuery(this.tableConfig.query).then((success) => {
             this.table.data = success.data;
             this.eventOnOffNow($(window), 'resize', () => {this.setTableHeight();});
             this.$timeout(() => {this.table.loaded = true}, 100);

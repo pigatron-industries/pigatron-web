@@ -18,9 +18,9 @@ class SelectProductController extends ProductsController {
     }
 
     loadConfig() {
-        var tableConfig = {};
-        tableConfig.visibleFields = ['sku','name','enabled','price','quantity'];
-        return tableConfig;
+        this.tableConfig = {
+            visibleFields: ['sku','name','enabled','price','quantity']
+        };
     }
 
     openRightSidebar() {

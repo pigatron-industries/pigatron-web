@@ -7,9 +7,10 @@ class ProductsSelectorController extends ProductsController {
     }
 
     loadConfig() {
-        var tableConfig = {};
-        tableConfig.visibleFields = ['sku','name','enabled','price','quantity'];
-        return tableConfig;
+        this.tableConfig = {
+            query: "?hasOptions=false",
+            visibleFields: ['sku','name','enabled','price','quantity']
+        };
     }
 
     /**

@@ -7,9 +7,10 @@ class ProductsController extends AbstractTableController {
     }
 
     loadConfig() {
-        var tableConfig = {};
-        tableConfig.visibleFields = ['edit','sku','name','location','enabled','price','quantity','categories','supplierInfo'];
-        return tableConfig;
+        this.tableConfig = {
+            query: "",
+            visibleFields: ['edit','sku','name','location','enabled','price','quantity','categories','supplierInfo']
+        };
     }
 
     defineColumns() {
