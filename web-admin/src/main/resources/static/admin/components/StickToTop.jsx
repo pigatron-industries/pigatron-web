@@ -21,6 +21,7 @@ class StickToTop extends AbstractController {
                 spacer.width(0);
                 element.css("position", "static");
             }
+            scope.$apply();
         });
     }
 

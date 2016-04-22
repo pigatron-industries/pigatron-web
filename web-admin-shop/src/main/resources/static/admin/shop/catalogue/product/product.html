@@ -19,7 +19,7 @@
                 <a scroll-to="priceAnchor" class="selectable-item" ng-class="{selected:product.isScrolledVisible('priceAnchor')}">Price</a>
                 <a scroll-to="images" class="selectable-item" ng-class="{selected:product.isScrolledVisible('images')}">Images</a>
                 <a scroll-to="categories" class="selectable-item" ng-class="{selected:product.isScrolledVisible('categories')}">Categories</a>
-                <a scroll-to="options" class="selectable-item" ng-class="{selected:product.isScrolledVisible('options')}">Options</a>
+                <a scroll-to="options" class="selectable-item" ng-class="{selected:product.isScrolledVisible('options')}" ng-if="!product.formData.isOption">Options</a>
                 <a scroll-to="meta" class="selectable-item" ng-class="{selected:product.isScrolledVisible('meta')}">Meta Info</a>
                 <a scroll-to="supply" class="selectable-item" ng-class="{selected:product.isScrolledVisible('supply')}">Supply</a>
             </div>
@@ -139,8 +139,8 @@
                 </div>
 
                 <a id="options"></a>
-                <h3>Options</h3>
-                <div id="optionsSection" class="formsection" layout="column">
+                <h3 ng-if="!product.formData.isOption">Options</h3>
+                <div ng-if="!product.formData.isOption" id="optionsSection" class="formsection" layout="column">
                     <md-button class="md-fab md-mini md-primary" aria-label="Add Option" ng-click="product.addOption()">
                         <md-tooltip md-direction="bottom">Add Option</md-tooltip>
                         <span class="fa fa-lg2 fa-plus"></span>
