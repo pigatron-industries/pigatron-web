@@ -1,11 +1,11 @@
 <div ng-controller="selectProductController as selectProduct" ng-model="option">
     <div>
-        <a ng-click="selectProduct.openRightSidebar()" class="tool-icon" style="float:right;position:absolute;right:0;top:-30px;">
+        <a ng-click="selectProduct.openProductSelector()" class="tool-icon" style="float:right;position:absolute;right:0;top:-30px;">
             <md-tooltip md-direction="bottom">Link Product</md-tooltip>
             <span class="fa fa-lg2 fa-link"></span>
         </a>
         <div flex layout="column">
-            <div ui-grid="selectProduct.table" ng-style="selectProduct.getTableHeight()" external-scopes="selectProduct"
+            <div ui-grid="selectProduct.table" ng-style="selectProduct.getTableHeight()"
                  ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pinning ui-grid-resize-columns ui-grid-selection></div>
         </div>
     </div>

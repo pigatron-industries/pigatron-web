@@ -1,6 +1,7 @@
 
-const EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED = 'shop.catalogue.categoriesChanged';
-const EVENT_SHOP_CATALOGUE_PRODUCT_SELECTION = 'shop.catalogue.productSelection';
+const EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED        = 'shop.catalogue.categories.changed';
+const EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_ONSELECT = 'shop.catalogue.product.selector.onselect';
+const EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN     = 'shop.catalogue.product.selector.open';
 
 const ROUTE_SHOP_CATALOGUE_CATEGORIES = 'categories';
 const ROUTE_SHOP_CATALOGUE_CATEGORY = 'categories.category';

@@ -20,6 +20,7 @@ class ProductController extends AbstractFormController {
         this.optionTypes['GroupProduct'] =  {display:'Product Group',  template: '/admin/shop/catalogue/product/options/GroupProduct.html'};
 
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
+        this.$scope.$on(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, (event, args) => {this.openProductSelector(event, args)});
     }
 
     /**
@@ -138,12 +139,21 @@ class ProductController extends AbstractFormController {
     /* Options */
 
     addOption() {
+        if(!this.formData.options) {
+            this.formData.options = [];
+        }
         this.formData.options.push({});
     }
 
     removeOption(index) {
         this.formData.options.splice(index, 1);
         this.setDirty();
+    }
+
+    openProductSelector(event, args) {
+        this.$scope.selectorOptions = args;
+        this.$scope.selectorOptions.exclude.push(this.formData.id); //exclude current product
+        this.$mdSidenav("sidenav-right").open();
     }
 
 }

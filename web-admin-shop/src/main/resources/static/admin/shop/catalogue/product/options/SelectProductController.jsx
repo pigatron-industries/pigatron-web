@@ -35,14 +35,19 @@ class SelectProductController extends ProductsController {
         this.setDirty();
     }
 
-    openRightSidebar() {
-        this.$mdSidenav("sidenav-right").open();
+    openProductSelector() {
+        let selectorOptions = {};
+        selectorOptions.exclude = [];
+        for(var i=0; i<this.table.data.length; i++) {
+            selectorOptions.exclude.push(this.table.data[i].id);
+        }
+        this.$scope.$emit(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, selectorOptions);
         this.waitForSelection();
     }
 
     waitForSelection() {
         this.option.waitingSelection = true;
-        this.offProductSelection = this.$scope.$on(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTION,
+        this.offProductSelection = this.$scope.$on(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_ONSELECT,
             (event, args) => { this.onProductSelection(event, args); }
         );
         this.unwatchSidebar = this.$scope.$watch(
@@ -63,7 +68,6 @@ class SelectProductController extends ProductsController {
             let product = selection[i];
             this.option.products.push(product);
             this.setDirty();
-            //TODO can't add self / can't add duplicates
         }
     }
 
