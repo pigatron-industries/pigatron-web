@@ -6,6 +6,10 @@ class AbstractController extends AbstractServiceBundleConsumer {
         this.$scope = $scope;
     }
 
+    setDirty() {
+        this.$scope.$emit(EVENT_FORM_DIRTY);
+    }
+
     eventOnOff(element, event, func) {
         element.on(event, func);
         this.$scope.$on('$destroy', () => {

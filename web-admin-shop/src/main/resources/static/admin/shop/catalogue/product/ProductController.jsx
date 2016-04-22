@@ -19,7 +19,6 @@ class ProductController extends AbstractFormController {
         this.optionTypes['SelectProduct'] = {display:'Product Select', template: '/admin/shop/catalogue/product/options/SelectProduct.html'};
         this.optionTypes['GroupProduct'] =  {display:'Product Group',  template: '/admin/shop/catalogue/product/options/GroupProduct.html'};
 
-
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
     }
 

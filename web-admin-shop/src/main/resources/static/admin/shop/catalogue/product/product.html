@@ -63,10 +63,6 @@
                                 <div ng-message="urlUnique">There is already a product with this URL Key.</div>
                             </div>
                         </md-input-container>
-                        <md-input-container>
-                            <label for="location">Location</label>
-                            <input id="location" name="location" ng-model="product.formData.location" type="text"/>
-                        </md-input-container>
                     </div>
                     <!-- Item column 2 -->
                     <div class="formcolumn" flex="60" layout="column">
@@ -93,6 +89,10 @@
                     </md-input-container>
                     <md-input-container ng-if="!product.formData.isOption" layout="row">
                         <md-checkbox aria-label="Manage on Options" ng-model="product.formData.useQuantityOnOptions" class="md-primary">Use Quantity on Options</md-checkbox>
+                    </md-input-container>
+                    <md-input-container>
+                        <label for="location">Location</label>
+                        <input id="location" name="location" ng-model="product.formData.location" type="text"/>
                     </md-input-container>
                 </div>
 

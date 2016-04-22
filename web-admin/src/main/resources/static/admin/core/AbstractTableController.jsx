@@ -11,11 +11,11 @@ class AbstractTableController extends AbstractController {
             enableFiltering: true,
             enableGridMenu: true,
             enableCellEditOnFocus: true,
-            enableRowSelection: true,
             modifierKeysToMultiSelect: true,
             enableHorizontalScrollbar: 0,
             enableVerticalScrollbar: 0
         };
+        this.enableRowSelection(true);
 
         this.loadConfig();
         this.table.columnDefs = this.defineColumns();
@@ -27,6 +27,11 @@ class AbstractTableController extends AbstractController {
         };
 
         this.load();
+    }
+
+    enableRowSelection(enable) {
+        this.table.enableRowSelection = enable;
+        this.table.enableRowHeaderSelection = enable;
     }
 
     setTableHeight() {
@@ -84,7 +89,7 @@ class AbstractTableController extends AbstractController {
         column.pinnedLeft = true;
         column.displayName = "";
         column.width = 30;
-        column.cellTemplate = AbstractTableController.actionColumnTemplate(column);
+        column.cellTemplate = this.actionColumnTemplate(column);
         return column;
     }
 
@@ -98,11 +103,15 @@ class AbstractTableController extends AbstractController {
             '<input type="INPUT_TYPE" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" /></div>';
     }
 
-    static actionColumnTemplate(column) {
+    actionColumnTemplate(column) {
         let template = "<a class='ui-grid-cell-contents' ";
         if(column.sref !== undefined) {
             template += "ui-sref='" + column.sref + "'>";
+        } else if(column.click !== undefined) {
+            this.$scope[column.name] = column.click;
+            template += "ng-click='grid.appScope." + column.name + "(row)'>";
         }
+        template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
         template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
         return template;
     }

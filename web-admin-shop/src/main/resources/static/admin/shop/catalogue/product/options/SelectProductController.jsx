@@ -4,6 +4,7 @@ class SelectProductController extends ProductsController {
     /*@ngInject*/
     constructor($scope, $services, $mdSidenav, productService) {
         super($scope, $services, productService);
+        this.enableRowSelection(false);
         this.$mdSidenav = $mdSidenav;
     }
 
@@ -14,13 +15,24 @@ class SelectProductController extends ProductsController {
         }
         this.option.waitingSelection = false;
         this.table.data = this.option.products;
-        this.table.enableRowSelection = false;
     }
 
     loadConfig() {
         this.tableConfig = {
-            visibleFields: ['sku','name','enabled','price','quantity']
+            visibleFields: ['unlink','sku','name','enabled','price','quantity']
         };
+    }
+
+    defineColumns() {
+        let colDefs = super.defineColumns();
+        colDefs.push(this.columnAction({ name:'unlink', icon:"fa-chain-broken", tooltip:"Remove Option", click:(row)=>{this.removeProduct(row);} }));
+        return colDefs;
+    }
+
+    removeProduct(row) {
+        let index = this.table.data.indexOf(row.entity);
+        this.table.data.splice(index, 1);
+        this.setDirty();
     }
 
     openRightSidebar() {
@@ -50,6 +62,7 @@ class SelectProductController extends ProductsController {
         for(var i=0; i<selection.length; i++) {
             let product = selection[i];
             this.option.products.push(product);
+            this.setDirty();
             //TODO can't add self / can't add duplicates
         }
     }

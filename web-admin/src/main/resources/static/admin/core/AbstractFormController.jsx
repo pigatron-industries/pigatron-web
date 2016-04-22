@@ -10,6 +10,7 @@ class AbstractFormController extends AbstractController {
             this.load(this.$stateParams.id); //TODO load after timeout
         }
         this.$scope.$on(EVENT_ADMIN_SAVE, () => {this.save();});
+        this.$scope.$on(EVENT_FORM_DIRTY, () => {this.setDirty();});
     }
 
     load(id) {
