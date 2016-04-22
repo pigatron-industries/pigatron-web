@@ -26,6 +26,9 @@ public class SelectProduct extends ProductOption {
     }
 
 
+    /**
+     * Builder
+     */
     public static final class SelectProductBuilder {
         private List<Product> products;
         private String name;

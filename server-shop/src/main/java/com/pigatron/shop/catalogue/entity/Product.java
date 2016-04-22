@@ -1,7 +1,9 @@
 package com.pigatron.shop.catalogue.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
+import com.pigatron.shop.catalogue.entity.option.SelectProduct;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -301,6 +303,23 @@ public class Product {
     }
 
 
+    @JsonIgnore
+    public List<Product> getAllOptionProducts() {
+        ArrayList<Product> optionProducts = new ArrayList<>();
+        if(this.options != null) {
+            for (ProductOption option : this.options) {
+                if (option instanceof SelectProduct) {
+                    optionProducts.addAll(((SelectProduct) option).getProducts());
+                }
+            }
+        }
+        return optionProducts;
+    }
+
+
+    /**
+     * Builder
+     */
     public static final class ProductBuilder {
         // General
         private String id;

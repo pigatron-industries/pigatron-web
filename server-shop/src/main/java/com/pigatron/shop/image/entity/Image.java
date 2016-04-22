@@ -16,7 +16,7 @@ public class Image {
     @JsonIgnore private byte[] fileData;
     @JsonIgnore private String mimeType;
     private String text;
-    private Map<String, byte[]> resizedImages;
+    @JsonIgnore private Map<String, byte[]> resizedImages;
 
     public Image() {
         this.resizedImages = new HashMap<>();

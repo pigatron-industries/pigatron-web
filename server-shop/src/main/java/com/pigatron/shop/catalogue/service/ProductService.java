@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,8 +31,15 @@ public class ProductService extends AbstractRepositoryService<Product> {
 	}
 
 	public List<Product> find(ProductQuery query) {
-		//TODO move to Abstract?
 		return productRepository.find(query);
+	}
+
+	@Override
+	public Product save(Product product) {
+		List<Product> optionProducts = product.getAllOptionProducts();
+		optionProducts.forEach(p -> p.setIsOption(true));
+		repository.save(optionProducts);
+		return super.save(product);
 	}
 
 }
