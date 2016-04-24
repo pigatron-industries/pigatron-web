@@ -7,18 +7,18 @@ class AbstractTableController extends AbstractController {
 
         this.table = {
             loaded: false,
-            enableSorting: true,
             enableGridMenu: true,
             enableCellEditOnFocus: true,
             modifierKeysToMultiSelect: true,
             enableHorizontalScrollbar: 0,
             enableVerticalScrollbar: 0
         };
+        this.enableSorting(true);
         this.enableFiltering(true);
         this.enableRowSelection(true);
 
         this.loadConfig();
-        this.table.columnDefs = this.defineColumns();
+        this.defineColumns();
 
         this.table.onRegisterApi = (gridApi) => {
             this.gridApi = gridApi;
@@ -26,7 +26,7 @@ class AbstractTableController extends AbstractController {
             gridApi.rowEdit.on.saveRow(this.$scope, (rowData) => { this.saveRow(rowData); });
         };
 
-        this.load();
+        this.$timeout(()=>{this.load()}, 1);
     }
 
     enableRowSelection(enable) {
@@ -38,30 +38,16 @@ class AbstractTableController extends AbstractController {
         this.table.enableFiltering = enable;
     }
 
-    setTableHeight() {
-        this.headerHeight = $("header").height();
-        this.footerHeight = $("footer").height();
-        this.menubarHeight = $("md-menu-bar").height();
-        let tableHeight = $(window).height() - this.headerHeight - this.footerHeight - this.menubarHeight;
-        $("div.fullTable").height(tableHeight);
+    enableSorting(enable) {
+        this.table.enableSorting = enable;
     }
 
-    /**
-     * Get preferred height of table to fit all rows in.
-     * @return Object height as css style
-     */
-    getTableHeight() {
-        var rowHeight = 30;
-        var headerHeight;
-        if(this.table.enableFiltering) {
-            headerHeight = 55;
-        } else {
-            headerHeight = 30;
-        }
-        var tableHeight = this.table.data.length * rowHeight + headerHeight;
-        return {
-            height: tableHeight+"px"
-        };
+    enableDraggableRows() {
+        this.table.rowTemplate = '<div grid="grid" class="ui-grid-draggable-row" draggable="true">' +
+            '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ' +
+            'ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader, \'custom\': true }" ui-grid-cell></div></div>';
+        //this.table.useUiGridDraggableRowsHandle = true;
+        this.table.columnDefs.push(this.columnDrag({ name:'drag', icon:"fa-bars", tooltip:"Drag Row"}));
     }
 
     loadConfig() {
@@ -70,8 +56,7 @@ class AbstractTableController extends AbstractController {
     }
 
     defineColumns() {
-        console.error("No columns defined, override defineColumns() function to define columns.");
-        return [];
+        this.table.columnDefs = [];
     }
 
     column(column) {
@@ -101,6 +86,34 @@ class AbstractTableController extends AbstractController {
         return column;
     }
 
+    actionColumnTemplate(column) {
+        let template = "<a class='ui-grid-cell-contents' ";
+        if(column.sref !== undefined) {
+            template += "ui-sref='" + column.sref + "'>";
+        } else if(column.click !== undefined) {
+            this.$scope[column.name] = column.click;
+            template += "ng-click='grid.appScope." + column.name + "(row)'>";
+        } else {
+            template += ">";
+        }
+        template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
+        template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
+        return template;
+    }
+
+    columnDrag(column) {
+        column = this.columnAction(column);
+        column.cellTemplate = this.dragColumnTemplate(column);
+        return column;
+    }
+
+    dragColumnTemplate(column) {
+        let template = "<a class='ui-grid-cell-contents ui-grid-draggable-row-handle'>";
+        template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
+        template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
+        return template;
+    }
+
     static checkboxTemplate() {
         return '<div class="ui-grid-cell-contents ui-grid-cell-checkbox">' +
             '<md-checkbox class="md-primary" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" aria-label="Checkbox"/></div>';
@@ -111,17 +124,30 @@ class AbstractTableController extends AbstractController {
             '<input type="INPUT_TYPE" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" /></div>';
     }
 
-    actionColumnTemplate(column) {
-        let template = "<a class='ui-grid-cell-contents' ";
-        if(column.sref !== undefined) {
-            template += "ui-sref='" + column.sref + "'>";
-        } else if(column.click !== undefined) {
-            this.$scope[column.name] = column.click;
-            template += "ng-click='grid.appScope." + column.name + "(row)'>";
+    setTableHeight() {
+        this.headerHeight = $("header").height();
+        this.footerHeight = $("footer").height();
+        this.menubarHeight = $("md-menu-bar").height();
+        let tableHeight = $(window).height() - this.headerHeight - this.footerHeight - this.menubarHeight;
+        $("div.fullTable").height(tableHeight);
+    }
+
+    /**
+     * Get preferred height of table to fit all rows in.
+     * @return Object height as css style
+     */
+    getTableHeight() {
+        var rowHeight = 30;
+        var headerHeight;
+        if(this.table.enableFiltering) {
+            headerHeight = 55;
+        } else {
+            headerHeight = 30;
         }
-        template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
-        template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
-        return template;
+        var tableHeight = this.table.data.length * rowHeight + headerHeight;
+        return {
+            height: tableHeight+"px"
+        };
     }
 
     load() {

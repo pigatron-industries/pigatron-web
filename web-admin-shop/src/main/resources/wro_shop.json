@@ -4,7 +4,8 @@
     "js":[
       "angular-ui-tree/dist/angular-ui-tree.min.js",
       "lf-ng-md-file-input/dist/lf-ng-md-file-input.min.js",
-      "ng-pattern-restrict/src/ng-pattern-restrict.min.js"
+      "ng-pattern-restrict/src/ng-pattern-restrict.min.js",
+      "ui-grid-draggable-rows/js/draggable-rows.js"
     ],
     "css":[
       "angular-ui-tree/dist/angular-ui-tree.min.css",

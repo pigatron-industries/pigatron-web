@@ -14,32 +14,31 @@ class ProductsController extends AbstractTableController {
     }
 
     defineColumns() {
-        return [
-            this.columnAction({ name:'edit',   icon:"fa-pencil-square-o", sref:"product({id:row.entity.id})" }),
-            this.column({ field: 'id',               enableCellEdit: false }),
-            this.column({ field: 'sku',              enableCellEdit: true  }),
-            this.column({ field: 'name',             enableCellEdit: true  }),
-            this.column({ field: 'shortDescription', enableCellEdit: true  }),
-            this.column({ field: 'description',      enableCellEdit: true  }),
-            this.column({ field: 'location',         enableCellEdit: true  }),
-            this.column({ field: 'enabled',          enableCellEdit: true,  type:'boolean' }),
-            this.column({ field: 'price',            enableCellEdit: true,  cellFilter: "currency" }),
-            this.column({ field: 'taxClass',         enableCellEdit: false }),
-            this.column({ field: 'metaTitle',        enableCellEdit: true  }),
-            this.column({ field: 'metaKeywords',     enableCellEdit: true  }),
-            this.column({ field: 'metaDescription',  enableCellEdit: true  }),
-            this.column({ field: 'quantity',         cellEditableCondition: ProductsController.quantityEditable  }),
-            this.column({ field: 'allowBackorders',  enableCellEdit: true  }),
-            this.column({ field: 'maxInCart',        enableCellEdit: true  }),
-            this.column({ field: 'categories',       enableCellEdit: false, cellFilter: "listCategories" }),
-            this.column({ field: 'supplierInfo',     enableCellEdit: false, cellTemplate: ProductsController.supplierLinkTemplate() }),
-            this.column({ field: 'supplierName',     enableCellEdit: true  }),
-            this.column({ field: 'supplierItemCode', enableCellEdit: true  }),
-            this.column({ field: 'supplierItemLink', enableCellEdit: true  }),
-            this.column({ field: 'supplierPrice',    enableCellEdit: true,  cellFilter: "currency"}),
-            this.column({ field: 'supplierNotes',    enableCellEdit: false }),
-            this.column({ field: 'quantityOnOrder',  enableCellEdit: true  })
-        ];
+        super.defineColumns();
+        this.table.columnDefs.push(this.columnAction({ name:'edit',   icon:"fa-pencil-square-o", sref:"product({id:row.entity.id})", tooltip:"Edit" }));
+        this.table.columnDefs.push(this.column({ field: 'id',               enableCellEdit: false }));
+        this.table.columnDefs.push(this.column({ field: 'sku',              enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'name',             enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'shortDescription', enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'description',      enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'location',         enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'enabled',          enableCellEdit: true,  type:'boolean' }));
+        this.table.columnDefs.push(this.column({ field: 'price',            enableCellEdit: true,  cellFilter: "currency" }));
+        this.table.columnDefs.push(this.column({ field: 'taxClass',         enableCellEdit: false }));
+        this.table.columnDefs.push(this.column({ field: 'metaTitle',        enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'metaKeywords',     enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'metaDescription',  enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'quantity',         cellEditableCondition: ProductsController.quantityEditable  }));
+        this.table.columnDefs.push(this.column({ field: 'allowBackorders',  enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'maxInCart',        enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'categories',       enableCellEdit: false, cellFilter: "listCategories" }));
+        this.table.columnDefs.push(this.column({ field: 'supplierInfo',     enableCellEdit: false, cellTemplate: ProductsController.supplierLinkTemplate() }));
+        this.table.columnDefs.push(this.column({ field: 'supplierName',     enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'supplierItemCode', enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'supplierItemLink', enableCellEdit: true  }));
+        this.table.columnDefs.push(this.column({ field: 'supplierPrice',    enableCellEdit: true,  cellFilter: "currency"}));
+        this.table.columnDefs.push(this.column({ field: 'supplierNotes',    enableCellEdit: false }));
+        this.table.columnDefs.push(this.column({ field: 'quantityOnOrder',  enableCellEdit: true  }));
     }
 
     static quantityEditable(scope) {

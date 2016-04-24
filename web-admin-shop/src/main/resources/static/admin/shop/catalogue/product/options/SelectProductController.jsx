@@ -4,8 +4,10 @@ class SelectProductController extends ProductsController {
     /*@ngInject*/
     constructor($scope, $services, $mdSidenav, productService) {
         super($scope, $services, productService);
+        this.enableSorting(false);
         this.enableRowSelection(false);
         this.enableFiltering(false);
+        this.enableDraggableRows();
         this.$mdSidenav = $mdSidenav;
     }
 
@@ -20,14 +22,13 @@ class SelectProductController extends ProductsController {
 
     loadConfig() {
         this.tableConfig = {
-            visibleFields: ['unlink','sku','name','price','quantity','enabled']
+            visibleFields: ['drag','unlink','sku','name','price','quantity','enabled']
         };
     }
 
     defineColumns() {
-        let colDefs = super.defineColumns();
-        colDefs.push(this.columnAction({ name:'unlink', icon:"fa-chain-broken", tooltip:"Remove Option", click:(row)=>{this.removeProduct(row);} }));
-        return colDefs;
+        super.defineColumns();
+        this.table.columnDefs.push(this.columnAction({ name:'unlink', icon:"fa-chain-broken", tooltip:"Remove Option", click:(row)=>{this.removeProduct(row);} }));
     }
 
     removeProduct(row) {

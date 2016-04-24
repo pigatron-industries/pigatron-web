@@ -13,6 +13,7 @@ angular.module('admin.shop.catalogue', [
         'ui.grid.pinning',
         'ui.grid.resizeColumns',
         'ui.grid.selection',
+        'ui.grid.draggable-rows',
         'as.sortable',
         'lfNgMdFileInput',
         'smoothScroll',
