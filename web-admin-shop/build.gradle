@@ -41,9 +41,9 @@ build.dependsOn webResourceBuild
 
 // Functional test running
 
-task startSelenium(type: NodeTask) {
+task updateWebDriver(type: NodeTask) {
     script = file('node_modules/protractor/bin/webdriver-manager')
-    args = ['start']
+    args = ['update', '--standalone']
 }
 task protractorTests(type: NodeTask) {
     script = file('node_modules/protractor/bin/protractor')
