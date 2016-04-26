@@ -17,12 +17,12 @@ class ProductsController extends AbstractTableController {
         super.defineColumns();
         this.table.columnDefs.push(this.columnAction({ name:'edit',   icon:"fa-pencil-square-o", sref:"product({id:row.entity.id})", tooltip:"Edit" }));
         this.table.columnDefs.push(this.column({ field: 'id',               enableCellEdit: false }));
+        this.table.columnDefs.push(this.column({ field: 'enabled',          enableCellEdit: true,  type:'boolean' }));
         this.table.columnDefs.push(this.column({ field: 'sku',              enableCellEdit: true  }));
         this.table.columnDefs.push(this.column({ field: 'name',             enableCellEdit: true  }));
         this.table.columnDefs.push(this.column({ field: 'shortDescription', enableCellEdit: true  }));
         this.table.columnDefs.push(this.column({ field: 'description',      enableCellEdit: true  }));
         this.table.columnDefs.push(this.column({ field: 'location',         enableCellEdit: true  }));
-        this.table.columnDefs.push(this.column({ field: 'enabled',          enableCellEdit: true,  type:'boolean' }));
         this.table.columnDefs.push(this.column({ field: 'price',            enableCellEdit: true,  cellFilter: "currency" }));
         this.table.columnDefs.push(this.column({ field: 'taxClass',         enableCellEdit: false }));
         this.table.columnDefs.push(this.column({ field: 'metaTitle',        enableCellEdit: true  }));

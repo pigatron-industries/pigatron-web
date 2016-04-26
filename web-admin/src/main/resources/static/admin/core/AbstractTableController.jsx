@@ -23,7 +23,16 @@ class AbstractTableController extends AbstractController {
         this.table.onRegisterApi = (gridApi) => {
             this.gridApi = gridApi;
             this.$animate.enabled(gridApi.grid.element, false); //disable crappy menu animations
-            gridApi.rowEdit.on.saveRow(this.$scope, (rowData) => { this.saveRow(rowData); });
+            if(gridApi.rowEdit) {
+                gridApi.rowEdit.on.saveRow(this.$scope, (rowData) => {
+                    this.saveRow(rowData);
+                });
+            }
+            if(gridApi.draggableRows) {
+                gridApi.draggableRows.on.rowDropped($scope, (info, dropTarget) => {
+                    this.setDirty();
+                });
+            }
         };
 
         this.$timeout(()=>{this.load()}, 1);
@@ -46,8 +55,8 @@ class AbstractTableController extends AbstractController {
         this.table.rowTemplate = '<div grid="grid" class="ui-grid-draggable-row" draggable="true">' +
             '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ' +
             'ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader, \'custom\': true }" ui-grid-cell></div></div>';
-        //this.table.useUiGridDraggableRowsHandle = true;
-        this.table.columnDefs.push(this.columnDrag({ name:'drag', icon:"fa-bars", tooltip:"Drag Row"}));
+        this.table.useUiGridDraggableRowsHandle = true;
+        this.table.columnDefs.push(this.columnDrag({ name:'drag', icon:"fa-bars"}));
     }
 
     loadConfig() {
@@ -96,7 +105,9 @@ class AbstractTableController extends AbstractController {
         } else {
             template += ">";
         }
-        template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
+        if(column.tooltip) {
+            template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
+        }
         template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
         return template;
     }
@@ -109,7 +120,6 @@ class AbstractTableController extends AbstractController {
 
     dragColumnTemplate(column) {
         let template = "<a class='ui-grid-cell-contents ui-grid-draggable-row-handle'>";
-        template += "<md-tooltip md-direction='bottom'>" + column.tooltip + "</md-tooltip>";
         template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
         return template;
     }
