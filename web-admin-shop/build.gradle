@@ -4,8 +4,9 @@ plugins {
 }
 
 dependencies {
-    compile project(":server-shop")
     compile project(":web-admin-security")
+
+    compile('net.coobird:thumbnailator:0.4.8')
 
     // Web Jars
     compile('org.webjars.bower:angular-ui-tree:2.15.0')
@@ -14,6 +15,7 @@ dependencies {
     compile('org.webjars.bower:ui-grid-draggable-rows:0.2.2')
 
     testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
+    testCompile('com.jayway.restassured:rest-assured:2.9.0')
 }
 
 

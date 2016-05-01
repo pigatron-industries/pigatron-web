@@ -3,7 +3,7 @@ package com.pigatron.admin.security.web;
 import com.pigatron.admin.web.CreateUserForm;
 import com.pigatron.admin.security.SecUserDetailsService;
 import com.pigatron.admin.security.repository.UserRepository;
-import com.pigatron.server.web.exception.ResourceNotFoundException;
+import com.pigatron.admin.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;

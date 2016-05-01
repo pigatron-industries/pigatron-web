@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.*;
 
 @Configuration
-@PropertySource("classpath:/web-admin.properties")
+@PropertySource("classpath:/admin.properties")
 public class AdminResourceConfig {
 
 	public static final String ADMIN_GROUP = "admin";

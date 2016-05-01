@@ -1,28 +1,27 @@
-package com.pigatron.admin.security.config;
+package com.pigatron.shop.config;
 
 import com.pigatron.admin.config.AdminResourceConfig;
 import com.pigatron.admin.config.wro.SubModules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 import java.io.IOException;
+import java.util.List;
 
 @Configuration
-@PropertySource("classpath:/admin-security.properties")
-public class AdminSecurityResourceConfig {
+public class ShopAdminResourceConfig {
 
     @Autowired
     private AdminResourceConfig adminResourceConfig;
 
     @Autowired
     public void addSubmodule(SubModules submodules) {
-        submodules.addSubmodule("admin.security");
+        submodules.addSubmodule("admin.shop.catalogue");
     }
 
     @Autowired
     public void addWebResources() throws IOException {
-        adminResourceConfig.addResources("wro_security.json");
+        adminResourceConfig.addResources("wro_shop.json");
     }
 
 }

@@ -24,12 +24,7 @@ public class RunFunctionalTests extends AbstractIntegrationTest {
 
     @Test
     public void runProtractorTests() {
-        startSelenium();
         runProtractorTask();
-    }
-
-    private void startSelenium() {
-        //TODO
     }
 
     private void runProtractorTask() {
