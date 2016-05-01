@@ -1,7 +1,7 @@
-package com.pigatron.server.security;
+package com.pigatron.admin.security;
 
-import com.pigatron.server.security.entity.User;
-import com.pigatron.server.security.repository.UserRepository;
+import com.pigatron.admin.security.entity.User;
+import com.pigatron.admin.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

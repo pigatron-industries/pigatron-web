@@ -1,4 +1,4 @@
-package com.pigatron.server.security.entity;
+package com.pigatron.admin.security.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

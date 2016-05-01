@@ -1,8 +1,7 @@
-package com.pigatron.server.security;
+package com.pigatron.admin.security.repository;
 
 
-import com.pigatron.server.security.entity.User;
-import com.pigatron.server.security.repository.UserRepository;
+import com.pigatron.admin.security.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;

@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile project(":server-core")
     compile project(":web-admin")
 

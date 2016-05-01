@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(title,baseUrl,csrfToken,csrfHeaderName,submodules)">
+<head th:fragment="head(title,baseUrl,submodules,metadata)">
 	<base th:href="@{/}+${baseUrl}+@{/}"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title th:text="${title}"></title>
-	<!--CSRF-->
-	<meta name="_csrf" th:content="${csrfToken}"/>
-	<meta name="_csrf_header" th:content="${csrfHeaderName}"/>
+	<meta th:each="tag : ${metadata}" th:name="${tag.key}" th:content="${tag.value}" />
 	<meta name="_submodules" th:content="${submodules}"/>
 	<script src="/wro/lib.js"></script>
 	<link href="/wro/lib.css" rel="stylesheet" />

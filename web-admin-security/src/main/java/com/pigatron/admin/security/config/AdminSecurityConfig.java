@@ -1,7 +1,7 @@
 package com.pigatron.admin.security.config;
 
-import com.pigatron.server.security.SecUserDetailsService;
-import com.pigatron.server.security.UserTokenRepository;
+import com.pigatron.admin.security.SecUserDetailsService;
+import com.pigatron.admin.security.repository.UserTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

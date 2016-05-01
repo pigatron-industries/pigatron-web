@@ -5,7 +5,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.data:spring-data-mongodb')
-    compile("org.springframework.boot:spring-boot-starter-security")
     compile('com.mangofactory:swagger-springmvc:1.0.2')
     compile('net.coobird:thumbnailator:0.4.8')
 
