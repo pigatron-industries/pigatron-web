@@ -1,0 +1,45 @@
+plugins {
+    id "com.moowork.node" version "0.12"
+    id "com.moowork.grunt" version "0.12"
+}
+
+dependencies {
+    compile project(":server-core")
+    compile project(":web-admin")
+
+    testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
+}
+
+
+// Web resource handling
+
+node {
+    version = '5.9.0'
+    download = true
+}
+
+grunt {
+    workDir = file("${project.projectDir}")
+    colors = true
+    bufferOutput = false
+}
+
+task webResourceBuild {
+    dependsOn npmInstall, grunt_build
+}
+grunt_build.mustRunAfter installGrunt
+grunt_build.mustRunAfter npmInstall
+processResources.dependsOn grunt_build
+build.dependsOn webResourceBuild
+
+
+// Functional test running
+
+//task updateWebDriver(type: NodeTask) {
+//    script = file('node_modules/protractor/bin/webdriver-manager')
+//    args = ['update', '--standalone']
+//}
+//task protractorTests(type: NodeTask) {
+//    script = file('node_modules/protractor/bin/protractor')
+//    args = ['src/test/resources/protractor.conf.js']
+//}

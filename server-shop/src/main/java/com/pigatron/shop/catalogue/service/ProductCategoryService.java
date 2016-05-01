@@ -29,6 +29,7 @@ public class ProductCategoryService extends AbstractRepositoryService<ProductCat
 	public void delete(String id) {
 		List<ProductCategory> all = Lists.newArrayList(repository.findAll());
 		ProductCategory deleteCategory = repository.findOne(id);
+		//remove reference from parent
 		all.stream()
 				.filter(c -> c.getSubcategories().contains(deleteCategory))
 				.forEach(c -> removeSubcategoryFromParent(c, deleteCategory));

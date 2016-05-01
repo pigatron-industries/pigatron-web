@@ -1,4 +1,4 @@
-package com.pigatron.admin.config;
+package com.pigatron.admin.security.config;
 
 import com.pigatron.server.security.SecUserDetailsService;
 import com.pigatron.server.security.UserTokenRepository;
