@@ -1,9 +1,18 @@
 <div ng-controller="selectProductController as selectProduct" ng-model="option">
     <div>
-        <a ng-click="selectProduct.openProductSelector()" class="tool-icon" style="float:right;position:absolute;right:0;top:-30px;">
-            <md-tooltip md-direction="bottom">Link Product</md-tooltip>
-            <span class="fa fa-lg2 fa-link"></span>
-        </a>
+        <div layout="row" layout-align="space-between center">
+            <md-checkbox id="enabled" aria-label="Multiple Select" ng-model="option.multiSelect" class="md-primary">Multiple Select</md-checkbox>
+            <div layout="row">
+                <a ng-click="selectProduct.openProductSelector()" class="tool-icon">
+                    <md-tooltip md-direction="bottom">Link Product</md-tooltip>
+                    <span class="fa fa-lg2 fa-link"></span>
+                </a>
+                <a ng-click="selectProduct.newProduct()" class="tool-icon">
+                    <md-tooltip md-direction="bottom">Add Product</md-tooltip>
+                    <span class="fa fa-lg2 fa-plus"></span>
+                </a>
+            </div>
+        </div>
         <div flex layout="column">
             <div ui-grid="selectProduct.table" ng-style="selectProduct.getTableHeight()"
                  ui-grid-draggable-rows ui-grid-edit ui-grid-resize-columns></div>

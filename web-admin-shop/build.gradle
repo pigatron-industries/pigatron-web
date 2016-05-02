@@ -4,9 +4,7 @@ plugins {
 }
 
 dependencies {
-    compile project(":web-admin-security")
-
-    compile('net.coobird:thumbnailator:0.4.8')
+    compile project(":web-admin-cms")
 
     // Web Jars
     compile('org.webjars.bower:angular-ui-tree:2.15.0')

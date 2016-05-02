@@ -1,4 +1,5 @@
-include 'web-admin'
+include 'web-admin-core'
 include 'web-admin-security'
 include 'web-admin-shop'
+include 'web-admin-cms'
 

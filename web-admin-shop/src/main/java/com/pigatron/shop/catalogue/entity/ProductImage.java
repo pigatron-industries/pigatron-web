@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.pigatron.shop.image.entity.Image;
+import com.pigatron.cms.image.entity.Image;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 public class ProductImage {

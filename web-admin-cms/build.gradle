@@ -4,8 +4,8 @@ plugins {
 }
 
 dependencies {
-    compile project(":web-admin-core")
-    compile("org.springframework.boot:spring-boot-starter-security")
+    compile project(":web-admin-security")
+    compile('net.coobird:thumbnailator:0.4.8')
 
     testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
 }
@@ -13,24 +13,24 @@ dependencies {
 
 // Web resource handling
 
-node {
-    version = '5.9.0'
-    download = true
-}
-
-grunt {
-    workDir = file("${project.projectDir}")
-    colors = true
-    bufferOutput = false
-}
-
-task webResourceBuild {
-    dependsOn npmInstall, grunt_build
-}
-grunt_build.mustRunAfter installGrunt
-grunt_build.mustRunAfter npmInstall
-processResources.dependsOn grunt_build
-build.dependsOn webResourceBuild
+//node {
+//    version = '5.9.0'
+//    download = true
+//}
+//
+//grunt {
+//    workDir = file("${project.projectDir}")
+//    colors = true
+//    bufferOutput = false
+//}
+//
+//task webResourceBuild {
+//    dependsOn npmInstall, grunt_build
+//}
+//grunt_build.mustRunAfter installGrunt
+//grunt_build.mustRunAfter npmInstall
+//processResources.dependsOn grunt_build
+//build.dependsOn webResourceBuild
 
 
 // Functional test running

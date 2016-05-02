@@ -12,6 +12,7 @@ import java.util.List;
 public class SelectProduct extends ProductOption {
 
     @DBRef private List<Product> products;
+    private Boolean multiSelect;
 
     public SelectProduct() {
         setName("SelectProduct");
@@ -25,6 +26,13 @@ public class SelectProduct extends ProductOption {
         this.products = products;
     }
 
+    public Boolean getMultiSelect() {
+        return multiSelect;
+    }
+
+    public void setMultiSelect(Boolean multiSelect) {
+        this.multiSelect = multiSelect;
+    }
 
     /**
      * Builder

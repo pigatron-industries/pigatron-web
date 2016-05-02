@@ -17,7 +17,6 @@ class ProductController extends AbstractFormController {
         this.optionTypes = {}; //TODO populate dynamically
         this.optionTypes['SelectValue'] =   {display:'Simple Select',  template: '/admin/shop/catalogue/product/options/SelectValue.html'};
         this.optionTypes['SelectProduct'] = {display:'Product Select', template: '/admin/shop/catalogue/product/options/SelectProduct.html'};
-        this.optionTypes['GroupProduct'] =  {display:'Product Group',  template: '/admin/shop/catalogue/product/options/GroupProduct.html'};
 
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
         this.$scope.$on(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, (event, args) => {this.openProductSelector(event, args)});

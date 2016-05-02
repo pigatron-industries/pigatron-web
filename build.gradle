@@ -71,3 +71,15 @@ task wrapper(type: Wrapper) {
 bootRepackage {
 	executable = true
 }
+
+task buildInfo {
+	def cmd = "git describe --long --tags --dirty --always"
+	def proc = cmd.execute()
+	ext.revision = proc.text.trim()
+	def props = new Properties()
+	props.setProperty("pigatron.revision", ext.revision);
+	def propFile = new File("application.properties");
+	propFile.createNewFile();
+	props.store(propFile.newWriter(), null);
+}
+bootRepackage.dependsOn buildInfo

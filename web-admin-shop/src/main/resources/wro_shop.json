@@ -28,8 +28,7 @@
       "catalogue/CatalogueConfig",
       "catalogue/index",
       "catalogue/product/options/SelectValueController",
-      "catalogue/product/options/SelectProductController",
-      "catalogue/product/options/GroupProductController"
+      "catalogue/product/options/SelectProductController"
     ],
     "css":[
       "shop.css"
