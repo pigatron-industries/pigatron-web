@@ -1,6 +1,5 @@
-package com.pigatron.shop.catalogue;
+package com.pigatron.shop.catalogue.service;
 
-import com.pigatron.shop.catalogue.service.ProductCategoryService;
 import com.pigatron.shop.catalogue.entity.ProductCategory;
 import com.pigatron.shop.catalogue.repository.ProductCategoryRepository;
 import org.junit.Before;
@@ -18,7 +17,7 @@ import static org.mockito.BDDMockito.given;
 public class ProductCategoryServiceTest {
 
 	@Mock
-	ProductCategoryRepository productCategoryRepository;
+	private ProductCategoryRepository productCategoryRepository;
 
 	private ProductCategoryService productCategoryService;
 

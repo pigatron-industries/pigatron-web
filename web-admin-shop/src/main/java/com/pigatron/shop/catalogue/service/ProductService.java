@@ -34,10 +34,36 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	@Override
 	public Product save(Product product) {
+
+		if(product.getUrlKey() == null || product.getUrlKey().isEmpty()) {
+			generateUrlKey(product);
+		}
+
+		// Save options
 		List<Product> optionProducts = product.getAllOptionProducts();
-		optionProducts.forEach(p -> p.setIsOption(true));
-		repository.save(optionProducts);
+		optionProducts.forEach((p) -> {
+			p.setIsOption(true);
+			save(p);
+		});
+
 		return super.save(product);
+	}
+
+	public void generateUrlKey(Product product) {
+		String urlKey = product.getName().toLowerCase().replaceAll("\\W", "_");
+
+		Product existing = productRepository.findByUrlKey(urlKey);
+		if(existing != null && !existing.getId().equals(product.getId())) {
+			int i = 2;
+			existing = productRepository.findByUrlKey(urlKey+i);
+			while(existing != null && !existing.getId().equals(product.getId())) {
+				i++;
+				existing = productRepository.findByUrlKey(urlKey+i);
+			}
+			product.setUrlKey(urlKey+i);
+		} else {
+			product.setUrlKey(urlKey);
+		}
 	}
 
 }
