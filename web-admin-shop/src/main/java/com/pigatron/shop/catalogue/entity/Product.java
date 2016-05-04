@@ -2,6 +2,7 @@ package com.pigatron.shop.catalogue.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import com.pigatron.shop.catalogue.entity.option.SelectProduct;
 import org.springframework.data.annotation.Id;
@@ -49,8 +50,7 @@ public class Product {
     private Integer maxInCart;
 
     // Categories
-    @JsonIgnoreProperties({"subcategories"})
-    @DBRef private List<ProductCategory> categories;
+    @JsonIgnoreProperties({"subcategories"}) @DBRef private List<ProductCategory> categories;
 
     // Reviews
     private List<ProductReview> reviews;
@@ -58,6 +58,7 @@ public class Product {
     // Options
     private boolean isOption;
     private List<ProductOption> options;
+    @JsonIgnoreProperties({"options"}) @DBRef private Product parentProduct;
 
     // Supply
     private String supplierName;
@@ -134,6 +135,14 @@ public class Product {
 
     public void setIsOption(boolean isOption) {
         this.isOption = isOption;
+    }
+
+    public Product getParentProduct() {
+        return parentProduct;
+    }
+
+    public void setParentProduct(Product parentProduct) {
+        this.parentProduct = parentProduct;
     }
 
     public String getUrlKey() {
@@ -316,6 +325,19 @@ public class Product {
         return optionProducts;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id != null ? id.equals(product.id) : product.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 
     /**
      * Builder

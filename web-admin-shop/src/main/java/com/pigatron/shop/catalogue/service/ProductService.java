@@ -34,36 +34,49 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	@Override
 	public Product save(Product product) {
-
-		if(product.getUrlKey() == null || product.getUrlKey().isEmpty()) {
-			generateUrlKey(product);
-		}
-
-		// Save options
-		List<Product> optionProducts = product.getAllOptionProducts();
-		optionProducts.forEach((p) -> {
-			p.setIsOption(true);
-			save(p);
-		});
-
+		generateUrlKey(product);
+		saveOptions(product);
 		return super.save(product);
 	}
 
-	public void generateUrlKey(Product product) {
-		String urlKey = product.getName().toLowerCase().replaceAll("\\W", "_");
+	void generateUrlKey(Product product) {
+		if(product.getUrlKey() == null || product.getUrlKey().isEmpty()) {
+			String urlKey = product.getName().toLowerCase().replaceAll("\\W", "_");
 
-		Product existing = productRepository.findByUrlKey(urlKey);
-		if(existing != null && !existing.getId().equals(product.getId())) {
-			int i = 2;
-			existing = productRepository.findByUrlKey(urlKey+i);
-			while(existing != null && !existing.getId().equals(product.getId())) {
-				i++;
-				existing = productRepository.findByUrlKey(urlKey+i);
+			Product existing = productRepository.findByUrlKey(urlKey);
+			if (existing != null && !existing.getId().equals(product.getId())) {
+				int i = 2;
+				existing = productRepository.findByUrlKey(urlKey + i);
+				while (existing != null && !existing.getId().equals(product.getId())) {
+					i++;
+					existing = productRepository.findByUrlKey(urlKey + i);
+				}
+				product.setUrlKey(urlKey + i);
 			}
-			product.setUrlKey(urlKey+i);
-		} else {
-			product.setUrlKey(urlKey);
+			else {
+				product.setUrlKey(urlKey);
+			}
 		}
+	}
+
+	void saveOptions(Product product) {
+		Product oldProduct = repository.findOne(product.getId());
+		List<Product> oldOptionProducts = oldProduct.getAllOptionProducts();
+		List<Product> optionProducts = product.getAllOptionProducts();
+
+		// Removed options
+		oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach((p) -> {
+			p.setIsOption(false);
+			p.setParentProduct(null);
+			save(p);
+		});
+
+		// Added options
+		optionProducts.stream().forEach((p) -> {
+			p.setIsOption(true);
+			p.setParentProduct(product);
+			save(p);
+		});
 	}
 
 }

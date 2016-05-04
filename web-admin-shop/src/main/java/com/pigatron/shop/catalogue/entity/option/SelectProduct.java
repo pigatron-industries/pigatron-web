@@ -1,6 +1,7 @@
 package com.pigatron.shop.catalogue.entity.option;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.pigatron.shop.catalogue.entity.Product;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -11,7 +12,7 @@ import java.util.List;
 @JsonSubTypes.Type(name = "SelectProduct", value = SelectProduct.class)
 public class SelectProduct extends ProductOption {
 
-    @DBRef private List<Product> products;
+    @DBRef @JsonIgnoreProperties({"parentProduct"}) private List<Product> products;
     private Boolean multiSelect;
 
     public SelectProduct() {
