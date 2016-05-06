@@ -68,7 +68,7 @@ public class Image {
         this.resizedImages = resizedImages;
     }
 
-    public Optional<Image> findResizedImage(int width, int height) {
+    public Optional<Image> findResizedImage(Integer width, Integer height) {
         String key = createResizedImageKey(width, height);
         byte[] bytes = resizedImages.get(key);
         if(bytes != null) {
@@ -78,7 +78,7 @@ public class Image {
         }
     }
 
-    public void storeResizedImage(Image resizedImage, int width, int height) {
+    public void storeResizedImage(Image resizedImage, Integer width, Integer height) {
         String key = createResizedImageKey(width, height);
         resizedImages.put(key, resizedImage.getFileData());
     }
@@ -87,7 +87,7 @@ public class Image {
         resizedImages.clear();
     }
 
-    private String createResizedImageKey(int width, int height) {
+    private String createResizedImageKey(Integer width, Integer height) {
         return width + "x" + height;
     }
 }

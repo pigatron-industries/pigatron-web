@@ -34,7 +34,7 @@ public class ImageService {
         return imageRepository.findOne(id);
     }
 
-    public Image getResizedImage(String id, int width, int height) throws IOException {
+    public Image getResizedImage(String id, Integer width, Integer height) throws IOException {
         Image image = get(id);
         Optional<Image> cachedResizedImage = image.findResizedImage(width, height);
         if(!cachedResizedImage.isPresent()) {
@@ -47,11 +47,20 @@ public class ImageService {
         }
     }
 
-    private Image resizeImage(Image image, int width, int height) throws IOException {
+    private Image resizeImage(Image image, Integer width, Integer height) throws IOException {
         InputStream in = new ByteArrayInputStream(image.getFileData());
 
-        BufferedImage resizedImage = Thumbnails.of(in).size(width, height).crop(Positions.CENTER)
-                .useOriginalFormat().asBufferedImage();
+        BufferedImage resizedImage = null;
+        if(width != null && height != null) {
+            resizedImage = Thumbnails.of(in).size(width, height).crop(Positions.CENTER)
+                    .useOriginalFormat().asBufferedImage();
+        } else if(width == null && height != null) {
+            resizedImage = Thumbnails.of(in).height(height).keepAspectRatio(true)
+                    .useOriginalFormat().asBufferedImage();
+        } else if(width != null && height == null) {
+            resizedImage = Thumbnails.of(in).width(width).keepAspectRatio(true)
+                    .useOriginalFormat().asBufferedImage();
+        }
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         ImageIO.write(resizedImage, "jpg", out);

@@ -1,7 +1,7 @@
 package com.pigatron.cms.image.web.admin;
 
 import com.pigatron.cms.image.service.ImageService;
-import com.pigatron.cms.image.web.customer.CustomerImageController;
+import com.pigatron.cms.image.web.customer.PublicImageController;
 import com.pigatron.cms.image.entity.Image;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "${url.admin}/api/catalogue/image")
-public class AdminImageController extends CustomerImageController {
+public class AdminImageController extends PublicImageController {
 
     @Autowired
     public AdminImageController(ImageService imageService) {

@@ -15,12 +15,12 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "${url.shop}/api/catalogue/image")
-public class CustomerImageController {
+public class PublicImageController {
 
     protected ImageService imageService;
 
     @Autowired
-    public CustomerImageController(ImageService imageService) {
+    public PublicImageController(ImageService imageService) {
         this.imageService = imageService;
     }
 
@@ -28,19 +28,16 @@ public class CustomerImageController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get image file")
-    public ResponseEntity<byte[]> get(@PathVariable String id) {
-        Image image = imageService.get(id);
-        if(image == null) {
-            throw new ResourceNotFoundException();
+    public ResponseEntity<byte[]> get(@PathVariable String id,
+                                      @RequestParam(value="h", required=false) Integer height,
+                                      @RequestParam(value="w", required=false) Integer width) throws IOException {
+        Image image = null;
+        if(height == null && width == null) {
+            image = imageService.get(id);
+        } else {
+            image = imageService.getResizedImage(id, width, height);
         }
-        return new ResponseEntity<>(image.getFileData(), createHeaders(image), HttpStatus.OK);
-    }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, params={"h", "w"})
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Get resized image file")
-    public ResponseEntity<byte[]> get(@PathVariable String id, @RequestParam("h") int height, @RequestParam("w") int width) throws IOException {
-        Image image = imageService.getResizedImage(id, width, height);
         if(image == null) {
             throw new ResourceNotFoundException();
         }
