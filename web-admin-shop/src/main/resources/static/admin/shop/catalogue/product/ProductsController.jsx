@@ -62,18 +62,4 @@ class ProductsController extends AbstractTableController {
             '{{row.entity.supplierName}} {{row.entity.supplierItemCode}}</a></div>';
     }
 
-    /**
-     * Create new product directly in the table
-     */
-    newProduct() {
-        //TODO
-    }
-
-    /**
-     * Copy a product directly in the table
-     */
-    copyProduct() {
-        //TODO
-    }
-
 }

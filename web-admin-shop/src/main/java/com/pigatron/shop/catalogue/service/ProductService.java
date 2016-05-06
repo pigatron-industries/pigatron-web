@@ -60,16 +60,18 @@ public class ProductService extends AbstractRepositoryService<Product> {
 	}
 
 	void saveOptions(Product product) {
-		Product oldProduct = repository.findOne(product.getId());
-		List<Product> oldOptionProducts = oldProduct.getAllOptionProducts();
 		List<Product> optionProducts = product.getAllOptionProducts();
 
 		// Removed options
-		oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach((p) -> {
-			p.setIsOption(false);
-			p.setParentProduct(null);
-			save(p);
-		});
+		if(product.getId() != null) {
+			Product oldProduct = repository.findOne(product.getId());
+			List<Product> oldOptionProducts = oldProduct.getAllOptionProducts();
+			oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach((p) -> {
+				p.setIsOption(false);
+				p.setParentProduct(null);
+				save(p);
+			});
+		}
 
 		// Added options
 		optionProducts.stream().forEach((p) -> {

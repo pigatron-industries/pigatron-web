@@ -187,4 +187,12 @@ class AbstractTableController extends AbstractController {
         });
     }
 
+    newRow() {
+        console.log("new Row");
+        this.table.data.push({});
+        this.$timeout(() => {
+            this.gridApi.core.handleWindowResize();
+        }, 1);
+    }
+
 }
