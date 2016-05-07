@@ -2,7 +2,6 @@ package com.pigatron.shop.catalogue.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import com.pigatron.shop.catalogue.entity.option.SelectProduct;
 import org.springframework.data.annotation.Id;
@@ -27,12 +26,8 @@ public class Product {
     private String description;
     private String location;
 
-    // Shipping
-    //private float weight;
-
     // Price
     private Float price;
-    private Boolean usePriceOnOptions;
     private ProductTaxClass taxClass; //determines how much VAT to add
 
     // Meta Info
@@ -75,10 +70,6 @@ public class Product {
 
     public String getId() {
         return id;
-    }
-
-    private void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -258,7 +249,7 @@ public class Product {
 
     public void setOptions(List<ProductOption> options) {
         this.options = options;
-        if(options != null && options.size() == 0) {
+        if(options != null && options.isEmpty()) {
             this.options = null;
         }
     }
@@ -327,8 +318,12 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Product product = (Product) o;
         return id != null ? id.equals(product.id) : product.id == null;
 
@@ -354,7 +349,7 @@ public class Product {
         private String location;
         // Price
         private Float price;
-        private ProductTaxClass taxClass; //determines how much VAT to add
+        private ProductTaxClass taxClass;
         // Meta Info
         private String metaTitle;
         private String metaKeywords;
@@ -554,7 +549,7 @@ public class Product {
 
         public Product build() {
             Product product = new Product();
-            product.setId(id);
+            product.id = id;
             product.setEnabled(enabled);
             product.setName(name);
             product.setSku(sku);

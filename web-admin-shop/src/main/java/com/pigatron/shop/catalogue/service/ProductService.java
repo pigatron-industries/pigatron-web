@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static java.util.Comparator.comparing;
-import static java.util.Comparator.naturalOrder;
 
 @Service
 public class ProductService extends AbstractRepositoryService<Product> {
@@ -58,7 +55,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 			if(product.getParentProduct() == null) {
 				// Main Product
 				int sku = sequenceService.getNextValue(SKU_SEQUENCE);
-				product.setSku(sku+"");
+				product.setSku(Integer.toString(sku));
 			} else {
 				// Product Options
 				List<Product> allOptionProducts = product.getParentProduct().getAllOptionProducts();
@@ -125,7 +122,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 		if(product.getId() != null) {
 			Product oldProduct = repository.findOne(product.getId());
 			List<Product> oldOptionProducts = oldProduct.getAllOptionProducts();
-			oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach((p) -> {
+			oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach(p -> {
 				p.setIsOption(false);
 				p.setParentProduct(null);
 				save(p);
@@ -133,7 +130,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 		}
 
 		// Added options
-		optionProducts.stream().forEach((p) -> {
+		optionProducts.stream().forEach(p -> {
 			p.setIsOption(true);
 			p.setParentProduct(product);
 			save(p);

@@ -31,12 +31,13 @@ public class User implements UserDetails {
 
 
     public User() {
+        //Empty constructor required for spring data
     }
 
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
-        this.roles = new ArrayList<Role>();
+        this.roles = new ArrayList<>();
         this.roles.add(new Role(role));
     }
 

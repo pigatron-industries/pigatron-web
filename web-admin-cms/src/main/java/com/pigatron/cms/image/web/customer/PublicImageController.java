@@ -31,7 +31,7 @@ public class PublicImageController {
     public ResponseEntity<byte[]> get(@PathVariable String id,
                                       @RequestParam(value="h", required=false) Integer height,
                                       @RequestParam(value="w", required=false) Integer width) throws IOException {
-        Image image = null;
+        Image image;
         if(height == null && width == null) {
             image = imageService.get(id);
         } else {
