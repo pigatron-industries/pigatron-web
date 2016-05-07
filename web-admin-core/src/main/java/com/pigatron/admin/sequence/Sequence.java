@@ -9,9 +9,9 @@ public class Sequence {
     @Indexed(unique = true) private String name;
     private int value;
 
-    public Sequence(String name, int startValue) {
+    public Sequence(String name, int value) {
         this.name = name;
-        this.value = startValue;
+        this.value = value;
     }
 
     public String getId() {

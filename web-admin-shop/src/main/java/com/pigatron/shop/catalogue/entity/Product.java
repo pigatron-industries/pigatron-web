@@ -20,8 +20,8 @@ public class Product {
     @Id private String id;
     private boolean enabled;
     @NotNull private String name;
-    @NotNull @Indexed(unique = true) private String sku;
-    @NotNull @Indexed(unique = true) private String urlKey;
+    @Indexed(unique = true) private String sku;
+    @Indexed(unique = true) private String urlKey;
     private String shortDescription;
     private String description;
     private String location;

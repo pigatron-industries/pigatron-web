@@ -15,7 +15,6 @@ class ProductsController extends AbstractTableController {
 
     defineColumns() {
         super.defineColumns();
-        this.table.columnDefs.push(this.columnAction({ name:'edit',   icon:"fa-pencil-square-o", sref:"product({id:row.entity.id})", tooltip:"Edit" }));
         this.table.columnDefs.push(this.column({ field: 'id',               enableCellEdit: false }));
         this.table.columnDefs.push(this.column({ field: 'enabled',          enableCellEdit: true,  type:'boolean' }));
         this.table.columnDefs.push(this.column({ field: 'sku',              enableCellEdit: true  }));
@@ -41,6 +40,11 @@ class ProductsController extends AbstractTableController {
         this.table.columnDefs.push(this.column({ field: 'quantityOnOrder',  enableCellEdit: true  }));
     }
 
+    onRegisterGridApi() {
+        super.onRegisterGridApi();
+        this.gridApi.core.addRowHeaderColumn(this.columnAction({ name:'edit', icon:"fa-pencil-square-o", sref:"product({id:row.entity.id})", tooltip:"Edit" }));
+    }
+
     static quantityEditable(scope) {
         return !scope.row.entity.useQuantityOnOptions;
     }
@@ -61,5 +65,17 @@ class ProductsController extends AbstractTableController {
             '<a ng-class="\'colt\' + col.uid" class="ui-grid-cell-contents" ng-href="{{row.entity.supplierItemLink}}" target="_new">' +
             '{{row.entity.supplierName}} {{row.entity.supplierItemCode}}</a></div>';
     }
+
+    load() {
+        return super.load().then(() => {
+            this.table.data.forEach((product) => {
+                if(!product.isOption) {
+                    product.$$treeLevel = 0;
+                }
+            });
+            this.$timeout(()=>{this.gridApi.treeBase.expandAllRows()}, 1);
+        });
+    }
+
 
 }

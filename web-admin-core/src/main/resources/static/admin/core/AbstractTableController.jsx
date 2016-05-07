@@ -22,20 +22,24 @@ class AbstractTableController extends AbstractController {
 
         this.table.onRegisterApi = (gridApi) => {
             this.gridApi = gridApi;
-            this.$animate.enabled(gridApi.grid.element, false); //disable crappy menu animations
-            if(gridApi.rowEdit) {
-                gridApi.rowEdit.on.saveRow(this.$scope, (rowData) => {
-                    this.saveRow(rowData);
-                });
-            }
-            if(gridApi.draggableRows) {
-                gridApi.draggableRows.on.rowDropped($scope, (info, dropTarget) => {
-                    this.setDirty();
-                });
-            }
+            this.onRegisterGridApi();
         };
 
         this.$timeout(()=>{this.load()}, 1);
+    }
+
+    onRegisterGridApi() {
+        this.$animate.enabled(this.gridApi.grid.element, false); //disable crappy menu animations
+        if(this.gridApi.rowEdit) {
+            this.gridApi.rowEdit.on.saveRow(this.$scope, (rowData) => {
+                this.saveRow(rowData);
+            });
+        }
+        if(this.gridApi.draggableRows) {
+            this.gridApi.draggableRows.on.rowDropped(this.$scope, (info, dropTarget) => {
+                this.setDirty();
+            });
+        }
     }
 
     enableRowSelection(enable) {

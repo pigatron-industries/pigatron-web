@@ -14,6 +14,7 @@ angular.module('admin.shop.catalogue', [
         'ui.grid.resizeColumns',
         'ui.grid.selection',
         'ui.grid.draggable-rows',
+        'ui.grid.treeView',
         'as.sortable',
         'lfNgMdFileInput',
         'smoothScroll',
