@@ -77,7 +77,7 @@ public class Product {
         return id;
     }
 
-    public void setId(String id) {
+    private void setId(String id) {
         this.id = id;
     }
 

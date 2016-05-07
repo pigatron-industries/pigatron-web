@@ -44,10 +44,6 @@ public class User implements UserDetails {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     @Override
     public String getUsername() {
         return username;

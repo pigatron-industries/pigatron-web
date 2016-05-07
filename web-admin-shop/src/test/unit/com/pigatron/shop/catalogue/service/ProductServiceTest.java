@@ -1,5 +1,6 @@
 package com.pigatron.shop.catalogue.service;
 
+import com.pigatron.admin.sequence.SequenceService;
 import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.shop.catalogue.repository.ProductRepository;
 import org.junit.Before;
@@ -17,12 +18,14 @@ public class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
+    @Mock
+    private SequenceService sequenceService;
 
     private ProductService productService;
 
     @Before
     public void setup() {
-        productService = new ProductService(productRepository);
+        productService = new ProductService(productRepository, sequenceService);
     }
 
     @Test

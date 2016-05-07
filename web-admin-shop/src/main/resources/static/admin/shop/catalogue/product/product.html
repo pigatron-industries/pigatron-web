@@ -48,9 +48,9 @@
                         <md-input-container>
                             <label for="sku">SKU</label>
                             <input id="sku" name="sku" ng-model="product.formData.sku" ng-model-options="{ debounce: 250 }" type="text"
-                                   required sku-unique="{{product.formData.id}}" />
+                                   sku-unique="{{product.formData.id}}" />
                             <div ng-messages="form.sku.$error">
-                                <div ng-message="required">SKU is required.</div>
+                                <!--<div ng-message="required">SKU is required.</div>-->
                                 <div ng-message="skuUnique">There is already a product with this SKU.</div>
                             </div>
                         </md-input-container>
