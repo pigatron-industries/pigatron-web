@@ -303,18 +303,27 @@ public class Product {
     }
 
 
-    @JsonIgnore
-    public List<Product> getAllOptionProducts() {
+    public List<Product> findAllOptionProducts() {
         ArrayList<Product> optionProducts = new ArrayList<>();
-        if(this.options != null) {
-            for (ProductOption option : this.options) {
-                if (option instanceof SelectProduct) {
-                    optionProducts.addAll(((SelectProduct) option).getProducts());
-                }
-            }
+        if(options != null) {
+            options.stream()
+                    .filter(option -> option instanceof SelectProduct)
+                    .map(option -> (SelectProduct)option)
+                    .forEach(option -> optionProducts.addAll(option.getProducts()));
         }
         return optionProducts;
     }
+
+    public void removeOptionProduct(Product optionProduct) {
+        if(options != null) {
+            options.stream()
+                    .filter(option -> option instanceof SelectProduct)
+                    .map(option -> (SelectProduct)option)
+                    .forEach(option -> option.getProducts()
+                            .removeIf(p -> p.equals(optionProduct)));
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -333,6 +342,7 @@ public class Product {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
 
     /**
      * Builder

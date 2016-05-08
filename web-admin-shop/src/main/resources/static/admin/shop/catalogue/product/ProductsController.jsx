@@ -73,7 +73,9 @@ class ProductsController extends AbstractTableController {
                     product.$$treeLevel = 0;
                 }
             });
-            this.$timeout(()=>{this.gridApi.treeBase.expandAllRows()}, 1);
+            if(this.gridApi.treeBase) {
+                this.$timeout(()=>{this.gridApi.treeBase.expandAllRows()}, 1);
+            }
         });
     }
 

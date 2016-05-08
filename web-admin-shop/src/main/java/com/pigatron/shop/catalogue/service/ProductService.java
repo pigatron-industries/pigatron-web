@@ -46,6 +46,28 @@ public class ProductService extends AbstractRepositoryService<Product> {
 		return super.save(product);
 	}
 
+	@Override
+	public void delete(String id) {
+		Product product = this.findOne(id);
+		removeParentProducts(product.findAllOptionProducts());
+		removeOptionProduct(product);
+		super.delete(id);
+	}
+
+	private void removeParentProducts(List<Product> products) {
+		products.forEach(p -> p.setParentProduct(null));
+		repository.save(products);
+	}
+
+	private void removeOptionProduct(Product optionProduct) {
+		Product parentProduct = optionProduct.getParentProduct();
+		if(parentProduct != null) {
+			parentProduct.removeOptionProduct(optionProduct);
+		}
+	}
+
+
+
 	/**
 	 * Generate an auto increment based SKU. For product options concatenates a unique number onto the parent SKU.
 	 * @param product
@@ -58,7 +80,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 				product.setSku(Integer.toString(sku));
 			} else {
 				// Product Options
-				List<Product> allOptionProducts = product.getParentProduct().getAllOptionProducts();
+				List<Product> allOptionProducts = product.getParentProduct().findAllOptionProducts();
 				String skuPrefix = product.getParentProduct().getSku() + "-";
 				int i = 1;
 				String sku = skuPrefix + i;
@@ -116,12 +138,12 @@ public class ProductService extends AbstractRepositoryService<Product> {
 	 * @param product
      */
 	private void saveOptions(Product product) {
-		List<Product> optionProducts = product.getAllOptionProducts();
+		List<Product> optionProducts = product.findAllOptionProducts();
 
 		// Removed options
 		if(product.getId() != null) {
 			Product oldProduct = repository.findOne(product.getId());
-			List<Product> oldOptionProducts = oldProduct.getAllOptionProducts();
+			List<Product> oldOptionProducts = oldProduct.findAllOptionProducts();
 			oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach(p -> {
 				p.setIsOption(false);
 				p.setParentProduct(null);

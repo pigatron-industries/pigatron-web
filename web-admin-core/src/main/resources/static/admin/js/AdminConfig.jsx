@@ -1,6 +1,7 @@
 
 const EVENT_ADMIN_SAVE = 'save';
 const EVENT_FORM_DIRTY = 'form.dirty';
+const EVENT_FORM_PRISTINE = 'form.pristine';
 
 var AdminConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider,
          $httpProvider, $provide) {

@@ -9,8 +9,6 @@ class AbstractFormController extends AbstractController {
         } else {
             this.load(this.$stateParams.id); //TODO load after timeout
         }
-        this.$scope.$on(EVENT_ADMIN_SAVE, () => {this.save();});
-        this.$scope.$on(EVENT_FORM_DIRTY, () => {this.setDirty();});
     }
 
     load(id) {
@@ -37,14 +35,6 @@ class AbstractFormController extends AbstractController {
                 console.log(error);
                 return error;
             });
-    }
-
-    setPristine() {
-        this.$scope.form.$setPristine();
-    }
-
-    setDirty() {
-        this.$scope.form.$setDirty();
     }
 
 }

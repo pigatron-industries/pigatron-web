@@ -30,6 +30,11 @@ class AbstractTableController extends AbstractController {
 
     onRegisterGridApi() {
         this.$animate.enabled(this.gridApi.grid.element, false); //disable crappy menu animations
+        if(this.gridApi.edit) {
+            this.gridApi.edit.on.afterCellEdit(this.$scope, (rowData, colDef, newValue, oldValue) => {
+                this.afterCellEdit(rowData, colDef, newValue, oldValue);
+            });
+        }
         if(this.gridApi.rowEdit) {
             this.gridApi.rowEdit.on.saveRow(this.$scope, (rowData) => {
                 this.saveRow(rowData);
@@ -75,8 +80,14 @@ class AbstractTableController extends AbstractController {
     column(column) {
         column.visible = this.tableConfig.visibleFields.indexOf(column.field) > -1;
         if(column.type === 'boolean') {
-            column.cellTemplate = AbstractTableController.checkboxTemplate();
-            column.editableCellTemplate = AbstractTableController.checkboxTemplate();
+            if(column.enableCellEdit == true) {
+                this.$scope[column.name] = (row, colDef) => { this.afterCellEdit(row, colDef) };
+                column.cellTemplate = AbstractTableController.checkboxTemplate(column);
+                //column.editableCellTemplate = AbstractTableController.checkboxTemplate();
+                column.enableCellEdit = false;
+            } else {
+                //TODO readonly checkbox
+            }
             column.maxWidth = 120;
         } else {
             column.editableCellTemplate = AbstractTableController.inputTemplate();
@@ -118,19 +129,20 @@ class AbstractTableController extends AbstractController {
 
     columnDrag(column) {
         column = this.columnAction(column);
-        column.cellTemplate = this.dragColumnTemplate(column);
+        column.cellTemplate = AbstractTableController.dragColumnTemplate(column);
         return column;
     }
 
-    dragColumnTemplate(column) {
+    static dragColumnTemplate(column) {
         let template = "<a class='ui-grid-cell-contents ui-grid-draggable-row-handle'>";
         template += "<span class='fa fa-lg " + column.icon + "'></span></a>";
         return template;
     }
 
-    static checkboxTemplate() {
+    static checkboxTemplate(column) {
         return '<div class="ui-grid-cell-contents ui-grid-cell-checkbox">' +
-            '<md-checkbox class="md-primary" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" aria-label="Checkbox"/></div>';
+            '<md-checkbox class="md-primary" ng-class="\'colt\' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" ' +
+            'ng-click="grid.appScope.' + column.name + '(row.entity, col.colDef)" aria-label="Checkbox"/></div>';
     }
 
     static inputTemplate() {
@@ -172,9 +184,37 @@ class AbstractTableController extends AbstractController {
         });
     }
 
+    afterCellEdit(rowData, colDef, newValue, oldValue) {
+        if(newValue != oldValue || colDef.type == "boolean") {
+            rowData.$dirty = true;
+        }
+    }
+
+    save() {
+        let promises = [];
+        this.table.data.forEach((rowData) => {
+            if(rowData.$dirty == true) {
+                promises.push(this.saveRow(rowData).then((success) => {
+                    //TODO reload row success.data
+                }));
+            }
+        });
+        this.$q.all(promises).then(() => {
+            this.setPristine();
+        });
+    }
+
+    /**
+     * Called automatically after editing row when using ui-grid-row-edit,
+     * or manually via save() when using ui-grid-edit
+     * @param rowData
+     */
     saveRow(rowData) {
         let promise = this.dataService.save(rowData);
-        this.gridApi.rowEdit.setSavePromise(rowData, promise);
+        if(this.gridApi.rowEdit) {
+            this.gridApi.rowEdit.setSavePromise(rowData, promise);
+        }
+        return promise;
     }
 
     deleteSelected() {
@@ -194,6 +234,10 @@ class AbstractTableController extends AbstractController {
     newRow() {
         console.log("new Row");
         this.table.data.push({});
+        this.refreshTableHeight();
+    }
+
+    refreshTableHeight() {
         this.$timeout(() => {
             this.gridApi.core.handleWindowResize();
         }, 1);

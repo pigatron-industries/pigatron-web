@@ -69,6 +69,7 @@ class SelectProductController extends ProductsController {
         for(var i=0; i<selection.length; i++) {
             let product = selection[i];
             this.option.products.push(product);
+            this.refreshTableHeight();
             this.setDirty();
         }
     }
