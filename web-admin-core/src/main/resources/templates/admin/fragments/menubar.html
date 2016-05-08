@@ -8,7 +8,7 @@
             <!-- Action -->
             <button th:if="${submenu.action!=null}" th:id="'menu-'+${submenu.id}" th:text="${submenu.name}" th:attr="${submenu.action.type}=${submenu.action.action}"></button>
             <!-- Submenu-->
-            <md-menu th:if="${submenu.action==null}" th:include="fragments/menu :: menu(${submenu}, 1)"></md-menu>
+            <md-menu th:if="${submenu.action==null}" th:include="admin/fragments/menu :: menu(${submenu}, 1)"></md-menu>
         </th:block>
     </md-menu-bar>
 </body>

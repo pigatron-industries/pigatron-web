@@ -16,7 +16,7 @@ import java.util.Map;
 @Controller
 public class AdminController {
 
-	private static final String VIEW_ADMIN = "pages/admin";
+	private static final String VIEW_ADMIN = "admin/pages/admin";
 
 	@Value("${url.admin}")
 	private String adminUrl;

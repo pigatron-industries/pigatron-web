@@ -10,8 +10,6 @@ public class Application {
 
 	static ApplicationContext context;
 
-	private Application() {}
-
 	public static void main(String[] args) {
 		context = SpringApplication.run(Application.class, args);
 	}

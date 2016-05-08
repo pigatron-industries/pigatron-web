@@ -26,7 +26,7 @@ import java.util.*;
 
 @Configuration
 @PropertySource("classpath:/admin.properties")
-public class AdminResourceConfig {
+public class ResourceConfig {
 
 	public static final String ADMIN_GROUP = "admin";
 	public static final String URL_PATTERN = "/wro/*";

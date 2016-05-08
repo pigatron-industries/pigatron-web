@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(title,baseUrl,submodules,metadata)">
-	<base th:href="@{/}+${baseUrl}+@{/}"/>
+<head th:fragment="head(title,submodules,metadata)">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title th:text="${title}"></title>
 	<meta th:each="tag : ${metadata}" th:name="${tag.key}" th:content="${tag.value}" />
 	<meta name="_submodules" th:content="${submodules}"/>
-	<script src="/wro/lib.js"></script>
-	<link href="/wro/lib.css" rel="stylesheet" />
-	<script src="/wro/admin.js"></script>
-	<link href="/wro/admin.css" rel="stylesheet" />
+	<script src="/wro/publiclib.js"></script>
+	<link href="/wro/publiclib.css" rel="stylesheet" />
+	<script src="/wro/common.js"></script>
+	<script src="/wro/public.js"></script>
+	<link href="/wro/public.css" rel="stylesheet" />
 </head>
 <body>
 

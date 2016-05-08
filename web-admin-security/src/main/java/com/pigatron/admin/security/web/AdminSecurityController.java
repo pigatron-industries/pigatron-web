@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class AdminSecurityController {
 
-    private static final String VIEW_CONFIGURE = "pages/setup";
-    private static final String VIEW_ADMINLOGIN = "pages/login";
+    private static final String VIEW_CONFIGURE = "admin/pages/setup";
+    private static final String VIEW_ADMINLOGIN = "admin/pages/login";
 
     @Value("${url.admin}")
     private String adminUrl;

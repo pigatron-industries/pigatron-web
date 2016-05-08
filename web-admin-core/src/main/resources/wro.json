@@ -23,13 +23,18 @@
       "ng-sortable/dist/ng-sortable.style.min.css"
     ]
   },
-  "admin":{
-    "prefix":"/admin/",
+  "common":{
+    "prefix":"/common/",
     "js":[
-      "js/md-colours.js"
+      "md-colours.js"
     ],
     "jsx":[
-      "core/register",
+      "register"
+    ]
+  },
+  "admin":{
+    "prefix":"/admin/",
+    "jsx":[
       "core/ServiceBundle",
       "core/AbstractController",
       "core/AbstractFormController",
