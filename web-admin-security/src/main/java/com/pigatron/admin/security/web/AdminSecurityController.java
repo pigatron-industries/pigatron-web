@@ -67,7 +67,8 @@ public class AdminSecurityController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public @ResponseBody void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    @ResponseBody
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         CookieClearingLogoutHandler cookieClearingLogoutHandler = new CookieClearingLogoutHandler(AbstractRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY);
         SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
         cookieClearingLogoutHandler.logout(request, response, null);

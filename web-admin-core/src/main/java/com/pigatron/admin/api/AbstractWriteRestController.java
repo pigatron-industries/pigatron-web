@@ -22,6 +22,13 @@ public abstract class AbstractWriteRestController<T> {
         this.service = service;
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get by id")
+    public T get(@PathVariable String id) {
+        return service.findOne(id);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create or update one")

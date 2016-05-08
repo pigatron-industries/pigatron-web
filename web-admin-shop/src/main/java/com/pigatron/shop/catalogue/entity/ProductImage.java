@@ -1,6 +1,8 @@
 package com.pigatron.shop.catalogue.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.admin.security.entity.View;
 import com.pigatron.cms.image.entity.Image;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
@@ -8,8 +10,10 @@ public class ProductImage {
 
     @DBRef(lazy = true)
     @JsonIgnoreProperties({"mimeType"})
+    @JsonView(View.Public.class)
     private Image image;
 
+    @JsonView(View.Public.class)
     private boolean thumbnail;
 
 

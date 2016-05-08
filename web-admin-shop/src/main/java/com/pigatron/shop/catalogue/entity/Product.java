@@ -1,7 +1,8 @@
 package com.pigatron.shop.catalogue.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.admin.security.entity.View;
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import com.pigatron.shop.catalogue.entity.option.SelectProduct;
 import org.springframework.data.annotation.Id;
@@ -17,43 +18,95 @@ import java.util.List;
 public class Product {
 
     // General
-    @Id private String id;
+    @Id
+    @JsonView(View.Public.class) private String id;
     private boolean enabled;
-    @NotNull private String name;
-    @Indexed(unique = true) private String sku;
-    @Indexed(unique = true) private String urlKey;
+
+    @NotNull
+    @JsonView(View.Public.class)
+    private String name;
+
+    @Indexed(unique = true)
+    @JsonView(View.Public.class)
+    private String sku;
+
+    @Indexed(unique = true)
+    @JsonView(View.Public.class)
+    private String urlKey;
+
+    @JsonView(View.Public.class)
     private String shortDescription;
+
+    @JsonView(View.Public.class)
     private String description;
-    private String location;
+
 
     // Price
+    @JsonView(View.Public.class)
     private Float price;
-    private ProductTaxClass taxClass; //determines how much VAT to add
+
+    @JsonView(View.Public.class)
+    private ProductTaxClass taxClass;
+
 
     // Meta Info
+    @JsonView(View.Public.class)
     private String metaTitle;
+
+    @JsonView(View.Public.class)
     private String metaKeywords;
+
+    @JsonView(View.Public.class)
     private String metaDescription;
 
+
     // Images
+    @JsonView(View.Public.class)
     private List<ProductImage> images;
 
+
     // Inventory
+    @JsonView(View.Public.class)
     private Integer quantity;
+
+    @JsonView(View.Public.class)
     private Boolean useQuantityOnOptions;
+
+    @JsonView(View.Public.class)
     private Boolean allowBackorders;
+
+    @JsonView(View.Public.class)
+    private Integer maxBackOrders;
+
+    @JsonView(View.Public.class)
     private Integer maxInCart;
 
+    private String location;
+
+
     // Categories
-    @JsonIgnoreProperties({"subcategories"}) @DBRef private List<ProductCategory> categories;
+    @DBRef
+    @JsonView(View.Public.class)
+    @JsonIgnoreProperties({"subcategories"})
+    private List<ProductCategory> categories;
+
 
     // Reviews
+    @JsonView(View.Public.class)
     private List<ProductReview> reviews;
 
+
     // Options
+    @JsonView(View.Public.class)
     private boolean isOption;
+
+    @JsonView(View.Public.class)
     private List<ProductOption> options;
-    @JsonIgnoreProperties({"options"}) @DBRef private Product parentProduct;
+
+    @DBRef
+    @JsonIgnoreProperties({"options"})
+    private Product parentProduct;
+
 
     // Supply
     private String supplierName;
@@ -62,6 +115,7 @@ public class Product {
     private String supplierPrice;
     private String supplierNotes;
     private String quantityOnOrder;
+
 
     public Product() {
         this.images = new ArrayList<>();
@@ -217,6 +271,14 @@ public class Product {
 
     public void setAllowBackorders(Boolean allowBackorders) {
         this.allowBackorders = allowBackorders;
+    }
+
+    public Integer getMaxBackOrders() {
+        return maxBackOrders;
+    }
+
+    public void setMaxBackOrders(Integer maxBackOrders) {
+        this.maxBackOrders = maxBackOrders;
     }
 
     public Integer getMaxInCart() {

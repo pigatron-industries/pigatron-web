@@ -1,15 +1,19 @@
 package com.pigatron.shop.catalogue.entity.option;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.admin.security.entity.View;
+
 import java.util.List;
 
 public class SelectValue extends ProductOption {
 
+    @JsonView(View.Public.class)
+    private List<String> values;
+
     public SelectValue() {
         setName("SelectValue");
     }
-
-    private List<String> values;
 
     public List<String> getValues() {
         return values;

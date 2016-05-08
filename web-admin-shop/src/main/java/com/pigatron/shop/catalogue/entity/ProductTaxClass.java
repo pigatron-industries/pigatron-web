@@ -1,8 +1,14 @@
 package com.pigatron.shop.catalogue.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.admin.security.entity.View;
+
 public class ProductTaxClass {
 
+    @JsonView(View.Public.class)
     String name;
+
+    @JsonView(View.Public.class)
     float taxPercent;
 
     public String getName() {

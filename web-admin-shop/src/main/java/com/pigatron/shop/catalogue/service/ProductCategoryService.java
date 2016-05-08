@@ -20,9 +20,9 @@ public class ProductCategoryService extends AbstractRepositoryService<ProductCat
 	public ProductCategory addSubcategory(String parentId, ProductCategory newCategory) {
 		ProductCategory parentCategory = repository.findOne(parentId);
 		parentCategory.getSubcategories().add(newCategory);
-		newCategory = repository.save(newCategory);
+		ProductCategory category = repository.save(newCategory);
 		repository.save(parentCategory);
-		return newCategory;
+		return category;
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package com.pigatron.cms.image.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.admin.security.entity.View;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,11 +14,22 @@ import java.util.Optional;
 @Document
 public class Image {
 
-    @Id private String id;
-    @JsonIgnore private byte[] fileData;
-    @JsonIgnore private String mimeType;
+    @Id
+    @JsonView(View.Public.class)
+    private String id;
+
+    @JsonIgnore
+    private byte[] fileData;
+
+    @JsonIgnore
+    private String mimeType;
+
+    @JsonView(View.Public.class)
     private String text;
-    @JsonIgnore private Map<String, byte[]> resizedImages;
+
+    @JsonIgnore
+    private Map<String, byte[]> resizedImages;
+
 
     public Image() {
         this.resizedImages = new HashMap<>();
