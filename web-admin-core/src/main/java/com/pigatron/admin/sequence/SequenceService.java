@@ -8,8 +8,12 @@ public class SequenceService {
 
     public static final int DEFAULT_START_VALUE = 100;
 
+    private SequenceRepository sequenceRepository;
+
     @Autowired
-    SequenceRepository sequenceRepository;
+    public SequenceService(SequenceRepository sequenceRepository) {
+        this.sequenceRepository = sequenceRepository;
+    }
 
     public Sequence createSequence(String name, int startValue) {
         Sequence sequence = sequenceRepository.findByName(name);

@@ -94,7 +94,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 	}
 
 	private boolean skuExists(String sku, Product product, List<Product> productsToSave) {
-		if(productsToSave.stream().filter(p->p.getSku().equals(sku)).findFirst().isPresent()) {
+		if(productsToSave.stream().filter(p->sku.equals(p.getSku())).findFirst().isPresent()) {
 			return true;
 		} else {
 			Product existing = productRepository.findBySku(sku);
@@ -143,12 +143,14 @@ public class ProductService extends AbstractRepositoryService<Product> {
 		// Removed options
 		if(product.getId() != null) {
 			Product oldProduct = repository.findOne(product.getId());
-			List<Product> oldOptionProducts = oldProduct.findAllOptionProducts();
-			oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach(p -> {
-				p.setIsOption(false);
-				p.setParentProduct(null);
-				save(p);
-			});
+			if(oldProduct != null) {
+				List<Product> oldOptionProducts = oldProduct.findAllOptionProducts();
+				oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach(p -> {
+					p.setIsOption(false);
+					p.setParentProduct(null);
+					save(p);
+				});
+			}
 		}
 
 		// Added options

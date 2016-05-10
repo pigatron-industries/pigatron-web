@@ -620,6 +620,9 @@ public class Product {
         }
 
         public Product build() {
+            if(name == null || name.isEmpty()) {
+                throw new IllegalArgumentException("Product must have a name");
+            }
             Product product = new Product();
             product.id = id;
             product.setEnabled(enabled);
