@@ -1,7 +1,7 @@
 
 plugins {
     id "com.moowork.node" version "0.12"
-    id "com.moowork.grunt" version "0.12"
+    id "com.moowork.gulp" version "0.12"
 }
 
 dependencies {
@@ -33,16 +33,16 @@ node {
     download = true
 }
 
-grunt {
+gulp {
     workDir = file("${project.projectDir}")
     colors = true
     bufferOutput = false
 }
 
 task webResourceBuild {
-    dependsOn npmInstall, grunt_build
+    dependsOn npmInstall, gulp_build
 }
-grunt_build.mustRunAfter installGrunt
-grunt_build.mustRunAfter npmInstall
-processResources.dependsOn grunt_build
+gulp_build.mustRunAfter installGulp
+gulp_build.mustRunAfter npmInstall
+processResources.dependsOn gulp_build
 build.dependsOn webResourceBuild
