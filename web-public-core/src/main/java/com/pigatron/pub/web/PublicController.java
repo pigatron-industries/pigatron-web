@@ -8,8 +8,8 @@ public class PublicController {
 
     private static final String VIEW_INDEX = "pages/index";
 
-    @RequestMapping(value = {"/"})
-    public String admin() {
+    @RequestMapping(value = {"/**"})
+    public String index() {
         return VIEW_INDEX;
     }
 

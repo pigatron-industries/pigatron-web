@@ -10,7 +10,10 @@ import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import ro.isdc.wro.config.jmx.ConfigConstants;
 import ro.isdc.wro.http.ConfigurableWroFilter;
 import ro.isdc.wro.model.WroModel;
@@ -26,13 +29,22 @@ import java.util.*;
 
 @Configuration
 @PropertySource("classpath:/admin.properties")
-public class ResourceConfig {
+public class ResourceConfig extends WebMvcConfigurerAdapter {
 
 	public static final String ADMIN_GROUP = "admin";
 	public static final String URL_PATTERN = "/wro/*";
 	public static final String PROP_PREFIX = "wro.";
 
 	private WroModel wroModel;
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		registry.addResourceHandler("/admin/**").addResourceLocations("classpath:/static/admin/");
+		registry.addResourceHandler("/common/**").addResourceLocations("classpath:/static/common/");
+		registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/static/fonts/");
+	}
+
 
 	@Bean
 	public WroModel wroModel() throws IOException {

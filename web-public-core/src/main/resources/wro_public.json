@@ -16,14 +16,14 @@
     ]
   },
   "public":{
-    "prefix":"/",
+    "prefix":"/public/",
     "jsx":[
       "PublicConfig",
       "PublicController",
       "index"
     ],
     "css":[
-      "admin/css/admin.css"
+      "css/core.css"
     ]
   }
 }
