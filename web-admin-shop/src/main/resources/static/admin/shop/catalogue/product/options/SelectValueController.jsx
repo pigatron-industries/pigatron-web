@@ -19,4 +19,3 @@ class SelectValueController extends AbstractController {
     }
 }
 
-register('admin.shop.catalogue').controller('selectValueController', SelectValueController);

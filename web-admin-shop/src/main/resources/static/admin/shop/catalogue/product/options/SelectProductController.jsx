@@ -75,5 +75,3 @@ class SelectProductController extends ProductsController {
     }
 
 }
-
-register('admin.shop.catalogue').controller('selectProductController', SelectProductController);

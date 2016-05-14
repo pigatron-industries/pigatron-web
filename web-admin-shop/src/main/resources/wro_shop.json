@@ -13,22 +13,9 @@
     ]
   },
   "admin":{
-    "prefix":"/admin/shop/",
-    "jsx":[
-      "components/components",
-      "catalogue/image/ImageService",
-      "catalogue/category/CategoriesController",
-      "catalogue/category/CategoryController",
-      "catalogue/category/CategoryService",
-      "catalogue/product/ProductsController",
-      "catalogue/product/ProductController",
-      "catalogue/product/ProductService",
-      "catalogue/product/ProductValidators",
-      "catalogue/product/selector/ProductsSelectorController",
-      "catalogue/CatalogueConfig",
-      "catalogue/index",
-      "catalogue/product/options/SelectValueController",
-      "catalogue/product/options/SelectProductController"
+    "prefix":"/admin/",
+    "js":[
+      "web-admin-shop.js"
     ],
     "css":[
       "shop.css"

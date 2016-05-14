@@ -33,3 +33,6 @@ register('admin.shop.catalogue')
     .directive("skuUnique", SkuUniqueValidator)
     .directive("urlUnique", UrlUniqueValidator)
     .filter("listCategories", ProductsController.listCategories);
+
+register('admin.shop.catalogue').controller('selectProductController', SelectProductController);
+register('admin.shop.catalogue').controller('selectValueController', SelectValueController);

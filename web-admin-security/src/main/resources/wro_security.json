@@ -1,11 +1,8 @@
 {
   "admin":{
-    "prefix":"/admin/security/",
-    "jsx":[
-      "users/UsersController",
-      "users/UserService",
-      "SecurityConfig",
-      "index"
+    "prefix":"/admin/",
+    "js":[
+      "web-admin-security.js"
     ]
   }
 }

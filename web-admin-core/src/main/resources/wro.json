@@ -34,20 +34,8 @@
   },
   "admin":{
     "prefix":"/admin/",
-    "jsx":[
-      "core/ServiceBundle",
-      "core/AbstractController",
-      "core/AbstractFormController",
-      "core/AbstractTableController",
-      "core/AbstractRestService",
-      "components/StickToTop",
-      "components/AbstractValidator",
-      "components/AbstractViewFormatter",
-      "js/AdminController",
-      "js/MessageController",
-      "js/AdminConfig",
-      "js/HttpInterceptor",
-      "js/index"
+    "js":[
+      "web-admin-core.js"
     ],
     "css":[
       "css/admin.css",
