@@ -1,19 +1,42 @@
-var gulp = require('gulp');
-var babel = require("gulp-babel");
 var ngAnnotate = require("gulp-ng-annotate");
-
+var webpack = require('webpack-stream');
 
 var paths = {
-    jsx: 'src/main/resources/static/**/*.jsx',
-    js: 'src/main/resources/static/**/*.js',
-    dest: 'build/resources/main/static'
+    src: 'src/main/resources/static',
+    dst: 'build/resources/main/static'
 };
 
-gulp.task('babel', function() {
-    return gulp.src(paths.jsx)
-        .pipe(babel({ presets: ['es2015'] }))
+var files = {
+    jsAllJsx: paths.src+'/admin/cms/**/*.jsx',
+    jsIndex: paths.dst+'/admin/cms/index.js',
+    jsDestPath: paths.dst+'/admin/cms/',
+    jsBundleDestPath: paths.dst+'/admin/',
+    jsBundleDestFile: 'web-admin-cms.js'
+};
+
+var babelOptions = { presets: ['es2015'] };
+
+var webpackOptions = {
+    output: {
+        filename: files.jsBundleDestFile,
+        libraryTarget: "var",
+        library: "webadmincms"
+    }
+};
+
+
+
+gulp.task('jsBabel', function() {
+    return gulp.src(files.jsAllJsx)
+        .pipe(babel(babelOptions))
         .pipe(ngAnnotate())
-        .pipe(gulp.dest(paths.dest));
+        .pipe(gulp.dest(files.jsDestPath))
 });
 
-gulp.task('build', ['babel']);
+gulp.task('jsWebpack', ['jsBabel'], function() {
+    return gulp.src(files.jsIndex)
+        .pipe(webpack(webpackOptions))
+        .pipe(gulp.dest(files.jsBundleDestPath));
+});
+
+gulp.task('build', ['jsBabel', 'jsWebpack']);

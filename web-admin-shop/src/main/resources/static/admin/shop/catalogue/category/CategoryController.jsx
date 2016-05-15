@@ -1,6 +1,6 @@
 
 
-class CategoryController extends AbstractFormController {
+class CategoryController extends webadmincore.AbstractFormController {
 
     /*@ngInject*/
     constructor($scope, $services, $rootScope, categoryService) {
@@ -15,7 +15,7 @@ class CategoryController extends AbstractFormController {
             .success((data) => {
                 this.setPristine();
 //                this.$rootScope.notifySuccess('Category Saved');
-                this.$scope.$emit(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED);
+                this.$scope.$emit(constants.events.SHOP_CATALOGUE_CATEGORIES_CHANGED);
                 this.$state.go("categories.category", {id: data.id});
             });
     }
@@ -31,8 +31,8 @@ class CategoryController extends AbstractFormController {
     }
 
     afterRemove() {
-        this.$state.go(ROUTE_SHOP_CATALOGUE_CATEGORIES);
-        this.$scope.$emit(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED);
+        this.$state.go(constants.routes.SHOP_CATALOGUE_CATEGORIES);
+        this.$scope.$emit(constants.events.SHOP_CATALOGUE_CATEGORIES_CHANGED);
     }
 
 }

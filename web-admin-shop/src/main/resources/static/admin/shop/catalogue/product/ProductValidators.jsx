@@ -1,5 +1,5 @@
 
-class SkuUniqueValidator extends AbstractAsyncValidator {
+class SkuUniqueValidator extends webadmincore.AbstractAsyncValidator {
 
     /*@ngInject*/
     constructor($services, productService) {
@@ -19,7 +19,7 @@ class SkuUniqueValidator extends AbstractAsyncValidator {
 
 }
 
-class UrlUniqueValidator extends AbstractAsyncValidator {
+class UrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
 
     /*@ngInject*/
     constructor($services, productService) {

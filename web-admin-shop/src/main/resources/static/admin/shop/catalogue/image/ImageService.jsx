@@ -1,7 +1,7 @@
 
 const API_ADMIN_IMAGE = "api/catalogue/image";
 
-class ImageService extends AbstractRestService {
+class ImageService extends webadmincore.AbstractRestService {
 
     /*@ngInject*/
     constructor($http, $q) {

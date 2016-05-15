@@ -1,4 +1,6 @@
 
+var AbstractServiceBundleConsumer = require('../abstract/AbstractServiceBundleConsumer');
+
 class AbstractAsyncValidator extends AbstractServiceBundleConsumer {
 
     constructor(name, $services) {
@@ -22,3 +24,5 @@ class AbstractAsyncValidator extends AbstractServiceBundleConsumer {
     }
 
 }
+
+module.exports = AbstractAsyncValidator;

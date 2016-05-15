@@ -3,7 +3,7 @@ const API_ADMIN_CATEGORY = "api/catalogue/category";
 const ROOT_ID = "root";
 
 
-class CategoryService extends AbstractRestService {
+class CategoryService extends webadmincore.AbstractRestService {
 
     /*@ngInject*/
     constructor($http) {

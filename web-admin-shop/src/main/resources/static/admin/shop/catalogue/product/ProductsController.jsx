@@ -1,5 +1,5 @@
 
-class ProductsController extends AbstractTableController {
+class ProductsController extends webadmincore.AbstractTableController {
 
     /*@ngInject*/
     constructor($scope, $services, productService) {

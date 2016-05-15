@@ -1,10 +1,17 @@
 
-const EVENT_ADMIN_SAVE = 'save';
-const EVENT_FORM_DIRTY = 'form.dirty';
-const EVENT_FORM_PRISTINE = 'form.pristine';
+window.constants = {
+    URL_BASE: angular.element("base").attr("href"),
+    routes: {},
+    events: {
+        EVENT_ADMIN_SAVE: 'event.form.save',
+        EVENT_FORM_DIRTY: 'event.form.dirty',
+        EVENT_FORM_PRISTINE: 'event.form.pristine'
+    }
+};
 
 var AdminConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider,
          $httpProvider, $provide) {
+
     configTheme($mdThemingProvider);
 
     $locationProvider.html5Mode(true);
@@ -21,6 +28,8 @@ var AdminConfig = function($mdThemingProvider, $stateProvider, $locationProvider
         };
     }]);
 };
+
+module.exports = AdminConfig;
 
 
 

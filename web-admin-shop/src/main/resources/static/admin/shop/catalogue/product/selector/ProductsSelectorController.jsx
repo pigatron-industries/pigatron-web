@@ -39,7 +39,7 @@ class ProductsSelectorController extends ProductsController {
             this.selectorOptions.exclude.push(selection[i].id);
         }
         this.removeExcludedProducts();
-        this.$rootScope.$broadcast(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_ONSELECT, selection);
+        this.$rootScope.$broadcast(constants.events.SHOP_CATALOGUE_PRODUCT_SELECTOR_ONSELECT, selection);
     }
 
 }

@@ -1,5 +1,20 @@
 
-const URL_BASE = angular.element("base").attr("href");
+var AdminConfig = require('./controller/AdminConfig');
+var AdminController = require('./controller/AdminController');
+var MessageController = require('./controller/MessageController');
+var ServiceBundle = require('./abstract/ServiceBundle');
+var HttpInterceptor = require('./controller/HttpInterceptor');
+var StickToTop = require('./components/StickToTop');
+
+module.exports = {
+    AbstractController: require('./abstract/AbstractController'),
+    AbstractFormController: require('./abstract/AbstractFormController'),
+    AbstractRestService: require('./abstract/AbstractRestService'),
+    AbstractServiceBundleConsumer: require('./abstract/AbstractServiceBundleConsumer'),
+    AbstractTableController: require('./abstract/AbstractTableController'),
+    AbstractAsyncValidator: require('./components/AbstractAsyncValidator'),
+    AbstractViewFormatter: require('./components/AbstractViewFormatter')
+};
 
 var submodules = [];
 if($("meta[name='_submodules']").attr("content")) {

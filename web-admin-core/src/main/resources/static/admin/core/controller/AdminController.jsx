@@ -1,16 +1,17 @@
 
-class AdminController {
+var MessageController = require('./MessageController');
+var AbstractServiceBundleConsumer = require('../abstract/AbstractServiceBundleConsumer');
+
+
+class AdminController extends AbstractServiceBundleConsumer {
 
     /*@ngInject*/
-    constructor($scope, $http, hotkeys, $mdToast, $rootScope, $window) {
+    constructor($scope, $services, hotkeys, $mdToast) {
+        super($services);
         this.$scope = $scope;
-        this.$http = $http;
         this.hotkeys = hotkeys;
         this.$mdToast = $mdToast;
-        this.$rootScope = $rootScope;
-        this.$rootScope.urlBase = URL_BASE;
-        this.$window = $window;
-        window.$rootScope = $rootScope;
+        this.$rootScope.urlBase = constants.URL_BASE;
         hotkeys.add({
             combo: ['ctrl+s','command+s'],
             description: 'Save',
@@ -22,23 +23,23 @@ class AdminController {
                     // internet explorer
                     e.returnValue = false;
                 }
-                this.$scope.$broadcast(EVENT_ADMIN_SAVE);
+                this.$scope.$broadcast(constants.events.EVENT_ADMIN_SAVE);
             }
         });
-        $rootScope.notifyError = function(message) {
-            $rootScope.notify(message, 'md-default-theme md-warn md-hue-1 md-fg error-text');
+        this.$rootScope.notifyError = (message) => {
+            this.$rootScope.notify(message, 'md-default-theme md-warn md-hue-1 md-fg error-text');
         };
 
-        $rootScope.notifyInfo = function(message) {
-            $rootScope.notify(message, '');
+        this.$rootScope.notifyInfo = (message) => {
+            this.$rootScope.notify(message, '');
         };
 
-        $rootScope.notifySuccess = function(message) {
-            $rootScope.notify(message, 'success-text');
+        this.$rootScope.notifySuccess = (message) => {
+            this.$rootScope.notify(message, 'success-text');
         };
 
-        $rootScope.notify = function(message, classes) {
-            $mdToast.show({
+        this.$rootScope.notify = (message, classes) => {
+            this.$mdToast.show({
                 parent: angular.element(document.getElementById('content')),
                 controller: MessageController,
                 controllerAs: 'message',
@@ -60,3 +61,5 @@ class AdminController {
         this.$window.open(url);
     }
 }
+
+module.exports = AdminController;

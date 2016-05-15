@@ -1,5 +1,5 @@
 
-class ProductController extends AbstractFormController {
+class ProductController extends webadmincore.AbstractFormController {
 
     /*@ngInject*/
     constructor($scope, $services, $mdSidenav, productService, imageService, categoryService) {
@@ -19,7 +19,7 @@ class ProductController extends AbstractFormController {
         this.optionTypes['SelectProduct'] = {display:'Product Select', template: '/admin/shop/catalogue/product/options/SelectProduct.html'};
 
         this.$scope.$watch('thumbnailImageId', () => { this.onThumbnailChange(); });
-        this.$scope.$on(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, (event, args) => {this.openProductSelector(event, args)});
+        this.$scope.$on(constants.events.SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, (event, args) => {this.openProductSelector(event, args)});
     }
 
     /**

@@ -1,7 +1,7 @@
 
 const API_ADMIN_USER = "api/security/user";
 
-class UserService extends AbstractRestService {
+class UserService extends webadmincore.AbstractRestService {
 
     /*@ngInject*/
     constructor($http) {

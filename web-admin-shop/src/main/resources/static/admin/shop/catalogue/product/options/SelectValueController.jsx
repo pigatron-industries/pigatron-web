@@ -1,5 +1,5 @@
 
-class SelectValueController extends AbstractController {
+class SelectValueController extends webadmincore.AbstractController {
 
     /*@ngInject*/
     constructor($scope, $services) {

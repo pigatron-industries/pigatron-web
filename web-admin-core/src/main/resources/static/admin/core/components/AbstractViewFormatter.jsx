@@ -1,4 +1,6 @@
 
+var AbstractServiceBundleConsumer = require('../abstract/AbstractServiceBundleConsumer');
+
 class AbstractViewFormatter extends AbstractServiceBundleConsumer {
 
     constructor($services) {
@@ -27,3 +29,5 @@ class AbstractViewFormatter extends AbstractServiceBundleConsumer {
     }
 
 }
+
+module.exports = AbstractViewFormatter;

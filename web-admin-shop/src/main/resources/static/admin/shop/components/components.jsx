@@ -1,5 +1,5 @@
 
-class FormatCurrency extends AbstractViewFormatter {
+class FormatCurrency extends webadmincore.AbstractViewFormatter {
 
     /*@ngInject*/
     constructor($services) {

@@ -1,13 +1,15 @@
 
+var AbstractServiceBundleConsumer = require('./AbstractServiceBundleConsumer');
+
 class AbstractController extends AbstractServiceBundleConsumer {
 
     constructor($scope, $services) {
         super($services);
         this.$scope = $scope;
         if(this.$scope.$on) {
-            this.$scope.$on(EVENT_ADMIN_SAVE,    () => {this.save();});
-            this.$scope.$on(EVENT_FORM_PRISTINE, () => {this.setPristine();});
-            this.$scope.$on(EVENT_FORM_DIRTY,    () => {this.setDirty();});
+            this.$scope.$on(constants.events.EVENT_ADMIN_SAVE,    () => {this.save();});
+            this.$scope.$on(constants.events.EVENT_FORM_PRISTINE, () => {this.setPristine();});
+            this.$scope.$on(constants.events.EVENT_FORM_DIRTY,    () => {this.setDirty();});
         }
     }
 
@@ -61,3 +63,5 @@ class AbstractController extends AbstractServiceBundleConsumer {
         return elementPos > scrollTop && elementPos < scrollBottom;
     }
 }
+
+module.exports = AbstractController;

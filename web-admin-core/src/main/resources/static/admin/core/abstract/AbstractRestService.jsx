@@ -3,7 +3,7 @@ class AbstractRestService {
 
     constructor($http, baseUrl) {
         this.$http = $http;
-        this.baseUrl = URL_BASE + baseUrl;
+        this.baseUrl = constants.URL_BASE + baseUrl;
     }
 
     getUrl(id) {
@@ -31,3 +31,5 @@ class AbstractRestService {
     }
 
 }
+
+module.exports = AbstractRestService;

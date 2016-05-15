@@ -1,6 +1,6 @@
 
 
-class UsersController extends AbstractTableController {
+class UsersController extends webadmincore.AbstractTableController {
 
     /*@ngInject*/
     constructor($scope, $services, userService) {

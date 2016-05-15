@@ -42,3 +42,5 @@ class HttpInterceptor {
     }
 
 }
+
+module.exports = HttpInterceptor;

@@ -1,4 +1,6 @@
 
+var AbstractController = require('./AbstractController');
+
 class AbstractTableController extends AbstractController {
 
     constructor($scope, $services, dataService) {
@@ -244,3 +246,5 @@ class AbstractTableController extends AbstractController {
     }
 
 }
+
+module.exports = AbstractTableController;

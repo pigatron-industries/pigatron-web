@@ -45,13 +45,13 @@ class SelectProductController extends ProductsController {
         for(var i=0; i<this.table.data.length; i++) {
             selectorOptions.exclude.push(this.table.data[i].id);
         }
-        this.$scope.$emit(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, selectorOptions);
+        this.$scope.$emit(constants.events.SHOP_CATALOGUE_PRODUCT_SELECTOR_OPEN, selectorOptions);
         this.waitForSelection();
     }
 
     waitForSelection() {
         this.option.waitingSelection = true;
-        this.offProductSelection = this.$scope.$on(EVENT_SHOP_CATALOGUE_PRODUCT_SELECTOR_ONSELECT,
+        this.offProductSelection = this.$scope.$on(constants.events.SHOP_CATALOGUE_PRODUCT_SELECTOR_ONSELECT,
             (event, args) => { this.onProductSelection(event, args); }
         );
         this.unwatchSidebar = this.$scope.$watch(

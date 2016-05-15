@@ -1,4 +1,6 @@
 
+var AbstractController = require('../abstract/AbstractController');
+
 class StickToTop extends AbstractController {
 
     /*@ngInject*/
@@ -26,3 +28,5 @@ class StickToTop extends AbstractController {
     }
 
 }
+
+module.exports = StickToTop;

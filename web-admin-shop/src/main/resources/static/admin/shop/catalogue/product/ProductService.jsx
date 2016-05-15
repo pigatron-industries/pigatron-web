@@ -1,7 +1,7 @@
 
 const API_ADMIN_PRODUCT = "api/catalogue/product";
 
-class ProductService extends AbstractRestService {
+class ProductService extends webadmincore.AbstractRestService {
 
     /*@ngInject*/
     constructor($http) {

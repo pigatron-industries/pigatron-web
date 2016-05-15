@@ -4,7 +4,7 @@ var ROOT_ID = 'root';
 var PLACEHOLDER_ID = 'new';
 var PLACEHOLDER_NAME = "New Category";
 
-class CategoriesController extends AbstractController {
+class CategoriesController extends webadmincore.AbstractController {
 
     /*@ngInject*/
     constructor($scope, $services, categoryService) {
@@ -14,7 +14,7 @@ class CategoriesController extends AbstractController {
         this.treeOptions = {
             dropped: (event) => { this.moveCategory(event); }
         };
-        this.$scope.$on(EVENT_SHOP_CATALOGUE_CATEGORIES_CHANGED, () => {this.load();});
+        this.$scope.$on(constants.events.SHOP_CATALOGUE_CATEGORIES_CHANGED, () => {this.load();});
         this.load();
     }
 
