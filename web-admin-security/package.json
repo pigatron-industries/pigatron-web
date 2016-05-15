@@ -6,6 +6,7 @@
     "gulp-babel": "6.0.0",
     "gulp-ng-annotate": "2.0.0",
     "gulp-concat": "*",
+    "webpack-stream": "3.2.0",
     "protractor": "*"
   }
 }

@@ -9,3 +9,5 @@ var SecurityConfig = function($stateProvider) {
     });
 
 };
+
+module.exports = SecurityConfig;

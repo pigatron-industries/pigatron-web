@@ -10,3 +10,4 @@ class UsersController extends AbstractTableController {
 
 }
 
+module.exports = UsersController;

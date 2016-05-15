@@ -37,3 +37,7 @@ angular.module('admin.shop.components', []);
 register('admin.shop.components')
     .directive("pgFormatCurrency", FormatCurrency)
     .filter("currency", FormatCurrency.formatCurrency);
+
+module.exports = {
+    FormatCurrency: FormatCurrency
+};

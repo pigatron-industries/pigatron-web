@@ -81,3 +81,5 @@ class ProductsController extends AbstractTableController {
 
 
 }
+
+module.exports = ProductsController;

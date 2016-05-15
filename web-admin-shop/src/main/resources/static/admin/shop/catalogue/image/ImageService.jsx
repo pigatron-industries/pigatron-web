@@ -39,3 +39,5 @@ class ImageService extends AbstractRestService {
     }
 
 }
+
+module.exports = ImageService;

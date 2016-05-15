@@ -38,3 +38,8 @@ class UrlUniqueValidator extends AbstractAsyncValidator {
     }
 
 }
+
+module.exports = {
+    SkuUniqueValidator: SkuUniqueValidator,
+    UrlUniqueValidator: UrlUniqueValidator
+};

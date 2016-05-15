@@ -37,3 +37,4 @@ class CategoryController extends AbstractFormController {
 
 }
 
+module.exports = CategoryController;

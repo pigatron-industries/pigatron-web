@@ -19,3 +19,5 @@ class CategoryService extends AbstractRestService {
     }
 
 }
+
+module.exports = CategoryService;

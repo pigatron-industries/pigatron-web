@@ -47,3 +47,5 @@ class CategoriesController extends AbstractController {
         //TODO
     }
 }
+
+module.exports = CategoriesController;

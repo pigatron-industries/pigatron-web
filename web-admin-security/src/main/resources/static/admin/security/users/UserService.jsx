@@ -9,3 +9,5 @@ class UserService extends AbstractRestService {
     }
 
 }
+
+module.exports = UserService;

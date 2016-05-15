@@ -34,3 +34,5 @@ var CatalogueConfig = function($stateProvider) {
     });
 
 };
+
+module.exports = CatalogueConfig;

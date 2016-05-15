@@ -156,3 +156,5 @@ class ProductController extends AbstractFormController {
     }
 
 }
+
+module.exports = ProductController;

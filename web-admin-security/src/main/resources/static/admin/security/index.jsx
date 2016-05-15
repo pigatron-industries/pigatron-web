@@ -1,4 +1,8 @@
 
+var SecurityConfig = require("./SecurityConfig");
+var UsersController = require("./users/UsersController");
+var UserService = require("./users/UserService");
+
 angular.module('admin.security', [
         'admin.components',
         'ngAnimate',

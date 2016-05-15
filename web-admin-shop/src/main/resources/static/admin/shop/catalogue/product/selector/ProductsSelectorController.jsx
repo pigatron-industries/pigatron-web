@@ -1,4 +1,6 @@
 
+var ProductsController = require('../ProductsController');
+
 class ProductsSelectorController extends ProductsController {
 
     /*@ngInject*/
@@ -41,3 +43,6 @@ class ProductsSelectorController extends ProductsController {
     }
 
 }
+
+
+module.exports = ProductsSelectorController;

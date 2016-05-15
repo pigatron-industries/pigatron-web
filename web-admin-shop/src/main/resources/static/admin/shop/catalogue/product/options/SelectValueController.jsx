@@ -19,3 +19,4 @@ class SelectValueController extends AbstractController {
     }
 }
 
+module.exports = SelectValueController;

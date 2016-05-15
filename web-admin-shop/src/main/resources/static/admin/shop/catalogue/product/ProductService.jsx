@@ -17,3 +17,5 @@ class ProductService extends AbstractRestService {
     }
 
 }
+
+module.exports = ProductService;
