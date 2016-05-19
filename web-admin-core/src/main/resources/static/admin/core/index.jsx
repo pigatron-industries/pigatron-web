@@ -1,12 +1,15 @@
 
+var register = require('./lib/register');
 var AdminConfig = require('./controller/AdminConfig');
 var AdminController = require('./controller/AdminController');
 var MessageController = require('./controller/MessageController');
 var ServiceBundle = require('./abstract/ServiceBundle');
 var HttpInterceptor = require('./controller/HttpInterceptor');
 var StickToTop = require('./components/StickToTop');
+require('./lib/md-colours');
 
 module.exports = {
+    adminThemeConfig: require('./controller/AdminThemeConfig'),
     AbstractController: require('./abstract/AbstractController'),
     AbstractFormController: require('./abstract/AbstractFormController'),
     AbstractRestService: require('./abstract/AbstractRestService'),

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head('Setup', 'setup', ${submodules}, ${metadata})"></head>
+<head th:include="admin/fragments/head :: head('Setup', 'setup', ${submodules}, ${metadata})"></head>
 <body ng-app="setup">
 	<div id="page">
 		<header th:replace="fragments/header :: header"></header>
@@ -34,7 +34,7 @@
 		var app = angular.module('setup', ['ngMaterial', 'mdColors']);
 		app.controller('setup', function($scope) {});
 		app.config(function($mdThemingProvider) {
-			configTheme($mdThemingProvider);
+			webadmincore.adminThemeConfig($mdThemingProvider);
 		});
 	</script>
 </body>

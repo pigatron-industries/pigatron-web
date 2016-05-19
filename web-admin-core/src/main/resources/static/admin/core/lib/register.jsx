@@ -146,3 +146,6 @@ function register(appName) {
     }
 
 }
+
+window.register = register;
+module.exports = register;

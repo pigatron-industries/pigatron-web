@@ -37,6 +37,7 @@ allprojects {
 	idea {
 		module {
 			excludeDirs += file('node_modules')
+			excludeDirs += file('bower_components')
 			testSourceDirs += file('src/test/unit')
 			testSourceDirs += file('src/test/integration')
 			testSourceDirs += file('src/test/functional')

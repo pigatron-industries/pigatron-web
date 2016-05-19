@@ -1,18 +1,11 @@
 {
   "publiclib":{
-    "prefix":"/lib/",
+    "prefix":"/admin/",
     "js":[
-      "jquery/dist/jquery.min.js",
-      "angular/angular.js",
-      "angular-messages/angular-messages.js",
-      "angular-ui-router/release/angular-ui-router.min.js",
-      "angular-aria/angular-aria.min.js",
-      "angular-animate/angular-animate.min.js",
-      "angular-material/angular-material.min.js"
+      "web-admin-shop.js"
     ],
     "css":[
-      "angular-material/angular-material.min.css",
-      "font-awesome/css/font-awesome.min.css"
+      "web-admin-shop.css"
     ]
   },
   "public":{

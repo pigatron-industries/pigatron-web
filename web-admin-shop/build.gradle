@@ -6,18 +6,23 @@ plugins {
 dependencies {
     compile project(":web-admin-cms")
 
-    // Web Jars
-    compile('org.webjars.bower:angular-ui-tree:2.15.0')
-    compile('org.webjars.bower:lf-ng-md-file-input:1.4.3')
-    compile('org.webjars.bower:ng-pattern-restrict:0.2.1')
-    compile('org.webjars.bower:ui-grid-draggable-rows:0.2.2')
-
     testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
     testCompile('com.jayway.restassured:rest-assured:2.9.0')
 }
 
 
 // Web resource handling
+
+task bowerInstall(type: NodeTask) {
+    script = file('node_modules/bower/bin/bower')
+    args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
+            "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
+            "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
+            'install']
+    inputs.files file('bower.json')
+    outputs.files file('bower_components')
+    dependsOn npmInstall
+}
 
 node {
     version = '5.9.0'
@@ -31,11 +36,13 @@ gulp {
 }
 
 task webResourceBuild {
-    dependsOn npmInstall, gulp_build
+    dependsOn installGulp, npmInstall, bowerInstall, gulp_build
 }
+
 gulp_build.mustRunAfter installGulp
 gulp_build.mustRunAfter npmInstall
-processResources.dependsOn gulp_build
+gulp_build.mustRunAfter bowerInstall
+processResources.dependsOn gulp_localBuild
 build.dependsOn webResourceBuild
 
 
