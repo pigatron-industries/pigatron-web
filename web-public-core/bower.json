@@ -1,0 +1,11 @@
+{
+  "name": "webResource",
+  "dependencies": {
+    "angular-material": "1.1.0-rc4",
+    "angular-ui-router": "0.2.18",
+    "font-awesome": "4.6.1"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
+  }
+}

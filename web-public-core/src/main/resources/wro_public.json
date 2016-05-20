@@ -1,22 +1,20 @@
 {
   "publiclib":{
-    "prefix":"/admin/",
+    "prefix":"/public/",
     "js":[
-      "web-admin-shop.js"
+      "web-public-core-lib.js"
     ],
     "css":[
-      "web-admin-shop.css"
+      "web-public-core-lib.css"
     ]
   },
   "public":{
     "prefix":"/public/",
-    "jsx":[
-      "PublicConfig",
-      "PublicController",
-      "index"
+    "js":[
+      "web-public-core.js"
     ],
     "css":[
-      "css/core.css"
+      "web-public-core.css"
     ]
   }
 }

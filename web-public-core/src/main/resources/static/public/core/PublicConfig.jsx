@@ -9,6 +9,8 @@ var PublicConfig = function($mdThemingProvider, $stateProvider, $locationProvide
     $urlRouterProvider.otherwise("/");
 };
 
+module.exports = PublicConfig;
+
 
 var configTheme = function ($mdThemingProvider) {
     var arapawa = {
@@ -116,7 +118,7 @@ var configTheme = function ($mdThemingProvider) {
 
     $mdThemingProvider.theme('default')
         .primaryPalette('midnight')
-        .accentPalette('pink')
+        .accentPalette('pink', { 'default': '400'})
         .warnPalette('warn');
     //.backgroundPalette('customBackground')
 };

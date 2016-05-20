@@ -8,8 +8,6 @@ var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var order = require("gulp-order");
 var minify = require('gulp-minify');
-var addsrc = require("gulp-add-src");
-var urlAdjuster = require('gulp-css-url-adjuster');
 
 var module = 'shop';
 var paths = {

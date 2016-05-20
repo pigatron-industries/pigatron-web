@@ -8,23 +8,13 @@
       "/admin/web-admin-core-lib.css"
     ]
   },
-  "common":{
-    "prefix":"/common/",
-    "js":[
-      "md-colours.js"
-    ],
-    "jsx":[
-      "register"
-    ]
-  },
   "admin":{
     "prefix":"/admin/",
     "js":[
       "web-admin-core.js"
     ],
     "css":[
-      "css/admin.css",
-      "css/data-table-icons.css"
+      "web-admin-core.css"
     ]
   }
 }

@@ -7,6 +7,13 @@
 
     <div ng-controller="PublicController as public" ng-cloak="ng-cloak" class="ng-cloak">
 
+        <md-content>
+            <md-tabs class="md-primary md-hue-1" md-stretch-tabs="md-stretch-tabs" md-selected="public.selectedIndex">
+                <md-tab label="tab1"></md-tab>
+                <md-tab label="tab2"></md-tab>
+                <md-tab label="tab3"></md-tab>
+            </md-tabs>
+        </md-content>
         <!--<md-menu-bar th:replace="admin/fragments/menubar :: menubar(${adminMenu})"></md-menu-bar>-->
 
         <!--<md-progress-linear md-mode="indeterminate" class="md-accent" ng-show="loading"></md-progress-linear>-->

@@ -131,6 +131,20 @@ md-menu-divider {
 }
 
 
+/* Top tabs */
+
+md-tabs-canvas, md-pagination-wrapper {
+    height:36px;
+}
+
+.md-tab {
+    padding: 6px 24px;
+}
+
+md-tabs.md-hue-1 md-ink-bar {
+    background-color: #eb3573;
+}
+
 /* Left Sidebar */
 
 h1, h2 {

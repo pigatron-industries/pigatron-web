@@ -13,6 +13,17 @@ dependencies {
 
 // Web resource handling
 
+task bowerInstall(type: NodeTask) {
+    script = file('node_modules/bower/bin/bower')
+    args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
+            "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
+            "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
+            'install']
+    inputs.files file('bower.json')
+    outputs.files file('bower_components')
+    dependsOn npmInstall
+}
+
 node {
     version = '5.9.0'
     download = true
@@ -25,11 +36,13 @@ gulp {
 }
 
 task webResourceBuild {
-    dependsOn npmInstall, gulp_build
+    dependsOn installGulp, npmInstall, bowerInstall, gulp_build
 }
+
 gulp_build.mustRunAfter installGulp
 gulp_build.mustRunAfter npmInstall
-processResources.dependsOn gulp_build
+gulp_build.mustRunAfter bowerInstall
+processResources.dependsOn gulp_localBuild
 build.dependsOn webResourceBuild
 
 

@@ -25,11 +25,12 @@ gulp {
 }
 
 task webResourceBuild {
-    dependsOn npmInstall, gulp_build
+    dependsOn installGulp, npmInstall, gulp_build
 }
+
 gulp_build.mustRunAfter installGulp
 gulp_build.mustRunAfter npmInstall
-processResources.dependsOn gulp_build
+processResources.dependsOn gulp_localBuild
 build.dependsOn webResourceBuild
 
 
