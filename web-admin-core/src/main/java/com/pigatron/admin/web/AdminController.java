@@ -1,6 +1,7 @@
 package com.pigatron.admin.web;
 
-import com.pigatron.admin.config.wro.SubModules;
+import com.pigatron.admin.config.WebResources;
+import com.pigatron.admin.config.SubModules;
 import com.pigatron.admin.menu.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +31,9 @@ public class AdminController {
 	@Autowired
 	private SubModules submodules;
 
+	@Autowired
+	private WebResources webResources;
+
 	@ModelAttribute("adminUrl")
 	public String getAdminUrl() {
 		return adminUrl;
@@ -46,6 +50,11 @@ public class AdminController {
 		s = s.substring(1, s.length()-1);
 		s = s.replaceAll("\\s","");
 		return s;
+	}
+
+	@ModelAttribute("resources")
+	public WebResources getResources() {
+		return webResources;
 	}
 
 	@ModelAttribute("metadata")

@@ -1,4 +1,4 @@
-package com.pigatron.admin.config.wro;
+package com.pigatron.admin.config;
 
 
 import java.util.ArrayList;

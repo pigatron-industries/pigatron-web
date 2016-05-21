@@ -1,5 +1,6 @@
 package com.pigatron.admin.security.web;
 
+import com.pigatron.admin.config.WebResources;
 import com.pigatron.admin.web.CreateUserForm;
 import com.pigatron.admin.security.SecUserDetailsService;
 import com.pigatron.admin.security.repository.UserRepository;
@@ -32,6 +33,9 @@ public class AdminSecurityController {
     private String setupUrl;
 
     @Autowired
+    private WebResources webResources;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -45,6 +49,11 @@ public class AdminSecurityController {
     @ModelAttribute("setupUrl")
     public String getSetupUrl() {
         return setupUrl;
+    }
+
+    @ModelAttribute("resources")
+    public WebResources getResources() {
+        return webResources;
     }
 
     @RequestMapping(value = "/${url.admin}/login", method = RequestMethod.GET)
