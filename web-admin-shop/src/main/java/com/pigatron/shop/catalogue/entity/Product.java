@@ -2,7 +2,7 @@ package com.pigatron.shop.catalogue.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.pigatron.admin.security.entity.View;
+import com.pigatron.admin.api.View;
 import com.pigatron.shop.catalogue.entity.option.ProductOption;
 import com.pigatron.shop.catalogue.entity.option.SelectProduct;
 import org.springframework.data.annotation.Id;

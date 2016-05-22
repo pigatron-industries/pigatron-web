@@ -21,6 +21,7 @@ public class ResourceConfig extends WebMvcConfigurerAdapter {
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		registry.addResourceHandler("/admin/**").addResourceLocations("classpath:/static/admin/");
 		registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/static/fonts/");
+		registry.addResourceHandler("/apidocs/**").addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/2.1.8-M1/");
 	}
 
 	@Bean

@@ -1,6 +1,6 @@
 package com.pigatron.shop.shipping;
 
-import com.pigatron.shop.entity.Order;
+import com.pigatron.shop.order.entity.Order;
 import com.pigatron.shop.shipping.entity.ShippingMethod;
 import com.pigatron.shop.shipping.entity.ShippingOption;
 import com.pigatron.admin.service.AbstractRepositoryService;

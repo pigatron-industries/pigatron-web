@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head(title,submodules,metadata,resources)">
+	<base href="/"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title th:text="${title}"></title>
 	<meta th:each="tag : ${metadata}" th:name="${tag.key}" th:content="${tag.value}" />
 	<meta name="_submodules" th:content="${submodules}"/>
-	<th:block th:each="resource : ${resources.webResources}">
+	<th:block th:each="resource:${resources.webResources}">
 		<script th:if="${resource.type.name()=='JS'}" th:src="@{/public/}+${resource.filename}"></script>
 		<link th:if="${resource.type.name()=='CSS'}" th:href="@{/public/}+${resource.filename}" rel="stylesheet"/>
 	</th:block>

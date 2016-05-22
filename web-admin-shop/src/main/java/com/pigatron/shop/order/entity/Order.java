@@ -1,4 +1,4 @@
-package com.pigatron.shop.entity;
+package com.pigatron.shop.order.entity;
 
 
 import org.springframework.data.annotation.Id;

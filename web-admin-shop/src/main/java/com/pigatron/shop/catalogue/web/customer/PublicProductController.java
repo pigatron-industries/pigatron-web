@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue.web.customer;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.pigatron.admin.security.entity.View;
+import com.pigatron.admin.api.View;
 import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.shop.catalogue.service.ProductService;
 import com.wordnik.swagger.annotations.ApiOperation;

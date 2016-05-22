@@ -2,7 +2,7 @@ package com.pigatron.shop.catalogue.entity.option;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.pigatron.admin.security.entity.View;
+import com.pigatron.admin.api.View;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public abstract class ProductOption {

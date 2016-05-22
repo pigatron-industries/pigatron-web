@@ -1,6 +1,6 @@
 package com.pigatron.shop.shipping.entity.methods;
 
-import com.pigatron.shop.entity.Order;
+import com.pigatron.shop.order.entity.Order;
 import com.pigatron.shop.shipping.entity.ShippingMethod;
 
 import java.util.Optional;

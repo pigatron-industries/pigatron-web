@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue.entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.pigatron.admin.security.entity.View;
+import com.pigatron.admin.api.View;
 
 public class ProductTaxClass {
 

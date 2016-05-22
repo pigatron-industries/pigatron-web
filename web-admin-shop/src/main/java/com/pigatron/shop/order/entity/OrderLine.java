@@ -1,4 +1,4 @@
-package com.pigatron.shop.entity;
+package com.pigatron.shop.order.entity;
 
 import com.pigatron.shop.catalogue.entity.Product;
 import org.springframework.data.mongodb.core.mapping.DBRef;

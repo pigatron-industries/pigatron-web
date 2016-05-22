@@ -132,9 +132,19 @@ md-menu-divider {
 
 
 /* Top tabs */
+md-tabs {
+    background-color: #eeeeee;
+    border-bottom: 1px solid #ccc;
+}
 
 md-tabs-canvas, md-pagination-wrapper {
     height:36px;
+    width:100% !important;
+}
+
+.tabsRight md-pagination-wrapper {
+    left: inherit;
+    right: 0;
 }
 
 .md-tab {
@@ -143,6 +153,10 @@ md-tabs-canvas, md-pagination-wrapper {
 
 md-tabs.md-hue-1 md-ink-bar {
     background-color: #eb3573;
+}
+
+.tabRight {
+    float: right;
 }
 
 /* Left Sidebar */

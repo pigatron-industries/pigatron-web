@@ -1,12 +1,25 @@
 
-const EVENT_ADMIN_SAVE = 'save';
-const EVENT_FORM_DIRTY = 'form.dirty';
-const EVENT_FORM_PRISTINE = 'form.pristine';
-
 var PublicConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider) {
     configTheme($mdThemingProvider);
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
+
+    $stateProvider.state('home', {
+        url: "/",
+        templateUrl: "/public/core/home/home.html"
+    });
+    $stateProvider.state('page', {
+        url: "/page/{urlKey}",
+        templateUrl: "/public/cms/page.html"
+    });
+    $stateProvider.state('category', {
+        url: "/category/{urlKey}",
+        templateUrl: "/public/shop/category.html"
+    });
+    $stateProvider.state('product', {
+        url: "/product/{urlKey}",
+        templateUrl: "/public/shop/product.html"
+    });
 };
 
 module.exports = PublicConfig;

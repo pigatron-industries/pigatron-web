@@ -4,7 +4,7 @@ package com.pigatron.shop.catalogue.entity.option;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.pigatron.admin.security.entity.View;
+import com.pigatron.admin.api.View;
 import com.pigatron.shop.catalogue.entity.Product;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 

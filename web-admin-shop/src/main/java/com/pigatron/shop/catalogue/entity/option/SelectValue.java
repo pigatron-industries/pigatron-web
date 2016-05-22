@@ -2,7 +2,7 @@ package com.pigatron.shop.catalogue.entity.option;
 
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.pigatron.admin.security.entity.View;
+import com.pigatron.admin.api.View;
 
 import java.util.List;
 

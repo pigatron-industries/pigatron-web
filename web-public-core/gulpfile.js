@@ -8,6 +8,7 @@ var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var order = require("gulp-order");
 var minify = require('gulp-minify');
+var addsrc = require("gulp-add-src");
 
 var module = 'core';
 var paths = {
@@ -58,6 +59,7 @@ gulp.task('jsLib', function() {
 
 gulp.task('cssLib', function() {
     return gulp.src(mainBowerFiles())
+        .pipe(addsrc('./bower_components/font-awesome/css/*'))
         .pipe(filter('**/*.css'))
         .pipe(concat(files.cssBundleLibDestFile))
         .pipe(gulp.dest(paths.bundleDestPath));
