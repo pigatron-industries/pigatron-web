@@ -16,6 +16,9 @@ public class Page {
     @JsonView(View.Summary.class)
     private boolean enabled;
 
+    @JsonView(View.Summary.class)
+    private boolean staticPage;
+
     @NotNull
     @Indexed(unique = true)
     @JsonView(View.Summary.class)
@@ -41,6 +44,14 @@ public class Page {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public boolean isStaticPage() {
+        return staticPage;
+    }
+
+    public void setStaticPage(boolean staticPage) {
+        this.staticPage = staticPage;
     }
 
     public String getUrlKey() {

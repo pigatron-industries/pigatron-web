@@ -1,0 +1,30 @@
+<div ng-controller="PagesController as pages" ng-cloak="ng-cloak" class="ng-cloak">
+    <md-content layout="row">
+
+        <div layout="column" class="leftsidebar">
+            <h2>Pages</h2>
+            <div class="toolbar" layout="row" layout-align="end center">
+                <md-button class="md-fab md-mini md-primary" aria-label="Delete Selected Products" ng-disabled="products.gridApi.selection.getSelectedCount()==0" ng-click="products.deleteSelected()">
+                    <md-tooltip md-direction="bottom">Delete</md-tooltip>
+                    <span class="fa fa-lg2 fa-trash"></span>
+                </md-button>
+                <md-button class="md-fab md-mini md-primary" aria-label="New Product" ui-sref="product({id:'new'})">
+                    <md-tooltip md-direction="bottom">New Product</md-tooltip>
+                    <span class="fa fa-lg2 fa-plus"></span>
+                </md-button>
+                <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="Save" ng-click="products.save()">
+                    <md-tooltip md-direction="bottom">Save</md-tooltip>
+                    <span class="fa fa-lg2 fa-save"></span>
+                </md-button>
+            </div>
+        </div>
+
+        <div flex class="tablearea" layout="column">
+            <form flex id="form" name="form" novalidate="true">
+                <div ui-grid="products.table" ng-class="{loading: !products.table.loaded, loaded: products.table.loaded}" class="fullTable"
+                     ui-grid-edit ui-grid-pinning ui-grid-resize-columns ui-grid-selection ui-grid-tree-view></div>
+            </form>
+        </div>
+
+    </md-content>
+</div>

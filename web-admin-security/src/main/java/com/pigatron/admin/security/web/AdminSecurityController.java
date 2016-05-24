@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class AdminSecurityController {
 
-    private static final String VIEW_CONFIGURE = "admin/pages/setup";
-    private static final String VIEW_ADMINLOGIN = "admin/pages/login";
+    private static final String VIEW_CONFIGURE = "admin/content/setup";
+    private static final String VIEW_ADMINLOGIN = "admin/content/login";
 
     @Value("${url.admin}")
     private String adminUrl;
