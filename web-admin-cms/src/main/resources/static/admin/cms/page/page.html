@@ -23,22 +23,24 @@
                 <a id="pageInfo"></a>
                 <h3>Info</h3>
                 <div id="pageInfoSection" class="formsection" layout="column">
-                    <!-- Item column 1 -->
-                    <div class="formcolumn" flex="20" layout="column">
-                        <md-input-container layout="row">
-                            <md-checkbox id="enabled" aria-label="Published" ng-model="page.formData.enabled" class="md-primary">Published</md-checkbox>
-                        </md-input-container>
-                    </div>
-                    <!-- Item column 2 -->
-                    <div class="formcolumn" flex="80" layout="column">
-                        <md-input-container>
-                            <label for="urlKey">URL Key</label>
-                            <input id="urlKey" name="urlKey" ng-model="page.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
-                                   url-unique="{{page.formData.id}}" />
-                            <div ng-messages="form.urlKey.$error">
-                                <div ng-message="urlUnique">There is already a page with this URL Key.</div>
-                            </div>
-                        </md-input-container>
+                    <div layout="row">
+                        <!-- Item column 1 -->
+                        <div class="formcolumn" flex="10" layout="column">
+                            <md-input-container>
+                                <md-checkbox id="enabled" aria-label="Published" ng-model="page.formData.enabled" class="md-primary">Published</md-checkbox>
+                            </md-input-container>
+                        </div>
+                        <!-- Item column 2 -->
+                        <div class="formcolumn" flex="90" layout="column">
+                            <md-input-container>
+                                <label for="urlKey">URL Key</label>
+                                <input id="urlKey" name="urlKey" ng-model="page.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
+                                       page-url-unique="{{page.formData.id}}" />
+                                <div ng-messages="form.urlKey.$error">
+                                    <div ng-message="pageUrlUnique">There is already a page with this URL Key.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
                     </div>
                 </div>
 

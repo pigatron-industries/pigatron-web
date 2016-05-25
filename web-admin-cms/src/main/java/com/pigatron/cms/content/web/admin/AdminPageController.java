@@ -24,6 +24,13 @@ public class AdminPageController extends AbstractWriteRestController<Page> {
         this.pageService = pageService;
     }
 
+    @RequestMapping(value = "", method = RequestMethod.GET, params = {"urlKey"})
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get by URL Key")
+    public Page getByUrlKey(@RequestParam("urlKey") String urlKey) {
+        return pageService.getByUrlKey(urlKey);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get with query")

@@ -4,6 +4,8 @@ var PagesController = require("./page/PagesController");
 var PageController = require("./page/PageController");
 var PageService = require("./page/PageService");
 
+var PageValidators = require("./page/PageValidators");
+
 angular.module('admin.cms', [
         'admin.components',
         'ngAnimate',
@@ -28,4 +30,5 @@ angular.module('admin.cms', [
 register('admin.cms')
     .controller('PagesController', PagesController)
     .controller('PageController', PageController)
-    .service('pageService', PageService);
+    .service('pageService', PageService)
+    .directive('pageUrlUnique', PageValidators.PageUrlUniqueValidator);

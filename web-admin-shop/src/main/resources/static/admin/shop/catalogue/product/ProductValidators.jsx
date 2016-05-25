@@ -19,17 +19,17 @@ class SkuUniqueValidator extends webadmincore.AbstractAsyncValidator {
 
 }
 
-class UrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
+class ProductUrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
 
     /*@ngInject*/
     constructor($services, productService) {
-        super("urlUnique", $services);
+        super("productUrlUnique", $services);
         this.productService = productService;
     }
 
     validate(deferred, value) {
         this.productService.getByUrlKey(value).then((success) => {
-            if(success.data.id == undefined || success.data.id == this.attributes.urlUnique) {
+            if(success.data.id == undefined || success.data.id == this.attributes.productUrlUnique) {
                 deferred.resolve();
             } else {
                 deferred.reject();
@@ -41,5 +41,5 @@ class UrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
 
 module.exports = {
     SkuUniqueValidator: SkuUniqueValidator,
-    UrlUniqueValidator: UrlUniqueValidator
+    ProductUrlUniqueValidator: ProductUrlUniqueValidator
 };

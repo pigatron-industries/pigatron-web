@@ -24,4 +24,7 @@ public class PageService extends AbstractRepositoryService<Page> {
         return pageRepository.find(query);
     }
 
+    public Page getByUrlKey(String urlKey) {
+        return pageRepository.findByUrlKey(urlKey);
+    }
 }

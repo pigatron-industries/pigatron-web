@@ -57,10 +57,10 @@
                         <md-input-container>
                             <label for="urlKey">URL Key</label>
                             <input id="urlKey" name="urlKey" ng-model="product.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
-                                   url-unique="{{product.formData.id}}" />
+                                   product-url-unique="{{product.formData.id}}" />
                             <div ng-messages="form.urlKey.$error">
                                 <!--<div ng-message="required">URL Key is required.</div>-->
-                                <div ng-message="urlUnique">There is already a product with this URL Key.</div>
+                                <div ng-message="productUrlUnique">There is already a product with this URL Key.</div>
                             </div>
                         </md-input-container>
                     </div>

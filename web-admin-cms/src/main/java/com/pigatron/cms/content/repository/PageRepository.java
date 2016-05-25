@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PageRepository extends MongoRepository<Page, String>, PageRepositoryCustom {
+
+    Page findByUrlKey(String urlKey);
+
 }
