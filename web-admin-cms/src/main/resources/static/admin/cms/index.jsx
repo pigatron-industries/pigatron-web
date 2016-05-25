@@ -1,5 +1,8 @@
 
 var CmsConfig = require("./CmsConfig");
+var PagesController = require("./page/PagesController");
+var PageController = require("./page/PageController");
+var PageService = require("./page/PageService");
 
 angular.module('admin.cms', [
         'admin.components',
@@ -22,4 +25,7 @@ angular.module('admin.cms', [
         'ngPatternRestrict'])
     .config(CmsConfig);
 
-
+register('admin.cms')
+    .controller('PagesController', PagesController)
+    .controller('PageController', PageController)
+    .service('pageService', PageService);

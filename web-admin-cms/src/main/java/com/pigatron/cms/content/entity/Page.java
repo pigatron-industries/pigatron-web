@@ -14,12 +14,11 @@ public class Page {
     private String id;
 
     @JsonView(View.Summary.class)
-    private boolean enabled;
-
-    @JsonView(View.Summary.class)
     private boolean staticPage;
 
-    @NotNull
+    @JsonView(View.Summary.class)
+    private boolean enabled;
+
     @Indexed(unique = true)
     @JsonView(View.Summary.class)
     private String urlKey;

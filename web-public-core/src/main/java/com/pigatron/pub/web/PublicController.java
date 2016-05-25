@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PublicController {
 
-    private static final String VIEW_INDEX = "content/index";
+    private static final String VIEW_INDEX = "pages/index";
 
     @Autowired
     private SettingsService settingsService;
