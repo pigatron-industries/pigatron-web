@@ -1,6 +1,8 @@
 include 'web-admin-core'
 include 'web-admin-security'
-include 'web-admin-shop'
 include 'web-admin-cms'
+include 'web-admin-shop'
 include 'web-public-core'
+include 'web-public-cms'
+include 'web-public-shop'
 

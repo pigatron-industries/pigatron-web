@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    compile project(":web-admin-core")
+    compile project(":web-public-core")
 
     testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
 }

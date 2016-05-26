@@ -55,7 +55,7 @@ targetCompatibility = 1.8
 
 dependencies {
 	compile project(":web-admin-shop")
-	compile project(":web-public-core")
+	compile project(":web-public-cms")
 }
 
 
