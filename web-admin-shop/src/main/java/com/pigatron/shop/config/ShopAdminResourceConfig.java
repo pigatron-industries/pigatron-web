@@ -10,8 +10,8 @@ import org.springframework.context.annotation.PropertySource;
 public class ShopAdminResourceConfig {
 
     @Autowired
-    public void addSubmodule(SubModules submodules) {
-        submodules.addSubmodule("admin.shop.catalogue");
+    public void addSubmodule(SubModules adminSubmodules) {
+        adminSubmodules.addSubmodule("admin.shop.catalogue");
     }
 
 }

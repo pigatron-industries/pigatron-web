@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Configuration
 @PropertySource("classpath:/admin.properties")
-public class ResourceConfig extends WebMvcConfigurerAdapter {
+public class AdminResourceConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -49,7 +49,7 @@ public class ResourceConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public SubModules submodules() {
+	public SubModules adminSubmodules() {
 		return new SubModules();
 	}
 

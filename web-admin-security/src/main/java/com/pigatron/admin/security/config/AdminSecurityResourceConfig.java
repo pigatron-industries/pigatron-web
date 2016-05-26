@@ -10,8 +10,8 @@ import org.springframework.context.annotation.PropertySource;
 public class AdminSecurityResourceConfig {
 
     @Autowired
-    public void addSubmodule(SubModules submodules) {
-        submodules.addSubmodule("admin.security");
+    public void addSubmodule(SubModules adminSubmodules) {
+        adminSubmodules.addSubmodule("admin.security");
     }
 
 }

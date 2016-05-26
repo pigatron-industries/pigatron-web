@@ -1,7 +1,8 @@
 package com.pigatron.pub.config;
 
 
-import com.pigatron.admin.config.ResourceConfig;
+import com.pigatron.admin.config.AdminResourceConfig;
+import com.pigatron.admin.config.SubModules;
 import com.pigatron.admin.config.WebResources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,7 @@ import java.io.IOException;
 public class PublicResourceConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
-    private ResourceConfig resourceConfig;
+    private AdminResourceConfig resourceConfig;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -28,6 +29,11 @@ public class PublicResourceConfig extends WebMvcConfigurerAdapter {
     @Bean
     public WebResources publicWebResources() throws IOException {
         return resourceConfig.findWebResources("public");
+    }
+
+    @Bean
+    public SubModules publicSubmodules() {
+        return new SubModules();
     }
 
 }

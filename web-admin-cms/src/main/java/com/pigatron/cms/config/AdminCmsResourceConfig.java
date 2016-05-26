@@ -12,8 +12,8 @@ import org.springframework.context.annotation.PropertySource;
 public class AdminCmsResourceConfig {
 
     @Autowired
-    public void addSubmodule(SubModules submodules) {
-        submodules.addSubmodule("admin.cms");
+    public void addSubmodule(SubModules adminSubmodules) {
+        adminSubmodules.addSubmodule("admin.cms");
     }
 
     @Autowired

@@ -29,7 +29,7 @@ public class AdminController {
 	private MenuItem adminMenu;
 
 	@Autowired
-	private SubModules submodules;
+	private SubModules adminSubmodules;
 
 	@Autowired
 	private WebResources webResources;
@@ -46,7 +46,8 @@ public class AdminController {
 
 	@ModelAttribute("submodules")
 	public String getSubmodules() {
-		String s = submodules.getSubmodules().toString();
+		//TODO pass back list and create js array in template
+		String s = adminSubmodules.getSubmodules().toString();
 		s = s.substring(1, s.length()-1);
 		s = s.replaceAll("\\s","");
 		return s;

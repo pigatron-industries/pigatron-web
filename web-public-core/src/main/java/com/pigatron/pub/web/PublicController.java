@@ -1,5 +1,6 @@
 package com.pigatron.pub.web;
 
+import com.pigatron.admin.config.SubModules;
 import com.pigatron.admin.config.WebResources;
 import com.pigatron.admin.settings.SettingsService;
 import com.pigatron.admin.settings.website.WebSiteSettings;
@@ -19,9 +20,21 @@ public class PublicController {
     @Autowired
     private WebResources publicWebResources;
 
+    @Autowired
+    private SubModules publicSubmodules;
+
     @ModelAttribute("resources")
     public WebResources getResources() {
         return publicWebResources;
+    }
+
+    @ModelAttribute("submodules")
+    public String getSubmodules() {
+        //TODO pass back list and create js array in template
+        String s = publicSubmodules.getSubmodules().toString();
+        s = s.substring(1, s.length()-1);
+        s = s.replaceAll("\\s","");
+        return s;
     }
 
     @ModelAttribute("settings")
