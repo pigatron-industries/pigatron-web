@@ -1,0 +1,9 @@
+
+#title {
+    font-size: 1.4em;
+}
+
+/* Maximise and source toolbars on right */
+#cke_19, #cke_42 {
+    float: right;
+}

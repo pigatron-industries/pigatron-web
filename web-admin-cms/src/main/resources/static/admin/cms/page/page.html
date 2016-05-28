@@ -14,49 +14,38 @@
                         <span class="fa fa-lg2 fa-save"></span>
                     </md-button>
                 </div>
-                <a scroll-to="pageInfo" class="selectable-item" ng-class="{selected:page.isScrolledVisible('pageInfo')}">Info</a>
-                <a scroll-to="contentPos" class="selectable-item" ng-class="{selected:page.isScrolledVisible('contentPos')}">Content</a>
+                <md-switch ng-model="page.formData.published" aria-label="Published">Published</md-switch>
+
             </div>
 
             <div flex class="formarea" layout="column">
 
-                <a id="pageInfo"></a>
-                <h3>Info</h3>
-                <div id="pageInfoSection" class="formsection" layout="column">
-                    <div layout="row">
-                        <!-- Item column 1 -->
-                        <div class="formcolumn" flex="10" layout="column">
-                            <md-input-container>
-                                <md-checkbox id="enabled" aria-label="Published" ng-model="page.formData.enabled" class="md-primary">Published</md-checkbox>
-                            </md-input-container>
-                        </div>
-                        <!-- Item column 2 -->
-                        <div class="formcolumn" flex="90" layout="column">
-                            <md-input-container>
-                                <label for="urlKey">URL Key</label>
-                                <input id="urlKey" name="urlKey" ng-model="page.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
-                                       page-url-unique="{{page.formData.id}}" />
-                                <div ng-messages="form.urlKey.$error">
-                                    <div ng-message="pageUrlUnique">There is already a page with this URL Key.</div>
-                                </div>
-                            </md-input-container>
-                        </div>
+                <div class="formsection" layout="row">
+                    <div class="formcolumn" flex="60" layout="row">
+                        <md-input-container flex="100">
+                            <label for="title">Title</label>
+                            <input id="title" name="title" ng-model="page.formData.title" type="text" required />
+                            <div ng-messages="form.title.$error">
+                                <div ng-message="required">Title is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="formcolumn" flex="40" layout="row">
+                        <md-input-container flex="100">
+                            <label for="urlKey">URL Key</label>
+                            <input id="urlKey" name="urlKey" ng-model="page.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
+                                   page-url-unique="{{page.formData.id}}" />
+                            <div ng-messages="form.urlKey.$error">
+                                <div ng-message="pageUrlUnique">There is already a page with this URL Key.</div>
+                            </div>
+                        </md-input-container>
                     </div>
                 </div>
 
-                <a id="contentPos"></a>
-                <h3>Content</h3>
+
                 <div id="contentSection" class="formsection" layout="column">
                     <md-input-container>
-                        <label for="title">Title</label>
-                        <input id="title" name="title" ng-model="page.formData.title" type="text" required />
-                        <div ng-messages="form.title.$error">
-                            <div ng-message="required">Title is required.</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container>
-                        <label for="content">Content</label>
-                        <textarea id="content" name="content" ng-model="page.formData.content" rows="50"></textarea>
+                        <textarea ckeditor="page.editorOptions" id="content" name="content" ng-model="page.formData.content"></textarea>
                     </md-input-container>
                 </div>
 

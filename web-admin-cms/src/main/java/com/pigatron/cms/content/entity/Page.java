@@ -5,7 +5,7 @@ import com.pigatron.admin.api.View;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
-import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 public class Page {
 
@@ -17,7 +17,10 @@ public class Page {
     private boolean staticPage;
 
     @JsonView(View.Summary.class)
-    private boolean enabled;
+    private boolean published;
+
+    @JsonView(View.Summary.class)
+    private LocalDateTime publishedDateTime;
 
     @Indexed(unique = true)
     @JsonView(View.Summary.class)
@@ -37,12 +40,20 @@ public class Page {
         this.id = id;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public boolean isPublished() {
+        return published;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setPublished(boolean published) {
+        this.published = published;
+    }
+
+    public LocalDateTime getPublishedDateTime() {
+        return publishedDateTime;
+    }
+
+    public void setPublishedDateTime(LocalDateTime publishedDateTime) {
+        this.publishedDateTime = publishedDateTime;
     }
 
     public boolean isStaticPage() {

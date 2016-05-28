@@ -1,4 +1,6 @@
 
+require("./ckeditor/ng-ckeditor");
+
 var CmsConfig = require("./CmsConfig");
 var PagesController = require("./page/PagesController");
 var PageController = require("./page/PageController");
@@ -21,10 +23,9 @@ angular.module('admin.cms', [
         'ui.grid.selection',
         'ui.grid.draggable-rows',
         'ui.grid.treeView',
-        'as.sortable',
-        'lfNgMdFileInput',
         'smoothScroll',
-        'ngPatternRestrict'])
+        'ngPatternRestrict',
+        'ngCkeditor'])
     .config(CmsConfig);
 
 register('admin.cms')

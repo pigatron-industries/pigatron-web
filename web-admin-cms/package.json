@@ -13,6 +13,7 @@
     "gulp-minify":"*",
     "gulp-add-src":"*",
     "gulp-css-url-adjuster":"*",
+    "gulp-inject-string":"*",
     "webpack": "*",
     "webpack-stream": "*",
     "protractor": "*"

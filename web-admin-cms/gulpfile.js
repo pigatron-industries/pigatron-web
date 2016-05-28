@@ -4,9 +4,12 @@ var babel = require("gulp-babel");
 var ngAnnotate = require("gulp-ng-annotate");
 var webpackStream = require('webpack-stream');
 var webpack = require('webpack');
+var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var order = require("gulp-order");
 var minify = require('gulp-minify');
+var addsrc = require("gulp-add-src");
+var inject = require('gulp-inject-string');
 
 var module = 'cms';
 var paths = {
@@ -46,6 +49,42 @@ gulp.task('jsWebpack', ['jsBabel'], function() {
         .pipe(gulp.dest(paths.bundleDestPath));
 });
 
+gulp.task('jsLib', function() {
+    return gulp.src(mainBowerFiles())
+        .pipe(filter('**/*.js'))
+        .pipe(order(["**/*.js"]))
+        .pipe(concat(files.jsBundleLibDestFile))
+        //.pipe(minify())
+        .pipe(inject.prepend("window.CKEDITOR_BASEPATH = '/admin/ckeditor/';\n"))
+        .pipe(gulp.dest(paths.bundleDestPath));
+});
+
+gulp.task('cssLib', function() {
+    return gulp.src(mainBowerFiles())
+        .pipe(filter('**/*.css'))
+        .pipe(concat(files.cssBundleLibDestFile))
+        .pipe(gulp.dest(paths.bundleDestPath));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src(mainBowerFiles())
+        .pipe(filter(['**/*.woff2','**/*.woff','**/*.ttf']))
+        .pipe(gulp.dest(paths.fontDestPath));
+});
+
+gulp.task('ckeditor', function() {
+    return gulp.src(['./bower_components/ckeditor/ckeditor.js',
+                     './bower_components/ckeditor/styles.js',
+                     './bower_components/ckeditor/contents.css',
+                     './bower_components/ckeditor/lang/*',
+                     './bower_components/ckeditor/skins/**/*',
+                     './bower_components/ckeditor/plugins/**/*',
+                     './bower_components/ckeditor/samples/**/*'],
+                    {base:"./bower_components/"})
+        .pipe(gulp.dest(paths.bundleDestPath));
+});
+
 gulp.task('localBuild', ['jsBabel', 'jsWebpack']);
-gulp.task('build', ['localBuild']);
+gulp.task('libBuild', ['jsLib', 'cssLib', 'fonts', 'ckeditor']);
+gulp.task('build', ['localBuild', 'libBuild']);
 
