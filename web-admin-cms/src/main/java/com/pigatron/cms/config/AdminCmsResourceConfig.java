@@ -24,7 +24,7 @@ public class AdminCmsResourceConfig {
 
     private MenuItem contentMenu() {
         MenuItem contentMenu = new MenuItem("content", "Content");
-        contentMenu.addSubmenu(new MenuItem("pages", "Pages", new MenuAction(MenuAction.TYPE_ROUTE, "pages")));
+        contentMenu.addSubmenu(new MenuItem("contents", "Content", new MenuAction(MenuAction.TYPE_ROUTE, "contents")));
         return contentMenu;
     }
 

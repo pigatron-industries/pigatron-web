@@ -2,13 +2,17 @@
 class PageUrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
 
     /*@ngInject*/
-    constructor($services, pageService) {
+    constructor($services, contentService) {
         super("pageUrlUnique", $services);
-        this.productService = pageService;
+        this.contentService = contentService;
     }
 
     validate(deferred, value) {
-        this.productService.getByUrlKey(value).then((success) => {
+        if(value == "") {
+            deferred.resolve();
+            return;
+        }
+        this.contentService.getByUrlKey(value).then((success) => {
             if(success.data.id == undefined || success.data.id == this.attributes.pageUrlUnique) {
                 deferred.resolve();
             } else {

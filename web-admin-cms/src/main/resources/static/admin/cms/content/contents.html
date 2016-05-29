@@ -1,18 +1,21 @@
-<div ng-controller="PagesController as pages" ng-cloak="ng-cloak" class="ng-cloak">
+<div ng-controller="ContentsController as contents" ng-cloak="ng-cloak" class="ng-cloak">
     <md-content layout="row">
 
         <div layout="column" class="leftsidebar">
-            <h2>Pages</h2>
+            <h2>Content</h2>
             <div class="toolbar" layout="row" layout-align="end center">
-                <md-button class="md-fab md-mini md-primary" aria-label="Delete Selected Pages" ng-disabled="pages.gridApi.selection.getSelectedCount()==0" ng-click="pages.deleteSelected()">
+                <md-button class="md-fab md-mini md-primary" aria-label="Delete Selected Pages" ng-disabled="contents.gridApi.selection.getSelectedCount()==0" ng-click="contents.deleteSelected()">
                     <md-tooltip md-direction="bottom">Delete</md-tooltip>
                     <span class="fa fa-lg2 fa-trash"></span>
                 </md-button>
-                <md-button class="md-fab md-mini md-primary" aria-label="New Page" ui-sref="page({id:'new'})">
-                    <md-tooltip md-direction="bottom">New Product</md-tooltip>
+
+
+                <md-button class="md-fab md-mini md-primary" aria-label="New Page" ui-sref="content({id:'new', type:'Page'})">
+                    <md-tooltip md-direction="bottom">New Page</md-tooltip>
                     <span class="fa fa-lg2 fa-plus"></span>
                 </md-button>
-                <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="Save" ng-click="pages.save()">
+
+                <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="Save" ng-click="contents.save()">
                     <md-tooltip md-direction="bottom">Save</md-tooltip>
                     <span class="fa fa-lg2 fa-save"></span>
                 </md-button>
@@ -21,7 +24,7 @@
 
         <div flex class="tablearea" layout="column">
             <form flex id="form" name="form" novalidate="true">
-                <div ui-grid="pages.table" ng-class="{loading: !pages.table.loaded, loaded: pages.table.loaded}" class="fullTable"
+                <div ui-grid="contents.table" ng-class="{loading: !contents.table.loaded, loaded: contents.table.loaded}" class="fullTable"
                      ui-grid-edit ui-grid-pinning ui-grid-resize-columns ui-grid-selection ui-grid-tree-view></div>
             </form>
         </div>

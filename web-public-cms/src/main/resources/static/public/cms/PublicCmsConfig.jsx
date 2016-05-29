@@ -2,8 +2,8 @@
 var PublicCmsConfig = function($mdThemingProvider, $stateProvider) {
 
     $stateProvider.state('page', {
-        url: "/page/{urlKey}",
-        templateUrl: "/public/cms/page.html"
+        url: "/content/{urlKey}",
+        templateUrl: "/public/cms/content.html"
     });
 
 };

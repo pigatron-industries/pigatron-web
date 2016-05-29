@@ -67,7 +67,7 @@ public class ShopRepositorySetupService {
                     .withTopLink(aLink()
                             .withLinkType(LinkType.ROUTE)
                             .withTitle("About")
-                            .withLocation("page({urlKey:'about'})")
+                            .withLocation("content({urlKey:'about'})")
                             .build())
                     .withTopLink(aLink()
                             .withLinkType(LinkType.ROUTE)

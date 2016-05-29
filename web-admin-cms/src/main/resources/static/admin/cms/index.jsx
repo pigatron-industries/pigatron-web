@@ -2,11 +2,11 @@
 require("./ckeditor/ng-ckeditor");
 
 var CmsConfig = require("./CmsConfig");
-var PagesController = require("./page/PagesController");
-var PageController = require("./page/PageController");
-var PageService = require("./page/PageService");
+var ContentsController = require("./content/ContentsController");
+var ContentController = require("./content/ContentController");
+var ContentService = require("./content/ContentService");
 
-var PageValidators = require("./page/PageValidators");
+var ContentValidators = require("./content/ContentValidators");
 
 angular.module('admin.cms', [
         'admin.components',
@@ -29,7 +29,7 @@ angular.module('admin.cms', [
     .config(CmsConfig);
 
 register('admin.cms')
-    .controller('PagesController', PagesController)
-    .controller('PageController', PageController)
-    .service('pageService', PageService)
-    .directive('pageUrlUnique', PageValidators.PageUrlUniqueValidator);
+    .controller('ContentsController', ContentsController)
+    .controller('ContentController', ContentController)
+    .service('contentService', ContentService)
+    .directive('pageUrlUnique', ContentValidators.PageUrlUniqueValidator);

@@ -1,7 +1,7 @@
 
-const API_ADMIN_PAGE = "api/cms/page";
+const API_ADMIN_PAGE = "api/cms/content";
 
-class PageService extends webadmincore.AbstractRestService {
+class ContentService extends webadmincore.AbstractRestService {
 
     /*@ngInject*/
     constructor($http) {
@@ -14,4 +14,4 @@ class PageService extends webadmincore.AbstractRestService {
 
 }
 
-module.exports = PageService;
+module.exports = ContentService;
