@@ -9,11 +9,23 @@
                     <span class="fa fa-lg2 fa-trash"></span>
                 </md-button>
 
-
-                <md-button class="md-fab md-mini md-primary" aria-label="New Page" ui-sref="content({id:'new', type:'Page'})">
-                    <md-tooltip md-direction="bottom">New Page</md-tooltip>
-                    <span class="fa fa-lg2 fa-plus"></span>
-                </md-button>
+                <md-menu>
+                    <md-button class="md-fab md-mini md-primary" aria-label="New" ng-click="$mdOpenMenu(ev)">
+                        <md-tooltip md-direction="bottom">New</md-tooltip>
+                        <span class="fa fa-lg2 fa-plus"></span>
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ui-sref="content({id:'new', type:'Post'})">New Post</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="content({id:'new', type:'Page'})">New Page</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="content({id:'new', type:'Block'})">New Block</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
 
                 <md-button ng-class="{'md-accent':form.$dirty}" ng-disabled="form.$invalid" class="md-fab md-mini md-primary" aria-label="Save" ng-click="contents.save()">
                     <md-tooltip md-direction="bottom">Save</md-tooltip>
