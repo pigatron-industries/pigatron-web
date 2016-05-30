@@ -1,8 +1,8 @@
-package com.pigatron.cms.image.web.customer;
+package com.pigatron.cms.image.web.pub;
 
 import com.pigatron.admin.exception.ResourceNotFoundException;
-import com.pigatron.cms.image.service.ImageService;
 import com.pigatron.cms.image.entity.Image;
+import com.pigatron.cms.image.service.ImageService;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping(value = "${url.shop}/api/catalogue/image")
+@RequestMapping(value = "${url.public}/api/catalogue/image")
 public class PublicImageController {
 
     protected ImageService imageService;

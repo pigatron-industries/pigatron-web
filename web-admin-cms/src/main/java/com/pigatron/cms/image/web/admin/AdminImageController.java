@@ -1,8 +1,8 @@
 package com.pigatron.cms.image.web.admin;
 
-import com.pigatron.cms.image.service.ImageService;
-import com.pigatron.cms.image.web.customer.PublicImageController;
 import com.pigatron.cms.image.entity.Image;
+import com.pigatron.cms.image.service.ImageService;
+import com.pigatron.cms.image.web.pub.PublicImageController;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;

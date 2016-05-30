@@ -8,12 +8,18 @@ class PageUrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
     }
 
     validate(deferred, value) {
-        if(value == "") {
+        if(!value || value == "") {
             deferred.resolve();
             return;
         }
-        this.contentService.getByUrlKey(value).then((success) => {
+        this.contentService.getPageByUrlKey(value).then((success) => {
             if(success.data.id == undefined || success.data.id == this.attributes.pageUrlUnique) {
+                deferred.resolve();
+            } else {
+                deferred.reject();
+            }
+        }, (error) => {
+            if(error.status == 404) {
                 deferred.resolve();
             } else {
                 deferred.reject();

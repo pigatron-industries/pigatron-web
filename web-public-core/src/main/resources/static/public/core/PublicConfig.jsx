@@ -1,4 +1,10 @@
 
+window.constants = {
+    URL_BASE: $("base").attr("href"),
+    routes: {},
+    events: {}
+};
+
 var PublicConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider) {
     configTheme($mdThemingProvider);
     $locationProvider.html5Mode(true);

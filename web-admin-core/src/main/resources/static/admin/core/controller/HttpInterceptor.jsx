@@ -29,12 +29,11 @@ class HttpInterceptor {
             if (rejection.status == 401) {
                 this.$rootScope.notifyError("Logging In...");
                 location.reload();
-            }
-            else {
+            } else if (rejection.status > 404) {
                 let errorMessage = rejection.status + " " + rejection.statusText;
-                if(rejection.status == -1) {
-                    errorMessage = "Connection Lost";
-                }
+                this.$rootScope.notifyError(errorMessage);
+            } else if(rejection.status == -1) {
+                let errorMessage = "Connection Lost";
                 this.$rootScope.notifyError(errorMessage);
             }
             return this.$q.reject(rejection);

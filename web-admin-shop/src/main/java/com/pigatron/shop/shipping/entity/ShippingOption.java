@@ -1,7 +1,7 @@
 package com.pigatron.shop.shipping.entity;
 
 /**
- * Represents a calculated shipping price option that can be selected by the customer.
+ * Represents a calculated shipping price option that can be selected by the pub.
  */
 public class ShippingOption {
 

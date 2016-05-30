@@ -4,10 +4,11 @@ import com.pigatron.cms.content.entity.Content;
 import com.pigatron.cms.content.entity.ContentQuery;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ContentRepositoryCustom {
 
     List<Content> find(ContentQuery query);
 
-    Content findByUrlKey(String urlKey);
+    Optional<Content> findPageByUrlKey(String urlKey);
 }

@@ -34,6 +34,12 @@ class ProductUrlUniqueValidator extends webadmincore.AbstractAsyncValidator {
             } else {
                 deferred.reject();
             }
+        }, (error) => {
+            if(error.status == 404) {
+                deferred.resolve();
+            } else {
+                deferred.reject();
+            }
         });
     }
 

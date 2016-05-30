@@ -13,8 +13,8 @@ public abstract class AbstractIntegrationTest {
     @Value("${url.admin}")
     private String adminUrl;
 
-    @Value("${url.shop}")
-    private String shopUrl;
+    @Value("${url.public}")
+    private String publicUrl;
 
     @Value("${local.server.port}")
     private String serverPort;
@@ -40,7 +40,7 @@ public abstract class AbstractIntegrationTest {
     }
 
     private String getPublicApiUrl() {
-        return "http://localhost:" + serverPort + "/" + shopUrl + "/api";
+        return "http://localhost:" + serverPort + "/" + publicUrl + "/api";
     }
 
     private void setApiUrl(String apiUrl) {

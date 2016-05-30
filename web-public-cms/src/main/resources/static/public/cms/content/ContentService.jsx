@@ -1,11 +1,11 @@
 
-const API_ADMIN_PAGE = "api/cms/content";
+const API_CONTENT = "api/cms/content";
 
-class ContentService extends webadmincore.AbstractRestService {
+class ContentService extends webpubliccore.AbstractRestService {
 
     /*@ngInject*/
     constructor($http) {
-        super($http, API_ADMIN_PAGE);
+        super($http, API_CONTENT);
     }
 
     getPageByUrlKey(urlKey) {

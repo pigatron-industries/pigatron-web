@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContentService extends AbstractRepositoryService<Content> {
@@ -24,7 +25,7 @@ public class ContentService extends AbstractRepositoryService<Content> {
         return contentRepository.find(query);
     }
 
-    public Content getByUrlKey(String urlKey) {
-        return contentRepository.findByUrlKey(urlKey);
+    public Optional<Content> getPageByUrlKey(String urlKey) {
+        return contentRepository.findPageByUrlKey(urlKey);
     }
 }

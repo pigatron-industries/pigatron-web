@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "${url.shop}/api/catalogue/product", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "${url.public}/api/catalogue/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PublicProductController {
 
     private ProductService productService;
@@ -35,6 +35,7 @@ public class PublicProductController {
     @ApiOperation(value = "Get by SKU")
     @JsonView(View.Public.class)
     public Product getBySku(@RequestParam("sku") String sku) {
+        //TODO throw resource not found if not found
         return productService.getBySku(sku);
     }
 
@@ -43,6 +44,7 @@ public class PublicProductController {
     @ApiOperation(value = "Get by URL Key")
     @JsonView(View.Public.class)
     public Product getByUrlKey(@RequestParam("urlKey") String urlKey) {
+        //TODO throw resource not found if not found
         return productService.getByUrlKey(urlKey);
     }
 

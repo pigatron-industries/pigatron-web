@@ -2,12 +2,14 @@ package com.pigatron.cms.content.repository;
 
 import com.pigatron.cms.content.entity.Content;
 import com.pigatron.cms.content.entity.ContentQuery;
+import com.pigatron.cms.content.entity.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ContentRepositoryImpl implements ContentRepositoryCustom {
 
@@ -21,11 +23,11 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
     }
 
     @Override
-    public Content findByUrlKey(String urlKey) {
+    public Optional<Content> findPageByUrlKey(String urlKey) {
         Query query = new Query();
+        query.restrict(Page.class);
         query.addCriteria(Criteria.where("urlKey").is(urlKey));
-        List<Content> contents = mongoOperations.find(query, Content.class);
-        return contents.size() > 0 ? contents.get(0) : null;
+        return mongoOperations.find(query, Content.class).stream().findFirst();
     }
 
 }

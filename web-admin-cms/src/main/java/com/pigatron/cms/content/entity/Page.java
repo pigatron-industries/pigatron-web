@@ -2,22 +2,15 @@ package com.pigatron.cms.content.entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.pigatron.admin.api.View;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Page extends Content {
 
     @Indexed(unique = true)
-    @JsonView(View.Summary.class)
+    @JsonView({View.Summary.class, View.Public.class})
     private String urlKey;
 
-    @JsonView(View.Summary.class)
-    private Date publishedDate;
-
-    @JsonView(View.Summary.class)
+    @JsonView({View.Summary.class, View.Public.class})
     private String title;
 
 

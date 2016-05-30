@@ -12,11 +12,13 @@ public class Content {
     @JsonView(View.Summary.class)
     private String id;
 
+    @JsonView(View.Summary.class)
     private String type;
 
     @JsonView(View.Summary.class)
     private boolean enabled;
 
+    @JsonView(View.Public.class)
     private String content;
 
 

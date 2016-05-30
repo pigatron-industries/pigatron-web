@@ -1,9 +1,9 @@
 package com.pigatron.shop.catalogue.web.admin;
 
+import com.pigatron.admin.api.AbstractWriteRestController;
 import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.shop.catalogue.entity.query.ProductQuery;
 import com.pigatron.shop.catalogue.service.ProductService;
-import com.pigatron.admin.api.AbstractWriteRestController;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +29,7 @@ public class AdminProductController extends AbstractWriteRestController<Product>
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get by SKU")
     public Product getBySku(@RequestParam("sku") String sku) {
+        //TODO throw resource not found if not found
         return productService.getBySku(sku);
     }
 
@@ -36,6 +37,7 @@ public class AdminProductController extends AbstractWriteRestController<Product>
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get by URL Key")
     public Product getByUrlKey(@RequestParam("urlKey") String urlKey) {
+        //TODO throw resource not found if not found
         return productService.getByUrlKey(urlKey);
     }
 
