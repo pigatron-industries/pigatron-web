@@ -1,5 +1,5 @@
 {
-  "name": "webResource",
+  "name": "web-resource",
   "dependencies": {
     "angular-ui-tree": "2.15.0",
     "lf-ng-md-file-input": "1.4.6",

@@ -11,6 +11,8 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath('com.github.ben-manes:gradle-versions-plugin:0.12.0')
+		classpath("com.moowork.gradle:gradle-node-plugin:0.12")
+		classpath("com.moowork.gradle:gradle-gulp-plugin:0.12")
 	}
 }
 
@@ -44,6 +46,49 @@ allprojects {
 		}
 	}
 }
+
+
+subprojects {
+	// Web Resource Handling
+	apply plugin: "com.moowork.node"
+	apply plugin: "com.moowork.gulp"
+	node {
+		version = '5.9.0'
+		download = true
+	}
+	gulp {
+		workDir = file("${project.projectDir}")
+		colors = true
+		bufferOutput = false
+	}
+	task bowerInstall(type: NodeTask) {
+		script = file('node_modules/bower/bin/bower')
+		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
+				"--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
+				"--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
+				'install']
+		inputs.files file('bower.json')
+		outputs.dir file('bower_components')
+		dependsOn npmInstall
+	}
+
+	task webResourceBuildLocal {
+		dependsOn gulp_localBuild
+	}
+	gulp_localBuild.outputs.dir file("$buildDir/resources/main/static")
+	gulp_localBuild.inputs.dir file("src/main/resources/static")
+
+	task webResourceBuildFull {
+		dependsOn installGulp, npmInstall, gulp_build
+	}
+	gulp_build.mustRunAfter installGulp
+	gulp_build.mustRunAfter npmInstall
+
+	processResources.dependsOn webResourceBuildLocal  //run for bootRun
+	build.dependsOn webResourceBuildFull              //run for full build
+}
+
+
 
 jar {
 	baseName = 'pigatron-web'

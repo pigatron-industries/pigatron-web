@@ -1,5 +1,5 @@
 {
-  "name": "webResource",
+  "name": "web-resource",
   "dependencies": {
     "jquery": "3.0.0-beta1",
     "angular-material": "1.1.0-rc4",

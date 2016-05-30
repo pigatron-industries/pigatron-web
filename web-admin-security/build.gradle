@@ -1,7 +1,3 @@
-plugins {
-    id "com.moowork.node" version "0.12"
-    id "com.moowork.gulp" version "0.12"
-}
 
 dependencies {
     compile project(":web-admin-core")
@@ -11,27 +7,6 @@ dependencies {
 }
 
 
-// Web resource handling
-
-node {
-    version = '5.9.0'
-    download = true
-}
-
-gulp {
-    workDir = file("${project.projectDir}")
-    colors = true
-    bufferOutput = false
-}
-
-task webResourceBuild {
-    dependsOn installGulp, npmInstall, gulp_build
-}
-
-gulp_build.mustRunAfter installGulp
-gulp_build.mustRunAfter npmInstall
-processResources.dependsOn gulp_localBuild
-build.dependsOn webResourceBuild
 
 
 // Functional test running

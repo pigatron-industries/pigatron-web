@@ -1,5 +1,5 @@
 {
-  "name": "webResource",
+  "name": "web-resource",
   "dependencies": {
     "ckeditor": "#standard/4.5.x"
   }

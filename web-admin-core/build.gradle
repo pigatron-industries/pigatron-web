@@ -1,7 +1,3 @@
-plugins {
-    id "com.moowork.node" version "0.12"
-    id "com.moowork.gulp" version "0.12"
-}
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
@@ -14,36 +10,3 @@ dependencies {
     compile('org.webjars:swagger-ui:2.1.8-M1')
 }
 
-// Web resource handling
-
-task bowerInstall(type: NodeTask) {
-    script = file('node_modules/bower/bin/bower')
-    args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
-            "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
-            "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
-            'install']
-    inputs.files file('bower.json')
-    outputs.files file('bower_components')
-    dependsOn npmInstall
-}
-
-node {
-    version = '5.9.0'
-    download = true
-}
-
-gulp {
-    workDir = file("${project.projectDir}")
-    colors = true
-    bufferOutput = false
-}
-
-task webResourceBuild {
-    dependsOn installGulp, npmInstall, bowerInstall, gulp_build
-}
-
-gulp_build.mustRunAfter installGulp
-gulp_build.mustRunAfter npmInstall
-gulp_build.mustRunAfter bowerInstall
-processResources.dependsOn gulp_localBuild
-build.dependsOn webResourceBuild
