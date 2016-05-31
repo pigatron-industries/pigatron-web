@@ -47,5 +47,6 @@ gulp.task('jsWebpack', ['jsBabel'], function() {
 });
 
 gulp.task('localBuild', ['jsBabel', 'jsWebpack']);
+gulp.task('libBuild', []);
 gulp.task('build', ['localBuild']);
 

@@ -78,14 +78,16 @@ subprojects {
 	gulp_localBuild.outputs.dir file("$buildDir/resources/main/static")
 	gulp_localBuild.inputs.dir file("src/main/resources/static")
 
-	task webResourceBuildFull {
-		dependsOn installGulp, npmInstall, gulp_build
+	task webResourceBuildLib {
+		dependsOn gulp_libBuild
 	}
-	gulp_build.mustRunAfter installGulp
-	gulp_build.mustRunAfter npmInstall
+	gulp_libBuild.outputs.dir file("$buildDir/resources/main/static")
+	gulp_libBuild.inputs.dir file("bower_components")
+	gulp_libBuild.dependsOn bowerInstall
 
-	processResources.dependsOn webResourceBuildLocal  //run for bootRun
-	build.dependsOn webResourceBuildFull              //run for full build
+	processResources.dependsOn webResourceBuildLocal
+	build.dependsOn webResourceBuildLib
+	webResourceBuildLocal.mustRunAfter webResourceBuildLib
 }
 
 
