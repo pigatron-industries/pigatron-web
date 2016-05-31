@@ -1,11 +1,11 @@
 
-/* Extra colours */
-md-toast .success-text {
-    color: greenyellow;
-}
+/* Typography */
 
-md-toast .error-text {
-    font-weight: bold;
+h1 {
+    color: rgb(44, 62, 80);
+    font-weight: 500;
+    font-size: 1.8em;
+    border-bottom: 1px solid #cccccc;
 }
 
 /* Page */
@@ -157,22 +157,6 @@ md-tabs.md-hue-1 md-ink-bar {
 
 .tabRight {
     float: right;
-}
-
-/* Left Sidebar */
-
-h1, h2 {
-    text-align: right;
-    padding-right: 10px;
-    padding-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.leftsidebar {
-    margin-top: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
 }
 
 
@@ -380,53 +364,6 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
 }
 
 
-/* File uploads */
-
-.lf-ng-md-file-input {
-    border: 2px dashed #DDD;
-    border-radius: 7px;
-}
-
-.lf-ng-md-file-input-x {
-    display: none;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag {
-    border: none;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container {
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-    padding: 5px;
-    margin-bottom: 0;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container {
-    height: 40px;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-container {
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text {
-    font-size: 1.8em;
-}
-
-.shadow-box {
-    background-color: white;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    margin: 8px;
-    display: table;
-    border: 1px solid #ddd;
-    border-radius: 0;
-    padding: 6px;
-}
-
 /* Image previews */
 .image-preview-frame {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
@@ -491,54 +428,3 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     opacity: 0;
 }
 
-
-/******************** ui-grid-draggable-row ********************/
-
-.ui-grid-draggable-row-target {
-    opacity: 0.5 !important;
-}
-.ui-grid-draggable-row {
-    height: 30px;
-}
-.ui-grid-draggable-row-over {
-    position: relative;
-}
-.ui-grid-draggable-row-over:before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    border-bottom: 1px dotted #AAA;
-}
-.ui-grid-draggable-row-over--above:before {
-    top: 0;
-}
-.ui-grid-draggable-row-over--below:before {
-    bottom: 0;
-}
-
-
-/*[ng-include].ng-enter, [ng-include].ng-leave {*/
-    /*position: absolute;*/
-    /*transition:all 0.2s ease-in-out;*/
-    /*left: 0;*/
-    /*right: 0;*/
-/*}*/
-
-/*[ng-include].ng-enter {*/
-    /*transition-delay: 0.1s;*/
-    /*opacity: 0;*/
-/*}*/
-
-/*[ng-include].ng-enter-active {*/
-    /*opacity: 1;*/
-/*}*/
-
-/*[ng-include].ng-leave {*/
-    /*opacity: 1;*/
-/*}*/
-
-/*[ng-include].ng-leave-active {*/
-    /*opacity: 0;*/
-/*}*/

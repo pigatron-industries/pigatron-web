@@ -8,8 +8,16 @@
     <div ng-controller="PublicController as public" ng-cloak="ng-cloak" class="ng-cloak">
         <md-content>
             <div th:replace="fragments/tabs :: tabs(${settings.topLinks})"></div>
-            <div id="content">
-                <div ui-view=""></div>
+            <div layout="row">
+                <div id="leftSidebar" flex="20">
+                    <div ui-view="leftSidebar"></div>
+                </div>
+                <div id="content" flex="60">
+                    <div ui-view="content"></div>
+                </div>
+                <div id="rightSidebar" flex="20">
+                    <div ui-view="rightSidebar"></div>
+                </div>
             </div>
         </md-content>
     </div>
