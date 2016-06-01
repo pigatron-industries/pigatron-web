@@ -3,16 +3,18 @@
   "version": "0.0.1",
   "devDependencies": {
     "bower": "1.7.9",
+    "gulp": "3.9.1",
     "babel-preset-es2015": "*",
+    "main-bower-files": "*",
     "gulp-babel": "6.0.0",
     "gulp-ng-annotate": "2.0.0",
     "gulp-concat": "*",
-    "main-bower-files": "*",
     "gulp-filter": "*",
     "gulp-order":"*",
     "gulp-minify":"*",
+    "gulp-if":"*",
     "gulp-css-url-adjuster":"*",
-    "webpack": "*",
+    "gulp-inject-string":"*",
     "webpack-stream": "*",
     "protractor": "*"
   }

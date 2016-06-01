@@ -48,21 +48,23 @@ allprojects {
 }
 
 
+apply plugin: "com.moowork.node"
+node {
+	version = '5.9.0'
+	download = true
+}
+
 subprojects {
 	// Web Resource Handling
 	apply plugin: "com.moowork.node"
-	apply plugin: "com.moowork.gulp"
-	node {
-		version = '5.9.0'
-		download = true
-	}
-	gulp {
-		workDir = file("${project.projectDir}")
-		colors = true
-		bufferOutput = false
-	}
+//	apply plugin: "com.moowork.gulp"
+//	gulp {
+//		workDir = file("${project.projectDir}")
+//		colors = true
+//		bufferOutput = false
+//	}
 	task bowerInstall(type: NodeTask) {
-		script = file('node_modules/bower/bin/bower')
+		script = file('../node_modules/bower/bin/bower')
 		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
 				"--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
 				"--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
@@ -72,27 +74,28 @@ subprojects {
 		dependsOn npmInstall
 	}
 
-	task webResourceBuildLocal {
-		dependsOn gulp_localBuild
+	task webResourceBuildLocal(type: NodeTask) {
+		script = file('../node_modules/gulp/bin/gulp.js')
+		args = ['localBuild']
+		inputs.dir file("src/main/resources/static")
+		outputs.dir file("$buildDir/resources/main/static")
 	}
-	gulp_localBuild.outputs.dir file("$buildDir/resources/main/static")
-	gulp_localBuild.inputs.dir file("src/main/resources/static")
 
-	task webResourceBuildLib {
-		dependsOn gulp_libBuild
+	task webResourceBuildLib(type: NodeTask) {
+		script = file('../node_modules/gulp/bin/gulp.js')
+		args = ['libBuild']
+		inputs.file file("gulpfile.js")
+		inputs.dir file("bower_components")
+		outputs.dir file("$buildDir/resources/main/static")
+		dependsOn bowerInstall
 	}
-	gulp_libBuild.outputs.dir file("$buildDir/resources/main/static")
-	gulp_libBuild.inputs.dir file("bower_components")
-	gulp_libBuild.inputs.file file("gulpfile.js")
-	gulp_libBuild.dependsOn bowerInstall
-	gulp_libBuild.dependsOn installGulp
 
-	processResources.dependsOn webResourceBuildLocal
+	//processResources.dependsOn webResourceBuildLocal
 	build.dependsOn webResourceBuildLib
 	webResourceBuildLocal.mustRunAfter webResourceBuildLib
 
 	task cleanWebResources(type: Delete) {
-		delete 'bower_components', 'node_modules'
+		delete 'bower_components'
 	}
 	clean.dependsOn cleanWebResources
 }

@@ -8,7 +8,6 @@ var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var order = require("gulp-order");
 var minify = require('gulp-minify');
-var addsrc = require("gulp-add-src");
 var inject = require('gulp-inject-string');
 
 var module = 'cms';
