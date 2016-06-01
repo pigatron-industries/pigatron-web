@@ -50,7 +50,7 @@ allprojects {
 
 apply plugin: "com.moowork.node"
 node {
-	version = '5.9.0'
+	version = '6.2.0'
 	download = true
 }
 
@@ -84,7 +84,7 @@ subprojects {
 		dependsOn bowerInstall
 	}
 
-	//processResources.dependsOn webResourceBuildLocal
+	processResources.dependsOn webResourceBuildLocal
 	build.dependsOn webResourceBuildLib
 	webResourceBuildLocal.mustRunAfter webResourceBuildLib
 
