@@ -90,6 +90,11 @@ subprojects {
 	processResources.dependsOn webResourceBuildLocal
 	build.dependsOn webResourceBuildLib
 	webResourceBuildLocal.mustRunAfter webResourceBuildLib
+
+	task cleanWebResources(type: Delete) {
+		delete 'bower_components', 'node_modules'
+	}
+	clean.dependsOn cleanWebResources
 }
 
 
