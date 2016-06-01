@@ -131,7 +131,7 @@ task buildInfo {
 	ext.revision = proc.text.trim()
 	def props = new Properties()
 	props.setProperty("pigatron.revision", ext.revision);
-	def propFile = new File("application.properties");
+	def propFile = new File("./src/main/resources/application.properties");
 	propFile.createNewFile();
 	props.store(propFile.newWriter(), null);
 }
