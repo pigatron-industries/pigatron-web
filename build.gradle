@@ -57,12 +57,6 @@ node {
 subprojects {
 	// Web Resource Handling
 	apply plugin: "com.moowork.node"
-//	apply plugin: "com.moowork.gulp"
-//	gulp {
-//		workDir = file("${project.projectDir}")
-//		colors = true
-//		bufferOutput = false
-//	}
 	task bowerInstall(type: NodeTask) {
 		script = file('../node_modules/bower/bin/bower')
 		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
@@ -71,7 +65,7 @@ subprojects {
 				'install']
 		inputs.files file('bower.json')
 		outputs.dir file('bower_components')
-		dependsOn npmInstall
+		dependsOn ':npmInstall'
 	}
 
 	task webResourceBuildLocal(type: NodeTask) {
