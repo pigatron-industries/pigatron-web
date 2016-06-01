@@ -83,6 +83,7 @@ subprojects {
 	}
 	gulp_libBuild.outputs.dir file("$buildDir/resources/main/static")
 	gulp_libBuild.inputs.dir file("bower_components")
+	gulp_libBuild.inputs.file file("gulpfile.js")
 	gulp_libBuild.dependsOn bowerInstall
 	gulp_libBuild.dependsOn installGulp
 

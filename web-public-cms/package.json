@@ -11,9 +11,7 @@
     "gulp-filter": "*",
     "gulp-order":"*",
     "gulp-minify":"*",
-    "gulp-add-src":"*",
     "gulp-css-url-adjuster":"*",
-    "webpack": "*",
     "webpack-stream": "*",
     "protractor": "*"
   }

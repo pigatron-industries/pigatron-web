@@ -3,12 +3,11 @@ var concat = require("gulp-concat");
 var babel = require("gulp-babel");
 var ngAnnotate = require("gulp-ng-annotate");
 var webpackStream = require('webpack-stream');
-var webpack = require('webpack');
 var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var order = require("gulp-order");
 var minify = require('gulp-minify');
-var addsrc = require("gulp-add-src");
+var gulpif = require("gulp-if");
 var urlAdjuster = require('gulp-css-url-adjuster');
 
 var module = 'core';
@@ -59,18 +58,17 @@ gulp.task('jsLib', function() {
 });
 
 gulp.task('cssLib', function() {
-    return gulp.src(mainBowerFiles())
+
+    return gulp.src(mainBowerFiles().concat(['./bower_components/font-awesome/css/*']))
         .pipe(filter('**/*.css'))
-        .pipe(urlAdjuster({prepend: '../fonts/'}))
-        .pipe(addsrc('./bower_components/font-awesome/css/*'))
+        .pipe(gulpif(/ui-grid.css/, urlAdjuster({prepend: '../fonts/'})))
         .pipe(filter('**/*.css'))
         .pipe(concat(files.cssBundleLibDestFile))
         .pipe(gulp.dest(paths.bundleDestPath));
 });
 
 gulp.task('fonts', function() {
-    return gulp.src(mainBowerFiles())
-        .pipe(addsrc('./bower_components/font-awesome/fonts/*'))
+    return gulp.src(mainBowerFiles().concat(['./bower_components/font-awesome/fonts/*']))
         .pipe(filter(['**/*.woff2','**/*.woff','**/*.ttf']))
         .pipe(gulp.dest(paths.fontDestPath));
 });

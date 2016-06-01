@@ -4,16 +4,15 @@
   "devDependencies": {
     "bower": "1.7.9",
     "babel-preset-es2015": "*",
+    "main-bower-files": "*",
     "gulp-babel": "6.0.0",
     "gulp-ng-annotate": "2.0.0",
     "gulp-concat": "*",
-    "main-bower-files": "*",
     "gulp-filter": "*",
     "gulp-order":"*",
     "gulp-minify":"*",
-    "gulp-add-src":"*",
+    "gulp-if":"*",
     "gulp-css-url-adjuster":"*",
-    "webpack": "*",
     "webpack-stream": "*",
     "protractor": "*"
   }
