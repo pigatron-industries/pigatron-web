@@ -1,10 +1,10 @@
 package com.pigatron.admin.security.web;
 
 import com.pigatron.admin.config.WebResources;
-import com.pigatron.admin.web.CreateUserForm;
+import com.pigatron.admin.exception.ResourceNotFoundException;
 import com.pigatron.admin.security.SecUserDetailsService;
 import com.pigatron.admin.security.repository.UserRepository;
-import com.pigatron.admin.exception.ResourceNotFoundException;
+import com.pigatron.admin.web.CreateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class AdminSecurityController {
 
-    private static final String VIEW_CONFIGURE = "admin/content/setup";
-    private static final String VIEW_ADMINLOGIN = "admin/content/login";
+    private static final String VIEW_CONFIGURE = "admin/pages/setup";
+    private static final String VIEW_ADMINLOGIN = "admin/pages/login";
 
     @Value("${url.admin}")
     private String adminUrl;

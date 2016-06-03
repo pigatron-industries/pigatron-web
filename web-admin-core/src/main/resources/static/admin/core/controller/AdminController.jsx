@@ -6,11 +6,12 @@ var AbstractServiceBundleConsumer = require('../abstract/AbstractServiceBundleCo
 class AdminController extends AbstractServiceBundleConsumer {
 
     /*@ngInject*/
-    constructor($scope, $services, hotkeys, $mdToast) {
+    constructor($scope, $services, $http, hotkeys, $mdToast) {
         super($services);
         this.$scope = $scope;
         this.hotkeys = hotkeys;
         this.$mdToast = $mdToast;
+        this.$http = $http;
         this.$rootScope.urlBase = constants.URL_BASE;
         hotkeys.add({
             combo: ['ctrl+s','command+s'],
