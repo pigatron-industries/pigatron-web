@@ -3,7 +3,7 @@
 <head th:include="admin/fragments/head :: head('Admin Login', ${adminUrl}, ${submodules}, ${metadata}, ${resources})"></head>
 <body ng-app="login">
 	<div id="page">
-		<header th:replace="fragments/header :: header"></header>
+		<header th:replace="admin/fragments/header :: header"></header>
 
 		<div id="content" style="max-width:500px;" ng-controller="login" ng-cloak="ng-cloak" class="ng-cloak center">
 			<form th:action="@{/}+${adminUrl}+@{/login}" method="post" name="loginForm" novalidate="true">
@@ -38,7 +38,7 @@
 			</form>
 		</div>
 
-		<footer th:replace="fragments/footer :: footer('')"></footer>
+		<footer th:replace="admin/fragments/footer :: footer('')"></footer>
 	</div>
 
 	<!-- Controllers -->

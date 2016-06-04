@@ -3,7 +3,7 @@
 <head th:include="admin/fragments/head :: head('Setup', 'setup', ${submodules}, ${metadata}, ${resources})"></head>
 <body ng-app="setup">
 	<div id="page">
-		<header th:replace="fragments/header :: header"></header>
+		<header th:replace="admin/fragments/header :: header"></header>
 
 		<div id="content" class="center" style="max-width:500px;" ng-controller="setup">
 			<form th:action="@{/}+${setupUrl}" th:object="${configureForm}" method="post">
@@ -26,7 +26,7 @@
 			</form>
 		</div>
 
-		<footer th:replace="fragments/footer :: footer('')"></footer>
+		<footer th:replace="admin/fragments/footer :: footer('')"></footer>
 	</div>
 
 	<!-- Controllers -->

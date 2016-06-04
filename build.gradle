@@ -59,14 +59,30 @@ allprojects {
 			}
 			resources.srcDir file('src/test/resources')
 		}
+		functionalTest {
+			java {
+				compileClasspath += main.output + test.output
+				runtimeClasspath += main.output + test.output
+				srcDirs = ["src/test/functional"]
+			}
+			resources.srcDir file('src/test/resources')
+		}
 	}
 	configurations {
 		integrationTestCompile.extendsFrom testCompile
 		integrationTestRuntime.extendsFrom testRuntime
+		functionalTestCompile.extendsFrom testCompile
+		functionalTestRuntime.extendsFrom testRuntime
 	}
 	task integrationTest(type: Test) {
 		testClassesDir = sourceSets.integrationTest.output.classesDir
 		classpath = sourceSets.integrationTest.runtimeClasspath
+		outputs.upToDateWhen { false }
+	}
+	task functionalTest(type: Test) {
+		testClassesDir = sourceSets.functionalTest.output.classesDir
+		classpath = sourceSets.functionalTest.runtimeClasspath
+		outputs.upToDateWhen { false }
 	}
 }
 
