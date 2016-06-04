@@ -17,6 +17,11 @@ buildscript {
 }
 
 apply plugin: 'com.github.ben-manes.versions'
+apply plugin: "com.moowork.node"
+node {
+	version = '6.2.0'
+	download = true
+}
 
 allprojects {
 	apply plugin: 'java'
@@ -87,10 +92,9 @@ allprojects {
 }
 
 
-apply plugin: "com.moowork.node"
-node {
-	version = '6.2.0'
-	download = true
+task updateWebDriver(type: NodeTask) {
+	script = file('node_modules/protractor/bin/webdriver-manager')
+	args = ['update', '--standalone']
 }
 
 subprojects {
@@ -131,6 +135,17 @@ subprojects {
 		delete 'bower_components'
 	}
 	clean.dependsOn cleanWebResources
+
+	task protractorTests(type: NodeTask) {
+		doFirst {
+			if (!file('src/test/resources/protractor.conf.js').exists()) {
+				throw new StopExecutionException()
+			}
+		}
+		script = file('../node_modules/protractor/bin/protractor')
+		args = ['src/test/resources/protractor.conf.js']
+		dependsOn ':updateWebDriver'
+	}
 }
 
 

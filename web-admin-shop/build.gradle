@@ -6,15 +6,3 @@ dependencies {
     testCompile('com.jayway.restassured:rest-assured:2.9.0')
 }
 
-
-
-// Functional test running
-task updateWebDriver(type: NodeTask) {
-    script = file('../node_modules/protractor/bin/webdriver-manager')
-    args = ['update', '--standalone']
-}
-task protractorTests(type: NodeTask) {
-    script = file('../node_modules/protractor/bin/protractor')
-    args = ['src/test/resources/protractor.conf.js']
-    dependsOn updateWebDriver
-}

@@ -5,16 +5,3 @@ dependencies {
     testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
 }
 
-
-
-
-// Functional test running
-task updateWebDriver(type: NodeTask) {
-    script = file('../node_modules/protractor/bin/webdriver-manager')
-    args = ['update', '--standalone']
-}
-task protractorTests(type: NodeTask) {
-    script = file('../node_modules/protractor/bin/protractor')
-    args = ['src/test/resources/protractor.conf.js']
-    dependsOn updateWebDriver
-}
