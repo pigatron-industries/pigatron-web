@@ -45,6 +45,13 @@ allprojects {
 			testSourceDirs += file('src/test/functional')
 		}
 	}
+	sourceSets {
+		test {
+			java {
+				srcDirs = ["src/test/java", "src/test/unit"]
+			}
+		}
+	}
 }
 
 
