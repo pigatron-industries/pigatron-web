@@ -51,6 +51,22 @@ allprojects {
 				srcDirs = ["src/test/java", "src/test/unit"]
 			}
 		}
+		integrationTest {
+			java {
+				compileClasspath += main.output + test.output
+				runtimeClasspath += main.output + test.output
+				srcDirs = ["src/test/integration"]
+			}
+			resources.srcDir file('src/test/resources')
+		}
+	}
+	configurations {
+		integrationTestCompile.extendsFrom testCompile
+		integrationTestRuntime.extendsFrom testRuntime
+	}
+	task integrationTest(type: Test) {
+		testClassesDir = sourceSets.integrationTest.output.classesDir
+		classpath = sourceSets.integrationTest.runtimeClasspath
 	}
 }
 

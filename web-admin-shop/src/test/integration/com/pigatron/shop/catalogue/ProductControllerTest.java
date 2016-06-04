@@ -13,7 +13,6 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.when;
 import static com.pigatron.shop.catalogue.entity.Product.ProductBuilder.aProduct;
 import static com.pigatron.shop.catalogue.entity.option.SelectProduct.SelectProductBuilder.aSelectProduct;
 import static org.hamcrest.Matchers.equalTo;
@@ -35,44 +34,55 @@ public class ProductControllerTest extends AbstractIntegrationTest {
     }
 
     @Test
-    public void testGetIsOptionFalse() {
+    public void testAdminGetIsOptionFalse() {
         createProductWithOption();
-        when()
-            .get(publicApiUrl + "?isOption=false")
+        given()
+                .auth().basic("admin", "password")
+        .when()
+                .get(adminApiUrl + "?isOption=false")
         .then()
-            .body("", hasSize(1))
-            .body("[0].name", equalTo("Main Product"));
+                .log().all()
+                .body("", hasSize(1))
+                .body("[0].name", equalTo("Main Product"));
     }
 
     @Test
-    public void testGetIsOptionTrue() {
+    public void testAdminGetIsOptionTrue() {
         createProductWithOption();
-        when()
-            .get(publicApiUrl + "?isOption=true")
+        given()
+                .auth().basic("admin", "password")
+        .when()
+                .get(adminApiUrl + "?isOption=true")
         .then()
-            .body("", hasSize(1))
-            .body("[0].name", equalTo("Option Product"));
+                .log().all()
+                .body("", hasSize(1))
+                .body("[0].name", equalTo("Option Product"));
     }
 
     @Test
-    public void testGetHasOptionsFalse() {
+    public void testAdminGetHasOptionsFalse() {
         createProductWithOption();
-        when()
-            .get(publicApiUrl + "?hasOptions=false")
+        given()
+                .auth().basic("admin", "password")
+        .when()
+                .get(adminApiUrl + "?hasOptions=false")
         .then()
-            .body("", hasSize(1))
-            .body("[0].name", equalTo("Option Product"));
+                .log().all()
+                .body("", hasSize(1))
+                .body("[0].name", equalTo("Option Product"));
     }
 
     @Test
-    public void testGetHasOptionsTrue() {
+    public void testAdminGetHasOptionsTrue() {
         createProductWithOption();
-        when()
-            .get(publicApiUrl + "?hasOptions=true")
+        given()
+                .auth().basic("admin", "password")
+        .when()
+                .get(adminApiUrl + "?hasOptions=true")
         .then()
-            .log().all()
-            .body("", hasSize(1))
-            .body("[0].name", equalTo("Main Product"));
+                .log().all()
+                .body("", hasSize(1))
+                .body("[0].name", equalTo("Main Product"));
     }
 
 

@@ -40,7 +40,7 @@ public abstract class AbstractIntegrationTest {
     }
 
     private String getPublicApiUrl() {
-        return "http://localhost:" + serverPort + "/" + publicUrl + "/api";
+        return "http://localhost:" + serverPort + (publicUrl.isEmpty()?"":"/") + publicUrl + "/api";
     }
 
     private void setApiUrl(String apiUrl) {
