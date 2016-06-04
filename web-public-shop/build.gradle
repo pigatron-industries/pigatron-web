@@ -9,12 +9,12 @@ dependencies {
 
 
 // Functional test running
-
 task updateWebDriver(type: NodeTask) {
-    script = file('node_modules/protractor/bin/webdriver-manager')
+    script = file('../node_modules/protractor/bin/webdriver-manager')
     args = ['update', '--standalone']
 }
 task protractorTests(type: NodeTask) {
-    script = file('node_modules/protractor/bin/protractor')
+    script = file('../node_modules/protractor/bin/protractor')
     args = ['src/test/resources/protractor.conf.js']
+    dependsOn updateWebDriver
 }
