@@ -61,8 +61,8 @@ allprojects {
 		}
 		functionalTest {
 			java {
-				compileClasspath += main.output + test.output
-				runtimeClasspath += main.output + test.output
+				compileClasspath += main.output + test.output + integrationTest.output
+				runtimeClasspath += main.output + test.output + integrationTest.output
 				srcDirs = ["src/test/functional"]
 			}
 			resources.srcDir file('src/test/resources')
@@ -71,8 +71,8 @@ allprojects {
 	configurations {
 		integrationTestCompile.extendsFrom testCompile
 		integrationTestRuntime.extendsFrom testRuntime
-		functionalTestCompile.extendsFrom testCompile
-		functionalTestRuntime.extendsFrom testRuntime
+		functionalTestCompile.extendsFrom integrationTestCompile
+		functionalTestRuntime.extendsFrom integrationTestRuntime
 	}
 	task integrationTest(type: Test) {
 		testClassesDir = sourceSets.integrationTest.output.classesDir
