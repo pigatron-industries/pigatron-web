@@ -17,11 +17,6 @@ buildscript {
 }
 
 apply plugin: 'com.github.ben-manes.versions'
-apply plugin: "com.moowork.node"
-node {
-	version = '6.2.0'
-	download = true
-}
 
 allprojects {
 	apply plugin: 'java'
@@ -29,6 +24,7 @@ allprojects {
 	apply plugin: 'idea'
 	apply plugin: 'spring-boot'
 	apply plugin: 'maven'
+	apply plugin: "com.moowork.node"
 	group = 'com.pigatron.web'
 	version = '0.0.1-SNAPSHOT'
 	repositories {
@@ -49,6 +45,10 @@ allprojects {
 			testSourceDirs += file('src/test/integration')
 			testSourceDirs += file('src/test/functional')
 		}
+	}
+	node {
+		version = '6.2.0'
+		download = true
 	}
 	sourceSets {
 		test {
