@@ -34,7 +34,7 @@
                         <md-input-container flex="100">
                             <label for="urlKey">URL Key</label>
                             <input id="urlKey" name="urlKey" ng-model="content.formData.urlKey" ng-model-options="{ debounce: 250 }" type="text"
-                                   page-url-unique="{{page.formData.id}}" />
+                                   page-url-unique="{{content.formData.id}}" />
                             <div ng-messages="form.urlKey.$error">
                                 <div ng-message="pageUrlUnique">There is already a page with this URL Key.</div>
                             </div>
