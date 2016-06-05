@@ -31,7 +31,7 @@ public class PublicContentController  {
         if(urlKey == null) {
             throw new InvalidParameterException("urlKey cannot be null");
         }
-        return contentService.getPageByUrlKey(urlKey).orElseThrow(ResourceNotFoundException::new);
+        return contentService.getPublishedPageByUrlKey(urlKey).orElseThrow(ResourceNotFoundException::new);
     }
 
 }

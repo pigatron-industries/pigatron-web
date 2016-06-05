@@ -11,4 +11,6 @@ public interface ContentRepositoryCustom {
     List<Content> find(ContentQuery query);
 
     Optional<Content> findPageByUrlKey(String urlKey);
+
+    Optional<Content> findPublishedPageByUrlKey(String urlKey);
 }

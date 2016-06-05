@@ -28,4 +28,8 @@ public class ContentService extends AbstractRepositoryService<Content> {
     public Optional<Content> getPageByUrlKey(String urlKey) {
         return contentRepository.findPageByUrlKey(urlKey);
     }
+
+    public Optional<Content> getPublishedPageByUrlKey(String urlKey) {
+        return contentRepository.findPublishedPageByUrlKey(urlKey);
+    }
 }

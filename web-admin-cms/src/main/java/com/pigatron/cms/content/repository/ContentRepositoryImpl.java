@@ -30,4 +30,12 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
         return mongoOperations.find(query, Content.class).stream().findFirst();
     }
 
+    @Override
+    public Optional<Content> findPublishedPageByUrlKey(String urlKey) {
+        Query query = new Query();
+        query.restrict(Page.class);
+        query.addCriteria(Criteria.where("urlKey").is(urlKey));
+        query.addCriteria(Criteria.where("enabled").is(true));
+        return mongoOperations.find(query, Content.class).stream().findFirst();
+    }
 }
