@@ -1,6 +1,7 @@
 
 const ROUTE_SECURITY_USERS = 'users';
 
+/*@ngInject*/
 var SecurityConfig = function($stateProvider) {
 
     $stateProvider.state(ROUTE_SECURITY_USERS, {

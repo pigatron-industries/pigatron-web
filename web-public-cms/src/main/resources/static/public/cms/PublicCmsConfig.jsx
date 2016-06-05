@@ -1,4 +1,5 @@
 
+/*@ngInject*/
 var PublicCmsConfig = function($mdThemingProvider, $stateProvider) {
 
     $stateProvider.state('page', {

@@ -1,4 +1,5 @@
 
+/*@ngInject*/
 var CatalogueConfig = function($stateProvider) {
 
     constants.routes.SHOP_CATALOGUE_CATEGORIES = 'categories';

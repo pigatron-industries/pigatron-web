@@ -11,11 +11,12 @@ window.constants = {
     }
 };
 
+/*@ngInject*/
 var AdminConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, hotkeysProvider,
-         $httpProvider, $provide) {
+         $httpProvider, $provide, $compileProvider) {
 
     adminThemeConfig($mdThemingProvider);
-
+    $compileProvider.debugInfoEnabled(false);
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 

@@ -1,4 +1,5 @@
 
+/*@ngInject*/
 var PublicShopConfig = function($mdThemingProvider, $stateProvider) {
 
     $stateProvider.state('category', {

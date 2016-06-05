@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="admin/fragments/head :: head('Admin', ${adminUrl}, ${submodules}, ${metadata}, ${resources})"></head>
-<body ng-app="admin">
+<body ng-app="admin" ng-strict-di="ng-strict-di">
 	<div id="page">
 		<header th:replace="admin/fragments/header :: header"></header>
 

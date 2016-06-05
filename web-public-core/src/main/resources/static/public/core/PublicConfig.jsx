@@ -5,14 +5,19 @@ window.constants = {
     events: {}
 };
 
-var PublicConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider) {
+/*@ngInject*/
+var PublicConfig = function($mdThemingProvider, $stateProvider, $locationProvider, $urlRouterProvider, $compileProvider) {
     configTheme($mdThemingProvider);
+    $compileProvider.debugInfoEnabled(false);
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
-    $stateProvider.state('home', {
-        url: "/",
-        templateUrl: "/public/core/home/home.html"
+    $stateProvider.state('notfound', {
+        views: {
+            'content': {
+                templateUrl: "/public/core/error/notfound.html"
+            }
+        }
     });
     
 };
