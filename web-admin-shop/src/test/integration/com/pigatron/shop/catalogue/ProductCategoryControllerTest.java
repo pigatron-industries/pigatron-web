@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue;
 
-import com.pigatron.AbstractIntegrationTest;
 import com.pigatron.TestApplication;
+import com.pigatron.admin.security.AbstractAdminSecurityIntegrationTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = TestApplication.class)
 @WebIntegrationTest
-public class ProductCategoryControllerTest extends AbstractIntegrationTest {
+public class ProductCategoryControllerTest extends AbstractAdminSecurityIntegrationTest {
 
     private static final String API_URL = "/catalogue/category";
 

@@ -1,6 +1,5 @@
-package com.pigatron;
+package com.pigatron.admin;
 
-import com.pigatron.admin.security.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -8,7 +7,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-public abstract class AbstractIntegrationTest {
+public class AbstractAdminCoreIntegrationTest {
 
     @Value("${url.admin}")
     private String adminUrl;
@@ -31,9 +30,6 @@ public abstract class AbstractIntegrationTest {
     @Autowired
     private ApplicationEventPublisher publisher;
 
-    @Autowired
-    private SecUserDetailsService userDetailsService;
-
 
     private String getAdminApiUrl() {
         return "http://localhost:" + serverPort + "/" + adminUrl + "/api";
@@ -48,10 +44,9 @@ public abstract class AbstractIntegrationTest {
         publicApiUrl = getPublicApiUrl() + apiUrl;
     }
 
-    private void dbSetup() {
+    protected void dbSetup() {
         mongoTemplate.getDb().dropDatabase();
         publisher.publishEvent(new ContextRefreshedEvent(context)); //force initial data setup
-        userDetailsService.createAdminUser("admin", "password");
     }
 
     protected void setup() {

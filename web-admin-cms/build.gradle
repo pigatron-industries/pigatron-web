@@ -4,6 +4,9 @@ dependencies {
     compile('net.coobird:thumbnailator:0.4.8')
 
     testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
+
+    integrationTestCompile project(":web-admin-security").sourceSets.integrationTest.output
+    integrationTestCompile project(":web-admin-core").sourceSets.integrationTest.output
 }
 
 

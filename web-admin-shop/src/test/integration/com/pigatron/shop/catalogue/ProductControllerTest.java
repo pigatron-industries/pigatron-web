@@ -1,7 +1,7 @@
 package com.pigatron.shop.catalogue;
 
-import com.pigatron.AbstractIntegrationTest;
 import com.pigatron.TestApplication;
+import com.pigatron.admin.security.AbstractAdminSecurityIntegrationTest;
 import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.shop.catalogue.repository.ProductRepository;
 import org.junit.Before;
@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.hasSize;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = TestApplication.class)
 @WebIntegrationTest
-public class ProductControllerTest extends AbstractIntegrationTest {
+public class ProductControllerTest extends AbstractAdminSecurityIntegrationTest {
 
     private static final String API_URL = "/catalogue/product";
 
