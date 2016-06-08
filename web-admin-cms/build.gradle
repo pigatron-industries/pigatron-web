@@ -3,22 +3,12 @@ dependencies {
     compile project(":web-admin-security")
     compile('net.coobird:thumbnailator:0.4.8')
 
-    testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
+    testCompile('uk.co.datumedge:hamcrest-json:0.2')
 
+    integrationTestCompile('com.jayway.restassured:rest-assured:2.9.0')
     integrationTestCompile project(":web-admin-security").sourceSets.integrationTest.output
     integrationTestCompile project(":web-admin-core").sourceSets.integrationTest.output
+
+    functionalTestCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
 }
 
-
-
-
-// Functional test running
-
-//task updateWebDriver(type: NodeTask) {
-//    script = file('node_modules/protractor/bin/webdriver-manager')
-//    args = ['update', '--standalone']
-//}
-//task protractorTests(type: NodeTask) {
-//    script = file('node_modules/protractor/bin/protractor')
-//    args = ['src/test/resources/protractor.conf.js']
-//}

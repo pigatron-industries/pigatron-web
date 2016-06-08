@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.hasSize;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = TestApplication.class)
 @WebIntegrationTest
-public class ProductControllerTest extends AbstractAdminSecurityIntegrationTest {
+public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
 
     private static final String API_URL = "/catalogue/product";
 
@@ -29,12 +29,23 @@ public class ProductControllerTest extends AbstractAdminSecurityIntegrationTest 
     private ProductRepository productRepository;
 
     @Before
+    @Override
     public void setup() {
         super.setup(API_URL);
     }
 
     @Test
-    public void testAdminGetIsOptionFalse() {
+    public void testPublicGetProductByUrlKey() {
+        //TODO
+    }
+
+    @Test
+    public void testAdminCreateProduct() {
+        //TODO
+    }
+
+    @Test
+    public void testAdminGetProductIsOptionFalse() {
         createProductWithOption();
         given()
                 .auth().basic("admin", "password")
@@ -47,7 +58,7 @@ public class ProductControllerTest extends AbstractAdminSecurityIntegrationTest 
     }
 
     @Test
-    public void testAdminGetIsOptionTrue() {
+    public void testAdminGetProductIsOptionTrue() {
         createProductWithOption();
         given()
                 .auth().basic("admin", "password")
@@ -60,7 +71,7 @@ public class ProductControllerTest extends AbstractAdminSecurityIntegrationTest 
     }
 
     @Test
-    public void testAdminGetHasOptionsFalse() {
+    public void testAdminGetProductHasOptionsFalse() {
         createProductWithOption();
         given()
                 .auth().basic("admin", "password")
@@ -73,10 +84,10 @@ public class ProductControllerTest extends AbstractAdminSecurityIntegrationTest 
     }
 
     @Test
-    public void testAdminGetHasOptionsTrue() {
+    public void testAdminGetProductHasOptionsTrue() {
         createProductWithOption();
         given()
-                .auth().basic("admin", "password")
+                .auth().basic(ADMIN_USERNAME, ADMIN_PASSWORD)
         .when()
                 .get(adminApiUrl + "?hasOptions=true")
         .then()

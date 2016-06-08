@@ -1,5 +1,7 @@
 package com.pigatron.admin;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +11,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class AbstractAdminCoreIntegrationTest {
 
+    public static final String CONTENTTYPE_APPLICATION_JSON = "application/json";
     @Value("${url.admin}")
     private String adminUrl;
 
@@ -29,6 +32,8 @@ public class AbstractAdminCoreIntegrationTest {
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    ObjectMapper mapper = new ObjectMapper();
 
 
     private String getAdminApiUrl() {
@@ -58,6 +63,10 @@ public class AbstractAdminCoreIntegrationTest {
             setApiUrl(apiUrl);
         }
         dbSetup();
+    }
+
+    protected String toJson(Object o) throws JsonProcessingException {
+        return mapper.writeValueAsString(o);
     }
 
 }

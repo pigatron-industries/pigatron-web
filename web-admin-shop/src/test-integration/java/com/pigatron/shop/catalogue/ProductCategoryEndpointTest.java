@@ -16,11 +16,12 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = TestApplication.class)
 @WebIntegrationTest
-public class ProductCategoryControllerTest extends AbstractAdminSecurityIntegrationTest {
+public class ProductCategoryEndpointTest extends AbstractAdminSecurityIntegrationTest {
 
     private static final String API_URL = "/catalogue/category";
 
     @Before
+    @Override
     public void setup() {
         super.setup(API_URL);
     }
@@ -38,13 +39,18 @@ public class ProductCategoryControllerTest extends AbstractAdminSecurityIntegrat
     @Test
     public void testAdminGetRoot() {
         given()
-            .auth().basic("admin", "password")
+            .auth().basic(ADMIN_USERNAME, ADMIN_PASSWORD)
         .when()
             .get(adminApiUrl + "/root")
         .then()
             .log().all()
             .body("id", equalTo("root"))
             .body("name", equalTo("Shop"));
+    }
+
+    @Test
+    public void testAdminCreateCategory() {
+        //TODO
     }
 
 }

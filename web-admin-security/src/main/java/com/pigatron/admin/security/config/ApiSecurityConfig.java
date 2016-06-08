@@ -38,7 +38,7 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
                 .and();
         if(basicAuth) {
-            and.httpBasic();
+            and.httpBasic().and().csrf().disable();
         } else {
             and.exceptionHandling().authenticationEntryPoint(apiAuthenticationEntryPoint);
         }

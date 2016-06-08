@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 public class Content {
 
     @Id
-    @JsonView(View.Summary.class)
+    @JsonView({View.Summary.class, View.Public.class})
     private String id;
 
     @JsonView(View.Summary.class)
