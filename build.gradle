@@ -162,6 +162,13 @@ dependencies {
 	compile project(":web-public-cms")
 }
 
+task dependencyReport(type: NodeTask) {
+	script = file('scripts/dependencyReport.js')
+	args = []
+	dependsOn dependencyUpdates, subprojects*.bowerList
+}
+
+
 
 eclipse {
 	classpath {
