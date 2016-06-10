@@ -17,7 +17,12 @@ var bowerDepsPublicShop = require("../build/dependencyUpdates/report_web-public-
 function htmlHeader() {
     return "<html>" +
         "<head>" +
-            '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">' +
+            "<style>" +
+                "body { font-family: helvetica; } " +
+                ".table { width: 100%; max-width: 100%; margin-bottom: 20px; } " +
+                "th, td { padding: 8px; line-height: 1.42857143; vertical-align: top; border-top: 1px solid #ddd; text-align: left; } " +
+                "tr.warning>td { background-color: #fcf8e3; } " +
+            "</style>" +
         "</head>" +
         "<body>";
 }
