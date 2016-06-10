@@ -107,7 +107,10 @@ subprojects {
 	}
 	task bowerList(type: NodeTask) {
 		script = file('../node_modules/bower/bin/bower')
-		args = ["list"]
+		args = ["list", "--json"]
+		execOverrides {
+			it.standardOutput = new FileOutputStream("build/dependencyUpdates/report_${project.name}.json")
+		}
 	}
 
 	task webResourceBuildLocal(type: NodeTask) {
