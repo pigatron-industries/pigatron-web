@@ -3,24 +3,27 @@ package com.pigatron.admin.settings.website;
 public class Link {
 
     private LinkType type;
+    private LinkPosition position;
     private String title;
-    private String location;
+    private String action;
     private String cssClass;
 
     public Link() {
     }
 
-    public Link(LinkType type, String title, String location, String cssClass) {
+    public Link(LinkType type, LinkPosition position, String title, String action, String cssClass) {
         this.type = type;
+        this.position = position;
         this.title = title;
-        this.location = location;
+        this.action = action;
         this.cssClass = cssClass;
     }
 
     private Link(Builder builder) {
         setType(builder.linkType);
+        setPosition(builder.position);
         setTitle(builder.title);
-        setLocation(builder.location);
+        setAction(builder.action);
         setCssClass(builder.cssClass);
     }
 
@@ -34,6 +37,14 @@ public class Link {
 
     public void setType(LinkType type) {
         this.type = type;
+    }
+
+    public LinkPosition getPosition() {
+        return position;
+    }
+
+    public void setPosition(LinkPosition position) {
+        this.position = position;
     }
 
     public String getTitle() {
@@ -52,19 +63,20 @@ public class Link {
         this.cssClass = cssClass;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAction() {
+        return action;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAction(String action) {
+        this.action = action;
     }
 
 
     public static final class Builder {
         private LinkType linkType;
+        private LinkPosition position;
         private String title;
-        private String location;
+        private String action;
         private String cssClass;
 
         private Builder() {
@@ -75,13 +87,18 @@ public class Link {
             return this;
         }
 
+        public Builder withPosition(LinkPosition val) {
+            position = val;
+            return this;
+        }
+
         public Builder withTitle(String val) {
             title = val;
             return this;
         }
 
-        public Builder withLocation(String val) {
-            location = val;
+        public Builder withAction(String val) {
+            action = val;
             return this;
         }
 

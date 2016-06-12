@@ -9,12 +9,12 @@ class AbstractTableController extends AbstractController {
 
         this.table = {
             loaded: false,
-            enableGridMenu: true,
             enableCellEditOnFocus: true,
             modifierKeysToMultiSelect: true,
             enableHorizontalScrollbar: 0,
             enableVerticalScrollbar: 0
         };
+        this.enableGridMenu(true);
         this.enableSorting(true);
         this.enableFiltering(true);
         this.enableRowSelection(true);
@@ -49,6 +49,10 @@ class AbstractTableController extends AbstractController {
         }
     }
 
+    enableGridMenu(enable) {
+        this.table.enableGridMenu = enable;
+    }
+
     enableRowSelection(enable) {
         this.table.enableRowSelection = enable;
         this.table.enableRowHeaderSelection = enable;
@@ -80,7 +84,10 @@ class AbstractTableController extends AbstractController {
     }
 
     column(column) {
-        column.visible = this.tableConfig.visibleFields.indexOf(column.field) > -1;
+        column.visible = true;
+        if(this.tableConfig) {
+            column.visible = this.tableConfig.visibleFields.indexOf(column.field) > -1;
+        }
         if(column.type === 'boolean') {
             if(column.enableCellEdit == true) {
                 this.$scope[column.name] = (row, colDef) => { this.afterCellEdit(row, colDef) };
@@ -92,13 +99,18 @@ class AbstractTableController extends AbstractController {
             }
             column.maxWidth = 120;
         } else {
-            column.editableCellTemplate = AbstractTableController.inputTemplate();
+            if(!column.editableCellTemplate) {
+                column.editableCellTemplate = AbstractTableController.inputTemplate();
+            }
         }
         return column;
     }
 
     columnAction(column) {
-        column.visible = this.tableConfig.visibleFields.indexOf(column.name) > -1;
+        column.visible = true;
+        if(this.tableConfig) {
+            column.visible = this.tableConfig.visibleFields.indexOf(column.name) > -1;
+        }
         column.enableCellEdit = false;
         column.enableSorting = false;
         column.enableHiding = false;
@@ -193,17 +205,19 @@ class AbstractTableController extends AbstractController {
     }
 
     save() {
-        let promises = [];
-        this.table.data.forEach((rowData) => {
-            if(rowData.$dirty == true) {
-                promises.push(this.saveRow(rowData).then((success) => {
-                    //TODO reload row success.data
-                }));
-            }
-        });
-        this.$q.all(promises).then(() => {
-            this.setPristine();
-        });
+        if(this.dataService) {
+            let promises = [];
+            this.table.data.forEach((rowData) => {
+                if (rowData.$dirty == true) {
+                    promises.push(this.saveRow(rowData).then((success) => {
+                        //TODO reload row success.data
+                    }));
+                }
+            });
+            this.$q.all(promises).then(() => {
+                this.setPristine();
+            });
+        }
     }
 
     /**

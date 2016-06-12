@@ -9,7 +9,7 @@ class AbstractFormController extends AbstractController {
         if(this.$stateParams.id == 'new') {
             this.create();
         } else {
-            this.load(this.$stateParams.id); //TODO load after timeout
+            this.load(this.$stateParams.id);
         }
     }
 

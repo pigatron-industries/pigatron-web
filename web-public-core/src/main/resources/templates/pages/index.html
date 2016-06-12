@@ -7,7 +7,7 @@
 
     <div ng-controller="PublicController as public" ng-cloak="ng-cloak" class="ng-cloak">
         <md-content>
-            <div th:replace="fragments/tabs :: tabs(${settings.topLinks})"></div>
+            <div th:replace="fragments/tabs :: tabs(${settings.links})"></div>
             <div layout="row">
                 <div id="leftSidebar" class="view-container" flex="20">
                     <div ui-view="leftSidebar"></div>

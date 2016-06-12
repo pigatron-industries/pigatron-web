@@ -7,7 +7,7 @@
         <md-tabs flex="grow" class="tabsLeft" md-selected="public.tabsIndex">
             <th:block th:each="link : ${links}">
                 <span th:text="${link.type.name()}"></span>
-                <md-tab th:if="${link.type.name()=='ROUTE'}" th:attr="ui-sref=${link.location}" th:class="${link.cssClass}">
+                <md-tab th:if="${link.type.name()=='ROUTE'}" th:attr="ui-sref=${link.action}" th:class="${link.position.name()=='TOP_RIGHT'}?tabRight:tabLeft">
                     <md-tab-label th:utext="${link.title}"></md-tab-label>
                 </md-tab>
             </th:block>

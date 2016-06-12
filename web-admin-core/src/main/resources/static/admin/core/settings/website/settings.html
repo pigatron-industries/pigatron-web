@@ -1,0 +1,22 @@
+<div ng-controller="SettingsWebsiteController as websiteSettings" ng-cloak="ng-cloak" class="ng-cloak">
+
+    <h3>Website Settings</h3>
+
+    <div class="formcolumn" layout="column">
+        <md-input-container>
+            <label for="title">Site Title</label>
+            <input id="title" name="title" ng-model="websiteSettings.formData.title" type="text" required />
+            <div ng-messages="form.title.$error">
+                <div ng-message="required">Site Title is required.</div>
+            </div>
+        </md-input-container>
+
+        <h4>Links</h4>
+        <div ng-controller="SettingsWebsiteLinksController as websiteLinks" ng-model="websiteSettings" ng-cloak="ng-cloak" class="ng-cloak">
+            <div ui-grid="websiteLinks.table" ng-style="websiteLinks.getTableHeight()"
+                 ui-grid-draggable-rows ui-grid-edit ui-grid-resize-columns></div>
+        </div>
+
+    </div>
+
+</div>

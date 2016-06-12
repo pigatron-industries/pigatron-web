@@ -18,7 +18,8 @@ public class AdminMenuConfig {
     }
 
     private MenuItem configMenu() {
-        return new MenuItem("config", "Configure");
+        return new MenuItem("config", "Configure")
+                .addSubmenu(new MenuItem("settings", "Settings", new MenuAction(MenuAction.TYPE_ROUTE, "settings")));
     }
 
     private MenuItem developerMenu() {

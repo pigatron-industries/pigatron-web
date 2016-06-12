@@ -2,6 +2,7 @@ package com.pigatron.shop.setup;
 
 import com.pigatron.admin.settings.Settings;
 import com.pigatron.admin.settings.SettingsRepository;
+import com.pigatron.admin.settings.website.LinkPosition;
 import com.pigatron.admin.settings.website.LinkType;
 import com.pigatron.admin.settings.website.WebSiteSettings;
 import com.pigatron.shop.catalogue.entity.ProductCategory;
@@ -54,32 +55,35 @@ public class ShopRepositorySetupService {
             logger.info("Creating default web site settings.");
             WebSiteSettings webSiteSettings = aWebSiteSettings()
                     .withTitle("Site Title")
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("Shop")
-                            .withLocation("shop")
+                            .withAction("shop")
                             .build())
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("Blog")
-                            .withLocation("posts")
+                            .withAction("posts")
                             .build())
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("About")
-                            .withLocation("page({urlKey:'about'})")
+                            .withAction("page({urlKey:'about'})")
                             .build())
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_RIGHT)
                             .withTitle("<span class=\"fa fa-lg fa-shopping-cart\"></span> Basket")
-                            .withLocation("basket")
-                            .withCssClass("tabRight")
+                            .withAction("basket")
                             .build())
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_RIGHT)
                             .withTitle("<span class=\"fa fa-lg fa-user\"></span> Account")
-                            .withLocation("account")
-                            .withCssClass("tabRight")
+                            .withAction("account")
                             .build())
                     .build();
             settingsRepository.save(webSiteSettings);

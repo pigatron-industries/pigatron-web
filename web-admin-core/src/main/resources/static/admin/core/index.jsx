@@ -1,15 +1,20 @@
 
 var register = require('./lib/register');
-var AdminConfig = require('./controller/AdminConfig');
-var AdminController = require('./controller/AdminController');
-var MessageController = require('./controller/MessageController');
+var AdminConfig = require('./AdminConfig');
 var ServiceBundle = require('./abstract/ServiceBundle');
 var HttpInterceptor = require('./controller/HttpInterceptor');
 var StickToTop = require('./components/StickToTop');
 require('./lib/md-colours');
 
+var AdminController = require('./controller/AdminController');
+var MessageController = require('./controller/MessageController');
+var SettingsController = require('./settings/SettingsController');
+var SettingsService = require('./settings/SettingsService');
+var SettingsWebsiteController = require('./settings/website/SettingsWebsiteController');
+var SettingsWebsiteLinksController = require('./settings/website/SettingsWebsiteLinksController');
+
 module.exports = {
-    adminThemeConfig: require('./controller/AdminThemeConfig'),
+    adminThemeConfig: require('./AdminThemeConfig'),
     AbstractController: require('./abstract/AbstractController'),
     AbstractFormController: require('./abstract/AbstractFormController'),
     AbstractRestService: require('./abstract/AbstractRestService'),
@@ -28,8 +33,12 @@ angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','ui.t
 register('admin')
     .controller('AdminController', AdminController)
     .controller('MessageController', MessageController)
+    .controller('SettingsController', SettingsController)
+    .controller('SettingsWebsiteController', SettingsWebsiteController)
+    .controller('SettingsWebsiteLinksController', SettingsWebsiteLinksController)
     .service('$services', ServiceBundle)
-    .service('httpInterceptor', HttpInterceptor);
+    .service('httpInterceptor', HttpInterceptor)
+    .service('settingsService', SettingsService);
 
 angular.module('admin.components', []);
 register('admin.components')

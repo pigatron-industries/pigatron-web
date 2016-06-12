@@ -1,6 +1,7 @@
 package com.pigatron.cms.setup;
 
 import com.pigatron.admin.settings.Settings;
+import com.pigatron.admin.settings.website.LinkPosition;
 import com.pigatron.admin.settings.website.LinkType;
 import com.pigatron.admin.settings.website.WebSiteSettings;
 import com.pigatron.admin.settings.SettingsRepository;
@@ -35,20 +36,23 @@ public class CmsRepositorySetupService {
         if(settings == null) {
             WebSiteSettings webSiteSettings = aWebSiteSettings()
                     .withTitle("Site Title")
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("Home")
-                            .withLocation("/")
+                            .withAction("/")
                             .build())
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("Blog")
-                            .withLocation("/posts")
+                            .withAction("/posts")
                             .build())
-                    .withTopLink(aLink()
+                    .withLink(aLink()
                             .withLinkType(LinkType.ROUTE)
+                            .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("About")
-                            .withLocation("/page/about")
+                            .withAction("page({urlKey:'about'})")
                             .build())
                     .build();
             settingsRepository.save(webSiteSettings);

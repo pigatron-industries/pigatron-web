@@ -1,4 +1,5 @@
 
+/*@ngInject*/
 var CmsConfig = function($stateProvider) {
 
     constants.routes.CMS_CONTENTS = 'contents';

@@ -1,9 +1,12 @@
 package com.pigatron.admin.settings;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
 
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public abstract class Settings {
 
     @Id

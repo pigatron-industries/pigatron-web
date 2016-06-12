@@ -14,7 +14,7 @@ public class WebSiteSettings extends Settings {
 
     private String title;
 
-    List<Link> topLinks = new ArrayList<>();
+    List<Link> links = new ArrayList<>();
 
 
     public WebSiteSettings() {
@@ -24,7 +24,7 @@ public class WebSiteSettings extends Settings {
     private WebSiteSettings(Builder builder) {
         this();
         setTitle(builder.title);
-        setTopLinks(builder.topLinks);
+        setLinks(builder.topLinks);
     }
 
     public static Builder aWebSiteSettings() {
@@ -39,12 +39,12 @@ public class WebSiteSettings extends Settings {
         this.title = title;
     }
 
-    public List<Link> getTopLinks() {
-        return topLinks;
+    public List<Link> getLinks() {
+        return links;
     }
 
-    public void setTopLinks(List<Link> topLinks) {
-        this.topLinks = topLinks;
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 
 
@@ -61,12 +61,12 @@ public class WebSiteSettings extends Settings {
             return this;
         }
 
-        public Builder withTopLinks(List<Link> val) {
+        public Builder withLinks(List<Link> val) {
             topLinks = val;
             return this;
         }
 
-        public Builder withTopLink(Link val) {
+        public Builder withLink(Link val) {
             topLinks.add(val);
             return this;
         }
