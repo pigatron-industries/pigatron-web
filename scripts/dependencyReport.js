@@ -15,7 +15,7 @@ var bowerDepsPublicShop = require("../build/dependencyUpdates/report_web-public-
 
 
 function htmlHeader() {
-    return "<html>" +
+    return "<!DOCTYPE html><html>" +
         "<head>" +
             "<style>" +
                 "body { font-family: helvetica; } " +
