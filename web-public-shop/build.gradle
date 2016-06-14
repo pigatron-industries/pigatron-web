@@ -1,7 +1,5 @@
 
 dependencies {
     compile project(":web-public-cms")
-
-    testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
 }
 

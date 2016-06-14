@@ -8,7 +8,8 @@
     "ng-sortable": "1.3.4",
     "cfp-angular-hotkeys": "1.7.0",
     "font-awesome": "4.6.1",
-    "ngSmoothScroll": "2.0.0"
+    "ngSmoothScroll": "2.0.0",
+    "ui-grid-draggable-rows": "0.2.2"
   },
   "resolutions": {
     "angular": "1.5.6"

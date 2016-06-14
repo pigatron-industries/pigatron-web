@@ -3,8 +3,6 @@ dependencies {
     compile project(":web-admin-core")
     compile("org.springframework.boot:spring-boot-starter-security")
 
-    testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
-
     integrationTestCompile project(":web-admin-core").sourceSets.integrationTest.output
 }
 

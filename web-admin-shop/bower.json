@@ -3,7 +3,6 @@
   "dependencies": {
     "angular-ui-tree": "2.15.0",
     "lf-ng-md-file-input": "1.4.6",
-    "ng-pattern-restrict": "0.2.1",
-    "ui-grid-draggable-rows": "0.2.2"
+    "ng-pattern-restrict": "0.2.1"
   }
 }

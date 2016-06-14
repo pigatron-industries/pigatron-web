@@ -2,8 +2,6 @@
 dependencies {
     compile project(":web-admin-cms")
 
-    testCompile('org.gradle:gradle-tooling-api:2.13-rc-1')
-
     integrationTestCompile('com.jayway.restassured:rest-assured:2.9.0')
     integrationTestCompile project(":web-admin-security").sourceSets.integrationTest.output
     integrationTestCompile project(":web-admin-core").sourceSets.integrationTest.output

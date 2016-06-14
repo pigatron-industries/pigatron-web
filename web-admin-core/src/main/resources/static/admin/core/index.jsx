@@ -28,7 +28,20 @@ var submodules = [];
 if($("meta[name='_submodules']").attr("content")) {
     submodules = $("meta[name='_submodules']").attr("content").split(',');
 }
-angular.module('admin', ['ngMaterial','ngMessages','ngAnimate','ui.router','ui.tree','cfp.hotkeys','mdColors'].concat(submodules))
+angular.module('admin', [
+        'ngMaterial',
+        'ngMessages',
+        'ngAnimate',
+        'cfp.hotkeys',
+        'mdColors',
+        'ui.router',
+        'ui.tree',
+        'ui.grid',
+        'ui.grid.edit',
+        'ui.grid.rowEdit',
+        'ui.grid.resizeColumns',
+        'ui.grid.draggable-rows']
+    .concat(submodules))
     .config(AdminConfig);
 register('admin')
     .controller('AdminController', AdminController)
