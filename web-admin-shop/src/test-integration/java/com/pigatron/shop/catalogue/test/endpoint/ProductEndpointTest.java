@@ -45,8 +45,8 @@ public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
     }
 
     @Test
-    public void testAdminGetProductIsOptionFalse() {
-        createProductWithOption();
+    public void testAdminGetProduct_IsOptionFalse() {
+        createProductWithOptionAndSave();
         given()
                 .auth().basic("admin", "password")
         .when()
@@ -58,8 +58,8 @@ public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
     }
 
     @Test
-    public void testAdminGetProductIsOptionTrue() {
-        createProductWithOption();
+    public void testAdminGetProduct_IsOptionTrue() {
+        createProductWithOptionAndSave();
         given()
                 .auth().basic("admin", "password")
         .when()
@@ -71,8 +71,8 @@ public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
     }
 
     @Test
-    public void testAdminGetProductHasOptionsFalse() {
-        createProductWithOption();
+    public void testAdminGetProduct_HasOptionsFalse() {
+        createProductWithOptionAndSave();
         given()
                 .auth().basic("admin", "password")
         .when()
@@ -84,8 +84,8 @@ public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
     }
 
     @Test
-    public void testAdminGetProductHasOptionsTrue() {
-        createProductWithOption();
+    public void testAdminGetProduct_HasOptionsTrue() {
+        createProductWithOptionAndSave();
         given()
                 .auth().basic(ADMIN_USERNAME, ADMIN_PASSWORD)
         .when()
@@ -97,16 +97,19 @@ public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
     }
 
 
-    private Product createProductWithOption() {
-        Product optionProduct =
-                aProduct()
+
+
+    private Product buildOptionProduct() {
+        return aProduct()
                 .name("Option Product")
                 .urlKey("option_product")
                 .sku("op")
                 .isOption(true)
                 .build();
-        Product mainProduct =
-                aProduct()
+    }
+
+    private Product buildMainProduct(Product optionProduct) {
+        return aProduct()
                 .name("Main Product")
                 .urlKey("main_product")
                 .sku("mp")
@@ -115,8 +118,19 @@ public class ProductEndpointTest extends AbstractAdminSecurityIntegrationTest {
                         .product(optionProduct)
                         .build())
                 .build();
+    }
+
+    private Product createProductWithOptionAndSave() {
+        Product optionProduct = buildOptionProduct();
+        Product mainProduct = buildMainProduct(optionProduct);
         productRepository.save(optionProduct);
         productRepository.save(mainProduct);
+        return mainProduct;
+    }
+
+    private Product createProductWithOption() {
+        Product optionProduct = buildOptionProduct();
+        Product mainProduct = buildMainProduct(optionProduct);
         return mainProduct;
     }
 
