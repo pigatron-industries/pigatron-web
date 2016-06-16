@@ -17,12 +17,7 @@ var bowerDepsPublicShop = require("../build/dependencyUpdates/report_web-public-
 function htmlHeader() {
     return "<!DOCTYPE html><html>" +
         "<head>" +
-            "<style>" +
-                "body { font-family: helvetica; } " +
-                ".table { width: 100%; max-width: 100%; margin-bottom: 20px; } " +
-                "th, td { padding: 8px; line-height: 1.42857143; vertical-align: top; border-top: 1px solid #ddd; text-align: left; } " +
-                "tr.warning>td { background-color: #fcf8e3; } " +
-            "</style>" +
+            "<link rel='stylesheet' href='bootstrap.min.css'>" +
         "</head>" +
         "<body>";
 }
