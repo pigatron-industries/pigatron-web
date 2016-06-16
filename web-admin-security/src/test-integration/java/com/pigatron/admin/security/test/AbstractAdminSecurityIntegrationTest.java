@@ -1,7 +1,8 @@
-package com.pigatron.admin.security;
+package com.pigatron.admin.security.test;
 
 
 import com.pigatron.admin.AbstractAdminCoreIntegrationTest;
+import com.pigatron.admin.security.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AbstractAdminSecurityIntegrationTest extends AbstractAdminCoreIntegrationTest {

@@ -37,10 +37,28 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
     }
 
     public User createAdminUser(String username, String password) {
-        String passwordHash = new BCryptPasswordEncoder().encode(password);
+        String passwordHash = encodePassword(password);
         User user = new User(username, passwordHash, ROLE_ADMIN);
         userRepository.save(user);
         return user;
     }
 
+    @Override
+    public User save(User user) {
+        if(user.getId() != null) {
+            //check if password has changed and re-encode
+            User previousUser = userRepository.findOne(user.getId());
+            if(!previousUser.getPassword().equals(user.getPassword())) {
+                user.setPassword(encodePassword(user.getPassword()));
+            }
+        } else {
+            user.setPassword(encodePassword(user.getPassword()));
+        }
+
+        return super.save(user);
+    }
+
+    private String encodePassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
+    }
 }

@@ -1,7 +1,7 @@
-package com.pigatron.shop.catalogue;
+package com.pigatron.shop.catalogue.test.endpoint;
 
 import com.pigatron.TestApplication;
-import com.pigatron.admin.security.AbstractAdminSecurityIntegrationTest;
+import com.pigatron.admin.security.test.AbstractAdminSecurityIntegrationTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

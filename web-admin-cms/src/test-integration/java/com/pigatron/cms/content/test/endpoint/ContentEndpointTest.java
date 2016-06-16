@@ -1,13 +1,10 @@
-package com.pigatron.cms.content;
+package com.pigatron.cms.content.test.endpoint;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pigatron.TestApplication;
-import com.pigatron.admin.security.AbstractAdminSecurityIntegrationTest;
+import com.pigatron.admin.security.test.AbstractAdminSecurityIntegrationTest;
 import com.pigatron.cms.content.entity.Page;
 import com.pigatron.cms.content.repository.ContentRepository;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import uk.co.datumedge.hamcrest.json.SameJSONAs;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.when;

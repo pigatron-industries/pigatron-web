@@ -1,5 +1,6 @@
 package com.pigatron.admin.security.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,11 +23,16 @@ public class User implements UserDetails {
 
     private List<Role> roles;
 
-    private boolean locked;
+    private boolean enabled;
 
     // remember me token data
+    @JsonIgnore
     private String tokenSeries;
+
+    @JsonIgnore
     private String tokenValue;
+
+    @JsonIgnore
     private Date tokenDate;
 
 
@@ -39,6 +45,11 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = new ArrayList<>();
         this.roles.add(new Role(role));
+        this.enabled = true;
+    }
+
+    public static Builder aUser() {
+        return new Builder();
     }
 
     public String getId() {
@@ -72,6 +83,7 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
@@ -83,7 +95,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return enabled;
     }
 
     @Override
@@ -93,7 +105,11 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getTokenSeries() {
@@ -118,5 +134,42 @@ public class User implements UserDetails {
 
     public void setTokenDate(Date tokenDate) {
         this.tokenDate = tokenDate;
+    }
+
+
+    public static final class Builder {
+        private String id;
+        private String username;
+        private String password;
+        private String role;
+
+        private Builder() {
+        }
+
+        public Builder withId(String val) {
+            id = val;
+            return this;
+        }
+
+        public Builder withUsername(String val) {
+            username = val;
+            return this;
+        }
+
+        public Builder withPassword(String val) {
+            password = val;
+            return this;
+        }
+
+        public Builder withRole(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public User build() {
+            User user = new User(username, password, role);
+            user.id = id;
+            return user;
+        }
     }
 }
