@@ -68,7 +68,6 @@ allprojects {
 			excludeDirs += file('bower_components')
 			testSourceDirs += file('src/test-integration/java')
 			testSourceDirs += file('src/test-functional/java')
-			scopes.TEST.plus += [ configurations.integrationTestCompile ]
 		}
 	}
 	node {
