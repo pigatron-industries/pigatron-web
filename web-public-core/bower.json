@@ -1,12 +1,12 @@
 {
   "name": "web-resource",
   "dependencies": {
-    "jquery": "3.0.0-beta1",
-    "angular-material": "1.1.0-rc4",
-    "angular-ui-router": "0.2.18",
-    "font-awesome": "4.6.1"
+    "jquery": "3.0.0",
+    "angular-material": "1.1.0-rc.5",
+    "angular-ui-router": "0.3.1",
+    "font-awesome": "4.6.3"
   },
   "resolutions": {
-    "angular": "1.5.6"
+    "angular": "1.5.7"
   }
 }

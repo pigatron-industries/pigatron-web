@@ -1,8 +1,8 @@
 {
   "name": "web-resource",
   "dependencies": {
-    "angular-ui-tree": "2.15.0",
-    "lf-ng-md-file-input": "1.4.6",
-    "ng-pattern-restrict": "0.2.1"
+    "angular-ui-tree": "2.16.0",
+    "lf-ng-md-file-input": "1.4.7",
+    "ng-pattern-restrict": "0.2.2"
   }
 }
