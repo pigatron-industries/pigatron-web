@@ -66,13 +66,9 @@
                     </div>
                     <!-- Item column 2 -->
                     <div class="formcolumn" flex="60" layout="column">
+                        <label for="description">Description</label>
                         <md-input-container>
-                            <label for="shortDescription">Short Description</label>
-                            <textarea id="shortDescription" name="shortDescription" ng-model="product.formData.shortDescription" rows="50"></textarea>
-                        </md-input-container>
-                        <md-input-container>
-                            <label for="description">Full Description</label>
-                            <textarea id="description" name="description" ng-model="product.formData.description" rows="50"></textarea>
+                            <textarea id="description" ckeditor="product.editorOptions" ng-model="product.formData.description"></textarea>
                         </md-input-container>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ class ProductController extends webadmincore.AbstractFormController {
         this.imageService = imageService;
         this.categoryService = categoryService;
         this.$scope.sidebarOpen = false;
+        this.editorOptions = {};
         this.sortableOptions = {
             containment: '#sortableImages',
             orderChanged: (event) => { this.onImageOrderChanged(); }
