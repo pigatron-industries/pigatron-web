@@ -5,8 +5,10 @@ var CmsConfig = require("./CmsConfig");
 var ContentsController = require("./content/ContentsController");
 var ContentController = require("./content/ContentController");
 var ContentService = require("./content/ContentService");
-
 var ContentValidators = require("./content/ContentValidators");
+
+var ImageService = require("./image/ImageService");
+
 
 angular.module('admin.cms', [
         'admin.components',
@@ -32,4 +34,5 @@ register('admin.cms')
     .controller('ContentsController', ContentsController)
     .controller('ContentController', ContentController)
     .service('contentService', ContentService)
+    .service('imageService', ImageService)
     .directive('pageUrlUnique', ContentValidators.PageUrlUniqueValidator);

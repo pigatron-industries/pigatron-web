@@ -5,8 +5,6 @@ var CategoryController = require('./category/CategoryController');
 var CategoriesController = require('./category/CategoriesController');
 var CategoryService = require('./category/CategoryService');
 
-var ImageService = require('./image/ImageService');
-
 var ProductsController = require('./product/ProductsController');
 var ProductController = require('./product/ProductController');
 var ProductService = require('./product/ProductService');
@@ -19,6 +17,7 @@ var SelectValueController = require('./product/options/SelectValueController');
 
 angular.module('admin.shop.catalogue', [
         'admin.components',
+        'admin.cms',
         'admin.shop.components',
         'ngAnimate',
         'ngMaterial',
@@ -47,7 +46,6 @@ register('admin.shop.catalogue')
     .controller('ProductsSelectorController', ProductsSelectorController)
     .controller('selectProductController', SelectProductController)
     .controller('selectValueController', SelectValueController)
-    .service('imageService', ImageService)
     .service('categoryService', CategoryService)
     .service('productService', ProductService)
     .directive("skuUnique", productValidators.SkuUniqueValidator)
