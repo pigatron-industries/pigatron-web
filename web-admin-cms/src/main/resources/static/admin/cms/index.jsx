@@ -7,6 +7,7 @@ var ContentController = require("./content/ContentController");
 var ContentService = require("./content/ContentService");
 var ContentValidators = require("./content/ContentValidators");
 
+var ImagesController = require("./image/ImagesController");
 var ImageService = require("./image/ImageService");
 
 
@@ -34,5 +35,6 @@ register('admin.cms')
     .controller('ContentsController', ContentsController)
     .controller('ContentController', ContentController)
     .service('contentService', ContentService)
+    .controller('ImagesController', ImagesController)
     .service('imageService', ImageService)
     .directive('pageUrlUnique', ContentValidators.PageUrlUniqueValidator);

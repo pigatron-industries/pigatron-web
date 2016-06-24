@@ -1,6 +1,8 @@
 package com.pigatron.cms.image.service;
 
+import com.pigatron.admin.service.AbstractRepositoryService;
 import com.pigatron.cms.image.entity.Image;
+import com.pigatron.cms.image.entity.ImageQuery;
 import com.pigatron.cms.image.repository.ImageRepository;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -13,21 +15,27 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ImageService {
+public class ImageService extends AbstractRepositoryService<Image> {
 
     private ImageRepository imageRepository;
 
     @Autowired
     public ImageService(ImageRepository imageRepository) {
+        super(imageRepository);
         this.imageRepository = imageRepository;
     }
 
     public Image save(byte[] fileData, String mimeType) {
         Image image = new Image(fileData, mimeType);
-        return imageRepository.save(image);
+        return super.save(image);
+    }
+
+    public List<Image> find(ImageQuery query) {
+        return imageRepository.find(query);
     }
 
     public Image get(String id) {

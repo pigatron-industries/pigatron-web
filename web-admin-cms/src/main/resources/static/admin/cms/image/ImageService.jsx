@@ -38,6 +38,10 @@ class ImageService extends webadmincore.AbstractRestService {
         }
     }
 
+    clearCache() {
+        return this.$http.post(this.getUrl() + "/clearCache");
+    }
+
 }
 
 module.exports = ImageService;

@@ -1,8 +1,8 @@
 package com.pigatron.shop.catalogue.service;
 
 import com.pigatron.admin.sequence.SequenceService;
-import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.admin.service.AbstractRepositoryService;
+import com.pigatron.shop.catalogue.entity.Product;
 import com.pigatron.shop.catalogue.entity.query.ProductQuery;
 import com.pigatron.shop.catalogue.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	public static final String SKU_SEQUENCE = "productSku";
 
-	ProductRepository productRepository;
-	SequenceService sequenceService;
+	private ProductRepository productRepository;
+	private SequenceService sequenceService;
 
 	@Autowired
 	public ProductService(ProductRepository repository, SequenceService sequenceService) {

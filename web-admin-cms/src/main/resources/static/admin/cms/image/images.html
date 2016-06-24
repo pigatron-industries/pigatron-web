@@ -1,0 +1,35 @@
+<div ng-controller="ImagesController as images" ng-cloak="ng-cloak" class="ng-cloak">
+    <div layout="row">
+
+        <div layout="column" class="leftsidebar" stick-to-top>
+            <h2>Images</h2>
+            <md-button class="md-fab md-mini md-primary" aria-label="Upload" ng-click="images.clearCache()">
+                <md-tooltip md-direction="bottom">Clear Cache</md-tooltip>
+                <span class="fa fa-lg2 fa-asterisk"></span>
+            </md-button>
+        </div>
+
+        <div flex class="formarea" layout="column">
+            <div layout="row" layout-align="end end">
+                <lf-ng-md-file-input lf-files="images.imagesToUpload" lf-option="images.uploadOptions" lf-api="images.uploadApi"
+                                     lf-placeholder="Pick Image" lf-browse-label="Search" lf-remove-label="Remove" accept="image/*" multiple drag preview>
+                </lf-ng-md-file-input>
+                <md-button class="md-fab md-mini md-primary" aria-label="Upload" ng-click="images.upload()">
+                    <md-tooltip md-direction="bottom">Upload</md-tooltip>
+                    <span class="fa fa-lg2 fa-upload"></span>
+                </md-button>
+            </div>
+
+            <div>
+                <div data-ng-repeat="image in images.formData" class="image-preview-frame">
+                    <img ng-src="{{urlBase}}api/catalogue/image/{{image.id}}?h=160"/>
+                    <div layout="row" layout-align="space-between start">
+                        <a ng-click="images.remove($index)"><span class="fa fa-lg2 fa-trash"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
