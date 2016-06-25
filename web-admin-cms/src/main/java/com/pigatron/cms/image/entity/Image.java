@@ -120,6 +120,18 @@ public class Image {
         return width + "x" + height;
     }
 
+    public int getFileSize() {
+        return fileData.length;
+    }
+
+    public int getCachedFilesSize() {
+        int size = 0;
+        for(byte[] data : resizedImages.values()) {
+            size += data.length;
+        }
+        return size;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

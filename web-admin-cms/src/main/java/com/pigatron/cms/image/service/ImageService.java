@@ -3,6 +3,7 @@ package com.pigatron.cms.image.service;
 import com.pigatron.admin.service.AbstractRepositoryService;
 import com.pigatron.cms.image.entity.Image;
 import com.pigatron.cms.image.entity.ImageQuery;
+import com.pigatron.cms.image.entity.ImagesInfo;
 import com.pigatron.cms.image.repository.ImageRepository;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -48,12 +49,8 @@ public class ImageService extends AbstractRepositoryService<Image> {
         return imageRepository.find(query);
     }
 
-    public Image get(String id) {
-        return imageRepository.findOne(id);
-    }
-
     public Image getResizedImage(String id, Integer width, Integer height) throws IOException {
-        Image image = get(id);
+        Image image = findOne(id);
         Optional<Image> cachedResizedImage = image.findResizedImage(width, height);
         if(!cachedResizedImage.isPresent()) {
             Image resizedImage = resizeImage(image, width, height);
@@ -95,5 +92,18 @@ public class ImageService extends AbstractRepositoryService<Image> {
     private Optional<Image> getExistingImage(Image inputImage) {
         List<Image> allImages = imageRepository.findAll();
         return allImages.stream().filter(image -> image.equals(inputImage)).findAny();
+    }
+
+    public ImagesInfo getImagesInfo() {
+        int filesSize = 0;
+        int cachedFilesSize = 0;
+
+        List<Image> allImages = imageRepository.findAll();
+        for (Image image : allImages) {
+            filesSize += image.getFileSize();
+            cachedFilesSize += image.getCachedFilesSize();
+        }
+
+        return new ImagesInfo(filesSize, cachedFilesSize);
     }
 }

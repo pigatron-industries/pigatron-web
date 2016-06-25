@@ -2,6 +2,7 @@ package com.pigatron.cms.image.web.admin;
 
 import com.pigatron.cms.image.entity.Image;
 import com.pigatron.cms.image.entity.ImageQuery;
+import com.pigatron.cms.image.entity.ImagesInfo;
 import com.pigatron.cms.image.service.ImageService;
 import com.pigatron.cms.image.web.pub.PublicImageController;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -46,6 +47,13 @@ public class AdminImageController extends PublicImageController {
     @ApiOperation(value = "Delete one")
     public void delete(@PathVariable String id) {
         imageService.delete(id);
+    }
+
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get info")
+    public ImagesInfo getInfo() {
+        return imageService.getImagesInfo();
     }
 
     @RequestMapping(value = "/clearCache", method = RequestMethod.POST)

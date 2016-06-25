@@ -33,7 +33,7 @@ public class PublicImageController {
                                       @RequestParam(value="w", required=false) Integer width) throws IOException {
         Image image;
         if(height == null && width == null) {
-            image = imageService.get(id);
+            image = imageService.findOne(id);
         } else {
             image = imageService.getResizedImage(id, width, height);
         }
