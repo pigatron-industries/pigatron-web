@@ -7,6 +7,9 @@ import com.pigatron.admin.api.View;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -20,6 +23,9 @@ public class Image {
 
     @JsonIgnore
     private byte[] fileData;
+
+    @JsonIgnore
+    private byte[] hash;
 
     @JsonIgnore
     private String mimeType;
@@ -39,6 +45,7 @@ public class Image {
         this();
         this.fileData = fileData;
         this.mimeType = mimeType;
+        this.hash = calculateHash(fileData);
     }
 
     public String getId() {
@@ -55,6 +62,15 @@ public class Image {
 
     public void setFileData(byte[] fileData) {
         this.fileData = fileData;
+    }
+
+    private byte[] calculateHash(byte[] data) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            return md.digest(data);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String getMimeType() {
@@ -102,5 +118,22 @@ public class Image {
 
     private String createResizedImageKey(Integer width, Integer height) {
         return width + "x" + height;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Image image = (Image) o;
+
+        return (this.fileData.length == image.fileData.length &&
+                Arrays.equals(this.hash, image.hash) &&
+                Arrays.equals(this.fileData, image.fileData));
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(hash);
     }
 }

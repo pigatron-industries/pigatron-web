@@ -31,7 +31,17 @@ public class ImageService extends AbstractRepositoryService<Image> {
 
     public Image save(byte[] fileData, String mimeType) {
         Image image = new Image(fileData, mimeType);
-        return super.save(image);
+        return save(image);
+    }
+
+    @Override
+    public Image save(Image image) {
+        Optional<Image> existingImage = getExistingImage(image);
+        if(existingImage.isPresent()) {
+            return existingImage.get();
+        } else {
+            return super.save(image);
+        }
     }
 
     public List<Image> find(ImageQuery query) {
@@ -80,5 +90,10 @@ public class ImageService extends AbstractRepositoryService<Image> {
         java.util.List<Image> images = imageRepository.findAll();
         images.forEach(Image::removeResizedImages);
         imageRepository.save(images);
+    }
+
+    private Optional<Image> getExistingImage(Image inputImage) {
+        List<Image> allImages = imageRepository.findAll();
+        return allImages.stream().filter(image -> image.equals(inputImage)).findAny();
     }
 }
