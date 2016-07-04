@@ -66,6 +66,7 @@ allprojects {
 		module {
 			excludeDirs += file('node_modules')
 			excludeDirs += file('bower_components')
+			excludeDirs += file('typings')
 			testSourceDirs += file('src/test-integration/java')
 			testSourceDirs += file('src/test-functional/java')
 		}
@@ -114,13 +115,24 @@ subprojects {
 	}
 
 	task webResourceBuildLocal(type: NodeTask) {
+		doFirst {
+			if (!file("gulpfile.js").exists() ) {
+				throw new StopExecutionException()
+			}
+		}
 		script = file('../node_modules/gulp/bin/gulp.js')
 		args = ['localBuild']
+		inputs.file file("gulpfile.js")
 		inputs.dir file("src/main/resources/static")
 		outputs.dir file("$buildDir/resources/main/static")
 	}
 
 	task webResourceBuildLib(type: NodeTask) {
+		doFirst {
+			if (!file("gulpfile.js").exists() ) {
+				throw new StopExecutionException()
+			}
+		}
 		script = file('../node_modules/gulp/bin/gulp.js')
 		args = ['libBuild']
 		inputs.file file("gulpfile.js")
@@ -128,7 +140,19 @@ subprojects {
 		outputs.dir file("$buildDir/resources/main/static")
 		dependsOn bowerInstall
 	}
+	task webpack(type: NodeTask) {
+		doFirst {
+			if (!file("webpack.config.js").exists() ) {
+				throw new StopExecutionException()
+			}
+		}
+		script = file('../node_modules/webpack/bin/webpack.js')
+		inputs.file file("webpack.config.js")
+		inputs.dir file("src/main/resources/static")
+		outputs.dir file("$buildDir/resources/main/static")
+	}
 
+	processResources.dependsOn webpack
 	processResources.dependsOn webResourceBuildLocal
 	build.dependsOn webResourceBuildLib
 	webResourceBuildLocal.mustRunAfter webResourceBuildLib
@@ -163,6 +187,8 @@ targetCompatibility = 1.8
 dependencies {
 	compile project(":web-admin-shop")
 	compile project(":web-public-cms")
+
+	compile project(":web-public-core2")
 }
 
 task dependencyReport(type: NodeTask) {
