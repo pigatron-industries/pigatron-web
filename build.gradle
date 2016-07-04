@@ -187,8 +187,6 @@ targetCompatibility = 1.8
 dependencies {
 	compile project(":web-admin-shop")
 	compile project(":web-public-cms")
-
-	compile project(":web-public-core2")
 }
 
 task dependencyReport(type: NodeTask) {
