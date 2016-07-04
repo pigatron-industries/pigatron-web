@@ -4,7 +4,7 @@ CKEDITOR.editorConfig = function( config ) {
     // For complete reference see:
     // http://docs.ckeditor.com/#!/api/CKEDITOR.config
     config.skin = 'pigatron';
-    config.extraPlugins = 'wpmore';
+    config.extraPlugins = 'wpmore,pgimage';
 
     config.toolbar = [
         { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
@@ -14,7 +14,7 @@ CKEDITOR.editorConfig = function( config ) {
         { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat', '-' ] },
         { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-' ] },
         { name: 'links', items: [ 'Link', 'Unlink', '-' ] },
-        { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'WPMore' ] },
+        { name: 'insert', items: [ 'Table', 'HorizontalRule', 'SpecialChar', 'pgImage', 'WPMore' ] },
         { name: 'document', items: [ 'Source' ] }
     ];
 

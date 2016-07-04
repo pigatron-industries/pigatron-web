@@ -6,6 +6,7 @@ var ContentsController = require("./content/ContentsController");
 var ContentController = require("./content/ContentController");
 var ContentService = require("./content/ContentService");
 var ContentValidators = require("./content/ContentValidators");
+var ImageDialogController = require("./content/ImageDialogController");
 
 var ImagesController = require("./image/ImagesController");
 var ImageService = require("./image/ImageService");
@@ -34,6 +35,7 @@ angular.module('admin.cms', [
 register('admin.cms')
     .controller('ContentsController', ContentsController)
     .controller('ContentController', ContentController)
+    .controller('ImageDialogController', ImageDialogController)
     .service('contentService', ContentService)
     .controller('ImagesController', ImagesController)
     .service('imageService', ImageService)

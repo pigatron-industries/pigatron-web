@@ -514,3 +514,9 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
 /*[ng-include].ng-leave-active {*/
     /*opacity: 0;*/
 /*}*/
+
+
+
+md-dialog-content, md-dialog-content md-tabs {
+    height:100%;
+}
