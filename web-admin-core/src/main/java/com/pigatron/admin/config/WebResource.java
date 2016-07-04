@@ -5,6 +5,8 @@ public class WebResource implements Comparable<WebResource> {
     private String filename;
     private WebResourceType type;
 
+    private static final String[] sortKeywords = {"polyfill", "lib", "core"};
+
     public WebResource(String filename, WebResourceType type) {
         this.filename = filename;
         this.type = type;
@@ -20,18 +22,15 @@ public class WebResource implements Comparable<WebResource> {
 
     @Override
     public int compareTo(WebResource other) {
-        if (this.getFilename().contains("lib") && !other.getFilename().contains("lib")) {
-            return -1;
-        } else if (!this.getFilename().contains("lib") && other.getFilename().contains("lib")) {
-            return 1;
-        } else {
-            if(this.getFilename().contains("core") && !other.getFilename().contains("core")) {
+        for(String keyword : sortKeywords) {
+            if(this.getFilename().contains(keyword) && !other.getFilename().contains(keyword)) {
                 return -1;
-            } else if (!this.getFilename().contains("core") && other.getFilename().contains("core")) {
+            } else if(!this.getFilename().contains(keyword) && other.getFilename().contains(keyword)) {
                 return 1;
-            } else {
-                return 0;
+            } else if(this.getFilename().contains(keyword) && other.getFilename().contains(keyword)) {
+                return this.getFilename().compareTo(other.getFilename());
             }
         }
+        return this.getFilename().compareTo(other.getFilename());
     }
 }
