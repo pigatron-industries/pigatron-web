@@ -1,6 +1,6 @@
 package com.pigatron.cms.pub.config;
 
-import com.pigatron.admin.config.SubModules;
+import com.pigatron.web.admin.config.SubModules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 

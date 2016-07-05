@@ -1,0 +1,9 @@
+
+dependencies {
+    compile project(":web-server-cms")
+
+    integrationTestCompile('com.jayway.restassured:rest-assured:2.9.0')
+    integrationTestCompile project(":web-server-security").sourceSets.integrationTest.output
+    integrationTestCompile project(":web-server-core").sourceSets.integrationTest.output
+}
+

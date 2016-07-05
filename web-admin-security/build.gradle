@@ -1,9 +1,7 @@
 
 dependencies {
     compile project(":web-admin-core")
+    compile project(":web-server-security")
     compile("org.springframework.boot:spring-boot-starter-security")
-
-    integrationTestCompile('com.jayway.restassured:rest-assured:2.9.0')
-    integrationTestCompile project(":web-admin-core").sourceSets.integrationTest.output
 }
 

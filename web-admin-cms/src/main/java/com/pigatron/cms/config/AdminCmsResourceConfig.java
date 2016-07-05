@@ -1,8 +1,8 @@
 package com.pigatron.cms.config;
 
-import com.pigatron.admin.config.SubModules;
-import com.pigatron.admin.menu.MenuAction;
-import com.pigatron.admin.menu.MenuItem;
+import com.pigatron.web.admin.config.SubModules;
+import com.pigatron.web.admin.menu.MenuAction;
+import com.pigatron.web.admin.menu.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

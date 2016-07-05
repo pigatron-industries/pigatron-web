@@ -97,6 +97,11 @@ subprojects {
 	// Web Resource Handling
 	apply plugin: "com.moowork.node"
 	task bowerInstall(type: NodeTask) {
+		doFirst {
+			if (!file("bower.json").exists() ) {
+				throw new StopExecutionException()
+			}
+		}
 		script = file('../node_modules/bower/bin/bower')
 		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
 				"--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",

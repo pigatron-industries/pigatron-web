@@ -1,6 +1,6 @@
 package com.pigatron;
 
-import com.pigatron.admin.security.test.AbstractAdminSecurityIntegrationTest;
+import com.pigatron.web.admin.security.test.AbstractAdminSecurityIntegrationTest;
 import org.gradle.tooling.BuildLauncher;
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;

@@ -1,9 +1,9 @@
 package com.pigatron.pub.web;
 
-import com.pigatron.admin.config.SubModules;
-import com.pigatron.admin.config.WebResources;
-import com.pigatron.admin.settings.SettingsService;
-import com.pigatron.admin.settings.website.WebSiteSettings;
+import com.pigatron.web.admin.config.SubModules;
+import com.pigatron.web.admin.config.WebResources;
+import com.pigatron.web.core.settings.SettingsService;
+import com.pigatron.web.core.settings.website.WebSiteSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

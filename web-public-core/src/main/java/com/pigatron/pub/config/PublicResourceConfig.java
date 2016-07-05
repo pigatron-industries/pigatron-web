@@ -1,9 +1,9 @@
 package com.pigatron.pub.config;
 
 
-import com.pigatron.admin.config.AdminResourceConfig;
-import com.pigatron.admin.config.SubModules;
-import com.pigatron.admin.config.WebResources;
+import com.pigatron.web.admin.config.AdminResourceConfig;
+import com.pigatron.web.admin.config.SubModules;
+import com.pigatron.web.admin.config.WebResources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

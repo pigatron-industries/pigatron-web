@@ -1,0 +1,12 @@
+
+dependencies {
+    compile project(":web-server-security")
+    compile('net.coobird:thumbnailator:0.4.8')
+
+    testCompile('uk.co.datumedge:hamcrest-json:0.2')
+
+    integrationTestCompile('com.jayway.restassured:rest-assured:2.9.0')
+    integrationTestCompile project(":web-server-security").sourceSets.integrationTest.output
+    integrationTestCompile project(":web-server-core").sourceSets.integrationTest.output
+}
+
