@@ -2,8 +2,6 @@
   "name": "web-public-core",
   "version": "0.0.1",
   "dependencies": {
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/router": "3.0.0-beta.2"
   },
   "devDependencies": {
     "typings":"^1.0.4"

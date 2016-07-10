@@ -1,6 +1,25 @@
 {
   "name": "application-name",
   "version": "0.0.1",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.2",
+    "@angular/upgrade": "2.0.0-rc.4",
+
+    "core-js": "^2.4.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12",
+
+    "@angular2-material/core": "2.0.0-alpha.6",
+    "@angular2-material/tabs": "2.0.0-alpha.6"
+  },
   "devDependencies": {
     "bower": "1.7.9",
     "gulp": "3.9.1",
