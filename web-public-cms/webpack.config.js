@@ -11,7 +11,6 @@ var paths = {
 
 var files = {
     tsMain: paths.src+'/public/'+moduleName+'/main.ts',
-    //tsIgnore: paths.src+'/public/'+moduleName+'/ignore.ts',
     jsOutput: paths.dst+'/public/[name].js'
 };
 
@@ -66,9 +65,11 @@ module.exports = {
         })
     ],
     externals:[
-        {
-            "@angular/core": "var window.pigatron.public_lib",
-            "@angular/router": "var window.pigatron.public_lib"
+        function(context, request, callback) {
+            if(/^@angular/.test(request) ||
+               /^rxjs/.test(request))
+                return callback(null, "var window.pigatron.public_lib");
+            callback();
         }
     ]
 };
