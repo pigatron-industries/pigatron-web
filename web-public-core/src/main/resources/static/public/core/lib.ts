@@ -13,5 +13,9 @@ import "@angular2-material/tabs";
 
 // Angular Material
 
-export * from '@angular/router';
+
+// Exports
 export * from "@angular/core";
+export * from '@angular/router';
+export * from "@angular/http";
+export * from "rxjs/Observable";

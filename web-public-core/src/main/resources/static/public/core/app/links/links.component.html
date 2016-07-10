@@ -1,0 +1,22 @@
+<md-tab-group>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/']">Shop</a></template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/blog']">Blog</a></template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/page']">About</a></template>
+    </md-tab>
+
+    <!-- TODO may need to make custom tab directive to add right tabs -->
+    <div style="flex-grow:1;" class="tabGrow">
+    </div>
+
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/account']">Account</a></template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/basket']">Basket</a></template>
+    </md-tab>
+</md-tab-group>

@@ -1,13 +1,15 @@
 import {Component} from "@angular/core";
 import {ROUTER_DIRECTIVES, Router, RouterConfig} from "@angular/router";
-import {MD_TABS_DIRECTIVES} from "@angular2-material/tabs";
+import {HTTP_PROVIDERS} from "@angular/http";
 import {routes as coreRoutes} from "./app.routes";
+import {LinksComponent} from "./links/links.component";
 
 
 @Component({
     selector: 'pg-public-app',
     templateUrl: '/public/core/app/app.component.html',
-    directives: [ROUTER_DIRECTIVES, MD_TABS_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, LinksComponent],
+    providers: [HTTP_PROVIDERS]
 })
 export class PublicAppComponent {
 
