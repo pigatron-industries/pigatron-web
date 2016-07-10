@@ -28,15 +28,6 @@ public class PublicController {
         return publicWebResources;
     }
 
-    @ModelAttribute("submodules")
-    public String getSubmodules() {
-        //TODO pass back list and create js array in template
-        String s = publicSubmodules.getSubmodules().toString();
-        s = s.substring(1, s.length()-1);
-        s = s.replaceAll("\\s","");
-        return s;
-    }
-
     @ModelAttribute("settings")
     public WebSiteSettings webSiteSettings() {
         return (WebSiteSettings)settingsService.findOne(WebSiteSettings.ID);

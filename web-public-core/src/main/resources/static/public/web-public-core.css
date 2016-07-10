@@ -1,4 +1,13 @@
 
+/***** colours should use material theme when it is done *****/
+
+.md-default-theme.md-bg {
+    background-color: rgb(44, 62, 80);
+}
+
+
+
+
 /* Typography */
 
 h1 {
@@ -14,14 +23,17 @@ body {
     margin:0;
     padding:0;
     height:100%;
+    background-color: rgb(250,250,250);
     /*overflow-x: hidden;*/
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 md-content {
     overflow-x: hidden;
 }
 
-#page {
+#app {
     min-height:100%;
     position:relative;
 }
@@ -96,67 +108,51 @@ md-progress-linear {
     z-index: 100;
 }
 
-/* Menu Bar */
-
-md-menu-bar {
-}
-
-md-menu-bar button {
-    font-size:100%;
-    height:30px;
-    color: #FFFFFF;
-    font-weight: bold;
-    background: transparent !important;
-}
-
-md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus {
-    color: #FFFFFF;
-    font-weight: bold;
-    background-color: rgba(255,255,255,0.1) !important;
-}
-
-/* Menu items white text */
-md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item a,
-md-menu-item button {
-    color: white !important;
-}
-
-md-menu-item>.md-button, md-menu>.md-button {
-    font-size:100%;
-    font-weight: bold !important;
-}
-
-md-menu-divider {
-    background-color: rgba(255,255,255,0.2) !important;
-}
-
 
 /* Top tabs */
-md-tabs {
+md-tab-group {
     background-color: #eeeeee;
-    border-bottom: 1px solid #ccc;
 }
 
-md-tabs-canvas, md-pagination-wrapper {
+.md-tab-header {
     height:36px;
-    width:100% !important;
+    border-bottom: 1px solid #ccc !important;
 }
+
+.md-tab-label {
+    line-height:36px !important;
+    opacity: 1 !important;
+    min-width: 40px !important;
+    padding: 0px 24px !important;
+}
+
+.md-tab-label a {
+    color: rgba(0,0,0,0.54);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.md-tab-label.md-active a {
+    color: rgb(44,62,80);
+}
+
+.md-tab-label:focus {
+    background-color:#dbe3eb !important;
+}
+
 
 .tabsRight md-pagination-wrapper {
     left: inherit;
     right: 0;
 }
 
-.md-tab {
-    padding: 6px 24px;
-}
-
-md-tabs.md-hue-1 md-ink-bar {
-    background-color: #eb3573;
-}
-
 .tabRight {
-    float: right;
+    right: 0;
+    position: absolute;
+}
+
+md-ink-bar {
+    background-color: #eb3573 !important;
 }
 
 
@@ -248,120 +244,6 @@ md-button {
 }
 
 
-/* Tables */
-
-div.fullTable.loaded .ui-grid-cell {
-    /*transition: all .3s cubic-bezier(.55,0,.55,.2);*/
-}
-
-.tablearea {
-    border-left: 1px solid #dddddd;
-}
-
-div.fullTable {
-    border: none;
-    transition: opacity .3s cubic-bezier(.55,0,.55,.2);
-}
-
-div.fullTable.loading {
-    opacity: 0;
-}
-
-div.ui-grid-top-panel {
-    background: none;
-}
-
-div.ui-grid-menu-button {
-    border:none;
-    background:none;
-}
-
-.ui-grid-menu-items {
-    background-color: rgb(44,62,80);
-}
-
-.ui-grid-menu .ui-grid-menu-inner ul li button.ui-grid-menu-item-active {
-    background-color: rgb(62, 87, 113);
-}
-
-button.ui-grid-menu-item {
-    color: white;
-}
-
-div.ui-grid-cell-checkbox {
-    text-align: center;
-}
-
-div.ui-grid-cell-checkbox md-checkbox {
-    width:20px;
-}
-
-div.ui-grid-cell-input {
-    height:28px;
-}
-
-div.ui-grid-cell input {
-    height:100%;
-    padding-left: 5px;
-    background-color: transparent;
-}
-
-div.ui-grid-cell input.ng-valid {
-    border:none;
-    border-bottom: 2px solid rgb(44, 62, 80);
-}
-
-div.ui-grid-cell-focus {
-   background-color: transparent;
-}
-
-.ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
-    background-color: #bdccdb;
-}
-
-.ui-grid-selection-row-header-buttons:hover {
-    color: rgb(216,21,87);
-    opacity: 1;
-}
-
-a.ui-grid-cell-contents {
-    display: block;
-    cursor: pointer;
-    color: rgb(44, 62, 80);
-}
-
-
-/* Tree */
-
-span.tree-collapse {
-    width: 12px;
-    text-align: center;
-}
-
-a:not(.md-button) {
-    color: rgb(44, 62, 80);
-}
-a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
-    cursor: pointer;
-}
-
-.tree-node, .selectable-item {
-    background-color: #eeeeee;
-    padding: 5px;
-    margin-top: 2px;
-    border-right: 3px solid transparent;
-    line-height: 20px;
-}
-
-.tree-node.selected, .selectable-item.selected {
-    border-right: 3px solid #E91E63;
-}
-
-.tree-action {
-    float:right;
-    padding-right: 4px;
-    padding-left: 4px;
-}
 
 
 /* Image previews */
@@ -382,21 +264,6 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
     width: auto;
     max-width: 100%;
 }
-
-.sortableContainer {
-    display: inline-block;
-}
-
-.sortableImages .as-sortable-item,
-.sortableImages .as-sortable-placeholder {
-    display: table;
-    height: 160px;
-    float: left;
-    border-radius: 0;
-    padding: 6px;
-    margin: 8px;
-}
-
 
 /* View transitions */
 /*.view-container,*/

@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head('Shop Name', ${submodules}, ${metadata}, ${resources})"></head>
-<body ng-app="public" ng-strict-di="ng-strict-di">
-<div id="page">
+<head th:include="fragments/head :: head('Shop Name', ${metadata}, ${resources})"></head>
+<body>
+<div id="app">
     <header th:replace="fragments/header :: header"></header>
-
-    <div ng-controller="PublicController as public" ng-cloak="ng-cloak" class="ng-cloak">
-        <md-content>
-            <div th:replace="fragments/tabs :: tabs(${settings.links})"></div>
-            <div layout="row">
-                <div id="leftSidebar" class="view-container" flex="20">
-                    <div ui-view="leftSidebar"></div>
-                </div>
-                <div id="content" class="view-container" flex="60">
-                    <div ui-view="content"></div>
-                </div>
-                <div id="rightSidebar" class="view-container" flex="20">
-                    <div ui-view="rightSidebar"></div>
-                </div>
-            </div>
-        </md-content>
-    </div>
-
+    <pg-public-app>Loading...</pg-public-app>
 </div>
+<div th:include="fragments/scripts :: scripts(${resources})"></div>
 </body>
 </html>

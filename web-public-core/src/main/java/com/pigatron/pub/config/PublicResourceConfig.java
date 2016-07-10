@@ -2,7 +2,6 @@ package com.pigatron.pub.config;
 
 
 import com.pigatron.web.admin.config.AdminResourceConfig;
-import com.pigatron.web.admin.config.SubModules;
 import com.pigatron.web.admin.config.WebResources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,11 +28,6 @@ public class PublicResourceConfig extends WebMvcConfigurerAdapter {
     @Bean
     public WebResources publicWebResources() throws IOException {
         return resourceConfig.findWebResources("public");
-    }
-
-    @Bean
-    public SubModules publicSubmodules() {
-        return new SubModules();
     }
 
 }

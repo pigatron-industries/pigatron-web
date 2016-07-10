@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="scripts(resources)">
+	<th:block th:each="resource:${resources.webResources}">
+		<script th:if="${resource.type.name()=='JS'}" th:src="@{/public/}+${resource.filename}"></script>
+	</th:block>
+</div>
+<body>
+
+</body>
+</html>

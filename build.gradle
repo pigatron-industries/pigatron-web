@@ -111,6 +111,7 @@ subprojects {
 		outputs.dir file('bower_components')
 		dependsOn ':npmInstall'
 	}
+
 	task bowerList(type: NodeTask) {
 		script = file('../node_modules/bower/bin/bower')
 		args = ["list", "--json"]
@@ -145,6 +146,7 @@ subprojects {
 		outputs.dir file("$buildDir/resources/main/static")
 		dependsOn bowerInstall
 	}
+
 	task webpack(type: NodeTask) {
 		doFirst {
 			if (!file("webpack.config.js").exists() ) {
@@ -153,8 +155,11 @@ subprojects {
 		}
 		script = file('../node_modules/webpack/bin/webpack.js')
 		inputs.file file("webpack.config.js")
+		inputs.file file("typings.json")
+		inputs.file file("tsconfig.json")
 		inputs.dir file("src/main/resources/static")
 		outputs.dir file("$buildDir/resources/main/static")
+		dependsOn npmInstall
 	}
 
 	processResources.dependsOn webpack
@@ -191,7 +196,7 @@ targetCompatibility = 1.8
 
 dependencies {
 	compile project(":web-admin-shop")
-	compile project(":web-public-cms")
+	compile project(":web-public-shop")
 }
 
 task dependencyReport(type: NodeTask) {

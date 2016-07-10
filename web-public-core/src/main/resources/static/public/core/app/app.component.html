@@ -1,0 +1,36 @@
+<md-content>
+
+<md-tab-group>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/']">Shop</a></template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/blog']">Blog</a></template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/page']">About</a></template>
+    </md-tab>
+    <md-tab style="flex-grow:1;" class="tabGrow">
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/account']">Account</a></template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label><a [routerLink]="['/basket']">Basket</a></template>
+    </md-tab>
+</md-tab-group>
+
+
+<div layout="row" style="display:flex;flex-direction:row">
+    <div id="leftSidebar" class="view-container" flex="20" style="flex:20%;">
+        <router-outlet name="leftSidebar"></router-outlet>
+    </div>
+    <div id="content" class="view-container" flex="60" style="flex:60%;">
+        <router-outlet></router-outlet>
+    </div>
+    <div id="rightSidebar" class="view-container" flex="20" style="flex:20%;">
+        <router-outlet name="rightSidebar"></router-outlet>
+    </div>
+</div>
+
+</md-content>
