@@ -7,7 +7,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "baseUrl": "..",
+    "paths": {
+      "pigatron/*" : ["./web-public-core/src/main/resources/static/*"]
+    }
   },
   "exclude": [
     "node_modules",

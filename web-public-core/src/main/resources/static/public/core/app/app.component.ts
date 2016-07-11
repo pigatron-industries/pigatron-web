@@ -25,9 +25,10 @@ export class PublicAppComponent {
     loadModules() {
         this.routes = coreRoutes;
 
-        for(var moduleName in window.pigatron) {
-            if(window.pigatron.hasOwnProperty(moduleName)) {
-                this.loadModule(window.pigatron[moduleName]);
+        let pigatron = window["pigatron"];
+        for(var moduleName in pigatron) {
+            if(pigatron.hasOwnProperty(moduleName)) {
+                this.loadModule(pigatron[moduleName]);
             }
         }
 

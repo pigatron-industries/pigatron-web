@@ -37,7 +37,7 @@
     "webpack-stream": "*",
     "protractor": "*",
 
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.0-beta",
     "webpack": "^1.13.0",
     "webpack-fail-plugin": "^1.0.4",
     "ts-loader": "^0.8.1",
