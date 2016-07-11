@@ -16,7 +16,6 @@ var files = {
 
 module.exports = {
     entry: {
-        //'ignore': files.tsIgnore,
         'public_cms': files.tsMain
     },
     output: {
@@ -66,11 +65,11 @@ module.exports = {
     ],
     externals:[
         function(context, request, callback) {
-            if(request.indexOf("@angular") ||
-                request.indexOf("rxjs"))
+            if(request.indexOf("@angular") != -1 ||
+                request.indexOf("rxjs") != -1)
                 return callback(null, "var window.pigatron.public_lib");
-            else if(request.indexOf("pigatron/public/core"))
-                return callback(null, "var window.pigatron.public_core");
+            else if(request.indexOf("pigatron/public/core") != -1)
+               return callback(null, "var window.pigatron.public_core");
             callback();
         }
     ]

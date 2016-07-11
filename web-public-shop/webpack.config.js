@@ -67,10 +67,10 @@ module.exports = {
     ],
     externals:[
         function(context, request, callback) {
-            if(request.indexOf("@angular") ||
-               request.indexOf("rxjs"))
+            if(request.indexOf("@angular") != -1 ||
+                request.indexOf("rxjs") != -1)
                 return callback(null, "var window.pigatron.public_lib");
-            else if(request.indexOf("pigatron/public/core"))
+            else if(request.indexOf("pigatron/public/core") != -1)
                 return callback(null, "var window.pigatron.public_core");
             callback();
         }
