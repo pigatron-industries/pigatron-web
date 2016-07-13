@@ -2,7 +2,6 @@ package com.pigatron.web.cms.content.repository;
 
 
 import com.pigatron.web.cms.content.entity.Content;
-import com.pigatron.web.cms.content.entity.ContentQuery;
 import com.pigatron.web.cms.content.entity.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -18,9 +17,14 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
     MongoOperations mongoOperations;
 
     @Override
-    public List<Content> find(ContentQuery productQuery) {
+    public List<Content> find(ContentQuery contentQuery) {
         Query query = new Query();
         return mongoOperations.find(query, Content.class);
+    }
+
+    @Override
+    public List<Content> find(PostQuery postQuery) {
+        return mongoOperations.find(postQuery.createQuery(), Content.class);
     }
 
     @Override

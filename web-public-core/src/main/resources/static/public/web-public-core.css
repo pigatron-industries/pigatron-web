@@ -123,13 +123,15 @@ md-tab-group {
     line-height:36px !important;
     opacity: 1 !important;
     min-width: 40px !important;
-    padding: 0px 24px !important;
+    padding: 0px !important;
 }
 
 .md-tab-label a {
+    display: block;
     color: rgba(0,0,0,0.54);
     text-decoration: none;
     text-transform: uppercase;
+    padding: 0px 24px;
 }
 
 .md-tab-label.md-active a {

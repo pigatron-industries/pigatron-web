@@ -1,7 +1,7 @@
 package com.pigatron.web.cms.content.web;
 
 import com.pigatron.web.cms.content.entity.Content;
-import com.pigatron.web.cms.content.entity.ContentQuery;
+import com.pigatron.web.cms.content.repository.ContentQuery;
 import com.pigatron.web.cms.content.service.ContentService;
 import com.pigatron.web.core.api.AbstractWriteRestController;
 import com.pigatron.web.core.exception.InvalidParameterException;

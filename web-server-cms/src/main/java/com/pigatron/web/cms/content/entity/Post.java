@@ -6,7 +6,7 @@ import com.pigatron.web.core.api.View;
 
 import java.util.Date;
 
-public class Post {
+public class Post extends Content {
 
     @JsonView({View.Summary.class, View.Public.class})
     private Date publishedDate;
