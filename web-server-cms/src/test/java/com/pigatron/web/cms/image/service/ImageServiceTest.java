@@ -1,8 +1,7 @@
-package service;
+package com.pigatron.web.cms.image.service;
 
 import com.pigatron.web.cms.image.entity.Image;
 import com.pigatron.web.cms.image.repository.ImageRepository;
-import com.pigatron.web.cms.image.service.ImageService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

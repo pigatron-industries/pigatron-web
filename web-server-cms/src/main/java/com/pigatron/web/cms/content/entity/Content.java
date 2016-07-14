@@ -8,18 +8,24 @@ import org.springframework.data.annotation.Id;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public class Content {
 
+    public static final String CONTENT_BREAK = "<!--more-->";
+
+
     @Id
-    @JsonView({View.Summary.class, View.Public.class})
+    @JsonView({View.AdminSummary.class, View.Public.class})
     private String id;
 
-    @JsonView(View.Summary.class)
+    @JsonView(View.AdminSummary.class)
     private String type;
 
-    @JsonView(View.Summary.class)
+    @JsonView(View.AdminSummary.class)
     private boolean enabled;
 
     @JsonView(View.Public.class)
     private String content;
+
+    @JsonView(View.PublicSummary.class)
+    private String contentPreBreak;
 
 
     public String getId() {
@@ -52,5 +58,17 @@ public class Content {
 
     public void setContent(String content) {
         this.content = content;
+        int indexOfBreak = content.indexOf(CONTENT_BREAK);
+        if(indexOfBreak != -1) {
+            setContentPreBreak(content.substring(0, indexOfBreak));
+        }
+    }
+
+    public String getContentPreBreak() {
+        return contentPreBreak;
+    }
+
+    private void setContentPreBreak(String contentPreBreak) {
+        this.contentPreBreak = contentPreBreak;
     }
 }

@@ -41,7 +41,7 @@ public class PublicContentController  {
     @RequestMapping(value = "/post", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get posts")
-    @JsonView(View.Public.class)
+    @JsonView(View.PublicSummary.class)
     public List<Content> getPosts(@RequestParam(value="page", required=false) Integer page,
                                   @RequestParam(value="length", required=false) Integer length,
                                   @RequestParam(value="dir", required=false) Sort.Direction direction,

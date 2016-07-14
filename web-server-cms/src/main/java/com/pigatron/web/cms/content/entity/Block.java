@@ -6,7 +6,7 @@ import com.pigatron.web.core.api.View;
 
 public class Block extends Content {
 
-    @JsonView(View.Summary.class)
+    @JsonView(View.AdminSummary.class)
     private String name;
 
     public String getName() {

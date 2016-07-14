@@ -7,10 +7,10 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class Page extends Content {
 
     @Indexed(unique = true)
-    @JsonView({View.Summary.class, View.Public.class})
+    @JsonView({View.AdminSummary.class, View.Public.class})
     private String urlKey;
 
-    @JsonView({View.Summary.class, View.Public.class})
+    @JsonView({View.AdminSummary.class, View.Public.class})
     private String title;
 
 
