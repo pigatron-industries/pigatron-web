@@ -12,17 +12,17 @@ public class ContentTest {
 
 
     @Test
-    public void setContent_shouldNotSetPreBreakContent_whenNoBreakExists() {
+    public void setContent_shouldNotSetContentSummary_whenNoBreakExists() {
         Content content = new Content();
         content.setContent("<p>No Break</p>");
-        assertThat(content.getContentPreBreak()).isNull();
+        assertThat(content.getContentSummary()).isNull();
     }
 
     @Test
-    public void setContent_shouldSetPreBreakContent_whenBreakExists() {
+    public void setContent_shouldSetContentSummary_whenBreakExists() {
         Content content = new Content();
         content.setContent("<p>Before Break</p><!--more--><p>After Break</p>");
-        assertThat(content.getContentPreBreak()).isEqualTo("<p>Before Break</p>");
+        assertThat(content.getContentSummary()).isEqualTo("<p>Before Break</p>");
     }
 
 }

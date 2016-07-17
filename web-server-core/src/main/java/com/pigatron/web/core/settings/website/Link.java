@@ -1,12 +1,25 @@
 package com.pigatron.web.core.settings.website;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.web.core.api.View;
+
 public class Link {
 
+    @JsonView(View.Public.class)
     private LinkType type;
+
+    @JsonView(View.Public.class)
     private LinkPosition position;
+
+    @JsonView(View.Public.class)
     private String title;
+
+    @JsonView(View.Public.class)
     private String action;
+
+    @JsonView(View.Public.class)
     private String cssClass;
+
 
     public Link() {
     }
