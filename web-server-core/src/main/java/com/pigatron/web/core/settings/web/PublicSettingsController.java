@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "${url.admin}/api/settings", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "${url.public}/api/settings", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PublicSettingsController {
 
     private SettingsService settingsService;
