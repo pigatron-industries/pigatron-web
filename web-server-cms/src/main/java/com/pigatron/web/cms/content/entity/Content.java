@@ -12,7 +12,7 @@ public class Content {
 
 
     @Id
-    @JsonView({View.AdminSummary.class, View.Public.class})
+    @JsonView({View.AdminSummary.class, View.Public.class, View.PublicSummary.class})
     private String id;
 
     @JsonView(View.AdminSummary.class)
@@ -25,7 +25,7 @@ public class Content {
     private String content;
 
     @JsonView(View.PublicSummary.class)
-    private String contentPreBreak;
+    private String contentSummary;
 
 
     public String getId() {
@@ -60,15 +60,15 @@ public class Content {
         this.content = content;
         int indexOfBreak = content.indexOf(CONTENT_BREAK);
         if(indexOfBreak != -1) {
-            setContentPreBreak(content.substring(0, indexOfBreak));
+            setContentSummary(content.substring(0, indexOfBreak));
         }
     }
 
-    public String getContentPreBreak() {
-        return contentPreBreak;
+    public String getContentSummary() {
+        return contentSummary;
     }
 
-    private void setContentPreBreak(String contentPreBreak) {
-        this.contentPreBreak = contentPreBreak;
+    private void setContentSummary(String contentSummary) {
+        this.contentSummary = contentSummary;
     }
 }

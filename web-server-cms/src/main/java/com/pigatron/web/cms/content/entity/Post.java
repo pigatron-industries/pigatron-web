@@ -8,10 +8,10 @@ import java.util.Date;
 
 public class Post extends Content {
 
-    @JsonView({View.AdminSummary.class, View.Public.class})
+    @JsonView({View.AdminSummary.class, View.Public.class, View.PublicSummary.class})
     private Date publishedDate;
 
-    @JsonView({View.AdminSummary.class, View.Public.class})
+    @JsonView({View.AdminSummary.class, View.Public.class, View.PublicSummary.class})
     private String title;
 
 
