@@ -1,7 +1,9 @@
-package com.pigatron.web.core.settings;
+package com.pigatron.web.core.settings.web;
 
 
 import com.pigatron.web.core.api.AbstractWriteRestController;
+import com.pigatron.web.core.settings.Settings;
+import com.pigatron.web.core.settings.SettingsService;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

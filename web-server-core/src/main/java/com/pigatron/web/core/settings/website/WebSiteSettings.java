@@ -1,6 +1,8 @@
 package com.pigatron.web.core.settings.website;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pigatron.web.core.api.View;
 import com.pigatron.web.core.settings.Settings;
 
 import java.util.ArrayList;
@@ -9,12 +11,14 @@ import java.util.List;
 public class WebSiteSettings extends Settings {
 
     public static final String ID = "website";
-    public static final String GROUP = "Web";
     public static final String NAME = "Web Site";
+    public static final String GROUP = "Web";
 
 
+    @JsonView(View.Public.class)
     private String title;
 
+    @JsonView(View.Public.class)
     List<Link> links = new ArrayList<>();
 
 
