@@ -1,22 +1,11 @@
-<md-tab-group>
-    <md-tab>
-        <template md-tab-label><a [routerLink]="['/']">Shop</a></template>
-    </md-tab>
-    <md-tab>
-        <template md-tab-label><a [routerLink]="['/blog']">Blog</a></template>
-    </md-tab>
-    <md-tab>
-        <template md-tab-label><a [routerLink]="['/page/about']">About</a></template>
+<md-tab-group *ngIf="loaded">
+
+    <md-tab *ngFor="let link of settings.links">
+        <template md-tab-label><a [routerLink]="[link.action]" [innerHTML]="link.title"></a></template>
     </md-tab>
 
-    <!-- TODO may need to make custom tab directive to add right tabs -->
-    <div style="flex-grow:1;" class="tabGrow">
-    </div>
+    <!--&lt;!&ndash; TODO may need to make custom tab directive to add right side tabs &ndash;&gt;-->
+    <!--<div style="flex-grow:1;" class="tabGrow">-->
+    <!--</div>-->
 
-    <md-tab>
-        <template md-tab-label><a [routerLink]="['/account']">Account</a></template>
-    </md-tab>
-    <md-tab>
-        <template md-tab-label><a [routerLink]="['/basket']">Basket</a></template>
-    </md-tab>
 </md-tab-group>
