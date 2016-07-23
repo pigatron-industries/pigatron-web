@@ -13,6 +13,9 @@ import "@angular2-material/tabs";
 
 // Angular Material
 
+// Other
+require("font-awesome/css/font-awesome.css");
+
 
 // Exports
 export * from "@angular/core";

@@ -52,7 +52,7 @@ public class CmsRepositorySetupService {
                             .withLinkType(LinkType.ROUTE)
                             .withPosition(LinkPosition.TOP_LEFT)
                             .withTitle("About")
-                            .withAction("page({urlKey:'about'})")
+                            .withAction("/page/about")
                             .build())
                     .build();
             settingsRepository.save(webSiteSettings);
