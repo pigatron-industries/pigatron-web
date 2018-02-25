@@ -1,2 +1,2 @@
-export {routes} from "./cms.routes";
+//export {routes} from "./cms.routes";
 

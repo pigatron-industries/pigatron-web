@@ -1,2 +1,2 @@
-export {routes} from "./shop.routes";
-
+// export {routes} from "./shop.routes";
+//

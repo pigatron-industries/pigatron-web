@@ -1,3 +1,3 @@
-export interface Window {
-    pigatron: any;
-}
+// export interface Window {
+//     pigatron: any;
+// }
