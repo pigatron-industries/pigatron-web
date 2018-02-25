@@ -5,14 +5,16 @@ buildscript {
 		springBootVersion = '1.3.5.RELEASE'
 	}
 	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
 		mavenCentral()
 		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath('com.github.ben-manes:gradle-versions-plugin:0.12.0')
-		classpath("com.moowork.gradle:gradle-node-plugin:0.12")
-		classpath("com.moowork.gradle:gradle-gulp-plugin:0.12")
+		classpath('com.github.ben-manes:gradle-versions-plugin:0.17.0')
+		classpath("com.moowork.gradle:gradle-node-plugin:1.2.0")
 	}
 }
 
@@ -120,32 +122,32 @@ subprojects {
 		}
 	}
 
-	task webResourceBuildLocal(type: NodeTask) {
-		doFirst {
-			if (!file("gulpfile.js").exists() ) {
-				throw new StopExecutionException()
-			}
-		}
-		script = file('../node_modules/gulp/bin/gulp.js')
-		args = ['localBuild']
-		inputs.file file("gulpfile.js")
-		inputs.dir file("src/main/resources/static")
-		outputs.dir file("$buildDir/resources/main/static")
-	}
-
-	task webResourceBuildLib(type: NodeTask) {
-		doFirst {
-			if (!file("gulpfile.js").exists() ) {
-				throw new StopExecutionException()
-			}
-		}
-		script = file('../node_modules/gulp/bin/gulp.js')
-		args = ['libBuild']
-		inputs.file file("gulpfile.js")
-		inputs.dir file("bower_components")
-		outputs.dir file("$buildDir/resources/main/static")
-		dependsOn bowerInstall
-	}
+//	task webResourceBuildLocal(type: NodeTask) {
+//		doFirst {
+//			if (!file("gulpfile.js").exists() ) {
+//				throw new StopExecutionException()
+//			}
+//		}
+//		script = file('../node_modules/gulp/bin/gulp.js')
+//		args = ['localBuild']
+//		inputs.file file("gulpfile.js")
+//		inputs.dir file("src/main/resources/static")
+//		outputs.dir file("$buildDir/resources/main/static")
+//	}
+//
+//	task webResourceBuildLib(type: NodeTask) {
+//		doFirst {
+//			if (!file("gulpfile.js").exists() ) {
+//				throw new StopExecutionException()
+//			}
+//		}
+//		script = file('../node_modules/gulp/bin/gulp.js')
+//		args = ['libBuild']
+//		inputs.file file("gulpfile.js")
+//		inputs.dir file("bower_components")
+//		outputs.dir file("$buildDir/resources/main/static")
+//		dependsOn bowerInstall
+//	}
 
 	task webpack(type: NodeTask) {
 		doFirst {
@@ -163,9 +165,9 @@ subprojects {
 	}
 
 	processResources.dependsOn webpack
-	processResources.dependsOn webResourceBuildLocal
-	build.dependsOn webResourceBuildLib
-	webResourceBuildLocal.mustRunAfter webResourceBuildLib
+	//processResources.dependsOn webResourceBuildLocal
+	//build.dependsOn webResourceBuildLib
+	//webResourceBuildLocal.mustRunAfter webResourceBuildLib
 
 	task cleanWebResources(type: Delete) {
 		delete 'bower_components'
@@ -195,7 +197,7 @@ targetCompatibility = 1.8
 
 
 dependencies {
-	compile project(":web-admin-shop")
+	//compile project(":web-admin-shop")
 	compile project(":web-public-shop")
 }
 
