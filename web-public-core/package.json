@@ -2,7 +2,7 @@
   "name": "web-public-core",
   "version": "0.0.1",
   "devDependencies": {
-    "typings":"^1.0.4"
+    "typings":"^2.1.1"
   },
   "scripts": {
     "postinstall": "typings install"

@@ -74,7 +74,7 @@ allprojects {
 		}
 	}
 	node {
-		version = '6.2.0'
+		version = '8.2.1'
 		download = true
 	}
 	task integrationTest(type: Test) {
