@@ -6,10 +6,8 @@ import {Component} from "@angular/core";
 
 
 @Component({
-    selector: 'pg-public-app',
-    templateUrl: '/public/core/app/app.component.html',
-    //directives: [ROUTER_DIRECTIVES, LinksComponent],
-    //providers: [HTTP_PROVIDERS]
+    selector: 'pg-admin-app',
+    templateUrl: '/public/core/app/app.component.html'
 })
 export class AdminAppComponent {
 
