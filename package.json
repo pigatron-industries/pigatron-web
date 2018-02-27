@@ -16,7 +16,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.6.3",
     "rxjs": "^5.5.2",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "babel-preset-es2015": "*",
