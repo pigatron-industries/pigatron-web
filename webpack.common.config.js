@@ -18,18 +18,18 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
     };
 
     var entry = {};
-    entry[appName+'_'+moduleName] = files.tsMain;
     if(polyfills)
         entry['polyfill'] = files.tsPolyfills;
     if(vendor)
         entry[appName+'_lib'] = files.tsVendor;
+    entry[appName+'_'+moduleName] = files.tsMain;
 
     var names = [];
     names.push(appName+'_'+moduleName);
-    if(polyfills)
-        names.push('polyfill');
     if(vendor)
         names.push(appName+'_lib');
+    if(polyfills)
+        names.push('polyfill');
 
     return {
         entry: entry,
@@ -58,15 +58,20 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
                     use: 'file-loader?name=assets/[name].[hash].[ext]'
                 },
                 {
-                    test: /\.css$/,
-                    exclude: paths.src,
-                    use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
-                },
-                {
-                    test: /\.css$/,
-                    include: paths.src,
-                    use: 'raw-loader'
+                    test:/\.(s*)css$/,
+                    //include: paths.src,
+                    use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader'] })
                 }
+                // {
+                //     test: /\.css$/,
+                //     include: paths.src,
+                //     use: 'raw-loader'
+                // },
+                // {
+                //     test: /\.(s*)css$/,
+                //     include: paths.src,
+                //     use:['css-loader', 'sass-loader']
+                // }
             ]
         },
         plugins: [

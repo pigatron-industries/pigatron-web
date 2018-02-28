@@ -20,18 +20,20 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "*",
+    "protractor": "*",
+    "typescript": "2.3.4",
+    "node-sass": "4.7.2",
+    "webpack": "^3.0.0",
+    "webpack-fail-plugin": "^1.0.4",
+    "webpack-stream": "*",
+    "extract-text-webpack-plugin": "^3.0.0",
     "css-loader": "^0.23.1",
-    "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.3",
     "null-loader": "^0.1.1",
-    "protractor": "*",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.1",
-    "typescript": "2.3.4",
-    "webpack": "^2.0.0",
-    "webpack-fail-plugin": "^1.0.4",
-    "webpack-stream": "*"
+    "sass-loader": "^6.0.6"
   }
 }

@@ -1,0 +1,18 @@
+
+@mixin pg-app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .header {
+    background-color: mat-color($primary);
+  }
+
+  h1 {
+    color: mat-color($primary);
+    font-weight: 500;
+    font-size: 1.8em;
+    border-bottom: 1px solid #cccccc;
+  }
+}

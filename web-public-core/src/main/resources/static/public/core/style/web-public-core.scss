@@ -1,21 +1,21 @@
+@import '~@angular/material/theming';
+
+@import 'pg-palette';
+@import 'pg-app-theme';
+
+@include mat-core();
+
+$custom-theme-primary: mat-palette($pg-palette-midnight);
+$custom-theme-accent: mat-palette($pg-palette-pink, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+@include angular-material-theme($custom-theme);
+@include pg-app-theme($custom-theme);
+
 
 /***** colours should use material theme when it is done *****/
 
-.md-default-theme.md-bg {
-    background-color: rgb(44, 62, 80);
-}
-
-
-
-
-/* Typography */
-
-h1 {
-    color: rgb(44, 62, 80);
-    font-weight: 500;
-    font-size: 1.8em;
-    border-bottom: 1px solid #cccccc;
-}
 
 /* Page */
 html,
