@@ -1,12 +1,22 @@
+@import '~@angular/material/theming';
 
-/* Extra colours */
-md-toast .success-text {
-    color: greenyellow;
-}
+@import 'palette';
+@import 'header';
 
-md-toast .error-text {
-    font-weight: bold;
-}
+@include mat-core();
+
+$custom-theme-primary: mat-palette($pg-palette-midnight);
+$custom-theme-accent: mat-palette($pg-palette-pink, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+@include angular-material-theme($custom-theme);
+@include pg-app-theme($custom-theme);
+
+
+
+
+/***** colours should use material theme when it is done *****/
 
 /* Page */
 html,
@@ -32,37 +42,6 @@ body {
     font-size:90%;
 }
 
-
-/* Header */
-@font-face {
-    font-family: audiowide;
-    src: url('/fonts/Audiowide-Regular.ttf') format("truetype");
-}
-
-header {
-    height:80px;
-    padding-left:10px;
-}
-
-.logo {
-    position:relative;
-    color: white;
-    font-family: audiowide;
-}
-
-.pigatron {
-    position: absolute;
-    font-size: 3em;
-    top: 0;
-    left: 0;
-}
-
-.industries {
-    position: absolute;
-    font-size: 1.3em;
-    left: 4em;
-    top: 2.4em;
-}
 
 /* Footer */
 
@@ -300,7 +279,7 @@ div.ui-grid-cell input.ng-valid {
 }
 
 div.ui-grid-cell-focus {
-   background-color: transparent;
+    background-color: transparent;
 }
 
 .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
@@ -492,27 +471,27 @@ a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
 
 
 /*[ng-include].ng-enter, [ng-include].ng-leave {*/
-    /*position: absolute;*/
-    /*transition:all 0.2s ease-in-out;*/
-    /*left: 0;*/
-    /*right: 0;*/
+/*position: absolute;*/
+/*transition:all 0.2s ease-in-out;*/
+/*left: 0;*/
+/*right: 0;*/
 /*}*/
 
 /*[ng-include].ng-enter {*/
-    /*transition-delay: 0.1s;*/
-    /*opacity: 0;*/
+/*transition-delay: 0.1s;*/
+/*opacity: 0;*/
 /*}*/
 
 /*[ng-include].ng-enter-active {*/
-    /*opacity: 1;*/
+/*opacity: 1;*/
 /*}*/
 
 /*[ng-include].ng-leave {*/
-    /*opacity: 1;*/
+/*opacity: 1;*/
 /*}*/
 
 /*[ng-include].ng-leave-active {*/
-    /*opacity: 0;*/
+/*opacity: 0;*/
 /*}*/
 
 

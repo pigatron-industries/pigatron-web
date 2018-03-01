@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 
-@import 'pg-palette';
-@import 'pg-app-theme';
+@import 'palette';
+@import 'header';
 
 @include mat-core();
 
@@ -42,38 +42,6 @@ body {
     min-height:100%;
     position:relative;
     font-size:90%;
-}
-
-
-/* Header */
-@font-face {
-    font-family: audiowide;
-    src: url('/fonts/Audiowide-Regular.ttf') format("truetype");
-}
-
-header {
-    height:80px;
-    padding-left:10px;
-}
-
-.logo {
-    position:relative;
-    color: white;
-    font-family: audiowide;
-}
-
-.pigatron {
-    position: absolute;
-    font-size: 3em;
-    top: 0;
-    left: 0;
-}
-
-.industries {
-    position: absolute;
-    font-size: 1.3em;
-    left: 4em;
-    top: 2.4em;
 }
 
 /* Footer */
