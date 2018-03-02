@@ -1,2 +1,2 @@
-//export {routes} from "./cms.routes";
-
+import { CmsModule } from "./cms.module";
+export { routes } from "./cms.routes";
