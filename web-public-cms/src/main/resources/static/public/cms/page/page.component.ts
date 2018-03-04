@@ -7,13 +7,11 @@ import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'pg-page',
-    templateUrl: '/public/cms/content/page/page.component.html'
-    //directives: [DynamicHTMLDirective],
-    //providers: [PageService]
+    templateUrl: '/public/cms/page/page.component.html'
 })
-export class PageComponent { // implements OnInit
+export class PageComponent implements OnInit {
 
-    // public loaded: boolean = false;
+    public loaded: boolean = false;
     // public page: Page;
     //
     // private sub: any;
@@ -24,11 +22,12 @@ export class PageComponent { // implements OnInit
     //             private pageService : PageService) {
     // }
     //
-    // ngOnInit() {
-    //     this.sub = this.route.params.subscribe(params => {
-    //         this.load(params['urlKey']);
-    //     });
-    // }
+    ngOnInit() {
+        this.loaded = true;
+        // this.sub = this.route.params.subscribe(params => {
+        //     this.load(params['urlKey']);
+        // });
+    }
     //
     // ngOnDestroy() {
     //     this.sub.unsubscribe();

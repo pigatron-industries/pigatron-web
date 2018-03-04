@@ -1,8 +1,22 @@
 import { Routes } from '@angular/router';
-import { PageComponent } from "./content/page/page.component";
 
 export const routes: Routes = [
-    { path: 'page/:urlKey', component: PageComponent },
-    { path: 'posts',        component: PageComponent },
-    { path: 'post/:urlKey', component: PageComponent }
+    {
+        path: 'page',
+        loadChildren: () => {
+            return window["pigatron"].public_cms.PageModule;
+        }
+    },
+    {
+        path: 'posts',
+        loadChildren: () => {
+            return window["pigatron"].public_cms.PageModule;
+        }
+    },
+    {
+        path: 'post',
+        loadChildren: () => {
+            return window["pigatron"].public_cms.PageModule;
+        }
+    }
 ];

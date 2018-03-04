@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject } from "@angular/core";
+import { Component, Inject, Injector, ViewContainerRef, Compiler, forwardRef } from "@angular/core";
 import { Routes, Router } from "@angular/router";
 
 import { routes } from './app.routes';
@@ -12,18 +12,18 @@ export class PublicAppComponent {
     private routes: Routes;
 
     constructor(@Inject(forwardRef(() => Router)) private router: Router) {
-        this.loadModules();
+        this.loadPgModules();
     }
 
     /**
      * Get modules from pigatron namespace and load them.
      */
-    loadModules() {
+    loadPgModules() {
         this.routes = routes;
         let pigatron = window["pigatron"];
         for(let moduleName in pigatron) {
             if(pigatron.hasOwnProperty(moduleName)) {
-                this.loadModule(pigatron[moduleName]);
+                this.loadPgModule(pigatron[moduleName]);
             }
         }
 
@@ -35,10 +35,14 @@ export class PublicAppComponent {
      * Load a single module.
      * @param module The module to load.
      */
-    loadModule(module) {
+    loadPgModule(module) {
         if(module.routes) {
-            this.routes = this.routes.concat(module.routes);
+            this.loadRoutes(module.routes);
         }
+    }
+
+    loadRoutes(routes) {
+        this.routes = this.routes.concat(routes);
     }
 
 }

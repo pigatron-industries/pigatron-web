@@ -1,19 +1,19 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { PageComponent }   from './content/page/page.component';
-import { routes } from './cms.routes';
+import { PageComponent }   from './page.component';
+import { routes } from './page.route';
 
 
 @NgModule({
     imports: [
-        BrowserModule,
+        CommonModule,
         //BrowserAnimationsModule,
-        RouterModule.forRoot(routes, { enableTracing: true })
+        RouterModule.forChild(routes)
     ],
     declarations: [ PageComponent ],
     bootstrap:    [ PageComponent ]
 })
-export class CmsModule { }
+export class PageModule { }

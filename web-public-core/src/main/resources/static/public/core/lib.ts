@@ -20,6 +20,6 @@ import "@angular/material";
 // Exports
 export * from "@angular/core";
 export { Routes, RouterModule, Router } from '@angular/router';
-export { BrowserModule } from '@angular/platform-browser';
+export { CommonModule } from '@angular/common';
 //export * from "@angular/http";
 //export * from "rxjs/Observable";
