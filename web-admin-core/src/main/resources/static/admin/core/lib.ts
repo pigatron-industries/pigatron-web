@@ -15,3 +15,8 @@ import "@angular/material";
 // Other
 //require("font-awesome/css/font-awesome.css");
 
+export * from "@angular/core";
+export { Routes, RouterModule, Router } from '@angular/router';
+export { CommonModule } from '@angular/common';
+//export * from "@angular/http";
+//export * from "rxjs/Observable";

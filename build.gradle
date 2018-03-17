@@ -197,7 +197,7 @@ targetCompatibility = 1.8
 
 
 dependencies {
-	//compile project(":web-admin-shop")
+	compile project(":web-admin-security")
 	compile project(":web-public-shop")
 }
 

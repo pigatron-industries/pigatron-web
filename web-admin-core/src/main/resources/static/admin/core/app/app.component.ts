@@ -1,8 +1,7 @@
-import {Component} from "@angular/core";
-//import {ROUTER_DIRECTIVES, Router, RouterConfig} from "@angular/router";
-//import {HTTP_PROVIDERS} from "@angular/http";
-//import {routes as coreRoutes} from "./app.routes";
-//import {LinksComponent} from "./links/links.component";
+import { Component, Inject, forwardRef } from "@angular/core";
+import { Routes, Router } from "@angular/router";
+
+import { routes } from './app.routes';
 
 
 @Component({
@@ -11,37 +10,41 @@ import {Component} from "@angular/core";
 })
 export class AdminAppComponent {
 
-    //private routes: RouterConfig;
+    private routes: Routes;
 
-    // constructor(private router: Router) {
-    //     this.loadModules();
-    // }
+    constructor(@Inject(forwardRef(() => Router)) private router: Router) {
+        this.loadPgModules();
+    }
 
     /**
      * Get modules from pigatron namespace and load them.
      */
-    // loadModules() {
-    //     this.routes = coreRoutes;
-    //
-    //     let pigatron = window["pigatron"];
-    //     for(var moduleName in pigatron) {
-    //         if(pigatron.hasOwnProperty(moduleName)) {
-    //             this.loadModule(pigatron[moduleName]);
-    //         }
-    //     }
-    //
-    //     // add loaded routes to router
-    //     this.router.resetConfig(this.routes);
-    // }
+    loadPgModules() {
+        this.routes = routes;
+        let pigatron = window["pigatron"];
+        for(let moduleName in pigatron) {
+            if(pigatron.hasOwnProperty(moduleName)) {
+                this.loadPgModule(pigatron[moduleName], moduleName);
+            }
+        }
+
+        // add loaded routes to router
+        this.router.resetConfig(this.routes);
+    }
 
     /**
      * Load a single module.
      * @param module The module to load.
      */
-    // loadModule(module) {
-    //     if(module.routes) {
-    //         this.routes = this.routes.concat(module.routes);
-    //     }
-    // }
+    loadPgModule(module, moduleName) {
+        if(module.routes) {
+            console.log("Loading module " + moduleName);
+            this.loadRoutes(module.routes);
+        }
+    }
+
+    loadRoutes(routes) {
+        this.routes = this.routes.concat(routes);
+    }
 
 }

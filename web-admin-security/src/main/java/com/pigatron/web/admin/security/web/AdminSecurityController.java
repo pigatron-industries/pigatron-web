@@ -56,24 +56,24 @@ public class AdminSecurityController {
         return webResources;
     }
 
-    @RequestMapping(value = "/${url.admin}/login", method = RequestMethod.GET)
-    public String adminLogin() {
-        if(userRepository.count() == 0) {
-            return VIEW_CONFIGURE;
-        } else {
-            return VIEW_ADMINLOGIN;
-        }
-    }
+//    @RequestMapping(value = "/${url.admin}/login", method = RequestMethod.GET)
+//    public String adminLogin() {
+//        if(userRepository.count() == 0) {
+//            return VIEW_CONFIGURE;
+//        } else {
+//            return VIEW_ADMINLOGIN;
+//        }
+//    }
 
-    @RequestMapping(value = "/${url.setup}", method = RequestMethod.POST)
-    public String setup(@ModelAttribute CreateUserForm configurationForm) {
-        if(userRepository.count() == 0) {
-            secUserDetailsService.createAdminUser(configurationForm.getAdminUsername(), configurationForm.getAdminPassword());
-            return "redirect:/" + adminUrl;
-        } else {
-            throw new ResourceNotFoundException();
-        }
-    }
+//    @RequestMapping(value = "/${url.setup}", method = RequestMethod.POST)
+//    public String setup(@ModelAttribute CreateUserForm configurationForm) {
+//        if(userRepository.count() == 0) {
+//            secUserDetailsService.createAdminUser(configurationForm.getAdminUsername(), configurationForm.getAdminPassword());
+//            return "redirect:/" + adminUrl;
+//        } else {
+//            throw new ResourceNotFoundException();
+//        }
+//    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @ResponseBody

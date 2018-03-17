@@ -33,20 +33,20 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .antMatcher("/" + adminUrl + "/**")
-                .authorizeRequests()
-                .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
-                .and()
-            .formLogin()
-                .loginPage("/" + adminUrl + "/login")
-                .defaultSuccessUrl("/" + adminUrl)
-                .permitAll()
-                .and()
-            .rememberMe()
-                .rememberMeParameter("remember-me")
-                .tokenRepository(userTokenRepository)
-                .tokenValiditySeconds(rememberMeValidityDays*24*60*60);
+//        http
+//            .antMatcher("/" + adminUrl + "/**")
+//                .authorizeRequests()
+//                .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
+//                .and()
+//            .formLogin()
+//                .loginPage("/" + adminUrl + "/login")
+//                .defaultSuccessUrl("/" + adminUrl)
+//                .permitAll()
+//                .and()
+//            .rememberMe()
+//                .rememberMeParameter("remember-me")
+//                .tokenRepository(userTokenRepository)
+//                .tokenValiditySeconds(rememberMeValidityDays*24*60*60);
     }
 
     @Override
