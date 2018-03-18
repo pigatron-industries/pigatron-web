@@ -59,19 +59,8 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
                 },
                 {
                     test:/\.(s*)css$/,
-                    //include: paths.src,
                     use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader'] })
                 }
-                // {
-                //     test: /\.css$/,
-                //     include: paths.src,
-                //     use: 'raw-loader'
-                // },
-                // {
-                //     test: /\.(s*)css$/,
-                //     include: paths.src,
-                //     use:['css-loader', 'sass-loader']
-                // }
             ]
         },
         plugins: [

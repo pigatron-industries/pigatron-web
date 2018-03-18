@@ -1,12 +1,12 @@
-import { Component, Inject, forwardRef } from "@angular/core";
-import { Routes, Router } from "@angular/router";
+import {Component, forwardRef, Inject} from "@angular/core";
+import {Router, Routes} from "@angular/router";
 
-import { routes } from './app.routes';
+import {routes} from './app.routes';
 
 
 @Component({
     selector: 'pg-admin-app',
-    templateUrl: '/public/core/app/app.component.html'
+    templateUrl: '/admin/core/app/app.component.html'
 })
 export class AdminAppComponent {
 

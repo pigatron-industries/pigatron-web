@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head('Shop Name', ${metadata}, ${resources})"></head>
 <body>
-<div id="app">
-    <header th:replace="fragments/header :: header"></header>
-    <pg-public-app>Loading...</pg-public-app>
-</div>
-<div th:include="fragments/scripts :: scripts(${resources})"></div>
+    <div id="app">
+        <header th:replace="fragments/header :: header"></header>
+        <pg-public-app>Loading...</pg-public-app>
+    </div>
+    <div th:include="fragments/scripts :: scripts(${resources})"></div>
 </body>
 </html>

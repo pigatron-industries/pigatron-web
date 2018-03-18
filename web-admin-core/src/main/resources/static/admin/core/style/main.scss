@@ -15,7 +15,6 @@ $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $cus
 
 
 
-
 /***** colours should use material theme when it is done *****/
 
 /* Page */
@@ -24,14 +23,17 @@ body {
     margin:0;
     padding:0;
     height:100%;
+    background-color: rgb(250,250,250);
     /*overflow-x: hidden;*/
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 md-content {
     overflow-x: hidden;
 }
 
-#page {
+#app {
     min-height:100%;
     position:relative;
 }
@@ -69,47 +71,6 @@ footer div {
 }
 
 
-md-progress-linear {
-    position: fixed;
-    top: 0;
-    z-index: 100;
-}
-
-/* Menu Bar */
-
-md-menu-bar {
-}
-
-md-menu-bar button {
-    font-size:100%;
-    height:30px;
-    color: #FFFFFF;
-    font-weight: bold;
-    background: transparent !important;
-}
-
-md-menu-bar md-menu.md-open > button, md-menu-bar md-menu.md-open > button:focus {
-    color: #FFFFFF;
-    font-weight: bold;
-    background-color: rgba(255,255,255,0.1) !important;
-}
-
-/* Menu items white text */
-md-menu-content.md-default-theme.md-hue-1 md-menu-item, md-menu-content.md-hue-1 md-menu-item a,
-md-menu-item button {
-    color: white !important;
-}
-
-md-menu-item>.md-button, md-menu>.md-button {
-    font-size:100%;
-    font-weight: bold !important;
-}
-
-md-menu-divider {
-    background-color: rgba(255,255,255,0.2) !important;
-}
-
-
 /* Left Sidebar */
 
 h1, h2 {
@@ -121,7 +82,6 @@ h1, h2 {
 }
 
 .leftsidebar {
-    margin-top: 1em;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -147,355 +107,4 @@ h1, h2 {
 
 .formcolumn {
     padding-right:40px;
-}
-
-md-input-container .md-errors-spacer {
-    min-height: 0;
-}
-
-md-input-container {
-    padding-right: 40px;
-    margin-bottom: 10px;
-}
-
-md-checkbox {
-    margin-bottom: 0;
-    height: 20px;
-}
-
-.errorbox {
-    background-color: #f2dede;
-    color: #a94442;
-    font-weight: bold;
-    padding:3px;
-    border: 1px solid #a94442;
-    border-radius: 5px;
-}
-
-md-option ._md-text {
-    font-size: 1em;
-}
-
-md-option {
-    height:32px;
-}
-
-
-/* Buttons */
-
-md-button {
-    font-weight: bold;
-    color:white !important;
-}
-
-.md-button.md-fab.md-mini {
-    line-height: 36px;
-    width: 36px;
-    height: 36px;
-}
-
-.fa-lg2 {
-    font-size: 1.5em;
-    line-height: .75em;
-    vertical-align: -20%;
-}
-
-.fa-lg {
-    vertical-align: -20%;
-}
-
-/* Font Awesome - icon position adjustments to look better in the buttons */
-.fa-lg2.fa-chevron-left {
-    position: relative;
-    left: -1px;
-}
-
-.tool-icon {
-    padding:6px;
-}
-
-
-/* Tables */
-
-div.fullTable.loaded .ui-grid-cell {
-    /*transition: all .3s cubic-bezier(.55,0,.55,.2);*/
-}
-
-.tablearea {
-    border-left: 1px solid #dddddd;
-}
-
-div.fullTable {
-    border: none;
-    transition: opacity .3s cubic-bezier(.55,0,.55,.2);
-}
-
-div.fullTable.loading {
-    opacity: 0;
-}
-
-div.ui-grid-top-panel {
-    background: none;
-}
-
-div.ui-grid-menu-button {
-    border:none;
-    background:none;
-}
-
-.ui-grid-menu-items {
-    background-color: rgb(44,62,80);
-}
-
-.ui-grid-menu .ui-grid-menu-inner ul li button.ui-grid-menu-item-active {
-    background-color: rgb(62, 87, 113);
-}
-
-button.ui-grid-menu-item {
-    color: white;
-}
-
-div.ui-grid-cell-checkbox {
-    text-align: center;
-}
-
-div.ui-grid-cell-checkbox md-checkbox {
-    width:20px;
-}
-
-div.ui-grid-cell-input {
-    height:28px;
-}
-
-div.ui-grid-cell input {
-    height:100%;
-    padding-left: 5px;
-    background-color: transparent;
-}
-
-div.ui-grid-cell input.ng-valid {
-    border:none;
-    border-bottom: 2px solid rgb(44, 62, 80);
-}
-
-div.ui-grid-cell-focus {
-    background-color: transparent;
-}
-
-.ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
-    background-color: #bdccdb;
-}
-
-.ui-grid-selection-row-header-buttons:hover {
-    color: rgb(216,21,87);
-    opacity: 1;
-}
-
-a.ui-grid-cell-contents {
-    display: block;
-    cursor: pointer;
-    color: rgb(44, 62, 80);
-}
-
-
-/* Tree */
-
-span.tree-collapse {
-    width: 12px;
-    text-align: center;
-}
-
-a:not(.md-button) {
-    color: rgb(44, 62, 80);
-}
-a:not(.md-button)[ng-click], a:not(.md-button)[scroll-to] {
-    cursor: pointer;
-}
-
-.tree-node, .selectable-item {
-    background-color: #eeeeee;
-    padding: 5px;
-    margin-top: 2px;
-    border-right: 3px solid transparent;
-    line-height: 20px;
-}
-
-.tree-node.selected, .selectable-item.selected {
-    border-right: 3px solid #E91E63;
-}
-
-.tree-action {
-    float:right;
-    padding-right: 4px;
-    padding-left: 4px;
-}
-
-
-/* File uploads */
-
-.lf-ng-md-file-input {
-    border: 2px dashed #DDD;
-    border-radius: 7px;
-}
-
-.lf-ng-md-file-input-x {
-    display: none;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag {
-    border: none;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container {
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-    padding: 5px;
-    margin-bottom: 0;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container {
-    height: 40px;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-container {
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-}
-
-.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text {
-    font-size: 1.8em;
-}
-
-.shadow-box {
-    background-color: white;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    margin: 8px;
-    display: table;
-    border: 1px solid #ddd;
-    border-radius: 0;
-    padding: 6px;
-}
-
-/* Image previews */
-.image-preview-frame {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    margin: 8px;
-    display: table;
-    border: 1px solid #ddd;
-    border-radius: 0;
-    padding: 6px;
-    float: left;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.image-preview-frame img {
-    height: 160px;
-    width: auto;
-    max-width: 100%;
-}
-
-.sortableContainer {
-    display: inline-block;
-}
-
-.sortableImages .as-sortable-item,
-.sortableImages .as-sortable-placeholder {
-    display: table;
-    height: 160px;
-    float: left;
-    border-radius: 0;
-    padding: 6px;
-    margin: 8px;
-}
-
-
-/* View transitions */
-.view-container,
-.animation-container {
-    position: relative;
-}
-
-[ui-view].ng-enter, [ui-view].ng-leave {
-    position: absolute;
-    transition:all 0.2s ease-in-out;
-    left: 0;
-    right: 0;
-}
-
-[ui-view].ng-enter {
-    transition-delay: 0.1s; /*Half of transition time*/
-    opacity: 0;
-}
-
-[ui-view].ng-enter-active {
-    opacity: 1;
-}
-
-[ui-view].ng-leave {
-    opacity: 1;
-}
-
-[ui-view].ng-leave-active {
-    opacity: 0;
-}
-
-
-/******************** ui-grid-draggable-row ********************/
-
-.ui-grid-draggable-row-target {
-    opacity: 0.5 !important;
-}
-.ui-grid-draggable-row {
-    height: 30px;
-}
-.ui-grid-draggable-row-over {
-    position: relative;
-}
-.ui-grid-draggable-row-over:before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    border-bottom: 1px dotted #AAA;
-}
-.ui-grid-draggable-row-over--above:before {
-    top: 0;
-}
-.ui-grid-draggable-row-over--below:before {
-    bottom: 0;
-}
-
-
-/*[ng-include].ng-enter, [ng-include].ng-leave {*/
-/*position: absolute;*/
-/*transition:all 0.2s ease-in-out;*/
-/*left: 0;*/
-/*right: 0;*/
-/*}*/
-
-/*[ng-include].ng-enter {*/
-/*transition-delay: 0.1s;*/
-/*opacity: 0;*/
-/*}*/
-
-/*[ng-include].ng-enter-active {*/
-/*opacity: 1;*/
-/*}*/
-
-/*[ng-include].ng-leave {*/
-/*opacity: 1;*/
-/*}*/
-
-/*[ng-include].ng-leave-active {*/
-/*opacity: 0;*/
-/*}*/
-
-
-
-md-dialog-content, md-dialog-content md-tabs {
-    height:100%;
 }
