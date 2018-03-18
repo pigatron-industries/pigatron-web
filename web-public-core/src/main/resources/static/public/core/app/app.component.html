@@ -2,14 +2,14 @@
 
     <!--<pg-links></pg-links>-->
 
-    <div layout="row" style="display:flex;flex-direction:row">
-        <div id="leftSidebar" class="view-container" flex="20" style="flex:20%;">
+    <div class="flex-container" fxLayout="row">
+        <div id="leftSidebar" class="flex-item" fxFlex="20%">
             <router-outlet name="leftSidebar"></router-outlet>
         </div>
-        <div id="content" class="view-container" flex="60" style="flex:60%;">
+        <div id="content" class="flex-item" fxFlex="60%">
             <router-outlet></router-outlet>
         </div>
-        <div id="rightSidebar" class="view-container" flex="20" style="flex:20%;">
+        <div id="rightSidebar" class="flex-item" fxFlex="20%">
             <router-outlet name="rightSidebar"></router-outlet>
         </div>
     </div>
