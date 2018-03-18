@@ -3,6 +3,16 @@
         <h1>Login</h1>
     </div>
     <div class="main flex-item" fxFlex>
-
+        <div class="formarea flex-container" fxLayout="column">
+            <mat-form-field class="flex-item">
+                <input matInput placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <input matInput placeholder="Password" type="password">
+            </mat-form-field>
+            <div class="button-row flex-item">
+                <button mat-raised-button (click)="login()">Log In</button>
+            </div>
+        </div>
     </div>
 </div>

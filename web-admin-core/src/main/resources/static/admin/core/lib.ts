@@ -6,6 +6,7 @@ import "@angular/common";
 import "@angular/http";
 import "@angular/router";
 import "@angular/flex-layout";
+import "@angular/material";
 import "rxjs";
 
 // RxJS
@@ -20,5 +21,6 @@ export * from "@angular/core";
 export {Routes, RouterModule, Router} from '@angular/router';
 export {CommonModule} from '@angular/common';
 export {FlexLayoutModule} from "@angular/flex-layout";
+export {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
 //export * from "@angular/http";
 //export * from "rxjs/Observable";

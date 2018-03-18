@@ -12,33 +12,16 @@ import {Router, ActivatedRoute} from "@angular/router";
 export class LoginComponent implements OnInit {
 
     public loaded: boolean = false;
-    // public page: Page;
-    //
-    // private sub: any;
-    //
-    //
-    // constructor(private router : Router,
-    //             private route : ActivatedRoute,
-    //             private pageService : PageService) {
-    // }
-    //
+
     ngOnInit() {
         this.loaded = true;
         // this.sub = this.route.params.subscribe(params => {
         //     this.load(params['urlKey']);
         // });
     }
-    //
-    // ngOnDestroy() {
-    //     this.sub.unsubscribe();
-    // }
-    //
-    // load(urlKey) {
-    //     this.pageService.get(urlKey)
-    //         .subscribe(page => {
-    //             this.page = page;
-    //             this.loaded = true;
-    //         });
-    // }
+
+    login() {
+        console.log("login button pressed");
+    }
 
 }
