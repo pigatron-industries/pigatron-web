@@ -98,29 +98,29 @@ task updateWebDriver(type: NodeTask) {
 subprojects {
 	// Web Resource Handling
 	apply plugin: "com.moowork.node"
-	task bowerInstall(type: NodeTask) {
-		doFirst {
-			if (!file("bower.json").exists() ) {
-				throw new StopExecutionException()
-			}
-		}
-		script = file('../node_modules/bower/bin/bower')
-		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
-				"--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
-				"--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
-				'install']
-		inputs.files file('bower.json')
-		outputs.dir file('bower_components')
-		dependsOn ':npmInstall'
-	}
-
-	task bowerList(type: NodeTask) {
-		script = file('../node_modules/bower/bin/bower')
-		args = ["list", "--json"]
-		execOverrides {
-			it.standardOutput = new FileOutputStream("build/dependencyUpdates/report_${project.name}.json")
-		}
-	}
+//	task bowerInstall(type: NodeTask) {
+//		doFirst {
+//			if (!file("bower.json").exists() ) {
+//				throw new StopExecutionException()
+//			}
+//		}
+//		script = file('../node_modules/bower/bin/bower')
+//		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
+//				"--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
+//				"--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
+//				'install']
+//		inputs.files file('bower.json')
+//		outputs.dir file('bower_components')
+//		dependsOn ':npmInstall'
+//	}
+//
+//	task bowerList(type: NodeTask) {
+//		script = file('../node_modules/bower/bin/bower')
+//		args = ["list", "--json"]
+//		execOverrides {
+//			it.standardOutput = new FileOutputStream("build/dependencyUpdates/report_${project.name}.json")
+//		}
+//	}
 
 //	task webResourceBuildLocal(type: NodeTask) {
 //		doFirst {
@@ -169,10 +169,10 @@ subprojects {
 	//build.dependsOn webResourceBuildLib
 	//webResourceBuildLocal.mustRunAfter webResourceBuildLib
 
-	task cleanWebResources(type: Delete) {
-		delete 'bower_components'
-	}
-	clean.dependsOn cleanWebResources
+//	task cleanWebResources(type: Delete) {
+//		delete 'bower_components'
+//	}
+//	clean.dependsOn cleanWebResources
 
 	task protractorTests(type: NodeTask) {
 		doFirst {
@@ -204,7 +204,7 @@ dependencies {
 task dependencyReport(type: NodeTask) {
 	script = file('scripts/dependencyReport.js')
 	args = []
-	dependsOn dependencyUpdates, subprojects*.bowerList
+	dependsOn dependencyUpdates
 }
 
 
