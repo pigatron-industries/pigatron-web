@@ -98,56 +98,6 @@ task updateWebDriver(type: NodeTask) {
 subprojects {
 	// Web Resource Handling
 	apply plugin: "com.moowork.node"
-//	task bowerInstall(type: NodeTask) {
-//		doFirst {
-//			if (!file("bower.json").exists() ) {
-//				throw new StopExecutionException()
-//			}
-//		}
-//		script = file('../node_modules/bower/bin/bower')
-//		args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
-//				"--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
-//				"--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
-//				'install']
-//		inputs.files file('bower.json')
-//		outputs.dir file('bower_components')
-//		dependsOn ':npmInstall'
-//	}
-//
-//	task bowerList(type: NodeTask) {
-//		script = file('../node_modules/bower/bin/bower')
-//		args = ["list", "--json"]
-//		execOverrides {
-//			it.standardOutput = new FileOutputStream("build/dependencyUpdates/report_${project.name}.json")
-//		}
-//	}
-
-//	task webResourceBuildLocal(type: NodeTask) {
-//		doFirst {
-//			if (!file("gulpfile.js").exists() ) {
-//				throw new StopExecutionException()
-//			}
-//		}
-//		script = file('../node_modules/gulp/bin/gulp.js')
-//		args = ['localBuild']
-//		inputs.file file("gulpfile.js")
-//		inputs.dir file("src/main/resources/static")
-//		outputs.dir file("$buildDir/resources/main/static")
-//	}
-//
-//	task webResourceBuildLib(type: NodeTask) {
-//		doFirst {
-//			if (!file("gulpfile.js").exists() ) {
-//				throw new StopExecutionException()
-//			}
-//		}
-//		script = file('../node_modules/gulp/bin/gulp.js')
-//		args = ['libBuild']
-//		inputs.file file("gulpfile.js")
-//		inputs.dir file("bower_components")
-//		outputs.dir file("$buildDir/resources/main/static")
-//		dependsOn bowerInstall
-//	}
 
 	task webpack(type: NodeTask) {
 		doFirst {
@@ -165,14 +115,6 @@ subprojects {
 	}
 
 	processResources.dependsOn webpack
-	//processResources.dependsOn webResourceBuildLocal
-	//build.dependsOn webResourceBuildLib
-	//webResourceBuildLocal.mustRunAfter webResourceBuildLib
-
-//	task cleanWebResources(type: Delete) {
-//		delete 'bower_components'
-//	}
-//	clean.dependsOn cleanWebResources
 
 	task protractorTests(type: NodeTask) {
 		doFirst {
