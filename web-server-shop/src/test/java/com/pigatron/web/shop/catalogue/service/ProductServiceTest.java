@@ -7,7 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Optional;
 
 import static com.pigatron.web.shop.catalogue.entity.Product.ProductBuilder.aProduct;
 import static com.pigatron.web.shop.catalogue.entity.option.SelectProduct.SelectProductBuilder.aSelectProduct;
@@ -28,6 +30,7 @@ public class ProductServiceTest {
     @Test
     public void testGenerateUrlKey() {
         Product product = aProduct().id("1").name("Product Name").build();
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
         productService.save(product);
         assertThat(product.getUrlKey()).isEqualTo("product_name");
     }
@@ -35,6 +38,7 @@ public class ProductServiceTest {
     @Test
     public void testGenerateUrlKey2() {
         Product product = aProduct().id("1").name("Product Name").build();
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
         given(productRepository.findByUrlKey("product_name")).willReturn(aProduct().id("2").name("2").build());
         productService.save(product);
         assertThat(product.getUrlKey()).isEqualTo("product_name2");
@@ -43,6 +47,7 @@ public class ProductServiceTest {
     @Test
     public void testGenerateUrlKey3() {
         Product product = aProduct().id("1").name("Product Name").build();
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
         given(productRepository.findByUrlKey("product_name")).willReturn(aProduct().id("2").name("2").build());
         given(productRepository.findByUrlKey("product_name2")).willReturn(aProduct().id("3").name("3").build());
         productService.save(product);
@@ -52,6 +57,7 @@ public class ProductServiceTest {
     @Test
     public void testGenerateUrlKeySameProduct() {
         Product product = aProduct().id("1").name("Product Name").build();
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
         given(productRepository.findByUrlKey("product_name")).willReturn(product);
         productService.save(product);
         assertThat(product.getUrlKey()).isEqualTo("product_name");
@@ -60,6 +66,7 @@ public class ProductServiceTest {
     @Test
     public void testGenerateSku() {
         Product product = aProduct().id("1").name("Product Name").build();
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
         given(sequenceService.getNextValue(ProductService.SKU_SEQUENCE)).willReturn(101);
         productService.save(product);
         assertThat(product.getSku()).isEqualTo("101");
@@ -85,8 +92,13 @@ public class ProductServiceTest {
                         .product(optionProduct2)
                         .build())
                 .build();
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
+        given(productRepository.findById("2")).willReturn(Optional.of(optionProduct1));
+        given(productRepository.findById("3")).willReturn(Optional.of(optionProduct2));
         given(sequenceService.getNextValue(ProductService.SKU_SEQUENCE)).willReturn(101);
+
         productService.save(product);
+
         assertThat(product.getSku()).isEqualTo("101");
         assertThat(optionProduct1.getSku()).isEqualTo("101-1");
         assertThat(optionProduct2.getSku()).isEqualTo("101-2");
@@ -114,8 +126,12 @@ public class ProductServiceTest {
                         .product(optionProduct2)
                         .build())
                 .build();
-        given(sequenceService.getNextValue(ProductService.SKU_SEQUENCE)).willReturn(101);
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
+        given(productRepository.findById("2")).willReturn(Optional.of(optionProduct1));
+        given(productRepository.findById("3")).willReturn(Optional.of(optionProduct2));
+
         productService.save(product);
+
         assertThat(product.getSku()).isEqualTo("parentsku");
         assertThat(optionProduct1.getSku()).isEqualTo("optionsku");
         assertThat(optionProduct2.getSku()).isEqualTo("parentsku-1");
@@ -143,8 +159,12 @@ public class ProductServiceTest {
                         .product(optionProduct2)
                         .build())
                 .build();
-        given(sequenceService.getNextValue(ProductService.SKU_SEQUENCE)).willReturn(101);
+        given(productRepository.findById("1")).willReturn(Optional.of(product));
+        given(productRepository.findById("2")).willReturn(Optional.of(optionProduct1));
+        given(productRepository.findById("3")).willReturn(Optional.of(optionProduct2));
+
         productService.save(product);
+
         assertThat(product.getSku()).isEqualTo("parentsku");
         assertThat(optionProduct1.getSku()).isEqualTo("parentsku-2");
         assertThat(optionProduct2.getSku()).isEqualTo("parentsku-1");
@@ -165,7 +185,7 @@ public class ProductServiceTest {
                                 .build())
                         .build())
                 .build();
-        given(productRepository.findOne(oldProduct.getId())).willReturn(oldProduct);
+        given(productRepository.findById(oldProduct.getId())).willReturn(Optional.of(oldProduct));
 
         productService.save(newProduct);
 
@@ -188,7 +208,7 @@ public class ProductServiceTest {
                 .id("1")
                 .name("Product Name")
                 .build();
-        given(productRepository.findOne(oldProduct.getId())).willReturn(oldProduct);
+        given(productRepository.findById(oldProduct.getId())).willReturn(Optional.of(oldProduct));
 
         productService.save(newProduct);
 

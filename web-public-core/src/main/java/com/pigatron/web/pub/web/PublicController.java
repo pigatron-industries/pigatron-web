@@ -1,4 +1,4 @@
-package com.pigatron.pub.web;
+package com.pigatron.web.pub.web;
 
 import com.pigatron.web.admin.config.SubModules;
 import com.pigatron.web.admin.config.WebResources;
@@ -30,7 +30,7 @@ public class PublicController {
 
     @ModelAttribute("settings")
     public WebSiteSettings webSiteSettings() {
-        return (WebSiteSettings)settingsService.findOne(WebSiteSettings.ID);
+        return (WebSiteSettings)settingsService.findById(WebSiteSettings.ID);
     }
 
     @RequestMapping(value = {"/**"})

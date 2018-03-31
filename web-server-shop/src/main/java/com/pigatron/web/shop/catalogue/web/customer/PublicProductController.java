@@ -27,7 +27,7 @@ public class PublicProductController {
     @ApiOperation(value = "Get by id")
     @JsonView(View.Public.class)
     public Product get(@PathVariable String id) {
-        return productService.findOne(id);
+        return productService.findById(id);
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"sku"})

@@ -18,7 +18,7 @@ public class ProductCategoryService extends AbstractRepositoryService<ProductCat
 	}
 
 	public ProductCategory addSubcategory(String parentId, ProductCategory newCategory) {
-		ProductCategory parentCategory = repository.findOne(parentId);
+		ProductCategory parentCategory = findById(parentId);
 		parentCategory.getSubcategories().add(newCategory);
 		ProductCategory category = repository.save(newCategory);
 		repository.save(parentCategory);
@@ -28,12 +28,12 @@ public class ProductCategoryService extends AbstractRepositoryService<ProductCat
 	@Override
 	public void delete(String id) {
 		List<ProductCategory> all = Lists.newArrayList(repository.findAll());
-		ProductCategory deleteCategory = repository.findOne(id);
+		ProductCategory deleteCategory = findById(id);
 		//remove reference from parent
 		all.stream()
 				.filter(c -> c.getSubcategories().contains(deleteCategory))
 				.forEach(c -> removeSubcategoryFromParent(c, deleteCategory));
-		repository.delete(id);
+		repository.deleteById(id);
 	}
 
 	private void removeSubcategoryFromParent(ProductCategory parent, ProductCategory child) {

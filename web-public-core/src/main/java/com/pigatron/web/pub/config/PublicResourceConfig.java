@@ -1,4 +1,4 @@
-package com.pigatron.pub.config;
+package com.pigatron.web.pub.config;
 
 
 import com.pigatron.web.admin.config.AdminResourceConfig;

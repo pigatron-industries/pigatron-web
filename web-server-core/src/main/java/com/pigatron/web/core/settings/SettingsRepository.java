@@ -1,7 +1,7 @@
 package com.pigatron.web.core.settings;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.pigatron.web.core.repository.BaseRepository;
 
 
-public interface SettingsRepository extends MongoRepository<Settings, String> {
+public interface SettingsRepository extends BaseRepository<Settings> {
 }

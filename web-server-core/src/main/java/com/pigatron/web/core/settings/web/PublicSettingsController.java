@@ -27,7 +27,7 @@ public class PublicSettingsController {
     @ApiOperation(value = "Get by id")
     @JsonView(View.Public.class)
     public Settings get(@RequestParam("id") String id) {
-        return settingsService.findOne(id);
+        return settingsService.findById(id);
     }
 
 }

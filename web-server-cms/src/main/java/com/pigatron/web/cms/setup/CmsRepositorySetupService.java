@@ -13,6 +13,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static com.pigatron.web.core.settings.website.Link.aLink;
 import static com.pigatron.web.core.settings.website.WebSiteSettings.aWebSiteSettings;
 
@@ -32,8 +34,8 @@ public class CmsRepositorySetupService {
     }
 
     protected void addDefaultWebSiteSettings() {
-        Settings settings = settingsRepository.findOne(WebSiteSettings.ID);
-        if(settings == null) {
+        Optional<Settings> settings = settingsRepository.findById(WebSiteSettings.ID);
+        if(!settings.isPresent()) {
             WebSiteSettings webSiteSettings = aWebSiteSettings()
                     .withTitle("Site Title")
                     .withLink(aLink()

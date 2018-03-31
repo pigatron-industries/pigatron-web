@@ -48,7 +48,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	@Override
 	public void delete(String id) {
-		Product product = this.findOne(id);
+		Product product = findById(id);
 		removeParentProducts(product.findAllOptionProducts());
 		removeOptionProduct(product);
 		super.delete(id);
@@ -56,7 +56,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	private void removeParentProducts(List<Product> products) {
 		products.forEach(p -> p.setParentProduct(null));
-		repository.save(products);
+		products.forEach(p -> productRepository.save(p));
 	}
 
 	private void removeOptionProduct(Product optionProduct) {
@@ -142,7 +142,7 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 		// Removed options
 		if(product.getId() != null) {
-			Product oldProduct = repository.findOne(product.getId());
+			Product oldProduct = findById(product.getId());
 			if(oldProduct != null) {
 				List<Product> oldOptionProducts = oldProduct.findAllOptionProducts();
 				oldOptionProducts.stream().filter(p -> !optionProducts.contains(p)).forEach(p -> {

@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.Optional;
+
 import static com.pigatron.web.security.entity.User.aUser;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -42,11 +44,11 @@ public class SecUserDetailsServiceTest {
 
     @Test
     public void whenSave_passwordNotUpdated() {
-        given(userRepository.findOne("2")).willReturn(aUser()
+        given(userRepository.findById("2")).willReturn(Optional.of(aUser()
                 .withId("2")
                 .withUsername("username")
                 .withPassword("ABCDEF")
-                .build());
+                .build()));
         User updatedUser = aUser()
                 .withId("2")
                 .withUsername("username_changed")
@@ -61,11 +63,11 @@ public class SecUserDetailsServiceTest {
 
     @Test
     public void whenSave_passwordUpdated() {
-        given(userRepository.findOne("2")).willReturn(aUser()
+        given(userRepository.findById("2")).willReturn(Optional.of(aUser()
                 .withId("2")
                 .withUsername("username")
                 .withPassword("ABCDEF")
-                .build());
+                .build()));
         User updatedUser = aUser()
                 .withId("2")
                 .withUsername("username_changed")

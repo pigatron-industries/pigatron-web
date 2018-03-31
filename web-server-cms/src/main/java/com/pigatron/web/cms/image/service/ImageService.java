@@ -50,7 +50,7 @@ public class ImageService extends AbstractRepositoryService<Image> {
     }
 
     public Image getResizedImage(String id, Integer width, Integer height) throws IOException {
-        Image image = findOne(id);
+        Image image = findById(id);
         Optional<Image> cachedResizedImage = image.findResizedImage(width, height);
         if(!cachedResizedImage.isPresent()) {
             Image resizedImage = resizeImage(image, width, height);
@@ -86,7 +86,7 @@ public class ImageService extends AbstractRepositoryService<Image> {
     public void clearCache() {
         java.util.List<Image> images = imageRepository.findAll();
         images.forEach(Image::removeResizedImages);
-        imageRepository.save(images);
+        images.forEach(i -> imageRepository.save(i));
     }
 
     private Optional<Image> getExistingImage(Image inputImage) {

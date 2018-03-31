@@ -2,7 +2,7 @@ apply from: 'config.gradle'
 
 buildscript {
 	ext {
-		springBootVersion = '1.5.3.RELEASE'
+		springBootVersion = '2.0.0.RELEASE'
 	}
 	repositories {
 		maven {
@@ -25,6 +25,7 @@ allprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'maven'
 	apply plugin: "com.moowork.node"
 	group = 'com.pigatron.web'
@@ -89,16 +90,10 @@ allprojects {
 	}
 }
 
-
-task updateWebDriver(type: NodeTask) {
-	script = file('node_modules/protractor/bin/webdriver-manager')
-	args = ['update', '--standalone']
-}
-
 subprojects {
-	// Web Resource Handling
 	apply plugin: "com.moowork.node"
 
+	// Web Resource Handling
 	task webpack(type: NodeTask) {
 		doFirst {
 			if (!file("webpack.config.js").exists() ) {
@@ -111,7 +106,7 @@ subprojects {
 		inputs.file file("tsconfig.json")
 		inputs.dir file("src/main/resources/static")
 		outputs.dir file("$buildDir/resources/main/static")
-		dependsOn npmInstall
+		//dependsOn npmInstall
 	}
 
 	processResources.dependsOn webpack
@@ -126,9 +121,20 @@ subprojects {
 		args = ['src/test/resources/protractor.conf.js']
 		dependsOn ':updateWebDriver'
 	}
+
+	bootJar {
+		enabled = false
+	}
+
+	jar {
+		enabled = true
+	}
 }
 
-
+task updateWebDriver(type: NodeTask) {
+	script = file('node_modules/protractor/bin/webdriver-manager')
+	args = ['update', '--standalone']
+}
 
 jar {
 	baseName = 'pigatron-web'
@@ -139,9 +145,9 @@ targetCompatibility = 1.8
 
 
 dependencies {
-	compile project(":web-server-shop")
-	compile project(":web-admin-shop")
 	compile project(":web-public-shop")
+	compile project(":web-admin-shop")
+	compile project(":web-server-shop")
 }
 
 task dependencyReport(type: NodeTask) {
@@ -150,21 +156,8 @@ task dependencyReport(type: NodeTask) {
 	dependsOn dependencyUpdates
 }
 
-
-
-eclipse {
-	classpath {
-		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-	}
-}
-
 task wrapper(type: Wrapper) {
-	gradleVersion = '3.5'
-}
-
-bootRepackage {
-	executable = true
+	gradleVersion = '4.6'
 }
 
 task buildInfo {
@@ -172,9 +165,9 @@ task buildInfo {
 	def proc = cmd.execute()
 	ext.revision = proc.text.trim()
 	def props = new Properties()
-	props.setProperty("pigatron.revision", ext.revision);
-	def propFile = new File("./src/main/resources/application.properties");
-	propFile.createNewFile();
-	props.store(propFile.newWriter(), null);
+	props.setProperty("pigatron.revision", ext.revision)
+	def propFile = new File("./application.properties")
+	propFile.createNewFile()
+	props.store(propFile.newWriter(), null)
 }
-bootRepackage.dependsOn buildInfo
+bootJar.dependsOn buildInfo

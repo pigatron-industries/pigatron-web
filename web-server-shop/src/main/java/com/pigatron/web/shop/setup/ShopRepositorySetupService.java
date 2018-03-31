@@ -14,6 +14,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static com.pigatron.web.core.settings.website.Link.aLink;
 import static com.pigatron.web.core.settings.website.WebSiteSettings.aWebSiteSettings;
 
@@ -41,8 +43,8 @@ public class ShopRepositorySetupService {
     }
 
     private void addRootCategory() {
-        ProductCategory root = productCategoryRepository.findOne(ProductCategory.ROOT_ID);
-        if(root == null) {
+        Optional<ProductCategory> root = productCategoryRepository.findById(ProductCategory.ROOT_ID);
+        if(!root.isPresent()) {
             logger.info("Creating root product category.");
             ProductCategory rootCategory = new ProductCategory(ProductCategory.ROOT_ID, ProductCategory.ROOT_NAME);
             productCategoryRepository.save(rootCategory);
@@ -50,8 +52,8 @@ public class ShopRepositorySetupService {
     }
 
     protected void addDefaultWebSiteSettings() {
-        Settings settings = settingsRepository.findOne(WebSiteSettings.ID);
-        if(settings == null) {
+        Optional<Settings> settings = settingsRepository.findById(WebSiteSettings.ID);
+        if(!settings.isPresent()) {
             logger.info("Creating default web site settings.");
             WebSiteSettings webSiteSettings = aWebSiteSettings()
                     .withTitle("Site Title")

@@ -6,9 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -33,7 +34,7 @@ public class ProductCategoryServiceTest {
 		root.getSubcategories().add(child);
 
 		given(productCategoryRepository.findAll()).willReturn(Arrays.asList(root, child));
-		given(productCategoryRepository.findOne("child")).willReturn(child);
+		given(productCategoryRepository.findById("child")).willReturn(Optional.of(child));
 
 		productCategoryService.delete("child");
 

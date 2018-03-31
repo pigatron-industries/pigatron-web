@@ -1,26 +1,28 @@
 package com.pigatron.web.core.service;
 
+import com.pigatron.web.core.exception.ResourceNotFoundException;
+import com.pigatron.web.core.repository.BaseRepository;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
 public abstract class AbstractRepositoryService<T> implements RepositoryService<T> {
 
-	protected MongoRepository<T, String> repository;
+	protected BaseRepository<T> repository;
 
-	public AbstractRepositoryService(MongoRepository<T, String> repository) {
+	public AbstractRepositoryService(BaseRepository<T> repository) {
 		this.repository = repository;
 	}
 
 	@Override
 	public List<T> findAll(Sort order) {
-		return repository.findAll(order);
+		//TODO sort order
+		return repository.findAll();
 	}
 
 	@Override
-	public T findOne(String id) {
-		return repository.findOne(id);
+	public T findById(String id) {
+		return repository.findById(id).orElseThrow(ResourceNotFoundException::new);
 	}
 
 	@Override
@@ -35,6 +37,6 @@ public abstract class AbstractRepositoryService<T> implements RepositoryService<
 
 	@Override
 	public void delete(String id) {
-		repository.delete(id);
+		repository.deleteById(id);
 	}
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RepositoryService<T> {
 	List<T> findAll(Sort orders);
-	T findOne(String id);
+	T findById(String id);
 	T save(T entity);
 	void deleteAll();
 	void delete(String id);

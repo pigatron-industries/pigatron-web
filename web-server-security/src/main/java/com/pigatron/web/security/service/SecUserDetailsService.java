@@ -45,7 +45,7 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
     public User save(User user) {
         if(user.getId() != null) {
             //check if password has changed and re-encode
-            User previousUser = userRepository.findOne(user.getId());
+            User previousUser = findById(user.getId());
             if(!previousUser.getPassword().equals(user.getPassword())) {
                 user.setPassword(encodePassword(user.getPassword()));
             }

@@ -22,7 +22,7 @@ public abstract class AbstractWriteRestController<T> {
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get by id")
     public T get(@PathVariable String id) {
-        return service.findOne(id);
+        return service.findById(id);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

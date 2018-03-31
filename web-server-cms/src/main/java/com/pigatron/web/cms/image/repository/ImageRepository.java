@@ -1,9 +1,9 @@
 package com.pigatron.web.cms.image.repository;
 
 import com.pigatron.web.cms.image.entity.Image;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.pigatron.web.core.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ImageRepository extends MongoRepository<Image, String>, ImageRepositoryCustom {
+public interface ImageRepository extends BaseRepository<Image>, ImageRepositoryCustom {
 }
