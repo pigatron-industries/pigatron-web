@@ -1,27 +1,21 @@
-import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute} from "@angular/router";
-//import {PageService} from "./page.service.ts";
-//import {Page} from "./page";
-//import {DynamicHTMLDirective} from "pigatron/public/core/main";
+import {Component, Inject} from "@angular/core";
+
+import {UserService} from "../users/user.service";
 
 
 @Component({
     selector: 'pg-login',
     templateUrl: '/admin/security/login/login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-    public loaded: boolean = false;
+    credentials = {username: '', password: ''};
 
-    ngOnInit() {
-        this.loaded = true;
-        // this.sub = this.route.params.subscribe(params => {
-        //     this.load(params['urlKey']);
-        // });
+    constructor(@Inject(UserService) private userService: UserService) {
     }
 
     login() {
-        console.log("login button pressed");
+        this.userService.authenticate(this.credentials, undefined);
     }
 
 }

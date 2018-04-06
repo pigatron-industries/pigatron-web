@@ -1,22 +1,18 @@
 import {NgModule}      from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
-import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {LoginComponent}   from './login.component';
 import {routes} from './login.route';
+import {UserService} from "../users/user.service";
+import {AdminWebModule} from "../../../../../../../../web-admin-core/src/main/resources/static/admin/core/lib/adminweb.module";
 
 
 @NgModule({
     imports: [
-        CommonModule,
+        AdminWebModule,
         RouterModule.forChild(routes),
-        FlexLayoutModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule
     ],
+    providers: [ UserService ],
     declarations: [ LoginComponent ],
     bootstrap:    [ LoginComponent ]
 })

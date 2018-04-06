@@ -5,10 +5,10 @@
     <div class="main flex-item" fxFlex>
         <div class="formarea flex-container" fxLayout="column">
             <mat-form-field class="flex-item">
-                <input matInput placeholder="Email">
+                <input matInput placeholder="Email" [(ngModel)]="credentials.username">
             </mat-form-field>
             <mat-form-field class="flex-item">
-                <input matInput placeholder="Password" type="password">
+                <input matInput placeholder="Password" type="password" [(ngModel)]="credentials.password">
             </mat-form-field>
             <div class="button-row flex-item">
                 <button mat-raised-button (click)="login()">Log In</button>

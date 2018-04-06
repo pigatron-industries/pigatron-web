@@ -39,7 +39,7 @@ public class AdminSecurityController {
     private UserRepository userRepository;
 
     @Autowired
-    SecUserDetailsService secUserDetailsService;
+    private SecUserDetailsService secUserDetailsService;
 
     @ModelAttribute("adminUrl")
     public String getAdminUrl() {
@@ -56,14 +56,6 @@ public class AdminSecurityController {
         return webResources;
     }
 
-//    @RequestMapping(value = "/${url.admin}/login", method = RequestMethod.GET)
-//    public String adminLogin() {
-//        if(userRepository.count() == 0) {
-//            return VIEW_CONFIGURE;
-//        } else {
-//            return VIEW_ADMINLOGIN;
-//        }
-//    }
 
 //    @RequestMapping(value = "/${url.setup}", method = RequestMethod.POST)
 //    public String setup(@ModelAttribute CreateUserForm configurationForm) {
@@ -74,14 +66,5 @@ public class AdminSecurityController {
 //            throw new ResourceNotFoundException();
 //        }
 //    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    @ResponseBody
-    public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        CookieClearingLogoutHandler cookieClearingLogoutHandler = new CookieClearingLogoutHandler(AbstractRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY);
-        SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
-        cookieClearingLogoutHandler.logout(request, response, null);
-        securityContextLogoutHandler.logout(request, response, null);
-    }
 
 }

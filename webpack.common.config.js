@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-//var failPlugin = require('webpack-fail-plugin');
 var path = require('path');
 
 module.exports = function(dirname, appName, moduleName, vendor, polyfills, externals) {
@@ -64,7 +63,6 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
             ]
         },
         plugins: [
-            //failPlugin,
             new ExtractTextPlugin('[name].css'),
             //new webpack.optimize.DedupePlugin(),
             //new webpack.optimize.UglifyJsPlugin(),

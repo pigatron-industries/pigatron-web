@@ -34,16 +34,14 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        HttpSecurity and = http
-                .antMatcher("/" + adminUrl + "/api/**")
-                .authorizeRequests()
-                .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
-                .and();
-        if(basicAuth) {
-            and.httpBasic().and().csrf().disable();
-        } else {
-            and.exceptionHandling().authenticationEntryPoint(apiAuthenticationEntryPoint);
-        }
+        http.httpBasic()
+            .and().authorizeRequests()
+                .antMatchers("/" + adminUrl + "/api/**")
+                    .hasAuthority(SecUserDetailsService.ROLE_ADMIN)
+                .antMatchers("/api/security/user")
+                    .authenticated()
+                .anyRequest()
+                    .permitAll();
     }
 
     @Override

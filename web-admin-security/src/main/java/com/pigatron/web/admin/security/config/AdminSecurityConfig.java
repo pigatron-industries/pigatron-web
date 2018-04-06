@@ -33,7 +33,8 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
+        //http
+
 //            .antMatcher("/" + adminUrl + "/**")
 //                .authorizeRequests()
 //                .anyRequest().hasAuthority(SecUserDetailsService.ROLE_ADMIN)
@@ -41,8 +42,8 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 //            .formLogin()
 //                .loginPage("/" + adminUrl + "/login")
 //                .defaultSuccessUrl("/" + adminUrl)
-//                .permitAll()
-//                .and()
+                //.permitAll()
+                //.and()
 //            .rememberMe()
 //                .rememberMeParameter("remember-me")
 //                .tokenRepository(userTokenRepository)

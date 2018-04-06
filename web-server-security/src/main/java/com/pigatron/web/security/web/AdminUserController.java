@@ -17,12 +17,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "${url.admin}/api/security/user", produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserController extends AbstractWriteRestController<User> {
+public class AdminUserController extends AbstractWriteRestController<User> {
 
     private SecUserDetailsService userDetailsService;
 
     @Autowired
-    public UserController(SecUserDetailsService secUserDetailsService) {
+    public AdminUserController(SecUserDetailsService secUserDetailsService) {
         super(secUserDetailsService);
         this.userDetailsService = secUserDetailsService;
     }
