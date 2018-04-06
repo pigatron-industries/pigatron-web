@@ -2,9 +2,6 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {User} from "./user";
 
-const options = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable()
 export class UserService {
