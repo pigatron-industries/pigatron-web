@@ -9,7 +9,11 @@ import {XhrInterceptor} from "../app/httpinterceptor";
 
 
 @NgModule({
-    imports: [
+    imports: [],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+    declarations: [],
+    bootstrap:    [],
+    exports: [
         CommonModule,
         FormsModule,
         HttpClientModule,
@@ -17,9 +21,6 @@ import {XhrInterceptor} from "../app/httpinterceptor";
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule
-    ],
-    providers: [ { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true } ],
-    declarations: [  ],
-    bootstrap:    [  ]
+    ]
 })
 export class AdminWebModule { }

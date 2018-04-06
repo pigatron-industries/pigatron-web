@@ -13,7 +13,7 @@ export class UserService {
 
     constructor(@Inject(HttpClient) private http: HttpClient) {
         //authenticate user when browser loads to check if they are already logged in
-        this.authenticate(undefined, undefined);
+        //this.authenticate(undefined, undefined);
     }
 
     authenticate(credentials, callback) {

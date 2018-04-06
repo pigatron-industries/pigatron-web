@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const tsLoader = require('awesome-typescript-loader');
 var path = require('path');
 
 module.exports = function(dirname, appName, moduleName, vendor, polyfills, externals) {
@@ -40,7 +41,10 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
             libraryTarget: 'var'
         },
         resolve: {
-            extensions: ['.js', '.ts']
+            extensions: ['.js', '.ts'],
+            plugins: [
+                new tsLoader.TsConfigPathsPlugin()
+            ]
         },
         module: {
             rules: [

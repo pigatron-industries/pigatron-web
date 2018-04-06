@@ -11,7 +11,7 @@
     "noImplicitAny": false,
     "baseUrl": "..",
     "paths": {
-      "pigatron/*" : ["./web-public-core/src/main/resources/static/*"]
+      "web-public-core/*" : ["./web-public-core/src/main/resources/static/public/core/*"]
     }
   },
   "exclude": [
