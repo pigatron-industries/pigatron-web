@@ -3,16 +3,31 @@
         <h1>Login</h1>
     </div>
     <div class="main flex-item" fxFlex>
-        <div class="formarea flex-container" fxLayout="column">
-            <mat-form-field class="flex-item">
-                <input matInput placeholder="Email" [(ngModel)]="credentials.username">
-            </mat-form-field>
-            <mat-form-field class="flex-item">
-                <input matInput placeholder="Password" type="password" [(ngModel)]="credentials.password">
-            </mat-form-field>
-            <div class="button-row flex-item">
-                <button mat-raised-button (click)="login()">Log In</button>
+        <form [formGroup]="form" (ngSubmit)="login()">
+            <div class="formarea flex-container" fxLayout="column">
+
+                <mat-form-field class="flex-item">
+                    <input matInput placeholder="Email"
+                           formControlName="username">
+                    <mat-error *ngIf="form.controls.username.hasError('required')">
+                        Username is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item">
+                    <input matInput placeholder="Password" type="password"
+                           formControlName="password">
+                    <mat-error *ngIf="form.controls.password.hasError('required')">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="button-row flex-item">
+                    <button mat-raised-button type="submit"
+                            [disabled]="!form.valid">Log In</button>
+                </div>
+
             </div>
-        </div>
+        </form>
     </div>
 </div>
