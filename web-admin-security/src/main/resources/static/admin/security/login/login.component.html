@@ -6,6 +6,10 @@
         <form [formGroup]="form" (ngSubmit)="login()">
             <div class="formarea flex-container" fxLayout="column">
 
+                <ul class="mat-error" *ngIf="form.errors">
+                    <li *ngFor="let error of form.errors">{{error}}</li>
+                </ul>
+
                 <mat-form-field class="flex-item">
                     <input matInput placeholder="Email"
                            formControlName="username">
