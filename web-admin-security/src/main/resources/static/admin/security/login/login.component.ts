@@ -35,7 +35,6 @@ export class LoginComponent {
             },
             () => {
                 this.form.setErrors(["Invalid username and password"]);
-                console.log(this.form);
             });
         return false;
     }
