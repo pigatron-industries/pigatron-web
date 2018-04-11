@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
@@ -8,11 +8,13 @@ import {MatButtonModule, MatToolbarModule, MatMenuModule} from '@angular/materia
 
 import {AdminAppComponent} from './app.component';
 import {HomeComponent} from './home.component';
+import {MenuService} from "./menu.service";
 import {routes} from './app.routes';
 import {XhrInterceptor} from "./httpinterceptor";
 
 @NgModule({
     imports: [
+        HttpClientModule,
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(routes, { enableTracing: true }),
@@ -23,7 +25,7 @@ import {XhrInterceptor} from "./httpinterceptor";
     ],
     declarations: [ AdminAppComponent, HomeComponent ],
     bootstrap:    [ AdminAppComponent ],
-    providers:    [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }]
+    providers:    [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }, MenuService]
 })
 export class AdminAppModule { }
 

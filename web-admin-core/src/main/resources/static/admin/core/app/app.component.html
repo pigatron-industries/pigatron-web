@@ -1,5 +1,28 @@
 
-    <!--<pg-links></pg-links>-->
+    <!--Menu Bar-->
+    <mat-toolbar>
+        <span id="leftMenu" style="flex: 1 1 auto;">
+
+            <!-- TODO Level 1 menu items -->
+            <span *ngFor="let menuitem of menuitems">
+                <button mat-button [matMenuTriggerFor]="submenu">{{menuitem.name}}</button>
+                <mat-menu #submenu="matMenu">
+                    <button mat-menu-item>Menu2</button>
+                </mat-menu>
+            </span>
+
+            <!--Button and submenu for each top level menu item-->
+            <!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>-->
+
+            <!--Menu for each submenu-->
+            <!--<mat-menu #menu="matMenu">-->
+                <!--<button mat-menu-item>Menu1</button>-->
+                <!--<button mat-menu-item>Menu2</button>-->
+            <!--</mat-menu>-->
+
+        </span>
+        <!--<span id="rightMenu">Right Menu</span>-->
+    </mat-toolbar>
 
     <div class="flex-container" fxLayout="row">
         <div id="content" class="flex-item" fxFlex="100%">
