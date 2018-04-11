@@ -28,6 +28,7 @@ export class AdminAppComponent implements OnInit {
         this.menuService.getAdminMenus()
             .subscribe((data) => {
                 this.menu = <MenuItem>data; //TODO put cast in service
+                console.log(this.menu);
             });
     }
 

@@ -1,10 +1,10 @@
 
     <!--Menu Bar-->
     <mat-toolbar>
-        <span id="leftMenu" style="flex: 1 1 auto;">
+        <span *ngIf="menu" id="leftMenu" style="flex: 1 1 auto;">
 
             <!-- TODO Level 1 menu items -->
-            <span *ngFor="let menuitem of menuitems">
+            <span *ngFor="let menuitem of menu.submenus">
                 <button mat-button [matMenuTriggerFor]="submenu">{{menuitem.name}}</button>
                 <mat-menu #submenu="matMenu">
                     <button mat-menu-item>Menu2</button>
