@@ -1,11 +1,15 @@
 package com.pigatron.web.admin.menu;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class MenuItem {
 
@@ -40,6 +44,16 @@ public class MenuItem {
 
     public List<MenuItem> getSubmenus() {
         return submenus;
+    }
+
+    @JsonIgnore
+    public List<MenuItem> getAllMenus() {
+        List<MenuItem> allSubmenus = submenus.stream()
+                .map(MenuItem::getAllMenus)
+                .flatMap(Collection::stream)
+                .collect(toList());
+        allSubmenus.add(this);
+        return allSubmenus;
     }
 
     public void setSubmenus(List<MenuItem> submenus) {

@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatButtonModule, MatToolbarModule, MatMenuModule} from '@angular/material';
 
 import {AdminAppComponent} from './app.component';
 import {HomeComponent} from './home.component';
@@ -15,7 +16,10 @@ import {XhrInterceptor} from "./httpinterceptor";
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(routes, { enableTracing: true }),
-        FlexLayoutModule
+        FlexLayoutModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatMenuModule
     ],
     declarations: [ AdminAppComponent, HomeComponent ],
     bootstrap:    [ AdminAppComponent ],
