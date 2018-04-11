@@ -2,7 +2,8 @@ import {Component, forwardRef, Inject, OnInit} from "@angular/core";
 import {Router, Routes} from "@angular/router";
 
 import {routes} from './app.routes';
-import {MenuService} from "./menu.service";
+import {MenuService} from "./menu/menu.service";
+import {MenuItem} from "./menu/menuitem";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {MenuService} from "./menu.service";
 export class AdminAppComponent implements OnInit {
 
     private routes: Routes;
-    private menuitems;
+    private menu : MenuItem;
 
     constructor(@Inject(Router) private router: Router,
                 @Inject(MenuService) private menuService: MenuService) {
@@ -26,7 +27,7 @@ export class AdminAppComponent implements OnInit {
     loadMenu() {
         this.menuService.getAdminMenus()
             .subscribe((data) => {
-                this.menuitems = data;
+                this.menu = <MenuItem>data; //TODO put cast in service
             });
     }
 

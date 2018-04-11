@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class AdminMenuController {
     @Autowired
     private MenuItem adminMenu;
 
-    @RequestMapping(method = RequestMethod.GET, params="flat")
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get all admin menu items flattened structure")
     public List<MenuItem> getAdminMenuFlattened(@RequestParam(value="flat", required=false, defaultValue="false") boolean flat) {

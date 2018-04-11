@@ -8,7 +8,7 @@ import {MatButtonModule, MatToolbarModule, MatMenuModule} from '@angular/materia
 
 import {AdminAppComponent} from './app.component';
 import {HomeComponent} from './home.component';
-import {MenuService} from "./menu.service";
+import {MenuService} from "./menu/menu.service";
 import {routes} from './app.routes';
 import {XhrInterceptor} from "./httpinterceptor";
 
