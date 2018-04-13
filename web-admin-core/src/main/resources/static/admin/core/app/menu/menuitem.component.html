@@ -10,7 +10,11 @@
         </span>
         <!-- Handle leaf node menu items -->
         <span *ngIf="!menuitem.submenus || menuitem.submenus.length === 0">
-            <button mat-menu-item [routerLink]="menuitem.route">
+            <button *ngIf="menuitem.action.type == 'route'" mat-menu-item [routerLink]="menuitem.action.action">
+                <!--<mat-icon>{{menuitem.icon}}</mat-icon>-->
+                <span>{{menuitem.name}}</span>
+            </button>
+            <button *ngIf="menuitem.action.type != 'route'" mat-menu-item (click)="doAction(menuitem.action)">
                 <!--<mat-icon>{{menuitem.icon}}</mat-icon>-->
                 <span>{{menuitem.name}}</span>
             </button>

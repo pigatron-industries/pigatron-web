@@ -5,8 +5,8 @@ package com.pigatron.web.admin.menu;
  */
 public class MenuAction {
 
-    public static final String TYPE_ROUTE = "ui-sref";
-    public static final String TYPE_JSFUNC = "ng-click";
+    public static final String TYPE_ROUTE = "route";
+    public static final String TYPE_OPEN = "open";
 
     private String type;
     private String action;

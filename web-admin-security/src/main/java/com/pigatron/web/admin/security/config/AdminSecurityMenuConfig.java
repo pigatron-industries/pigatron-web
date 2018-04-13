@@ -10,12 +10,12 @@ public class AdminSecurityMenuConfig {
 
     @Autowired
     public void addMenuItems(MenuItem adminMenu) {
-        adminMenu.findMenuById("config").get().addSubmenu(new MenuItem("userss", "Users", new MenuAction(MenuAction.TYPE_ROUTE, "users")));
+        adminMenu.findMenuById("config").get().addSubmenu(new MenuItem("users", "Users", new MenuAction(MenuAction.TYPE_ROUTE, "users")));
         adminMenu.addSubmenu(logoutMenu());
     }
 
     private MenuItem logoutMenu() {
-        MenuItem logoutMenu = new MenuItem("logout", "Logout", new MenuAction(MenuAction.TYPE_JSFUNC, "admin.logout()"));
+        MenuItem logoutMenu = new MenuItem("logout", "Logout", new MenuAction(MenuAction.TYPE_ROUTE, "logout"));
         return logoutMenu;
     }
 

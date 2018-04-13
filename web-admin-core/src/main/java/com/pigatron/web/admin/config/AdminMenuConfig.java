@@ -24,8 +24,8 @@ public class AdminMenuConfig {
 
     private MenuItem developerMenu() {
         return new MenuItem("developer", "Developer")
-                .addSubmenu(new MenuItem("apidocs", "Api Docs", new MenuAction(MenuAction.TYPE_JSFUNC,
-                                         "admin.open('/apidocs/index.html?url=/api-docs')")));
+                .addSubmenu(new MenuItem("apidocs", "Api Docs", new MenuAction(MenuAction.TYPE_OPEN,
+                                         "/apidocs/index.html?url=/api-docs")));
     }
 
 }

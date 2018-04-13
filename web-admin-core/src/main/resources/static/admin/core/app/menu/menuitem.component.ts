@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild, Inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {MenuItem} from './menuitem';
+import {MenuAction, MenuItem} from './menuitem';
 
 @Component({
     selector: 'pg-menu-item',
@@ -14,5 +14,12 @@ export class MenuItemComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    doAction(action: MenuAction) {
+        console.log('doAction=' + action.action);
+        if(action.type == 'open') {
+            window.open(action.action);
+        }
     }
 }
