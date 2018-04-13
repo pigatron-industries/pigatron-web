@@ -11,6 +11,7 @@ import {HomeComponent} from './home.component';
 import {MenuService} from "./menu/menu.service";
 import {routes} from './app.routes';
 import {XhrInterceptor} from "./httpinterceptor";
+import {MenuItemComponent} from "./menu/menuitem.component";
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import {XhrInterceptor} from "./httpinterceptor";
         MatToolbarModule,
         MatMenuModule
     ],
-    declarations: [ AdminAppComponent, HomeComponent ],
+    declarations: [ AdminAppComponent, HomeComponent, MenuItemComponent ],
     bootstrap:    [ AdminAppComponent ],
     providers:    [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }, MenuService]
 })
