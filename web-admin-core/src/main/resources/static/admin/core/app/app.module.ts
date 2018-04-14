@@ -12,6 +12,7 @@ import {MenuService} from "./menu/menu.service";
 import {routes} from './app.routes';
 import {XhrInterceptor} from "./httpinterceptor";
 import {MenuItemComponent} from "./menu/menuitem.component";
+import {AppService} from "./app.service";
 
 @NgModule({
     imports: [
@@ -24,9 +25,17 @@ import {MenuItemComponent} from "./menu/menuitem.component";
         MatToolbarModule,
         MatMenuModule
     ],
-    declarations: [ AdminAppComponent, HomeComponent, MenuItemComponent ],
+    declarations: [
+        AdminAppComponent,
+        HomeComponent,
+        MenuItemComponent
+    ],
     bootstrap:    [ AdminAppComponent ],
-    providers:    [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }, MenuService]
+    providers:    [
+        { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
+        MenuService,
+        AppService
+    ]
 })
 export class AdminAppModule { }
 

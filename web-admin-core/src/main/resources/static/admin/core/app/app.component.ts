@@ -4,11 +4,12 @@ import {Router, Routes} from "@angular/router";
 import {routes} from './app.routes';
 import {MenuService} from "./menu/menu.service";
 import {MenuItem} from "./menu/menuitem";
-
+import {AppService} from "./app.service";
 
 @Component({
     selector: 'pg-admin-app',
-    templateUrl: '/admin/core/app/app.component.html'
+    templateUrl: '/admin/core/app/app.component.html',
+    providers: [AppService]
 })
 export class AdminAppComponent implements OnInit {
 
@@ -16,11 +17,17 @@ export class AdminAppComponent implements OnInit {
     private menu : MenuItem;
 
     constructor(@Inject(Router) private router: Router,
-                @Inject(MenuService) private menuService: MenuService) {
+                @Inject(MenuService) private menuService: MenuService,
+                @Inject(AppService) private appService: AppService) {
         this.loadPgModules();
+        appService.refreshEvent$.subscribe(() => {this.refresh();});
     }
 
     ngOnInit() {
+        this.loadMenu();
+    }
+
+    refresh() {
         this.loadMenu();
     }
 

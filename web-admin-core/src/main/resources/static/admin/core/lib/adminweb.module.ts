@@ -6,11 +6,15 @@ import {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/mate
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {XhrInterceptor} from "../app/httpinterceptor";
+import {AppService} from "../app/app.service";
 
 
 @NgModule({
     imports: [],
-    providers: [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
+        AppService
+    ],
     declarations: [],
     bootstrap:    [],
     exports: [
