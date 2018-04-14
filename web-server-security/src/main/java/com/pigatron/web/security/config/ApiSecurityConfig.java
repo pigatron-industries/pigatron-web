@@ -1,5 +1,6 @@
 package com.pigatron.web.security.config;
 
+import com.pigatron.web.security.repository.UserTokenRepository;
 import com.pigatron.web.security.service.SecUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,11 +31,14 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
     private SecUserDetailsService secUserDetailsService;
 
     @Autowired
-    private ApiAuthenticationEntryPoint apiAuthenticationEntryPoint;
+    private UserTokenRepository userTokenRepository;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
+            .and().rememberMe()
+                .alwaysRemember(true)
+                .tokenRepository(userTokenRepository)
             .and().authorizeRequests()
                 // Admin API
                 .antMatchers("/" + adminUrl + "/api/**")
