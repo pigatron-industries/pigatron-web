@@ -1,10 +1,10 @@
 import {NgModule}      from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {LoginComponent}   from './login.component';
-import {routes} from './login.route';
+import {routes} from './users.route';
 import {UserService} from "../service/user.service";
 import {AdminWebModule} from "web-admin-core/main";
+import {UsersComponent} from "./users.component";
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {AdminWebModule} from "web-admin-core/main";
         RouterModule.forChild(routes),
     ],
     providers: [ UserService ],
-    declarations: [ LoginComponent ],
-    bootstrap:    [ LoginComponent ]
+    declarations: [ UsersComponent ],
+    bootstrap:    [ UsersComponent ]
 })
-export class LoginModule { }
+export class UsersModule { }

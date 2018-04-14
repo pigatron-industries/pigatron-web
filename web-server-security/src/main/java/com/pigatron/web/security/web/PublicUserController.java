@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping(value = "api/security/user", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api/secure/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PublicUserController {
 
     private SecUserDetailsService userDetailsService;

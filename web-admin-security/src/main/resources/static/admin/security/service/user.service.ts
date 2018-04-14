@@ -13,7 +13,7 @@ export class UserService {
         const headers = new HttpHeaders(credentials ? {
             authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
         } : {});
-        return this.http.get('/api/security/user', {headers: headers});
+        return this.http.get('/api/secure/user', {headers: headers});
     }
 
     logout() {

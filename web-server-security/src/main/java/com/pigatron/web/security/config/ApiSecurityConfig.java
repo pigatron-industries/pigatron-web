@@ -36,10 +36,13 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
             .and().authorizeRequests()
+                // Admin API
                 .antMatchers("/" + adminUrl + "/api/**")
                     .hasAuthority(SecUserDetailsService.ROLE_ADMIN)
-                .antMatchers("/api/security/user")
+                // Secure Public API
+                .antMatchers("/api/secure/**")
                     .authenticated()
+                // Public API and Web
                 .anyRequest()
                     .permitAll();
     }

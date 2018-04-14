@@ -2,7 +2,7 @@ import {Component, Inject} from "@angular/core";
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {UserService} from "../users/user.service";
+import {UserService} from "../service/user.service";
 import {AppService} from "web-admin-core/main";
 
 
