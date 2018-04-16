@@ -17,13 +17,8 @@ import javax.validation.Valid;
 @RequestMapping(value = "${url.admin}/api/catalogue/category", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminProductCategoryController extends AbstractWriteRestController<ProductCategory> {
 
-    private ProductCategoryService productCategoryService;
-
     @Autowired
-    public AdminProductCategoryController(ProductCategoryService service) {
-        super(service);
-        this.productCategoryService = service;
-    }
+    private ProductCategoryService productCategoryService;
 
     @RequestMapping(value = "/{parentId}", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)

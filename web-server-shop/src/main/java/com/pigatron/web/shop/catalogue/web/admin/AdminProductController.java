@@ -17,13 +17,8 @@ import java.util.List;
 @RequestMapping(value = "${url.admin}/api/catalogue/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminProductController extends AbstractWriteRestController<Product> {
 
-    private ProductService productService;
-
     @Autowired
-    public AdminProductController(ProductService productService) {
-        super(productService);
-        this.productService = productService;
-    }
+    private ProductService productService;
 
     @RequestMapping(value = "", method = RequestMethod.GET, params = {"sku"})
     @ResponseStatus(HttpStatus.OK)

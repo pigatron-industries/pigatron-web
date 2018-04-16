@@ -11,10 +11,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "${url.admin}/api/shipping/method", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ShippingMethodController extends AbstractWriteRestController<ShippingMethod> {
-
-	@Autowired
-	public ShippingMethodController(ShippingMethodService service) {
-		super(service);
-	}
-
 }

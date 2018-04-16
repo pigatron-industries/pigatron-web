@@ -18,13 +18,8 @@ import java.util.List;
 @RequestMapping(value = "${url.admin}/api/cms/content", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminContentController extends AbstractWriteRestController<Content> {
 
-    private ContentService contentService;
-
     @Autowired
-    public AdminContentController(ContentService contentService) {
-        super(contentService);
-        this.contentService = contentService;
-    }
+    private ContentService contentService;
 
     @RequestMapping(value = "/page", method = RequestMethod.GET, params = {"urlKey"})
     @ResponseStatus(HttpStatus.OK)

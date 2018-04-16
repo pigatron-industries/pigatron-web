@@ -20,11 +20,6 @@ import java.util.List;
 @RequestMapping(value = "${url.admin}/api/security/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminUserController extends AbstractWriteRestController<User> {
 
-    @Autowired
-    public AdminUserController(SecUserDetailsService secUserDetailsService) {
-        super(secUserDetailsService);
-    }
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Query")

@@ -20,11 +20,6 @@ import java.util.List;
 @RequestMapping(value = "${url.admin}/api/settings", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminSettingsController extends AbstractWriteRestController<Settings> {
 
-    @Autowired
-    public AdminSettingsController(SettingsService settingsService) {
-        super(settingsService);
-    }
-
 //    @RequestMapping(value = "", method = RequestMethod.GET)
 //    @ResponseStatus(HttpStatus.OK)
 //    @ApiOperation(value = "Get all")

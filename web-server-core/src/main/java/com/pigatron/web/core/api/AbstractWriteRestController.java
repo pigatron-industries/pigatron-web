@@ -5,6 +5,7 @@ import com.pigatron.web.core.service.RepositoryService;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,8 @@ import javax.validation.Valid;
 
 public abstract class AbstractWriteRestController<T> {
 
+    @Autowired
     protected RepositoryService<T> service;
-
-    public AbstractWriteRestController(RepositoryService<T> service) {
-        this.service = service;
-    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
