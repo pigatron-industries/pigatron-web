@@ -5,6 +5,7 @@ import com.pigatron.web.cms.image.repository.ImageRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -22,12 +23,8 @@ public class ImageServiceTest {
     @Mock
     private ImageRepository imageRepository;
 
+    @InjectMocks
     private ImageService imageService;
-
-    @Before
-    public void setup() {
-        imageService = new ImageService(imageRepository);
-    }
 
     @Test
     public void save_shouldSaveNewImage_whenNoMatchFound() {

@@ -3,11 +3,11 @@ package com.pigatron.web.admin.security;
 import com.pigatron.web.security.entity.User;
 import com.pigatron.web.security.repository.UserRepository;
 import com.pigatron.web.security.service.SecUserDetailsService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
@@ -25,12 +25,8 @@ public class SecUserDetailsServiceTest {
     @Mock
     private User existingUser;
 
+    @InjectMocks
     private SecUserDetailsService secUserDetailsService;
-
-    @Before
-    public void setup() {
-        secUserDetailsService = new SecUserDetailsService(userRepository);
-    }
 
     @Test
     public void whenSave_newUser() {

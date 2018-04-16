@@ -5,6 +5,7 @@ import com.pigatron.web.shop.catalogue.repository.ProductCategoryRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -20,12 +21,8 @@ public class ProductCategoryServiceTest {
 	@Mock
 	private ProductCategoryRepository productCategoryRepository;
 
+	@InjectMocks
 	private ProductCategoryService productCategoryService;
-
-	@Before
-	public void setup() {
-		productCategoryService = new ProductCategoryService(productCategoryRepository);
-	}
 
 	@Test
 	public void testDelete() {
