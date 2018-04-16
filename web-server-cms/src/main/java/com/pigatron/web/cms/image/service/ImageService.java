@@ -24,6 +24,10 @@ public class ImageService extends AbstractRepositoryService<Image> {
     @Autowired
     private ImageRepository imageRepository;
 
+    public ImageService() {
+        super(Image.class);
+    }
+
     public Image save(byte[] fileData, String mimeType) {
         Image image = new Image(fileData, mimeType);
         return save(image);

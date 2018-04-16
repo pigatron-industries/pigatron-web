@@ -24,6 +24,10 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
     @Autowired
     private UserRepository userRepository;
 
+    public SecUserDetailsService() {
+        super(User.class);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);

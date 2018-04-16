@@ -17,6 +17,12 @@ public abstract class AbstractRepositoryService<T> implements RepositoryService<
 	@Autowired
 	protected BaseRepository<T> repository;
 
+	private Class entityType;
+
+	public AbstractRepositoryService(Class entityType) {
+		this.entityType = entityType;
+	}
+
 	@Override
 	@Deprecated
 	public List<T> findAll(Sort order) {
@@ -26,8 +32,7 @@ public abstract class AbstractRepositoryService<T> implements RepositoryService<
 
 	@Override
 	public List<T> query(PageableQueryBuilder queryBuilder) {
-		//return mongoOperations.find(queryBuilder.build(), typeClass);
-		return repository.query(queryBuilder.build());
+		return mongoOperations.find(queryBuilder.build(), entityType);
 	}
 
 	@Override

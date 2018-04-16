@@ -20,6 +20,10 @@ public class ProductService extends AbstractRepositoryService<Product> {
 	@Autowired
 	private SequenceService sequenceService;
 
+	public ProductService() {
+		super(Product.class);
+	}
+
 	public Product getBySku(String sku) {
 		return productRepository.findBySku(sku);
 	}

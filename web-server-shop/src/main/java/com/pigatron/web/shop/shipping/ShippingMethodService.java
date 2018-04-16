@@ -14,6 +14,10 @@ import java.util.Optional;
 @Service
 public class ShippingMethodService extends AbstractRepositoryService<ShippingMethod> {
 
+	public ShippingMethodService() {
+		super(ShippingMethod.class);
+	}
+
 	public List<ShippingOption> getShippingOptionsForOrder(Order order) {
 		List<ShippingMethod> shippingMethods = repository.findAll();
 		List<ShippingOption> shippingOptions = new ArrayList<>();

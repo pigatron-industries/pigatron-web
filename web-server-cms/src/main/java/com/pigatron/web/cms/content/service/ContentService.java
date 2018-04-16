@@ -14,6 +14,10 @@ public class ContentService extends AbstractRepositoryService<Content> {
     @Autowired
     private ContentRepository contentRepository;
 
+    public ContentService() {
+        super(Content.class);
+    }
+
     public Optional<Content> getPageByUrlKey(String urlKey) {
         return contentRepository.findPageByUrlKey(urlKey);
     }

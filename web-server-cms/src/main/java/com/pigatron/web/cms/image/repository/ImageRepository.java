@@ -5,5 +5,5 @@ import com.pigatron.web.core.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ImageRepository extends BaseRepository<Image>, ImageRepositoryCustom {
+public interface ImageRepository extends BaseRepository<Image> {
 }

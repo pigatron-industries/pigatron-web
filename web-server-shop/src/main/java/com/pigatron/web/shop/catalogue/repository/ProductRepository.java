@@ -5,7 +5,7 @@ import com.pigatron.web.shop.catalogue.entity.Product;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends BaseRepository<Product>, ProductRepositoryCustom {
+public interface ProductRepository extends BaseRepository<Product> {
 
     Product findBySku(String sku);
 

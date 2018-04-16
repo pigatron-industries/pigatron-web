@@ -12,6 +12,10 @@ import java.util.List;
 @Service
 public class ProductCategoryService extends AbstractRepositoryService<ProductCategory> {
 
+	public ProductCategoryService() {
+		super(ProductCategory.class);
+	}
+
 	public ProductCategory addSubcategory(String parentId, ProductCategory newCategory) {
 		ProductCategory parentCategory = findById(parentId);
 		parentCategory.getSubcategories().add(newCategory);

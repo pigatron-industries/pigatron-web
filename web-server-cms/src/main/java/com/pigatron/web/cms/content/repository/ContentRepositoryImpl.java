@@ -8,18 +8,12 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import java.util.List;
 import java.util.Optional;
 
 public class ContentRepositoryImpl implements ContentRepositoryCustom {
 
     @Autowired
     private MongoOperations mongoOperations;
-
-    @Override
-    public List<Content> query(Query query) {
-        return mongoOperations.find(query, Content.class);
-    }
 
     @Override
     public Optional<Content> findPageByUrlKey(String urlKey) {
