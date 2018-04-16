@@ -14,17 +14,11 @@ import java.util.Optional;
 public class ContentRepositoryImpl implements ContentRepositoryCustom {
 
     @Autowired
-    MongoOperations mongoOperations;
+    private MongoOperations mongoOperations;
 
     @Override
-    public List<Content> find(ContentQuery contentQuery) {
-        Query query = new Query();
+    public List<Content> query(Query query) {
         return mongoOperations.find(query, Content.class);
-    }
-
-    @Override
-    public List<Content> find(PostQuery postQuery) {
-        return mongoOperations.find(postQuery.createQuery(), Content.class);
     }
 
     @Override

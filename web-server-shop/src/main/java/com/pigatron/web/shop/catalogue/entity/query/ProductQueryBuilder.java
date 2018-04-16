@@ -1,6 +1,8 @@
 package com.pigatron.web.shop.catalogue.entity.query;
 
-public class ProductQuery {
+import com.pigatron.web.core.entity.PageableQueryBuilder;
+
+public class ProductQueryBuilder extends PageableQueryBuilder {
 
     private Boolean hasOptions;
     private Boolean isOption;

@@ -2,7 +2,7 @@ package com.pigatron.web.shop.catalogue.web.admin;
 
 import com.pigatron.web.core.api.AbstractWriteRestController;
 import com.pigatron.web.shop.catalogue.entity.Product;
-import com.pigatron.web.shop.catalogue.entity.query.ProductQuery;
+import com.pigatron.web.shop.catalogue.entity.query.ProductQueryBuilder;
 import com.pigatron.web.shop.catalogue.service.ProductService;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +44,7 @@ public class AdminProductController extends AbstractWriteRestController<Product>
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get with query")
-    public List<Product> query(@RequestParam(value="hasOptions", required=false) Boolean hasOptions,
-                               @RequestParam(value="isOption", required=false) Boolean isOption) {
-        ProductQuery productQuery = new ProductQuery();
-        productQuery.setHasOptions(hasOptions);
-        productQuery.setIsOption(isOption);
-        return productService.find(productQuery);
+    public List<Product> query(ProductQueryBuilder query) {
+        return productService.query(query);
     }
 }

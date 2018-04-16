@@ -1,7 +1,7 @@
 package com.pigatron.web.cms.image.web;
 
 import com.pigatron.web.cms.image.entity.Image;
-import com.pigatron.web.cms.image.entity.ImageQuery;
+import com.pigatron.web.cms.image.entity.ImageQueryBuilder;
 import com.pigatron.web.cms.image.entity.ImagesInfo;
 import com.pigatron.web.cms.image.service.ImageService;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -26,9 +26,8 @@ public class AdminImageController extends PublicImageController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get with query")
-    public List<Image> query() {
-        ImageQuery imageQuery = new ImageQuery();
-        return imageService.find(imageQuery);
+    public List<Image> query(ImageQueryBuilder query) {
+        return imageService.query(query);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

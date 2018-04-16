@@ -50,7 +50,7 @@ public class AbstractAdminCoreIntegrationTest {
     }
 
     protected void dbSetup() {
-        mongoTemplate.getDb().dropDatabase();
+        mongoTemplate.getDb().drop();
         publisher.publishEvent(new ContextRefreshedEvent(context)); //force initial data setup
     }
 

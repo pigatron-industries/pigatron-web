@@ -3,7 +3,6 @@ package com.pigatron.web.shop.catalogue.service;
 import com.pigatron.web.core.sequence.SequenceService;
 import com.pigatron.web.core.service.AbstractRepositoryService;
 import com.pigatron.web.shop.catalogue.entity.Product;
-import com.pigatron.web.shop.catalogue.entity.query.ProductQuery;
 import com.pigatron.web.shop.catalogue.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,10 +31,6 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	public Product getByUrlKey(String urlKey) {
 		return productRepository.findByUrlKey(urlKey);
-	}
-
-	public List<Product> find(ProductQuery query) {
-		return productRepository.find(query);
 	}
 
 	@Override

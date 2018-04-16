@@ -1,7 +1,7 @@
 package com.pigatron.web.cms.content.web;
 
 import com.pigatron.web.cms.content.entity.Content;
-import com.pigatron.web.cms.content.repository.ContentQuery;
+import com.pigatron.web.cms.content.repository.ContentQueryBuilder;
 import com.pigatron.web.cms.content.service.ContentService;
 import com.pigatron.web.core.api.AbstractWriteRestController;
 import com.pigatron.web.core.exception.InvalidParameterException;
@@ -39,9 +39,8 @@ public class AdminContentController extends AbstractWriteRestController<Content>
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get with query")
-    public List<Content> query() {
-        ContentQuery contentQuery = new ContentQuery();
-        return contentService.find(contentQuery);
+    public List<Content> query(ContentQueryBuilder query) {
+        return contentService.query(query);
     }
 
 }

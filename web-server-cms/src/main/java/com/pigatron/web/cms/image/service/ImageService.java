@@ -1,7 +1,6 @@
 package com.pigatron.web.cms.image.service;
 
 import com.pigatron.web.cms.image.entity.Image;
-import com.pigatron.web.cms.image.entity.ImageQuery;
 import com.pigatron.web.cms.image.entity.ImagesInfo;
 import com.pigatron.web.cms.image.repository.ImageRepository;
 import com.pigatron.web.core.service.AbstractRepositoryService;
@@ -43,10 +42,6 @@ public class ImageService extends AbstractRepositoryService<Image> {
         } else {
             return super.save(image);
         }
-    }
-
-    public List<Image> find(ImageQuery query) {
-        return imageRepository.find(query);
     }
 
     public Image getResizedImage(String id, Integer width, Integer height) throws IOException {

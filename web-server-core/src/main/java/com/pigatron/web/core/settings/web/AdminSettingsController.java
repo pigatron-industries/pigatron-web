@@ -25,11 +25,11 @@ public class AdminSettingsController extends AbstractWriteRestController<Setting
         super(settingsService);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Get all")
-    public List<Settings> get() {
-        return service.findAll(new Sort("group", "name"));
-    }
+//    @RequestMapping(value = "", method = RequestMethod.GET)
+//    @ResponseStatus(HttpStatus.OK)
+//    @ApiOperation(value = "Get all")
+//    public List<Settings> get() {
+//        return service.query(new Sort("group", "name"));
+//    }
 
 }
