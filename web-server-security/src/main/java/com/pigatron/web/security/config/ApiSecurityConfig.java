@@ -24,9 +24,6 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${url.admin}")
     private String adminUrl;
 
-    @Value("${admin.api.basicAuth}")
-    private boolean basicAuth;
-
     @Autowired
     private SecUserDetailsService secUserDetailsService;
 
