@@ -11,13 +11,8 @@ import java.util.Optional;
 @Service
 public class ContentService extends AbstractRepositoryService<Content> {
 
-    private ContentRepository contentRepository;
-
     @Autowired
-    public ContentService(ContentRepository repository) {
-        super(repository);
-        this.contentRepository = repository;
-    }
+    private ContentRepository contentRepository;
 
     public Optional<Content> getPageByUrlKey(String urlKey) {
         return contentRepository.findPageByUrlKey(urlKey);

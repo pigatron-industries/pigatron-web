@@ -21,13 +21,8 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
 
     public static final String ROLE_ADMIN = "ADMIN";
 
-    private UserRepository userRepository;
-
     @Autowired
-    public SecUserDetailsService(UserRepository repository) {
-        super(repository);
-        this.userRepository = repository;
-    }
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -17,10 +17,6 @@ public abstract class AbstractRepositoryService<T> implements RepositoryService<
 	@Autowired
 	protected BaseRepository<T> repository;
 
-	public AbstractRepositoryService(BaseRepository<T> repository) {
-		this.repository = repository;
-	}
-
 	@Override
 	@Deprecated
 	public List<T> findAll(Sort order) {

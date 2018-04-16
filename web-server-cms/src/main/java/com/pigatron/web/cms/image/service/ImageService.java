@@ -21,13 +21,8 @@ import java.util.Optional;
 @Service
 public class ImageService extends AbstractRepositoryService<Image> {
 
-    private ImageRepository imageRepository;
-
     @Autowired
-    public ImageService(ImageRepository imageRepository) {
-        super(imageRepository);
-        this.imageRepository = imageRepository;
-    }
+    private ImageRepository imageRepository;
 
     public Image save(byte[] fileData, String mimeType) {
         Image image = new Image(fileData, mimeType);

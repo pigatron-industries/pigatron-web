@@ -15,15 +15,10 @@ public class ProductService extends AbstractRepositoryService<Product> {
 
 	public static final String SKU_SEQUENCE = "productSku";
 
-	private ProductRepository productRepository;
-	private SequenceService sequenceService;
-
 	@Autowired
-	public ProductService(ProductRepository repository, SequenceService sequenceService) {
-		super(repository);
-		this.productRepository = repository;
-		this.sequenceService = sequenceService;
-	}
+	private ProductRepository productRepository;
+	@Autowired
+	private SequenceService sequenceService;
 
 	public Product getBySku(String sku) {
 		return productRepository.findBySku(sku);
