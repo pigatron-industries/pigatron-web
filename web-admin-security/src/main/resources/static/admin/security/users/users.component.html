@@ -1,7 +1,17 @@
 <div class="flex-container" fxLayout="row">
+
     <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
         <h1>Users</h1>
+        <div class="buttons-bar">
+            <button mat-mini-fab color="primary" matTooltip="Add User">
+                <mat-icon aria-label="Add user">add</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" matTooltip="Delete User">
+                <mat-icon aria-label="Delete selected users">delete</mat-icon>
+            </button>
+        </div>
     </div>
+
     <div class="main flex-item" fxFlex>
         <!--<form [formGroup]="form" (ngSubmit)="save()">-->
             <div class="formarea flex-container" fxLayout="column">

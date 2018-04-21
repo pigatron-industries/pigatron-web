@@ -43,7 +43,7 @@ body {
 
 /* Menu bar */
 
-.mat-toolbar-row, .mat-toolbar-single-row {
+mat-toolbar.mat-toolbar-single-row {
     height: auto;
 }
 
@@ -86,6 +86,10 @@ h1, h2 {
 .leftsidebar {
     padding-left: 1em;
     padding-right: 1em;
+}
+
+.buttons-bar {
+    float:right;
 }
 
 
