@@ -1,3 +1,5 @@
+import 'zone.js/dist/zone';
+
 // Angular
 import "@angular/platform-browser";
 import "@angular/platform-browser-dynamic";
@@ -9,6 +11,7 @@ import "@angular/http";
 import "@angular/router";
 import "@angular/flex-layout";
 import "@angular/material";
+import "@swimlane/ngx-datatable";
 import "rxjs";
 
 // RxJS
@@ -29,5 +32,6 @@ export {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/mate
 export {ErrorStateMatcher} from '@angular/material/core';
 export {HttpClientModule, HttpClient, HttpHeaders, HttpInterceptor,
         HttpRequest, HttpHandler, HTTP_INTERCEPTORS} from "@angular/common/http";
-//export * from "@angular/http";
+export * from "@swimlane/ngx-datatable";
+
 //export * from "rxjs/Observable";

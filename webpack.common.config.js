@@ -13,13 +13,13 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
     var files = {
         tsMain: paths.src+'/'+appName+'/'+moduleName+'/main.ts',
         tsVendor: paths.src+'/'+appName+'/'+moduleName+'/lib.ts',
-        tsPolyfills: paths.src+'/'+appName+'/'+moduleName+'/polyfill.ts',
+        //tsPolyfills: paths.src+'/'+appName+'/'+moduleName+'/polyfill.ts',
         jsOutput: paths.dst+'/'+appName+'/[name].js'
     };
 
     var entry = {};
-    if(polyfills)
-        entry['polyfill'] = files.tsPolyfills;
+    // if(polyfills)
+    //     entry['polyfill'] = files.tsPolyfills;
     if(vendor)
         entry[appName+'_lib'] = files.tsVendor;
     entry[appName+'_'+moduleName] = files.tsMain;
@@ -28,8 +28,8 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
     names.push(appName+'_'+moduleName);
     if(vendor)
         names.push(appName+'_lib');
-    if(polyfills)
-        names.push('polyfill');
+    // if(polyfills)
+    //     names.push('polyfill');
 
     return {
         entry: entry,

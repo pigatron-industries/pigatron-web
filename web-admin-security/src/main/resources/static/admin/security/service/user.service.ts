@@ -21,4 +21,8 @@ export class UserService {
             .subscribe(data => console.log(data));
     }
 
+    getUsers() {
+        return this.http.get('api/security/user');
+    }
+
 }

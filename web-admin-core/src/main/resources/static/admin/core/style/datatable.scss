@@ -1,0 +1,8 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+.ngx-datatable.material .datatable-header .datatable-header-cell,
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+  padding: .3rem 1.2rem;
+}

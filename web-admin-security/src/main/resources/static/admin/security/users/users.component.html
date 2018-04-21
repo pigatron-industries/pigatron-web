@@ -3,10 +3,13 @@
         <h1>Users</h1>
     </div>
     <div class="main flex-item" fxFlex>
-        <form [formGroup]="form" (ngSubmit)="save()">
+        <!--<form [formGroup]="form" (ngSubmit)="save()">-->
             <div class="formarea flex-container" fxLayout="column">
 
+                <ngx-datatable class="material" [rows]="rows" [columns]="columns">
+                </ngx-datatable>
+
             </div>
-        </form>
+        <!--</form>-->
     </div>
 </div>

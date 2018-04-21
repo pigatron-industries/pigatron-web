@@ -4,6 +4,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 import {XhrInterceptor} from "../app/httpinterceptor";
 import {AppService} from "../app/app.service";
@@ -25,7 +26,8 @@ import {AppService} from "../app/app.service";
         FlexLayoutModule,
         MatFormFieldModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        NgxDatatableModule
     ]
 })
 export class AdminWebModule { }
