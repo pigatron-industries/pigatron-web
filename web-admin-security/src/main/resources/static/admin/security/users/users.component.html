@@ -6,7 +6,12 @@
         <!--<form [formGroup]="form" (ngSubmit)="save()">-->
             <div class="formarea flex-container" fxLayout="column">
 
-                <ngx-datatable class="material" [rows]="rows" [columns]="columns">
+                <ngx-datatable class="material"
+                               [rows]="rows"
+                               [columns]="columns"
+                               [headerHeight]="30"
+                               [footerHeight]="30"
+                               [rowHeight]="30">
                 </ngx-datatable>
 
             </div>

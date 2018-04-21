@@ -14,10 +14,6 @@ $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $cus
 @include angular-material-theme($custom-theme);
 @include pg-app-theme($custom-theme);
 
-
-
-/***** colours should use material theme when it is done *****/
-
 /* Page */
 html,
 body {
@@ -45,6 +41,11 @@ body {
     font-size:90%;
 }
 
+/* Menu bar */
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: auto;
+}
 
 /* Footer */
 
