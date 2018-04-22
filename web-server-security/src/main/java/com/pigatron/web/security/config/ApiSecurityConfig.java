@@ -32,7 +32,7 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic()
+        http.csrf().disable().httpBasic()
             .and().rememberMe()
                 .alwaysRemember(true)
                 .tokenRepository(userTokenRepository)

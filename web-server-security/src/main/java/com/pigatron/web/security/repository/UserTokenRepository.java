@@ -3,6 +3,7 @@ package com.pigatron.web.security.repository;
 
 import com.pigatron.web.security.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,8 @@ public class UserTokenRepository implements PersistentTokenRepository {
 
     @Override
     public void createNewToken(PersistentRememberMeToken token) {
-        User user = userRepository.findByUsername(token.getUsername());
+        User user = userRepository.findByUsername(token.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException(token.getUsername()));
         user.setTokenSeries(token.getSeries());
         user.setTokenValue(token.getTokenValue());
         user.setTokenDate(token.getDate());
@@ -26,7 +28,8 @@ public class UserTokenRepository implements PersistentTokenRepository {
 
     @Override
     public void updateToken(String series, String tokenValue, Date lastUsed) {
-        User user = userRepository.findByTokenSeries(series);
+        User user = userRepository.findByTokenSeries(series)
+                .orElseThrow(() -> new UsernameNotFoundException(series));
         user.setTokenValue(tokenValue);
         user.setTokenDate(lastUsed);
         userRepository.save(user);
@@ -34,16 +37,15 @@ public class UserTokenRepository implements PersistentTokenRepository {
 
     @Override
     public PersistentRememberMeToken getTokenForSeries(String tokenSeries) {
-        User user = userRepository.findByTokenSeries(tokenSeries);
-        if(user != null) {
-            return new PersistentRememberMeToken(user.getUsername(), user.getTokenSeries(), user.getTokenValue(), user.getTokenDate());
-        }
-        return null;
+        return userRepository.findByTokenSeries(tokenSeries)
+                .map(user1 -> new PersistentRememberMeToken(user1.getUsername(), user1.getTokenSeries(), user1.getTokenValue(), user1.getTokenDate()))
+                .orElse(null);
     }
 
     @Override
     public void removeUserTokens(String username) {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
         user.setTokenSeries(null);
         user.setTokenValue(null);
         user.setTokenDate(null);

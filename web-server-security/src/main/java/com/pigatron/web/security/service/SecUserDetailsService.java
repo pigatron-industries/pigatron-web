@@ -30,13 +30,8 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if(user == null) {
-            throw new UsernameNotFoundException(username);
-        }
-        else {
-            return user;
-        }
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
     @EventListener
@@ -56,8 +51,21 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
 
     @Override
     public User save(User user) {
+        validate(user);
+        encodePassword(user);
+        return super.save(user);
+    }
+
+    private void validate(User user) {
+        if(user.getId() == null) {
+            if(userRepository.findByUsername(user.getUsername()).isPresent()) {
+                throw new RuntimeException("User with the same username already exists.");
+            }
+        }
+    }
+
+    private void encodePassword(User user) {
         if(user.getId() != null) {
-            //check if password has changed and re-encode
             User previousUser = findById(user.getId());
             if(!previousUser.getPassword().equals(user.getPassword())) {
                 user.setPassword(encodePassword(user.getPassword()));
@@ -65,8 +73,6 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
         } else {
             user.setPassword(encodePassword(user.getPassword()));
         }
-
-        return super.save(user);
     }
 
     private String encodePassword(String password) {
