@@ -13,7 +13,7 @@ export class UsersComponent implements OnInit {
 
     rows: User[];
     columns = [
-        { name: 'Email', prop: 'username' },
+        { name: 'Username', prop: 'username' },
         { name: 'Name',  prop: 'name' }
     ];
 
@@ -26,10 +26,14 @@ export class UsersComponent implements OnInit {
     }
 
     loadData(): void {
-        this.userService.getUsers()
+        this.userService.queryUsers()
             .subscribe((data) => {
                 this.rows = <User[]>data;
             });
+    }
+
+    deleteUser(): void {
+        //TODO
     }
 
 }

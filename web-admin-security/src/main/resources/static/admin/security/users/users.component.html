@@ -3,10 +3,10 @@
     <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
         <h1>Users</h1>
         <div class="buttons-bar">
-            <button mat-mini-fab color="primary" matTooltip="Add User">
+            <button mat-mini-fab color="primary" matTooltip="Add User" [routerLink]="'/user/new'">
                 <mat-icon aria-label="Add user">add</mat-icon>
             </button>
-            <button mat-mini-fab color="primary" matTooltip="Delete User">
+            <button mat-mini-fab color="primary" matTooltip="Delete User" (click)="deleteUser()">
                 <mat-icon aria-label="Delete selected users">delete</mat-icon>
             </button>
         </div>

@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {User} from "./user";
 
 @Injectable()
 export class UserService {
@@ -21,8 +22,17 @@ export class UserService {
             .subscribe(data => console.log(data));
     }
 
-    getUsers() {
+    queryUsers() {
+        //TODO paging sorting filtering
         return this.http.get('api/security/user');
+    }
+
+    getUser(id: String) {
+        return this.http.get('api/security/user/'+id);
+    }
+
+    saveUser(user: User) {
+        return this.http.post('api/security/user', user);
     }
 
 }

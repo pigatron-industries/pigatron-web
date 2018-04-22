@@ -1,0 +1,41 @@
+<div class="flex-container" fxLayout="row">
+
+    <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
+        <h1>User</h1>
+        <div class="buttons-bar">
+            <button mat-mini-fab matTooltip="Save User"
+                    [color]="true ? 'accent' : 'primary'"
+                    [disabled]="!form.valid" (click)="save()">
+                <mat-icon aria-label="Save user">save</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="main flex-item" fxFlex>
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="formarea flex-container" fxLayout="column">
+
+                <ul class="mat-error" *ngIf="form.errors">
+                    <li *ngFor="let error of form.errors">{{error}}</li>
+                </ul>
+
+                <mat-form-field class="flex-item">
+                    <input matInput placeholder="Email"
+                           formControlName="username">
+                    <mat-error *ngIf="form.controls.username.hasError('required')">
+                        Username is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item">
+                    <input matInput placeholder="Password" type="password"
+                           formControlName="password">
+                    <mat-error *ngIf="form.controls.password.hasError('required')">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+        </form>
+    </div>
+</div>
