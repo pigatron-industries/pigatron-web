@@ -21,7 +21,7 @@ export abstract class AbstractFormComponent implements OnInit {
             } else {
                 this.data = this.create();
             }
-        })
+        });
     }
 
     load(id: string): void {
@@ -29,7 +29,7 @@ export abstract class AbstractFormComponent implements OnInit {
             .subscribe(data => {
                 this.data = data;
                 this.form.patchValue(data);
-            })
+            });
     }
 
     save(): void {
@@ -37,6 +37,8 @@ export abstract class AbstractFormComponent implements OnInit {
         this.dataService.save(this.data)
             .subscribe((data) => {
                 this.form.patchValue(data);
+            }, (error) => {
+                this.form.setErrors([error.error.message]);
             });
     }
 
