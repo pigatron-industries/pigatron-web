@@ -5,12 +5,12 @@ import {FormGroup} from "@angular/forms";
 import {AbstractDataService} from "./abstractdata.service";
 
 
-export abstract class AbstractFormComponent implements OnInit {
+export abstract class AbstractFormComponent<T> implements OnInit {
 
-    data: Object;
+    data: T;
     form: FormGroup;
 
-    constructor(protected dataService: AbstractDataService,
+    constructor(protected dataService: AbstractDataService<T>,
                 protected route: ActivatedRoute) {
     }
 
@@ -42,6 +42,6 @@ export abstract class AbstractFormComponent implements OnInit {
             });
     }
 
-    abstract create(): Object;
+    abstract create(): T;
 
 }

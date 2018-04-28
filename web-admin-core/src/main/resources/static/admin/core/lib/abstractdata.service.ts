@@ -2,21 +2,21 @@ import {Observable} from "rxjs";
 import {HttpClient} from '@angular/common/http';
 
 
-export abstract class AbstractDataService {
+export abstract class AbstractDataService<T> {
 
     constructor(protected http: HttpClient, protected basePath: string) {
     }
 
-    query(): Observable<Object[]> {
+    query(): Observable<T[]> {
         //TODO paging sorting filtering
-        return <Observable<Object[]>>this.http.get(this.basePath);
+        return <Observable<T[]>>this.http.get(this.basePath);
     };
 
-    get(id: string): Observable<Object> {
-        return this.http.get(this.basePath+'/'+id);
+    get(id: string): Observable<T> {
+        return <Observable<T>>this.http.get(this.basePath+'/'+id);
     }
 
-    save(data: Object): Observable<Object> {
-        return this.http.post(this.basePath, data);
+    save(data: T): Observable<T> {
+        return <Observable<T>>this.http.post(this.basePath, data);
     };
 }

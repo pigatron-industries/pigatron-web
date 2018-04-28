@@ -11,7 +11,7 @@ import {AbstractFormComponent} from "web-admin-core/main";
     selector: 'pg-users',
     templateUrl: '/admin/security/user/user.component.html'
 })
-export class UserComponent extends AbstractFormComponent {
+export class UserComponent extends AbstractFormComponent<User> {
 
     form = new FormGroup({
         username: new FormControl('', [
@@ -28,7 +28,7 @@ export class UserComponent extends AbstractFormComponent {
         super(userService, route);
     }
 
-    create(): Object {
+    create(): User {
         return new User();
     };
 

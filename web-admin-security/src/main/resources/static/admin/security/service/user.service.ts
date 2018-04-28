@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from "rxjs";
 
 import {AbstractDataService} from "web-admin-core/main";
+import {User} from "./user";
 
 @Injectable()
-export class UserService extends AbstractDataService {
+export class UserService extends AbstractDataService<User> {
 
     constructor(@Inject(HttpClient) http: HttpClient) {
         super(http, 'api/security/user');
