@@ -10,8 +10,8 @@ export abstract class AbstractFormComponent implements OnInit {
     data: Object;
     form: FormGroup;
 
-    constructor(private dataService: AbstractDataService,
-                private route: ActivatedRoute) {
+    constructor(protected dataService: AbstractDataService,
+                protected route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
@@ -23,8 +23,6 @@ export abstract class AbstractFormComponent implements OnInit {
             }
         })
     }
-
-    abstract create(): Object;
 
     load(id: string): void {
         this.dataService.get(id)
@@ -41,5 +39,7 @@ export abstract class AbstractFormComponent implements OnInit {
                 this.form.patchValue(data);
             });
     }
+
+    abstract create(): Object;
 
 }
