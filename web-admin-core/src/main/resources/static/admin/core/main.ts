@@ -6,5 +6,6 @@ export { AdminWebModule } from './lib/adminweb.module';
 export { AppService } from './app/app.service';
 export { AbstractDataService } from './lib/abstractdata.service';
 export { AbstractFormComponent } from './lib/abstractform.component';
+export { AbstractTableComponent } from './lib/abstracttable.component';
 
 platformBrowserDynamic().bootstrapModule(AdminAppModule);
