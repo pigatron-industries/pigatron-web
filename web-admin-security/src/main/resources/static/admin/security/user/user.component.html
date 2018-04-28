@@ -3,8 +3,12 @@
     <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
         <h1>User</h1>
         <div class="buttons-bar">
+            <button mat-mini-fab matTooltip="Back"
+                    color="primary" [routerLink]="'/users'">
+                <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
+            </button>
             <button mat-mini-fab matTooltip="Save User"
-                    [color]="true ? 'accent' : 'primary'"
+                    [color]="form.dirty ? 'accent' : 'primary'"
                     [disabled]="!form.valid" (click)="save()">
                 <mat-icon aria-label="Save user">save</mat-icon>
             </button>

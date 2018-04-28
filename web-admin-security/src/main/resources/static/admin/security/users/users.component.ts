@@ -12,10 +12,6 @@ import {User} from "../service/user";
 export class UsersComponent implements OnInit {
 
     rows: User[];
-    columns = [
-        { name: 'Username', prop: 'username' },
-        { name: 'Name',  prop: 'name' }
-    ];
 
     constructor(@Inject(UserService) private userService: UserService,
                 @Inject(Router) private router: Router) {
@@ -26,7 +22,7 @@ export class UsersComponent implements OnInit {
     }
 
     loadData(): void {
-        this.userService.queryUsers()
+        this.userService.query()
             .subscribe((data) => {
                 this.rows = <User[]>data;
             });

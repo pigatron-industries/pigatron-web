@@ -23,7 +23,7 @@ import "@angular/material";
 //require("font-awesome/css/font-awesome.css");
 
 export * from "@angular/core";
-export {Routes, RouterModule, Router} from '@angular/router';
+export {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 export {CommonModule} from '@angular/common';
 export {FormsModule, ReactiveFormsModule, FormControl, FormGroup, FormGroupDirective, NgForm,
         Validators} from '@angular/forms';

@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class SecUserDetailsService extends AbstractRepositoryService<User> implements UserDetailsService {
 
@@ -57,10 +59,11 @@ public class SecUserDetailsService extends AbstractRepositoryService<User> imple
     }
 
     private void validate(User user) {
-        if(user.getId() == null) {
-            if(userRepository.findByUsername(user.getUsername()).isPresent()) {
-                throw new RuntimeException("User with the same username already exists.");
-            }
+        Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
+        if(user.getId() == null && existingUser.isPresent()) {
+            throw new RuntimeException("User with the same username already exists.");
+        } else if (existingUser.isPresent() && !existingUser.get().getId().equals(user.getId())) {
+            throw new RuntimeException("User with the same username already exists.");
         }
     }
 

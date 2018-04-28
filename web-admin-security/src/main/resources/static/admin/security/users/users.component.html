@@ -13,18 +13,23 @@
     </div>
 
     <div class="main flex-item" fxFlex>
-        <!--<form [formGroup]="form" (ngSubmit)="save()">-->
-            <div class="formarea flex-container" fxLayout="column">
+        <div class="formarea flex-container" fxLayout="column">
 
-                <ngx-datatable class="material"
-                               [rows]="rows"
-                               [columns]="columns"
-                               [headerHeight]="30"
-                               [footerHeight]="30"
-                               [rowHeight]="30">
-                </ngx-datatable>
+            <ngx-datatable class="material"
+                           [rows]="rows"
+                           [columns]="columns"
+                           [headerHeight]="30"
+                           [footerHeight]="30"
+                           [rowHeight]="30">
+                <ngx-datatable-column>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <mat-icon aria-label="Edit user" [routerLink]="['/user', row.id]">edit</mat-icon>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="username"></ngx-datatable-column>
+                <ngx-datatable-column prop="email"></ngx-datatable-column>
+            </ngx-datatable>
 
-            </div>
-        <!--</form>-->
+        </div>
     </div>
 </div>

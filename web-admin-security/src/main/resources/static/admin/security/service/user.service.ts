@@ -1,13 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from "rxjs";
+
 import {User} from "./user";
+import {AbstractDataService} from "web-admin-core/main";
 
 @Injectable()
-export class UserService {
+export class UserService extends AbstractDataService {
 
-    constructor(@Inject(HttpClient) private http: HttpClient) {
-        //authenticate user when browser loads to check if they are already logged in
-        //this.authenticate(undefined, undefined);
+    constructor(@Inject(HttpClient) http: HttpClient) {
+        super(http);
     }
 
     authenticate(credentials) {
@@ -22,16 +24,16 @@ export class UserService {
             .subscribe(data => console.log(data));
     }
 
-    queryUsers() {
+    query() {
         //TODO paging sorting filtering
-        return this.http.get('api/security/user');
+        return <Observable<Object[]>>this.http.get('api/security/user');
     }
 
-    getUser(id: String) {
+    get(id: String) {
         return this.http.get('api/security/user/'+id);
     }
 
-    saveUser(user: User) {
+    save(user: User) {
         return this.http.post('api/security/user', user);
     }
 
