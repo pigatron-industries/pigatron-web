@@ -6,6 +6,7 @@ import {AbstractDataService} from "./abstractdata.service";
 export abstract class AbstractTableComponent<T> implements OnInit {
 
     rows: T[];
+    selected: T[] = [];
 
     constructor(protected dataService: AbstractDataService<T>) {
     }

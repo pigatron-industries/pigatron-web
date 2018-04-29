@@ -11,7 +11,7 @@ import {AbstractTableComponent} from "web-admin-core/main";
 })
 export class UsersComponent extends AbstractTableComponent<User> {
 
-    constructor(protected userService: UserService) {
+    constructor(@Inject(UserService) userService: UserService) {
         super(userService);
     }
 

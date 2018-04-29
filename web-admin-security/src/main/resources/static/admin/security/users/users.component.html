@@ -20,8 +20,25 @@
                            [columns]="columns"
                            [headerHeight]="30"
                            [footerHeight]="30"
-                           [rowHeight]="30">
-                <ngx-datatable-column>
+                           [rowHeight]="30"
+                           [selected]="selected"
+                           [selectionType]="'checkbox'"
+                           [selectAllRowsOnPage]="false"
+                           [displayCheck]="displayCheck"
+                           (select)='onSelect($event)'>
+                <ngx-datatable-column [width]="30"
+                                      [sortable]="false"
+                                      [canAutoResize]="false"
+                                      [draggable]="false"
+                                      [resizeable]="false"
+                                      [headerCheckboxable]="true"
+                                      [checkboxable]="true">
+                </ngx-datatable-column>
+                <ngx-datatable-column [width]="30"
+                                      [sortable]="false"
+                                      [canAutoResize]="false"
+                                      [draggable]="false"
+                                      [resizeable]="false">
                     <ng-template let-row="row" ngx-datatable-cell-template>
                         <mat-icon aria-label="Edit user" [routerLink]="['/user', row.id]">edit</mat-icon>
                     </ng-template>
