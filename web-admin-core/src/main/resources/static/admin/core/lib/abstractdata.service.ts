@@ -19,4 +19,8 @@ export abstract class AbstractDataService<T> {
     save(data: T): Observable<T> {
         return <Observable<T>>this.http.post(this.basePath, data);
     };
+
+    delete(id: string): any {
+        return this.http.delete(this.basePath+'/'+id);
+    }
 }

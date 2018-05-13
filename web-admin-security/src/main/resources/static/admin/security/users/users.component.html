@@ -6,7 +6,7 @@
             <button mat-mini-fab color="primary" matTooltip="Add User" [routerLink]="'/user/new'">
                 <mat-icon aria-label="Add user">add</mat-icon>
             </button>
-            <button mat-mini-fab color="primary" matTooltip="Delete User" (click)="deleteUser()">
+            <button mat-mini-fab color="primary" matTooltip="Delete User" (click)="deleteSelected()">
                 <mat-icon aria-label="Delete selected users">delete</mat-icon>
             </button>
         </div>
@@ -24,8 +24,7 @@
                            [selected]="selected"
                            [selectionType]="'checkbox'"
                            [selectAllRowsOnPage]="false"
-                           [displayCheck]="displayCheck"
-                           (select)='onSelect($event)'>
+                           [displayCheck]="displayCheck">
                 <ngx-datatable-column [width]="30"
                                       [sortable]="false"
                                       [canAutoResize]="false"

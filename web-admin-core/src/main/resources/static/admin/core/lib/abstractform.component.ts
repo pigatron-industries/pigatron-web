@@ -37,6 +37,7 @@ export abstract class AbstractFormComponent<T> implements OnInit {
         this.dataService.save(this.data)
             .subscribe((data) => {
                 this.form.patchValue(data);
+                this.form.markAsPristine();
             }, (error) => {
                 this.form.setErrors([error.error.message]);
             });
