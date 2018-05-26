@@ -1,7 +1,7 @@
 <div class="flex-container" fxLayout="row">
 
     <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
-        <h1>Posts</h1>
+        <h1>Content</h1>
         <div class="buttons-bar">
             <button mat-mini-fab color="primary" matTooltip="Add Content"
                     [matMenuTriggerFor]="addMenu">
@@ -44,7 +44,7 @@
                                       [draggable]="false"
                                       [resizeable]="false">
                     <ng-template let-row="row" ngx-datatable-cell-template>
-                        <mat-icon aria-label="Edit user" [routerLink]="['/content', row.id]">edit</mat-icon>
+                        <mat-icon aria-label="Edit user" [routerLink]="['/'+row.type.toLowerCase(), row.id]">edit</mat-icon>
                     </ng-template>
                 </ngx-datatable-column>
             </ngx-datatable>
