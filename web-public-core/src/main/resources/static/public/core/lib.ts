@@ -1,3 +1,4 @@
+import 'zone.js/dist/zone';
 // Angular
 import "@angular/platform-browser";
 import "@angular/platform-browser/animations";
@@ -7,9 +8,7 @@ import "@angular/common";
 import "@angular/http";
 import "@angular/router";
 import "rxjs";
-
 // RxJS
-
 // Angular Material
 import "@angular/material";
 

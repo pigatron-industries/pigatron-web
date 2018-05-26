@@ -1,7 +1,6 @@
-import {NgModule}      from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {routes} from './users.route';
 import {UserService} from "../service/user.service";
 import {AdminWebModule} from "web-admin-core/main";
 import {UsersComponent} from "./users.component";
@@ -10,7 +9,7 @@ import {UsersComponent} from "./users.component";
 @NgModule({
     imports: [
         AdminWebModule,
-        RouterModule.forChild(routes),
+        RouterModule.forChild([{ path: '', component: UsersComponent }]),
     ],
     providers: [ UserService ],
     declarations: [ UsersComponent ],

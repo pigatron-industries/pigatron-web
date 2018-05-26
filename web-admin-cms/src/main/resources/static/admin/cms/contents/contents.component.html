@@ -1,0 +1,49 @@
+<div class="flex-container" fxLayout="row">
+
+    <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
+        <h1>Posts</h1>
+        <div class="buttons-bar">
+            <button mat-mini-fab color="primary" matTooltip="Add Content" [routerLink]="'/content/new'">
+                <mat-icon aria-label="Add content">add</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" matTooltip="Delete Content" (click)="deleteSelected()">
+                <mat-icon aria-label="Delete selected content">delete</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="main flex-item" fxFlex>
+        <div class="formarea flex-container" fxLayout="column">
+
+            <ngx-datatable class="material"
+                           [rows]="rows"
+                           [columns]="columns"
+                           [headerHeight]="30"
+                           [footerHeight]="30"
+                           [rowHeight]="30"
+                           [selected]="selected"
+                           [selectionType]="'checkbox'"
+                           [selectAllRowsOnPage]="false"
+                           [displayCheck]="displayCheck">
+                <ngx-datatable-column [width]="30"
+                                      [sortable]="false"
+                                      [canAutoResize]="false"
+                                      [draggable]="false"
+                                      [resizeable]="false"
+                                      [headerCheckboxable]="true"
+                                      [checkboxable]="true">
+                </ngx-datatable-column>
+                <ngx-datatable-column [width]="30"
+                                      [sortable]="false"
+                                      [canAutoResize]="false"
+                                      [draggable]="false"
+                                      [resizeable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <mat-icon aria-label="Edit user" [routerLink]="['/content', row.id]">edit</mat-icon>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+
+        </div>
+    </div>
+</div>
