@@ -1,8 +1,8 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
     {
-        path: 'page',
+        path: 'content',
         loadChildren: () => {
             return window["pigatron"].public_cms.PageModule;
         }

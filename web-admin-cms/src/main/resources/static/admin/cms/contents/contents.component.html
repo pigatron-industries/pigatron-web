@@ -3,9 +3,14 @@
     <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
         <h1>Posts</h1>
         <div class="buttons-bar">
-            <button mat-mini-fab color="primary" matTooltip="Add Content" [routerLink]="'/content/new'">
+            <button mat-mini-fab color="primary" matTooltip="Add Content"
+                    [matMenuTriggerFor]="addMenu">
                 <mat-icon aria-label="Add content">add</mat-icon>
             </button>
+            <mat-menu #addMenu="matMenu">
+                <button mat-menu-item [routerLink]="'/post/new'">Post</button>
+                <button mat-menu-item [routerLink]="'/page/new'">Page</button>
+            </mat-menu>
             <button mat-mini-fab color="primary" matTooltip="Delete Content" (click)="deleteSelected()">
                 <mat-icon aria-label="Delete selected content">delete</mat-icon>
             </button>

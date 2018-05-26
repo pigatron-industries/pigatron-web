@@ -2,7 +2,14 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTooltipModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatTooltipModule
+} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
@@ -29,6 +36,7 @@ import {AppService} from "../app/app.service";
         MatButtonModule,
         MatIconModule,
         MatTooltipModule,
+        MatMenuModule,
         NgxDatatableModule
     ]
 })

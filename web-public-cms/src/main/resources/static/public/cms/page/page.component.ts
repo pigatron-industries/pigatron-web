@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute} from "@angular/router";
 //import {PageService} from "./page.service.ts";
 //import {Page} from "./page";
 //import {DynamicHTMLDirective} from "pigatron/public/core/main";
@@ -7,7 +6,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'pg-page',
-    templateUrl: '/public/cms/page/page.component.html'
+    templateUrl: '/public/cms/content/content.component.html'
 })
 export class PageComponent implements OnInit {
 

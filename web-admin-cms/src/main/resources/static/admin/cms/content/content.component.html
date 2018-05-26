@@ -1,16 +1,16 @@
 <div class="flex-container" fxLayout="row">
 
     <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
-        <h1>Page</h1>
+        <h1>{{type=='page' ? 'Page' : 'Post'}}</h1>
         <div class="buttons-bar">
             <button mat-mini-fab matTooltip="Back"
-                    color="primary" [routerLink]="'/users'">
-                <mat-icon aria-label="Back">note_add</mat-icon>
+                    color="primary" [routerLink]="'/contents'">
+                <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
             </button>
-            <button mat-mini-fab matTooltip="Save User"
+            <button mat-mini-fab matTooltip="Save Page"
                     [color]="form.dirty ? 'accent' : 'primary'"
                     [disabled]="!form.valid" (click)="save()">
-                <mat-icon aria-label="Save user">save</mat-icon>
+                <mat-icon aria-label="Save page">save</mat-icon>
             </button>
         </div>
     </div>
@@ -24,10 +24,10 @@
                 </ul>
 
                 <mat-form-field class="flex-item">
-                    <input matInput placeholder="Email"
-                           formControlName="username">
-                    <mat-error *ngIf="form.controls.username.hasError('required')">
-                        Username is required
+                    <input matInput placeholder="Title"
+                           formControlName="title">
+                    <mat-error *ngIf="form.controls.title.hasError('required')">
+                        Title is required
                     </mat-error>
                 </mat-form-field>
 
