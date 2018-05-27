@@ -1,7 +1,7 @@
-import { Component, Inject, Injector, ViewContainerRef, Compiler, forwardRef } from "@angular/core";
-import { Routes, Router } from "@angular/router";
+import {Component, forwardRef, Inject} from "@angular/core";
+import {Router, Routes} from "@angular/router";
 
-import { routes } from './app.routes';
+import {routes} from './app.routes';
 
 @Component({
     selector: 'pg-public-app',

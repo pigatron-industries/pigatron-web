@@ -23,13 +23,25 @@
                     <li *ngFor="let error of form.errors">{{error}}</li>
                 </ul>
 
-                <mat-form-field class="flex-item">
+                <mat-form-field *ngIf="type=='post' || type=='page'" class="flex-item">
                     <input matInput placeholder="Title"
                            formControlName="title">
                     <mat-error *ngIf="form.controls.title.hasError('required')">
                         Title is required
                     </mat-error>
                 </mat-form-field>
+
+                <mat-form-field *ngIf="type=='page'" class="flex-item">
+                    <input matInput placeholder="Url Key"
+                           formControlName="urlKey">
+                    <mat-error *ngIf="form.controls.urlKey.hasError('required')">
+                        Url Key is required
+                    </mat-error>
+                </mat-form-field>
+
+
+                <ckeditor [build]="EditorBuild" data=""></ckeditor>
+
 
             </div>
         </form>

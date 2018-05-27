@@ -1,6 +1,7 @@
 import {Component, Inject} from "@angular/core";
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import * as EditorBuild from '@ckeditor/ckeditor5-build-classic';
 
 import {ContentService} from "../service/content.service";
 import {AbstractFormComponent} from "web-admin-core/main";
@@ -16,12 +17,21 @@ import {Block} from "../service/block";
 })
 export class ContentComponent extends AbstractFormComponent<Content> {
 
+    EditorBuild = EditorBuild;
+
     type: string;
 
     form = new FormGroup({
         title: new FormControl('', [
             Validators.required
         ]),
+        urlKey: new FormControl('', [
+            Validators.required
+        ]),
+        publishedDate: new FormControl('', []),
+        enabled: new FormControl('', []),
+        contentSummary: new FormControl('', []),
+        content: new FormControl('', [])
     });
 
     constructor(@Inject(ContentService) contentService: ContentService,
