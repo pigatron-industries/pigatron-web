@@ -1,7 +1,7 @@
-import {Injectable, Inject} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Router} from '@angular/router'
-import {HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse} from "@angular/common/http";
-import 'rxjs/add/operator/do';
+import {HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -14,7 +14,8 @@ export class XhrInterceptor implements HttpInterceptor {
             // prevent browser from showing http basic auth popup
             headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
         });
-        return next.handle(request).do(
+        return next.handle(request).pipe(
+            tap(
             () => {},
             (err: any) => {
                 if (err instanceof HttpErrorResponse) {
@@ -23,6 +24,7 @@ export class XhrInterceptor implements HttpInterceptor {
                         this.router.navigateByUrl("login");
                     }
                 }
-            });
+            })
+        );
     }
 }

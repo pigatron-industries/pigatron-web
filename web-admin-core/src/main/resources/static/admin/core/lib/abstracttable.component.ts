@@ -1,6 +1,5 @@
 import {OnInit} from "@angular/core";
-import {Observable} from 'rxjs/Observable';
-import  'rxjs/add/observable/forkJoin';
+import {forkJoin} from 'rxjs';
 
 import {AbstractDataService} from "./abstractdata.service";
 
@@ -29,7 +28,7 @@ export abstract class AbstractTableComponent<T extends Entity> implements OnInit
     }
 
     deleteSelected(): void {
-        Observable.forkJoin(
+        forkJoin(
             this.selected.map(entity => this.dataService.delete(entity.id))
         ).subscribe(() => {
             this.load();
