@@ -1,25 +1,25 @@
-import { Routes } from '@angular/router';
-export { LoginModule } from "./login/login.module";
-export { UsersModule } from "./users/users.module";
-export { UserModule } from "./user/user.module";
+import {Routes} from '@angular/router';
+import {LoginModule} from "./login/login.module";
+import {UsersModule} from "./users/users.module";
+import {UserModule} from "./user/user.module";
 
 export const routes: Routes = [
     {
         path: 'login',
         loadChildren: () => {
-            return window["pigatron"].admin_security.LoginModule;
+            return LoginModule;
         }
     },
     {
         path: 'users',
         loadChildren: () => {
-            return window["pigatron"].admin_security.UsersModule;
+            return UsersModule;
         }
     },
     {
         path: 'user/:id',
         loadChildren: () => {
-            return window["pigatron"].admin_security.UserModule;
+            return UserModule;
         }
     }
 ];

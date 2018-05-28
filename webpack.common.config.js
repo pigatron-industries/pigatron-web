@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const tsLoader = require('awesome-typescript-loader');
 
@@ -21,13 +20,13 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
 
     var entry = {};
     if(vendor)
-        entry[appName+'_lib'] = files.tsVendor;
+        entry[appName+'_'+moduleName+'_lib'] = files.tsVendor;
     entry[appName+'_'+moduleName] = files.tsMain;
 
     var names = [];
     names.push(appName+'_'+moduleName);
     if(vendor)
-        names.push(appName+'_lib');
+        names.push(appName+'_'+moduleName+'_lib');
 
     return {
         entry: entry,
@@ -73,22 +72,6 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
                 analyzerMode: 'static',
                 openAnalyzer: false
             })
-
-            // new webpack.optimize.UglifyJsPlugin({
-            //     test: /\.(!admin_cms)$/,
-            //     compress: { warnings: false },
-            //     sourceMap: false,
-            //     comments: false,
-            //     mangle: true,
-            //     minimize: true
-            // })
-            // new CompressionWebpackPlugin({
-            //     asset: "[path].gz[query]",
-            //     algorithm: "gzip",
-            //     test: /\.(js|css)$/,
-            //     threshold: 10240,
-            //     minRatio: 0.8
-            // })
         ],
         externals: externals
     };
