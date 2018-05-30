@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const tsLoader = require('awesome-typescript-loader');
@@ -19,17 +18,19 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
     };
 
     var entry = {};
-    if(vendor)
-        entry[appName+'_'+moduleName+'_lib'] = files.tsVendor;
+    // if(vendor)
+    //     entry[appName+'_'+moduleName+'_lib'] = files.tsVendor;
     entry[appName+'_'+moduleName] = files.tsMain;
 
-    var names = [];
-    names.push(appName+'_'+moduleName);
-    if(vendor)
-        names.push(appName+'_'+moduleName+'_lib');
-
     return {
+        mode: 'development',
+        devtool: '',
         entry: entry,
+        // optimization: {
+        //     splitChunks: {
+        //         chunks: 'all'
+        //     }
+        // },
         output: {
             path: paths.dst+'/'+appName+'/',
             filename: '[name].js',
@@ -63,11 +64,23 @@ module.exports = function(dirname, appName, moduleName, vendor, polyfills, exter
                 }
             ]
         },
+        // optimization: {
+        //     runtimeChunk: {
+        //         name: appName+'_'+moduleName
+        //     },
+        //     splitChunks: {
+        //         cacheGroups: {
+        //             vendors: {
+        //                 test: /[\\/]node_modules[\\/]/,
+        //                 name: appName+'_'+moduleName+'_lib',
+        //                 enforce: true,
+        //                 chunks: 'all'
+        //             }
+        //         }
+        //     }
+        // },
         plugins: [
             new ExtractTextPlugin('[name].css'),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: names
-            }),
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
                 openAnalyzer: false
