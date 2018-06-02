@@ -211,6 +211,8 @@ export class CKEditorComponent implements AfterViewInit, OnDestroy, ControlValue
 
                 this.ready.emit( editor );
                 this.setUpEditorEvents( editor );
+
+                console.log(Array.from( editor.ui.componentFactory.names() ));
             } )
             .catch( err => {
                 console.error( err.stack );

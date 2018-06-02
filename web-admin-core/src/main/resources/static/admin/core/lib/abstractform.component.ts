@@ -33,6 +33,7 @@ export abstract class AbstractFormComponent<T> implements OnInit {
     }
 
     save(): void {
+        console.log(this.data);
         Object.assign(this.data, this.form.value);
         this.dataService.save(this.data)
             .subscribe((data) => {

@@ -47,6 +47,10 @@
                         <mat-icon aria-label="Edit user" [routerLink]="['/'+row.type.toLowerCase(), row.id]">edit</mat-icon>
                     </ng-template>
                 </ngx-datatable-column>
+                <ngx-datatable-column prop="type"></ngx-datatable-column>
+                <ngx-datatable-column prop="title"></ngx-datatable-column>
+                <ngx-datatable-column prop="enabled"></ngx-datatable-column>
+                <ngx-datatable-column prop="publishedDate"></ngx-datatable-column>
             </ngx-datatable>
 
         </div>

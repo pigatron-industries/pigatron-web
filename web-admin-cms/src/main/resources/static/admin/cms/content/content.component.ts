@@ -25,14 +25,29 @@ export class ContentComponent extends AbstractFormComponent<Content> {
         title: new FormControl('', [
             Validators.required
         ]),
-        urlKey: new FormControl('', [
-            Validators.required
-        ]),
+        urlKey: new FormControl('', []),
         publishedDate: new FormControl('', []),
         enabled: new FormControl('', []),
-        contentSummary: new FormControl('', []),
         content: new FormControl('', [])
     });
+
+    editorConfig = {
+        //extraPlugins: 'wpmore',
+        //toolbar: [
+            //{ name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+            //{ name: 'tools', items: [ 'Maximize' ] },
+            //'/',
+            //{ name: 'styles', items: [ 'Styles', 'Format', '-' ] },
+            //{ name: 'basicstyles', items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat', '-' ] },
+            //{ name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-' ] },
+            //{ name: 'links', items: [ 'Link', 'Unlink', '-' ] },
+            //{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'WPMore' ] },
+            //{ name: 'document', items: [ 'Source' ] }
+        //],
+        //removeButtons: 'Underline,Subscript,Superscript,About,Anchor,Scayt',
+        //format_tags: 'p;h1;h2;h3;pre'
+        //removeDialogTabs: 'image:advanced;link:advanced'
+    };
 
     constructor(@Inject(ContentService) contentService: ContentService,
                 @Inject(ActivatedRoute) route: ActivatedRoute) {

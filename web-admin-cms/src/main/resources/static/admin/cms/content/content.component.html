@@ -39,11 +39,10 @@
                     </mat-error>
                 </mat-form-field>
 
-
-                <ckeditor [build]="EditorBuild" data=""></ckeditor>
-
+                <ckeditor [build]="EditorBuild" formControlName="content" [config]="editorConfig"></ckeditor>
 
             </div>
         </form>
+
     </div>
 </div>
