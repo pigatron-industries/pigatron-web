@@ -32,21 +32,15 @@ export class ContentComponent extends AbstractFormComponent<Content> {
     });
 
     editorConfig = {
-        //extraPlugins: 'wpmore',
-        //toolbar: [
-            //{ name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
-            //{ name: 'tools', items: [ 'Maximize' ] },
-            //'/',
-            //{ name: 'styles', items: [ 'Styles', 'Format', '-' ] },
-            //{ name: 'basicstyles', items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat', '-' ] },
-            //{ name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-' ] },
-            //{ name: 'links', items: [ 'Link', 'Unlink', '-' ] },
-            //{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'WPMore' ] },
-            //{ name: 'document', items: [ 'Source' ] }
-        //],
-        //removeButtons: 'Underline,Subscript,Superscript,About,Anchor,Scayt',
-        //format_tags: 'p;h1;h2;h3;pre'
-        //removeDialogTabs: 'image:advanced;link:advanced'
+        heading: {
+            options: [
+                { model: 'heading1', view: 'h1', title: 'Heading 1' },
+                { model: 'heading2', view: 'h2', title: 'Heading 2' },
+                { model: 'heading3', view: 'h3', title: 'Heading 3' },
+                { model: 'paragraph', view: 'p', title: 'Paragraph' },
+                { model: 'preformatted', view: 'pre', title: 'Preformatted' },
+            ]
+        }
     };
 
     constructor(@Inject(ContentService) contentService: ContentService,

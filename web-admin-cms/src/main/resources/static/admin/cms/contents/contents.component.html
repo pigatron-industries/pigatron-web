@@ -23,6 +23,7 @@
             <ngx-datatable class="material"
                            [rows]="rows"
                            [columns]="columns"
+                           [columnMode]="'force'"
                            [headerHeight]="30"
                            [footerHeight]="30"
                            [rowHeight]="30"
@@ -47,10 +48,10 @@
                         <mat-icon aria-label="Edit user" [routerLink]="['/'+row.type.toLowerCase(), row.id]">edit</mat-icon>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="type"></ngx-datatable-column>
-                <ngx-datatable-column prop="title"></ngx-datatable-column>
-                <ngx-datatable-column prop="enabled"></ngx-datatable-column>
-                <ngx-datatable-column prop="publishedDate"></ngx-datatable-column>
+                <ngx-datatable-column prop="type" [width]="200"></ngx-datatable-column>
+                <ngx-datatable-column prop="title" [width]="500"></ngx-datatable-column>
+                <ngx-datatable-column prop="enabled" [width]="200"></ngx-datatable-column>
+                <ngx-datatable-column prop="publishedDate" [width]="200"></ngx-datatable-column>
             </ngx-datatable>
 
         </div>
