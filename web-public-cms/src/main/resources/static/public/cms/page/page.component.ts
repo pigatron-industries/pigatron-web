@@ -1,43 +1,37 @@
 import {Component, OnInit} from "@angular/core";
-//import {PageService} from "./page.service.ts";
-//import {Page} from "./page";
-//import {DynamicHTMLDirective} from "pigatron/public/core/main";
+import {ActivatedRoute} from "@angular/router";
+import {Inject} from "@angular/core";
+import {Page} from "../service/page";
+import {ContentService} from "../service/content.service";
 
 
 @Component({
     selector: 'pg-page',
-    templateUrl: '/public/cms/content/content.component.html'
+    templateUrl: '/public/cms/page/page.component.html'
 })
 export class PageComponent implements OnInit {
 
     public loaded: boolean = false;
-    // public page: Page;
-    //
-    // private sub: any;
-    //
-    //
-    // constructor(private router : Router,
-    //             private route : ActivatedRoute,
-    //             private pageService : PageService) {
-    // }
-    //
+    public page: Page;
+
+
+    constructor(@Inject(ActivatedRoute) protected route : ActivatedRoute,
+                @Inject(ContentService) protected contentService: ContentService) {
+    }
+
     ngOnInit() {
         this.loaded = true;
-        // this.sub = this.route.params.subscribe(params => {
-        //     this.load(params['urlKey']);
-        // });
+        this.route.params.subscribe(params => {
+            this.load(params['urlKey']);
+        });
     }
-    //
-    // ngOnDestroy() {
-    //     this.sub.unsubscribe();
-    // }
-    //
-    // load(urlKey) {
-    //     this.pageService.get(urlKey)
-    //         .subscribe(page => {
-    //             this.page = page;
-    //             this.loaded = true;
-    //         });
-    // }
+
+    load(urlKey) {
+        this.contentService.getByUrl(urlKey)
+            .subscribe(page => {
+                this.page = page;
+                this.loaded = true;
+            });
+    }
 
 }

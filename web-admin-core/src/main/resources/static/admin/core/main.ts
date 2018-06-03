@@ -1,9 +1,9 @@
 import {enableProdMode} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import 'zone.js/dist/zone';
 
 import {AdminAppModule} from './app/app.module';
 import './style/main.scss';
-import 'zone.js/dist/zone';
 
 export { AdminWebModule } from './lib/adminweb.module';
 export { AppService } from './app/app.service';

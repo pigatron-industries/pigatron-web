@@ -1,18 +1,19 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule } from '@angular/common';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import {NgModule}     from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from "@angular/common/http";
 
-import { PageComponent }   from './page.component';
-import { routes } from './page.route';
+import {PageComponent}  from './page.component';
+import {ContentService} from "../service/content.service";
 
 
 @NgModule({
     imports: [
         CommonModule,
-        //BrowserAnimationsModule,
-        RouterModule.forChild(routes)
+        HttpClientModule,
+        RouterModule.forChild([{ path: ':urlKey', component: PageComponent }])
     ],
+    providers: [ ContentService ],
     declarations: [ PageComponent ],
     bootstrap:    [ PageComponent ]
 })
