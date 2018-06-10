@@ -1,22 +1,35 @@
-<div class="flex-container" fxLayout="row">
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="flex-container" fxLayout="row">
 
-    <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
-        <h1>{{type=='page' ? 'Page' : 'Post'}}</h1>
-        <div class="buttons-bar">
-            <button mat-mini-fab matTooltip="Back"
-                    color="primary" [routerLink]="'/contents'">
-                <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
-            </button>
-            <button mat-mini-fab matTooltip="Save Page"
-                    [color]="form.dirty ? 'accent' : 'primary'"
-                    [disabled]="!form.valid" (click)="save()">
-                <mat-icon aria-label="Save page">save</mat-icon>
-            </button>
+        <div id="leftsidebar" class="leftsidebar flex-item flex-container" fxLayout="column" fxFlex="250px">
+            <h1>{{type=='page' ? 'Page' : 'Post'}}</h1>
+            <div class="flex-item">
+                <div class="buttons-bar">
+                    <button mat-mini-fab matTooltip="Back"
+                            color="primary" [routerLink]="'/contents'">
+                        <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
+                    </button>
+                    <button mat-mini-fab matTooltip="Save Page"
+                            [color]="form.dirty ? 'accent' : 'primary'"
+                            [disabled]="!form.valid">
+                        <mat-icon aria-label="Save page">save</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-item">
+                <mat-slide-toggle formControlName="enabled">Publish</mat-slide-toggle>
+            </div>
+            <div class="flex-item">
+                <mat-form-field *ngIf="type=='post' && form.value.enabled == true">
+                    <input matInput placeholder="Published Date" [matDatepicker]="publishedDatePicker"
+                           formControlName="publishedDate">
+                    <mat-datepicker-toggle matSuffix [for]="publishedDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #publishedDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
         </div>
-    </div>
 
-    <div class="main flex-item" fxFlex>
-        <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="main flex-item" fxFlex>
             <div class="formarea flex-container" fxLayout="column">
 
                 <ul class="mat-error" *ngIf="form.errors">
@@ -42,7 +55,7 @@
                 <ckeditor [build]="EditorBuild" formControlName="content" [config]="editorConfig"></ckeditor>
 
             </div>
-        </form>
+        </div>
 
     </div>
-</div>
+</form>

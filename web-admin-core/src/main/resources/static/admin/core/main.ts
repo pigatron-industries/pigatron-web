@@ -31,7 +31,16 @@ export {HttpClientModule, HttpClient, HttpHeaders, HttpInterceptor,
 
 // Angular Material
 export {FlexLayoutModule} from "@angular/flex-layout";
-export {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
+export {
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule} from '@angular/material';
 export {ErrorStateMatcher} from '@angular/material/core';
 
 // Other

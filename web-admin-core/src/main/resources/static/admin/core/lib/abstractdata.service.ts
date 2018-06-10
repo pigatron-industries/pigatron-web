@@ -1,4 +1,5 @@
 import {Observable} from "rxjs";
+import {map} from "rxjs/operators"
 import {HttpClient} from '@angular/common/http';
 
 
@@ -7,20 +8,45 @@ export abstract class AbstractDataService<T> {
     constructor(protected http: HttpClient, protected basePath: string) {
     }
 
-    query(): Observable<T[]> {
+    public query(): Observable<T[]> {
         //TODO paging sorting filtering
-        return <Observable<T[]>>this.http.get(this.basePath);
+        return <Observable<T[]>>this.http.get(this.basePath)
+            .pipe(
+                map((data: T[]) => {
+                    return data; //TODO call convert for each item in array
+                })
+            );
     };
 
-    get(id: string): Observable<T> {
-        return <Observable<T>>this.http.get(this.basePath+'/'+id);
+    public get(id: string): Observable<T> {
+        return <Observable<T>>this.http.get(this.basePath+'/'+id)
+            .pipe(
+                map((data: T) => {
+                    return this.convert(data);
+                })
+            );
     }
 
-    save(data: T): Observable<T> {
-        return <Observable<T>>this.http.post(this.basePath, data);
+    public save(data: T): Observable<T> {
+        return <Observable<T>>this.http.post(this.basePath, data)
+            .pipe(
+                map((data: T) => {
+                    return this.convert(data);
+                })
+            );
     };
 
-    delete(id: string): any {
+    public delete(id: string): any {
         return this.http.delete(this.basePath+'/'+id);
+    }
+
+    protected convert(data: any): T {
+        for (let key in data) {
+            // Convert dates to JS dates
+            if(key.indexOf("Date") >= 0) {
+                data[key] = new Date(data[key]);
+            }
+        }
+        return data;
     }
 }

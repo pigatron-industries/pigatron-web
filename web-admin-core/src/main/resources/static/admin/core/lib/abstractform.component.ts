@@ -27,21 +27,24 @@ export abstract class AbstractFormComponent<T> implements OnInit {
     load(id: string): void {
         this.dataService.get(id)
             .subscribe(data => {
-                this.data = data;
-                this.form.patchValue(data);
+                this.afterLoad(data);
             });
     }
 
     save(): void {
-        console.log(this.data);
         Object.assign(this.data, this.form.value);
         this.dataService.save(this.data)
             .subscribe((data) => {
-                this.form.patchValue(data);
-                this.form.markAsPristine();
+                this.afterLoad(data);
             }, (error) => {
                 this.form.setErrors([error.error.message]);
             });
+    }
+
+    protected afterLoad(data: T) {
+        this.data = data;
+        this.form.patchValue(data);
+        this.form.markAsPristine();
     }
 
     abstract create(): T;

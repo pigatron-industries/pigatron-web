@@ -11,6 +11,7 @@
     "@angular/forms": "6.0.3",
     "@angular/http": "6.0.3",
     "@angular/material": "6.1.0",
+    "@angular/material-moment-adapter": "^6.2.1",
     "@angular/platform-browser": "6.0.3",
     "@angular/platform-browser-dynamic": "6.0.3",
     "@angular/router": "6.0.3",
@@ -20,7 +21,7 @@
     "font-awesome": "^4.6.3",
     "rxjs": "^6.2.0",
     "rxjs-compat": "^6.2.0",
-    "zone.js": "^0.8.20"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.2",
