@@ -1,8 +1,8 @@
-<div class="flex-container" fxLayout="row">
+<div class="flex-container" fxLayout="row" fxFlex="100%">
 
-    <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
+    <div id="leftsidebar" class="leftsidebar flex-container" fxLayout="column" fxFlex="250px">
         <h1>Users</h1>
-        <div class="buttons-bar">
+        <div class="buttons-bar flex-container">
             <button mat-mini-fab color="primary" matTooltip="Add User" [routerLink]="'/user/new'">
                 <mat-icon aria-label="Add user">add</mat-icon>
             </button>
@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <div class="main flex-item" fxFlex>
-        <div class="formarea flex-container" fxLayout="column">
+    <div class="main flex-container" fxLayout="column" fxFlex>
+        <div class="formarea flex-container" fxLayout="column" fxFlex>
 
             <ngx-datatable class="material"
                            [rows]="rows"
@@ -21,6 +21,7 @@
                            [headerHeight]="30"
                            [footerHeight]="30"
                            [rowHeight]="30"
+                           [scrollbarV]="true"
                            [selected]="selected"
                            [selectionType]="'checkbox'"
                            [selectAllRowsOnPage]="false"

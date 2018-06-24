@@ -1,7 +1,7 @@
 
     <!--Menu Bar-->
-    <mat-toolbar>
-        <span *ngIf="menu" id="leftMenu" style="flex: 1 1 auto;">
+    <mat-toolbar style="flex: 0 0 auto;">
+        <span *ngIf="menu" id="leftMenu">
             <span *ngFor="let menuitem of menu.submenus">
                 <button mat-button [matMenuTriggerFor]="menu.childMenu">{{menuitem.name}}</button>
                 <pg-menu-item #menu [menuitems]="menuitem.submenus"></pg-menu-item>
@@ -9,8 +9,6 @@
         </span>
     </mat-toolbar>
 
-    <div class="flex-container" fxLayout="row">
-        <div id="content" class="flex-item" fxFlex="100%">
-            <router-outlet></router-outlet>
-        </div>
+    <div id="content" class="flex-container" fxLayout="row" fxFlex="100%">
+        <router-outlet></router-outlet>
     </div>

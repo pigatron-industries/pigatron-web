@@ -26,23 +26,31 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-md-content {
-    overflow-x: hidden;
+body {
+    font-size:90%;
+    overflow:hidden;
 }
 
 #app {
+    height: 100%;
     min-height:100%;
-    position:relative;
+    display: flex;
+    flex-direction: column;
 }
 
-body {
-    min-height:100%;
-    position:relative;
-    font-size:90%;
+pg-admin-app {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
 }
 
 .mat-icon {
     cursor: pointer;
+}
+
+router-outlet + * {
+    display: flex;
+    flex: auto;
 }
 
 /* Menu bar */
@@ -64,11 +72,6 @@ footer {
 footer div {
     height:100%;
     padding:10px;
-}
-
-#content {
-    padding-bottom:4em;   /* Height of the footer */
-    padding-top: 0;
 }
 
 .center {
@@ -93,7 +96,8 @@ h1, h2 {
 }
 
 .buttons-bar {
-    float:right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .mat-mini-fab {
@@ -103,8 +107,14 @@ h1, h2 {
 
 /* Forms */
 
+form {
+    display: flex;
+    flex: 1 1 auto;
+}
+
 .formarea {
-    margin-top:1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     padding-left: 20px;
     padding-right: 20px;
     border-left: 1px solid #dddddd;
@@ -122,4 +132,8 @@ h1, h2 {
 
 .formcolumn {
     padding-right:40px;
+}
+
+.mat-mini-fab {
+    margin: 2px !important;
 }

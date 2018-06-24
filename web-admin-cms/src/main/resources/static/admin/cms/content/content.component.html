@@ -1,10 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="save()">
-    <div class="flex-container" fxLayout="row">
+<form [formGroup]="form" (ngSubmit)="save()" >
+    <div class="flex-container" fxLayout="row" fxFlex>
 
-        <div id="leftsidebar" class="leftsidebar flex-item flex-container" fxLayout="column" fxFlex="250px">
+        <div id="leftsidebar" class="leftsidebar flex-container" fxLayout="column" fxFlex="250px">
             <h1>{{type=='page' ? 'Page' : 'Post'}}</h1>
-            <div class="flex-item">
-                <div class="buttons-bar">
+            <div class="flex-container">
+                <div class="buttons-bar flex-container" fxflex>
                     <button mat-mini-fab matTooltip="Back"
                             color="primary" [routerLink]="'/contents'">
                         <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
@@ -16,10 +16,10 @@
                     </button>
                 </div>
             </div>
-            <div class="flex-item">
+            <div class="flex-container">
                 <mat-slide-toggle formControlName="enabled">Publish</mat-slide-toggle>
             </div>
-            <div class="flex-item">
+            <div class="flex-container">
                 <mat-form-field *ngIf="type=='post' && form.value.enabled == true">
                     <input matInput placeholder="Published Date" [matDatepicker]="publishedDatePicker"
                            formControlName="publishedDate">
@@ -29,8 +29,8 @@
             </div>
         </div>
 
-        <div class="main flex-item" fxFlex>
-            <div class="formarea flex-container" fxLayout="column">
+        <div class="main flex-container" fxLayout="column" fxFlex>
+            <div class="formarea flex-container" fxLayout="column" fxFlex>
 
                 <ul class="mat-error" *ngIf="form.errors">
                     <li *ngFor="let error of form.errors">{{error}}</li>
