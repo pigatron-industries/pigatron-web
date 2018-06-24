@@ -31,6 +31,7 @@ export abstract class AbstractTableComponent<T extends Entity> implements OnInit
         forkJoin(
             this.selected.map(entity => this.dataService.delete(entity.id))
         ).subscribe(() => {
+            this.selected = [];
             this.load();
         });
     }
