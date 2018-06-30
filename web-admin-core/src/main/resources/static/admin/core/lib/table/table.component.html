@@ -1,0 +1,33 @@
+<div class="flex-container" fxLayout="row" fxFlex="100%">
+
+    <div id="leftsidebar" class="leftsidebar flex-container" fxLayout="column" fxFlex="250px">
+        <h1>{{title}}</h1>
+        <div class="buttons-bar flex-container">
+            <ng-content select="[pg-table-sidebar]"></ng-content>
+        </div>
+    </div>
+
+    <div class="main flex-container" fxLayout="column" fxFlex>
+        <div class="formarea flex-container" fxLayout="column" fxFlex>
+
+            <ngx-datatable class="material flex-item" fxFlex
+                           [rows]="rows"
+                           [columns]="allColumns"
+                           [columnMode]="'force'"
+                           [headerHeight]="30"
+                           [footerHeight]="30"
+                           [rowHeight]="30"
+                           [scrollbarV]="true"
+                           [selected]="selected"
+                           [selectionType]="'checkbox'"
+                           [selectAllRowsOnPage]="false">
+            </ngx-datatable>
+
+            <ng-template #actionColumnTemplate let-row="row">
+                <mat-icon aria-label="Edit" [routerLink]="['/'+row.type.toLowerCase(), row.id]">edit</mat-icon>
+            </ng-template>
+
+        </div>
+    </div>
+
+</div>

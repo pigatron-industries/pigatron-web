@@ -1,64 +1,21 @@
-<div class="flex-container" fxLayout="row" fxFlex="100%">
+<pg-admin-table title="Content" [selected]="selected" [rows]="rows" [columns]="columns">
 
-    <div id="leftsidebar" class="leftsidebar flex-container" fxLayout="column" fxFlex="250px">
-        <h1>Content</h1>
-        <div class="buttons-bar flex-container">
-            <button mat-mini-fab color="primary" matTooltip="Add Content"
-                    [matMenuTriggerFor]="addMenu">
-                <mat-icon aria-label="Add content">add</mat-icon>
-            </button>
-            <mat-menu #addMenu="matMenu">
-                <button mat-menu-item [routerLink]="'/post/new'">Post</button>
-                <button mat-menu-item [routerLink]="'/page/new'">Page</button>
-            </mat-menu>
-            <button mat-mini-fab color="primary" matTooltip="Delete Content"
-                    [matMenuTriggerFor]="deleteMenu">
-                <mat-icon aria-label="Delete selected content">delete</mat-icon>
-            </button>
-            <mat-menu #deleteMenu="matMenu">
-                <button mat-menu-item (click)="deleteSelected()">Delete {{selected.length}} items?</button>
-            </mat-menu>
-        </div>
+    <div pg-table-sidebar>
+        <button mat-mini-fab color="primary" matTooltip="Add Content"
+                [matMenuTriggerFor]="addMenu">
+            <mat-icon aria-label="Add content">add</mat-icon>
+        </button>
+        <mat-menu #addMenu="matMenu">
+            <button mat-menu-item [routerLink]="'/post/new'">Post</button>
+            <button mat-menu-item [routerLink]="'/page/new'">Page</button>
+        </mat-menu>
+        <button mat-mini-fab color="primary" matTooltip="Delete Content"
+                [matMenuTriggerFor]="deleteMenu">
+            <mat-icon aria-label="Delete selected content">delete</mat-icon>
+        </button>
+        <mat-menu #deleteMenu="matMenu">
+            <button mat-menu-item (click)="deleteSelected()">Delete {{selected.length}} items?</button>
+        </mat-menu>
     </div>
 
-    <div class="main flex-container" fxLayout="column" fxFlex>
-        <div class="formarea flex-container" fxLayout="column" fxFlex>
-
-            <ngx-datatable class="material flex-item" fxFlex
-                           [rows]="rows"
-                           [columns]="columns"
-                           [columnMode]="'force'"
-                           [headerHeight]="30"
-                           [footerHeight]="30"
-                           [rowHeight]="30"
-                           [scrollbarV]="true"
-                           [selected]="selected"
-                           [selectionType]="'checkbox'"
-                           [selectAllRowsOnPage]="false"
-                           [displayCheck]="displayCheck">
-                <ngx-datatable-column [width]="30"
-                                      [sortable]="false"
-                                      [canAutoResize]="false"
-                                      [draggable]="false"
-                                      [resizeable]="false"
-                                      [headerCheckboxable]="true"
-                                      [checkboxable]="true">
-                </ngx-datatable-column>
-                <ngx-datatable-column [width]="30"
-                                      [sortable]="false"
-                                      [canAutoResize]="false"
-                                      [draggable]="false"
-                                      [resizeable]="false">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <mat-icon aria-label="Edit user" [routerLink]="['/'+row.type.toLowerCase(), row.id]">edit</mat-icon>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column prop="type" [width]="200"></ngx-datatable-column>
-                <ngx-datatable-column prop="title" [width]="500"></ngx-datatable-column>
-                <ngx-datatable-column prop="enabled" [width]="200"></ngx-datatable-column>
-                <ngx-datatable-column prop="publishedDate" [width]="200"></ngx-datatable-column>
-            </ngx-datatable>
-
-        </div>
-    </div>
-</div>
+</pg-admin-table>

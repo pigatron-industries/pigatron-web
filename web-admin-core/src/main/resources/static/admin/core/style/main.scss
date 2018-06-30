@@ -107,7 +107,7 @@ h1, h2 {
 
 /* Forms */
 
-form {
+form, pg-admin-table, pg_admin_form {
     display: flex;
     flex: 1 1 auto;
 }

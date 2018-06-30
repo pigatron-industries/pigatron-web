@@ -11,6 +11,20 @@ import {AbstractTableComponent} from "web-admin-core/main";
 })
 export class ContentsComponent extends AbstractTableComponent<Content> {
 
+    columns = [{
+        prop: 'type',
+        width: 100
+    }, {
+        prop: 'title',
+        width: 600
+    }, {
+        prop: 'enabled',
+        width: 200
+    }, {
+        prop: 'publishedDate',
+        width: 200
+    }];
+
     constructor(@Inject(ContentService) contentService: ContentService) {
         super(contentService);
     }

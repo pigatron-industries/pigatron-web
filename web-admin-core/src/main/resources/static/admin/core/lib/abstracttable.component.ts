@@ -10,7 +10,7 @@ export interface Entity {
 
 export abstract class AbstractTableComponent<T extends Entity> implements OnInit {
 
-    rows: T[];
+    rows: T[] = [];
     selected: T[] = [];
 
     constructor(protected dataService: AbstractDataService<T>) {
