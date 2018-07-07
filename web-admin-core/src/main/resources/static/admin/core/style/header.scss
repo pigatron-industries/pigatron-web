@@ -6,6 +6,9 @@
   $foreground: map-get($theme, foreground);
 
   .header {
+    text-shadow: 0 0 5px mat-color($primary, 'A400'),
+                 0 0 10px mat-color($primary, 'A400'),
+                 0 0 15px mat-color($primary, 'A400');
     background-color: mat-color($primary);
     height:80px;
     padding-left:10px;

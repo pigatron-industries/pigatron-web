@@ -107,8 +107,9 @@ h1, h2 {
 
 /* Forms */
 
-form, pg-admin-table, pg_admin_form {
-    display: flex;
+/* max widths and heights to parent */
+form, pg-admin-table, pg-admin-form, mat-form-field, div.mat-form-field-wrapper {
+    display: flex !important;
     flex: 1 1 auto;
 }
 

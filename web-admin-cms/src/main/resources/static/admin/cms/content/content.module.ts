@@ -2,14 +2,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
 import {ContentService} from "../service/content.service";
-import {AdminWebModule} from "web-admin-core/main";
+import {AdminFormModule} from "web-admin-core/main";
 import {ContentComponent} from "./content.component";
 import {CKEditorComponent} from "../ckeditor/ckeditor.component";
 
 
 @NgModule({
     imports: [
-        AdminWebModule,
+        AdminFormModule,
         RouterModule.forChild([{ path: '', component: ContentComponent }]),
     ],
     providers: [ ContentService ],
