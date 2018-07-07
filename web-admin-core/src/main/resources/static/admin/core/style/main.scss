@@ -3,6 +3,7 @@
 @import 'palette';
 @import 'header';
 @import 'datatable';
+@import 'flex';
 
 @include mat-core();
 
@@ -118,7 +119,7 @@ form, pg-admin-table, pg-admin-form, mat-form-field, div.mat-form-field-wrapper 
     margin-bottom: 1em;
     padding-left: 20px;
     padding-right: 20px;
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #ddd;
 }
 
 .formarea h3 {
@@ -137,4 +138,10 @@ form, pg-admin-table, pg-admin-form, mat-form-field, div.mat-form-field-wrapper 
 
 .mat-mini-fab {
     margin: 2px !important;
+}
+
+div[pg-form-sidebar] {
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: 1px solid #ddd;
 }

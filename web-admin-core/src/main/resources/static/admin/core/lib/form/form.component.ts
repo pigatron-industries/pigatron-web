@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'pg-admin-form',
@@ -7,7 +8,10 @@ import {Component, Input, OnInit} from "@angular/core";
 export class FormComponent implements OnInit {
 
     @Input()
-    title;
+    title : string;
+
+    @Input()
+    form : FormGroup;
 
     ngOnInit(): void {
     }

@@ -3,8 +3,19 @@
     <div id="leftsidebar" class="leftsidebar flex-container" fxLayout="column" fxFlex="250px">
         <h1>{{title}}</h1>
         <div class="buttons-bar flex-container">
-            <ng-content select="[pg-form-sidebar]"></ng-content>
+            <div class="flex-container">
+                <div class="buttons-bar" fxflex>
+                    <button mat-mini-fab matTooltip="Back" color="primary" [routerLink]="'/contents'">
+                        <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
+                    </button>
+                    <button mat-mini-fab matTooltip="Save" [color]="form.dirty ? 'accent' : 'primary'"
+                            [disabled]="!form.valid">
+                        <mat-icon aria-label="Save">save</mat-icon>
+                    </button>
+                </div>
+            </div>
         </div>
+        <ng-content select="[pg-form-sidebar]"></ng-content>
     </div>
 
     <div class="main flex-container" fxLayout="column" fxFlex>

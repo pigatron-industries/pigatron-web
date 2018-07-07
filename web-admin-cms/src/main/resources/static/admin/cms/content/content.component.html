@@ -1,23 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="save()" >
-    <pg-admin-form [title]="type=='page' ? 'Page' : 'Post'">
+    <pg-admin-form [title]="type=='page' ? 'Page' : 'Post'" [form]="form">
 
         <div pg-form-sidebar>
-            <div class="flex-container">
-                <div class="buttons-bar flex-container" fxflex>
-                    <button mat-mini-fab matTooltip="Back" color="primary" [routerLink]="'/contents'">
-                        <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
-                    </button>
-                    <button mat-mini-fab matTooltip="Save Page" [color]="form.dirty ? 'accent' : 'primary'"
-                            [disabled]="!form.valid">
-                        <mat-icon aria-label="Save page">save</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <div class="flex-container">
+            <div class="flexRowRight">
                 <mat-slide-toggle formControlName="enabled">Publish</mat-slide-toggle>
             </div>
-            <div class="flex-container">
-                <mat-form-field class="flex-item" *ngIf="type=='post' && form.value.enabled == true">
+            <div class="flexRow">
+                <mat-form-field *ngIf="type=='post' && form.value.enabled == true">
                     <input matInput placeholder="Published Date" [matDatepicker]="publishedDatePicker"
                            formControlName="publishedDate">
                     <mat-datepicker-toggle matSuffix [for]="publishedDatePicker"></mat-datepicker-toggle>
