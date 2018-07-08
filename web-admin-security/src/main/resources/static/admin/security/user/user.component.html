@@ -1,45 +1,22 @@
-<div class="flex-container" fxLayout="row">
+<form *ngIf="data!==undefined" [formGroup]="form" (ngSubmit)="save()">
+    <pg-admin-form [title]="data.type" [form]="form" backRoute="/users">
 
-    <div id="leftsidebar" class="leftsidebar flex-item" fxFlex="250px">
-        <h1>User</h1>
-        <div class="buttons-bar">
-            <button mat-mini-fab matTooltip="Back"
-                    color="primary" [routerLink]="'/users'">
-                <mat-icon aria-label="Back">keyboard_arrow_left</mat-icon>
-            </button>
-            <button mat-mini-fab matTooltip="Save User"
-                    [color]="form.dirty ? 'accent' : 'primary'"
-                    [disabled]="!form.valid" (click)="save()">
-                <mat-icon aria-label="Save user">save</mat-icon>
-            </button>
+        <div pg-form-content>
+            <mat-form-field class="flex-item">
+                <input matInput placeholder="Email"
+                       formControlName="username">
+                <mat-error *ngIf="form.controls.username.hasError('required')">
+                    Username is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <input matInput placeholder="Password" type="password"
+                       formControlName="password">
+                <mat-error *ngIf="form.controls.password.hasError('required')">
+                    Password is required
+                </mat-error>
+            </mat-form-field>
         </div>
-    </div>
 
-    <div class="main flex-item" fxFlex>
-        <form [formGroup]="form" (ngSubmit)="save()">
-            <div class="formarea flex-container" fxLayout="column">
-
-                <ul class="mat-error" *ngIf="form.errors">
-                    <li *ngFor="let error of form.errors">{{error}}</li>
-                </ul>
-
-                <mat-form-field class="flex-item">
-                    <input matInput placeholder="Email"
-                           formControlName="username">
-                    <mat-error *ngIf="form.controls.username.hasError('required')">
-                        Username is required
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="flex-item">
-                    <input matInput placeholder="Password" type="password"
-                           formControlName="password">
-                    <mat-error *ngIf="form.controls.password.hasError('required')">
-                        Password is required
-                    </mat-error>
-                </mat-form-field>
-
-            </div>
-        </form>
-    </div>
-</div>
+    </pg-admin-form>
+</form>

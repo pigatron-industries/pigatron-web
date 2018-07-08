@@ -1,5 +1,5 @@
-<form *ngIf="data!==undefined" [formGroup]="form" (ngSubmit)="save()" >
-    <pg-admin-form [title]="data.type" [form]="form">
+<form *ngIf="data!==undefined" [formGroup]="form" (ngSubmit)="save()">
+    <pg-admin-form [title]="data.type" [form]="form" backRoute="/contents">
 
         <div pg-form-sidebar>
             <div class="flexRowRight">

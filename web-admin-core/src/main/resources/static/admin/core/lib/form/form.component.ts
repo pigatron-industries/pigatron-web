@@ -13,6 +13,9 @@ export class FormComponent implements OnInit {
     @Input()
     form : FormGroup;
 
+    @Input()
+    backRoute : string;
+
     ngOnInit(): void {
     }
 
