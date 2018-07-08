@@ -18,6 +18,9 @@ export class TableComponent implements OnInit {
     @Input()
     selected;
 
+    @Input()
+    editRoute;
+
     @ViewChild('actionColumnTemplate')
     actionColumnTemplate: TemplateRef<any>;
 

@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {FormGroup} from "@angular/forms";
 
 import {AbstractDataService} from "./abstractdata.service";
+import {combineLatest} from 'rxjs';
 
 
 export abstract class AbstractFormComponent<T> implements OnInit {
@@ -15,13 +16,16 @@ export abstract class AbstractFormComponent<T> implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            if(params['id'] != 'new') {
-                this.load(params['id']);
-            } else {
-                this.data = this.create();
-            }
-        });
+        combineLatest(this.route.parent.url, this.route.params)
+            .subscribe((route) => {
+                const url = route[0];
+                const params = route[1];
+                if(url[1].path == 'new') {
+                    this.create(params);
+                } else {
+                    this.load(params['id']);
+                }
+            });
     }
 
     load(id: string): void {
@@ -47,6 +51,6 @@ export abstract class AbstractFormComponent<T> implements OnInit {
         this.form.markAsPristine();
     }
 
-    abstract create(): T;
+    abstract create(params): void;
 
 }

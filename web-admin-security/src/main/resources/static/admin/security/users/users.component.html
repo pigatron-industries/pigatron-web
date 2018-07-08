@@ -1,68 +1,16 @@
-<div class="flex-container" fxLayout="row" fxFlex="100%">
+<pg-admin-table title="Users" [selected]="selected" [rows]="rows" [columns]="columns" editRoute="/user">
 
-    <div id="leftsidebar" class="leftsidebar flex-container" fxLayout="column" fxFlex="250px">
-        <h1>Users</h1>
-        <div class="buttons-bar flex-container">
-            <button mat-mini-fab color="primary" matTooltip="Add User" [routerLink]="'/user/new'">
-                <mat-icon aria-label="Add user">add</mat-icon>
-            </button>
-            <button mat-mini-fab color="primary" matTooltip="Delete User" (click)="deleteSelected()">
-                <mat-icon aria-label="Delete selected users">delete</mat-icon>
-            </button>
-        </div>
+    <div pg-table-sidebar>
+        <button mat-mini-fab color="primary" matTooltip="Add" [routerLink]="'/user/new'">
+            <mat-icon aria-label="Add">add</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" matTooltip="Delete Content"
+                [matMenuTriggerFor]="deleteMenu">
+            <mat-icon aria-label="Delete selected content">delete</mat-icon>
+        </button>
+        <mat-menu #deleteMenu="matMenu">
+            <button mat-menu-item (click)="deleteSelected()">Delete {{selected.length}} items?</button>
+        </mat-menu>
     </div>
 
-    <div class="main flex-container" fxLayout="column" fxFlex>
-        <div class="formarea flex-container" fxLayout="column" fxFlex>
-
-            <ngx-datatable class="material"
-                           [rows]="rows"
-                           [columns]="columns"
-                           [headerHeight]="30"
-                           [footerHeight]="30"
-                           [rowHeight]="30"
-                           [scrollbarV]="true"
-                           [selected]="selected"
-                           [selectionType]="'checkbox'"
-                           [selectAllRowsOnPage]="false"
-                           [displayCheck]="displayCheck">
-                <ngx-datatable-column [width]="30"
-                                      [sortable]="false"
-                                      [canAutoResize]="false"
-                                      [draggable]="false"
-                                      [resizeable]="false"
-                                      [headerCheckboxable]="true"
-                                      [checkboxable]="true">
-                </ngx-datatable-column>
-                <ngx-datatable-column [width]="30"
-                                      [sortable]="false"
-                                      [canAutoResize]="false"
-                                      [draggable]="false"
-                                      [resizeable]="false">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <mat-icon aria-label="Edit user" [routerLink]="['/user', row.id]">edit</mat-icon>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column prop="username"></ngx-datatable-column>
-                <ngx-datatable-column prop="email"></ngx-datatable-column>
-            </ngx-datatable>
-
-        </div>
-    </div>
-</div>
-<!--<pg-admin-table title="Users" [selected]="selected" [rows]="rows" [columns]="columns">-->
-
-    <!--<div pg-table-sidebar>-->
-        <!--<button mat-mini-fab color="primary" matTooltip="Add" [routerLink]="'/user/new'">-->
-            <!--<mat-icon aria-label="Add">add</mat-icon>-->
-        <!--</button>-->
-        <!--<button mat-mini-fab color="primary" matTooltip="Delete"-->
-                <!--[matMenuTriggerFor]="deleteMenu">-->
-            <!--<mat-icon aria-label="Delete">delete</mat-icon>-->
-        <!--</button>-->
-        <!--<mat-menu #deleteMenu="matMenu">-->
-            <!--<button mat-menu-item (click)="deleteSelected()">Delete {{selected.length}} items?</button>-->
-        <!--</mat-menu>-->
-    <!--</div>-->
-
-<!--</pg-admin-table>-->
+</pg-admin-table>

@@ -28,8 +28,8 @@ export class UserComponent extends AbstractFormComponent<User> {
         super(userService, route);
     }
 
-    create(): User {
-        return new User();
+    create(params): void {
+        this.data = new User();
     };
 
 }

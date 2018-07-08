@@ -1,4 +1,4 @@
-<pg-admin-table title="Content" [selected]="selected" [rows]="rows" [columns]="columns">
+<pg-admin-table title="Content" [selected]="selected" [rows]="rows" [columns]="columns" editRoute="/content">
 
     <div pg-table-sidebar>
         <button mat-mini-fab color="primary" matTooltip="Add Content"
@@ -6,8 +6,8 @@
             <mat-icon aria-label="Add content">add</mat-icon>
         </button>
         <mat-menu #addMenu="matMenu">
-            <button mat-menu-item [routerLink]="'/post/new'">Post</button>
-            <button mat-menu-item [routerLink]="'/page/new'">Page</button>
+            <button mat-menu-item [routerLink]="'/content/new/post'">Post</button>
+            <button mat-menu-item [routerLink]="'/content/new/page'">Page</button>
         </mat-menu>
         <button mat-mini-fab color="primary" matTooltip="Delete Content"
                 [matMenuTriggerFor]="deleteMenu">

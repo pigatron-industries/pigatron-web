@@ -49,21 +49,18 @@ export class ContentComponent extends AbstractFormComponent<Content> {
     }
 
     ngOnInit(): void {
-        this.route.parent.url.subscribe(url => {
-            this.type = url[0].path;
-        });
         super.ngOnInit();
     }
 
-    create(): Content {
-        if(this.type == 'page') {
-            return new Page();
+    create(params): void {
+        if(params['type'] == 'page') {
+            this.data = new Page();
         }
-        if(this.type == 'post') {
-            return new Post();
+        if(params['type'] == 'post') {
+            this.data = new Post();
         }
-        if(this.type == 'block') {
-            return new Block();
+        if(params['type'] == 'block') {
+            this.data = new Block();
         }
     }
 

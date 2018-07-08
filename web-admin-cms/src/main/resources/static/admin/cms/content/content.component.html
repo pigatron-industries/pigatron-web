@@ -1,12 +1,12 @@
-<form [formGroup]="form" (ngSubmit)="save()" >
-    <pg-admin-form [title]="type=='page' ? 'Page' : 'Post'" [form]="form">
+<form *ngIf="data!==undefined" [formGroup]="form" (ngSubmit)="save()" >
+    <pg-admin-form [title]="data.type" [form]="form">
 
         <div pg-form-sidebar>
             <div class="flexRowRight">
                 <mat-slide-toggle formControlName="enabled">Publish</mat-slide-toggle>
             </div>
             <div class="flexRow">
-                <mat-form-field *ngIf="type=='post' && form.value.enabled == true">
+                <mat-form-field *ngIf="data.type=='Post' && form.value.enabled == true">
                     <input matInput placeholder="Published Date" [matDatepicker]="publishedDatePicker"
                            formControlName="publishedDate">
                     <mat-datepicker-toggle matSuffix [for]="publishedDatePicker"></mat-datepicker-toggle>
@@ -16,13 +16,13 @@
         </div>
 
         <div pg-form-content>
-            <mat-form-field *ngIf="type=='post' || type=='page'" class="flex-item" fxFlex>
+            <mat-form-field *ngIf="data.type=='Post' || data.type=='Page'" class="flex-item" fxFlex>
                 <input matInput placeholder="Title" formControlName="title" class="titleInput">
                 <mat-error *ngIf="form.controls.title.hasError('required')">
                     Title is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field *ngIf="type=='page'" class="flex-item">
+            <mat-form-field *ngIf="data.type=='Page'" class="flex-item">
                 <input matInput placeholder="Url Key" formControlName="urlKey">
                 <mat-error *ngIf="form.controls.urlKey.hasError('required')">
                     Url Key is required

@@ -24,7 +24,7 @@
             </ngx-datatable>
 
             <ng-template #actionColumnTemplate let-row="row">
-                <mat-icon aria-label="Edit" [routerLink]="['/'+row.type.toLowerCase(), row.id]">edit</mat-icon>
+                <mat-icon aria-label="Edit" [routerLink]="[editRoute, row.id]">edit</mat-icon>
             </ng-template>
 
         </div>

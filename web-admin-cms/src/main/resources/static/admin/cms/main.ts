@@ -10,13 +10,13 @@ export const routes: Routes = [
         }
     },
     {
-        path: 'page/:id',
+        path: 'content/:id',
         loadChildren: () => {
             return ContentModule;
         }
     },
     {
-        path: 'post/:id',
+        path: 'content/new/:type',
         loadChildren: () => {
             return ContentModule;
         }
